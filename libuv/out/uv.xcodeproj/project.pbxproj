@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02425ADE5D46715461223181 /* getaddrinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 55DADA8B912C46174791CBC8 /* getaddrinfo.c */; };
+		062B2225549E83BFD6D4C4E7 /* threadpool.c in Sources */ = {isa = PBXBuildFile; fileRef = 864476C468B50352BC52D3A3 /* threadpool.c */; };
+		0B2D5CBEC5259C2743655D25 /* process.c in Sources */ = {isa = PBXBuildFile; fileRef = CBD7AB980C90721CA1D5F82C /* process.c */; };
+		101765EDB74E8DB9D0C1BDCF /* fs-poll.c in Sources */ = {isa = PBXBuildFile; fileRef = 275071A6DFDDD433F83BD38C /* fs-poll.c */; };
+		185D29B06E3AABF806D0E0D2 /* proctitle.c in Sources */ = {isa = PBXBuildFile; fileRef = 18C3C1DE5A5FC3AE0E03B2D7 /* proctitle.c */; };
+		1A8D2EB64156AB543494D026 /* darwin.c in Sources */ = {isa = PBXBuildFile; fileRef = 57210460BBB5FD25100F471D /* darwin.c */; };
+		1E7F8DF3DE283AC7B7290645 /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 9764EB1AF01FEE7410B386B7 /* version.c */; };
+		2B303B2EFE1073BD63C05B28 /* thread.c in Sources */ = {isa = PBXBuildFile; fileRef = 74F0F674CFBF30A1336F6106 /* thread.c */; };
+		2B36088B03B90681BCD5EC6F /* loop.c in Sources */ = {isa = PBXBuildFile; fileRef = 52786454B42E90186DCDED30 /* loop.c */; };
+		2C3C6AF8AD6B025994255D69 /* udp.c in Sources */ = {isa = PBXBuildFile; fileRef = BD566A6717132B083504D61D /* udp.c */; };
+		4CFABD15DA7D7F4E69EAD5A2 /* signal.c in Sources */ = {isa = PBXBuildFile; fileRef = ACF4D2EA3CDC0D3720CC6652 /* signal.c */; };
+		5CAB6A05986C4877A0011AAC /* dl.c in Sources */ = {isa = PBXBuildFile; fileRef = 2BC84FC9CCCEF95ECCA4E892 /* dl.c */; };
+		5E14CCAC38473238719D394A /* darwin-proctitle.c in Sources */ = {isa = PBXBuildFile; fileRef = 517FF12C5A6AC0AADF373C45 /* darwin-proctitle.c */; };
+		6155393B8B2663496C630BEA /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C66F1246EAC664C01670583 /* core.c */; };
+		70582FB26BA4554629C149E9 /* pipe.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D4D4F766CFD4876472B6BC7 /* pipe.c */; };
+		74F7D10E3BD8BDC3E0ABF9D8 /* getnameinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 829B274662468FF818DE670A /* getnameinfo.c */; };
+		780B6107EBC76B49B8521F4B /* fsevents.c in Sources */ = {isa = PBXBuildFile; fileRef = 241DD966C4A104726884AB3E /* fsevents.c */; };
+		7E3B9A7CD8A25EF37D6E8F81 /* tty.c in Sources */ = {isa = PBXBuildFile; fileRef = 76276F38C6E3CB81D6B9D005 /* tty.c */; };
+		8A541312CF7B1921C1FD668B /* loop-watcher.c in Sources */ = {isa = PBXBuildFile; fileRef = BED29F62F7EA09D75179DCB2 /* loop-watcher.c */; };
+		A1134026DB61298B852597C9 /* uv-common.c in Sources */ = {isa = PBXBuildFile; fileRef = 1743CFEBD471F9E247E53C9C /* uv-common.c */; };
+		A3355E05A720969FD89D70B4 /* inet.c in Sources */ = {isa = PBXBuildFile; fileRef = 0EC6247DFE08AEF6EBA979B4 /* inet.c */; };
+		A7B7C1A1792BA9ED9F4CEB67 /* tcp.c in Sources */ = {isa = PBXBuildFile; fileRef = 006788E3A1BCDB01D5AFA26D /* tcp.c */; };
+		AA035942C04BFE057BD26B19 /* fs.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E221E3487C83972954FE3F4 /* fs.c */; };
+		CBC067E0A0EAEC43EF5D89DC /* async.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E758132FDE9BA65B4A096D4 /* async.c */; };
+		D3E3008EAEB05D53F5BA0134 /* timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 60D62C68DB9E0EF262A6ABE2 /* timer.c */; };
+		DD649468934C63DE63795898 /* bsd-ifaddrs.c in Sources */ = {isa = PBXBuildFile; fileRef = 28D9B812D379DA4583A9DE45 /* bsd-ifaddrs.c */; };
+		E22E93C11881CC0C914C3547 /* uv-data-getter-setters.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0B3E8D4174FF3205F88B7 /* uv-data-getter-setters.c */; };
+		E333C0B5D4CD7F28911AD3DC /* poll.c in Sources */ = {isa = PBXBuildFile; fileRef = BDD22039B6923DFA419D3E31 /* poll.c */; };
+		FC8F3062B40025E3183DE707 /* stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 16FB9E3B8ED8630C181F2567 /* stream.c */; };
+		FF9CEE804E476CD852D1E3E1 /* kqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = D5DBA64661E3E3823FF0B65B /* kqueue.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		006788E3A1BCDB01D5AFA26D /* tcp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = tcp.c; sourceTree = "<group>"; };
+		04252F3AFA715BF901529833 /* tree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
+		06164444BD9491650B2F269F /* uv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uv.h; sourceTree = "<group>"; };
+		0EC6247DFE08AEF6EBA979B4 /* inet.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = inet.c; sourceTree = "<group>"; };
+		1366FBDA3B41EA03E9CC86CA /* libuv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuv.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		16FB9E3B8ED8630C181F2567 /* stream.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = stream.c; sourceTree = "<group>"; };
+		1743CFEBD471F9E247E53C9C /* uv-common.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "uv-common.c"; sourceTree = "<group>"; };
+		18C3C1DE5A5FC3AE0E03B2D7 /* proctitle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = proctitle.c; sourceTree = "<group>"; };
+		216622BFD37947A32980CE52 /* internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
+		23CC4264812284B3422DADDB /* bsd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bsd.h; sourceTree = "<group>"; };
+		241DD966C4A104726884AB3E /* fsevents.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fsevents.c; sourceTree = "<group>"; };
+		275071A6DFDDD433F83BD38C /* fs-poll.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "fs-poll.c"; sourceTree = "<group>"; };
+		28D9B812D379DA4583A9DE45 /* bsd-ifaddrs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "bsd-ifaddrs.c"; sourceTree = "<group>"; };
+		2BC84FC9CCCEF95ECCA4E892 /* dl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dl.c; sourceTree = "<group>"; };
+		3E221E3487C83972954FE3F4 /* fs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fs.c; sourceTree = "<group>"; };
+		517FF12C5A6AC0AADF373C45 /* darwin-proctitle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "darwin-proctitle.c"; sourceTree = "<group>"; };
+		52786454B42E90186DCDED30 /* loop.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = loop.c; sourceTree = "<group>"; };
+		55DADA8B912C46174791CBC8 /* getaddrinfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = getaddrinfo.c; sourceTree = "<group>"; };
+		56C24CF4B7AD3FF844D1178E /* common.gypi */ = {isa = PBXFileReference; explicitFileType = sourcecode; path = common.gypi; sourceTree = "<group>"; };
+		57210460BBB5FD25100F471D /* darwin.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = darwin.c; sourceTree = "<group>"; };
+		5CF0B3E8D4174FF3205F88B7 /* uv-data-getter-setters.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "uv-data-getter-setters.c"; sourceTree = "<group>"; };
+		5E355AF7251EB7E79B7EFFAA /* unix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unix.h; sourceTree = "<group>"; };
+		60D62C68DB9E0EF262A6ABE2 /* timer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = timer.c; sourceTree = "<group>"; };
+		63688E4796C75785EC5DA9BC /* atomic-ops.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "atomic-ops.h"; sourceTree = "<group>"; };
+		691E321FE3D46143162A9D6C /* sunos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sunos.h; sourceTree = "<group>"; };
+		698430D69C4B1AB970EBD864 /* common.gypi */ = {isa = PBXFileReference; explicitFileType = sourcecode; path = common.gypi; sourceTree = "<group>"; };
+		74F0F674CFBF30A1336F6106 /* thread.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = thread.c; sourceTree = "<group>"; };
+		76276F38C6E3CB81D6B9D005 /* tty.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = tty.c; sourceTree = "<group>"; };
+		829B274662468FF818DE670A /* getnameinfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = getnameinfo.c; sourceTree = "<group>"; };
+		85074D5B7C9843160A251835 /* linux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = linux.h; sourceTree = "<group>"; };
+		864476C468B50352BC52D3A3 /* threadpool.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = threadpool.c; sourceTree = "<group>"; };
+		8C724E4DDDD8340B9D7EABA2 /* heap-inl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "heap-inl.h"; sourceTree = "<group>"; };
+		8D4D4F766CFD4876472B6BC7 /* pipe.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pipe.c; sourceTree = "<group>"; };
+		8E758132FDE9BA65B4A096D4 /* async.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = async.c; sourceTree = "<group>"; };
+		940811D73C9D93E935A656A5 /* aix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aix.h; sourceTree = "<group>"; };
+		9764EB1AF01FEE7410B386B7 /* version.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = version.c; sourceTree = "<group>"; };
+		9C66F1246EAC664C01670583 /* core.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = core.c; sourceTree = "<group>"; };
+		9EEF21EFE8E4C6D7863771CA /* errno.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = errno.h; sourceTree = "<group>"; };
+		A1D654AF233B4C84D1E52686 /* threadpool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = threadpool.h; sourceTree = "<group>"; };
+		ACF4D2EA3CDC0D3720CC6652 /* signal.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = signal.c; sourceTree = "<group>"; };
+		BD566A6717132B083504D61D /* udp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = udp.c; sourceTree = "<group>"; };
+		BDD22039B6923DFA419D3E31 /* poll.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = poll.c; sourceTree = "<group>"; };
+		BED29F62F7EA09D75179DCB2 /* loop-watcher.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "loop-watcher.c"; sourceTree = "<group>"; };
+		C48656DFFE1310B186A165A2 /* spinlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spinlock.h; sourceTree = "<group>"; };
+		CB508B03B6E18FC82BBEF94B /* uv.gyp */ = {isa = PBXFileReference; explicitFileType = sourcecode; path = uv.gyp; sourceTree = "<group>"; };
+		CBD7AB980C90721CA1D5F82C /* process.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = process.c; sourceTree = "<group>"; };
+		D5DBA64661E3E3823FF0B65B /* kqueue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kqueue.c; sourceTree = "<group>"; };
+		DC7ABE0C36CD714B1FEEE137 /* uv-common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uv-common.h"; sourceTree = "<group>"; };
+		E0472E50466681E9CF8D7537 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		F02F82DD80486DBBBD8719C1 /* queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		F2CBFA65FCE1AEF0DE3A4C09 /* darwin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = darwin.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE431C080E4A0226E726296F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A30F79383B83315795086A5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FEE0C5FD491419887665377C /* unix */,
+				275071A6DFDDD433F83BD38C /* fs-poll.c */,
+				8C724E4DDDD8340B9D7EABA2 /* heap-inl.h */,
+				0EC6247DFE08AEF6EBA979B4 /* inet.c */,
+				F02F82DD80486DBBBD8719C1 /* queue.h */,
+				864476C468B50352BC52D3A3 /* threadpool.c */,
+				60D62C68DB9E0EF262A6ABE2 /* timer.c */,
+				1743CFEBD471F9E247E53C9C /* uv-common.c */,
+				DC7ABE0C36CD714B1FEEE137 /* uv-common.h */,
+				5CF0B3E8D4174FF3205F88B7 /* uv-data-getter-setters.c */,
+				9764EB1AF01FEE7410B386B7 /* version.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		23CB857BBF5A431B541A62C2 /* uv */ = {
+			isa = PBXGroup;
+			children = (
+				940811D73C9D93E935A656A5 /* aix.h */,
+				23CC4264812284B3422DADDB /* bsd.h */,
+				F2CBFA65FCE1AEF0DE3A4C09 /* darwin.h */,
+				9EEF21EFE8E4C6D7863771CA /* errno.h */,
+				85074D5B7C9843160A251835 /* linux.h */,
+				691E321FE3D46143162A9D6C /* sunos.h */,
+				A1D654AF233B4C84D1E52686 /* threadpool.h */,
+				04252F3AFA715BF901529833 /* tree.h */,
+				5E355AF7251EB7E79B7EFFAA /* unix.h */,
+				E0472E50466681E9CF8D7537 /* version.h */,
+			);
+			path = uv;
+			sourceTree = "<group>";
+		};
+		80371432CF31E3E775D748AF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A2805F82E156350EE8A70201 /* include */,
+				0A30F79383B83315795086A5 /* src */,
+				698430D69C4B1AB970EBD864 /* common.gypi */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		9BEFCA5A7EAF756D5068420E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1366FBDA3B41EA03E9CC86CA /* libuv.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A2805F82E156350EE8A70201 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				23CB857BBF5A431B541A62C2 /* uv */,
+				06164444BD9491650B2F269F /* uv.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		D817F531A99CE636E37304EC /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				56C24CF4B7AD3FF844D1178E /* common.gypi */,
+				CB508B03B6E18FC82BBEF94B /* uv.gyp */,
+			);
+			name = Build;
+			sourceTree = "<group>";
+		};
+		EFCF50CBF7C8374327DEF7A5 = {
+			isa = PBXGroup;
+			children = (
+				80371432CF31E3E775D748AF /* Source */,
+				9BEFCA5A7EAF756D5068420E /* Products */,
+				D817F531A99CE636E37304EC /* Build */,
+			);
+			sourceTree = "<group>";
+		};
+		FEE0C5FD491419887665377C /* unix */ = {
+			isa = PBXGroup;
+			children = (
+				8E758132FDE9BA65B4A096D4 /* async.c */,
+				63688E4796C75785EC5DA9BC /* atomic-ops.h */,
+				28D9B812D379DA4583A9DE45 /* bsd-ifaddrs.c */,
+				9C66F1246EAC664C01670583 /* core.c */,
+				517FF12C5A6AC0AADF373C45 /* darwin-proctitle.c */,
+				57210460BBB5FD25100F471D /* darwin.c */,
+				2BC84FC9CCCEF95ECCA4E892 /* dl.c */,
+				3E221E3487C83972954FE3F4 /* fs.c */,
+				241DD966C4A104726884AB3E /* fsevents.c */,
+				55DADA8B912C46174791CBC8 /* getaddrinfo.c */,
+				829B274662468FF818DE670A /* getnameinfo.c */,
+				216622BFD37947A32980CE52 /* internal.h */,
+				D5DBA64661E3E3823FF0B65B /* kqueue.c */,
+				BED29F62F7EA09D75179DCB2 /* loop-watcher.c */,
+				52786454B42E90186DCDED30 /* loop.c */,
+				8D4D4F766CFD4876472B6BC7 /* pipe.c */,
+				BDD22039B6923DFA419D3E31 /* poll.c */,
+				CBD7AB980C90721CA1D5F82C /* process.c */,
+				18C3C1DE5A5FC3AE0E03B2D7 /* proctitle.c */,
+				ACF4D2EA3CDC0D3720CC6652 /* signal.c */,
+				C48656DFFE1310B186A165A2 /* spinlock.h */,
+				16FB9E3B8ED8630C181F2567 /* stream.c */,
+				006788E3A1BCDB01D5AFA26D /* tcp.c */,
+				74F0F674CFBF30A1336F6106 /* thread.c */,
+				76276F38C6E3CB81D6B9D005 /* tty.c */,
+				BD566A6717132B083504D61D /* udp.c */,
+			);
+			path = unix;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		178071661CB321BB5A46AC92 /* libuv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C25720DE719950FCE3D0A683 /* Build configuration list for PBXNativeTarget "libuv" */;
+			buildPhases = (
+				3C2B766126B21EA9E789F2EB /* Sources */,
+				BE431C080E4A0226E726296F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libuv;
+			productName = uv;
+			productReference = 1366FBDA3B41EA03E9CC86CA /* libuv.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		36EC565658762C7175600AFC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+			};
+			buildConfigurationList = 8C5C4470AE99DE5DE330356A /* Build configuration list for PBXProject "uv" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EFCF50CBF7C8374327DEF7A5;
+			projectDirPath = ..;
+			projectRoot = "";
+			targets = (
+				178071661CB321BB5A46AC92 /* libuv */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C2B766126B21EA9E789F2EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				101765EDB74E8DB9D0C1BDCF /* fs-poll.c in Sources */,
+				A3355E05A720969FD89D70B4 /* inet.c in Sources */,
+				062B2225549E83BFD6D4C4E7 /* threadpool.c in Sources */,
+				D3E3008EAEB05D53F5BA0134 /* timer.c in Sources */,
+				E22E93C11881CC0C914C3547 /* uv-data-getter-setters.c in Sources */,
+				A1134026DB61298B852597C9 /* uv-common.c in Sources */,
+				1E7F8DF3DE283AC7B7290645 /* version.c in Sources */,
+				CBC067E0A0EAEC43EF5D89DC /* async.c in Sources */,
+				6155393B8B2663496C630BEA /* core.c in Sources */,
+				5CAB6A05986C4877A0011AAC /* dl.c in Sources */,
+				AA035942C04BFE057BD26B19 /* fs.c in Sources */,
+				02425ADE5D46715461223181 /* getaddrinfo.c in Sources */,
+				74F7D10E3BD8BDC3E0ABF9D8 /* getnameinfo.c in Sources */,
+				2B36088B03B90681BCD5EC6F /* loop.c in Sources */,
+				8A541312CF7B1921C1FD668B /* loop-watcher.c in Sources */,
+				70582FB26BA4554629C149E9 /* pipe.c in Sources */,
+				E333C0B5D4CD7F28911AD3DC /* poll.c in Sources */,
+				0B2D5CBEC5259C2743655D25 /* process.c in Sources */,
+				4CFABD15DA7D7F4E69EAD5A2 /* signal.c in Sources */,
+				FC8F3062B40025E3183DE707 /* stream.c in Sources */,
+				A7B7C1A1792BA9ED9F4CEB67 /* tcp.c in Sources */,
+				2B303B2EFE1073BD63C05B28 /* thread.c in Sources */,
+				7E3B9A7CD8A25EF37D6E8F81 /* tty.c in Sources */,
+				2C3C6AF8AD6B025994255D69 /* udp.c in Sources */,
+				185D29B06E3AABF806D0E0D2 /* proctitle.c in Sources */,
+				1A8D2EB64156AB543494D026 /* darwin.c in Sources */,
+				780B6107EBC76B49B8521F4B /* fsevents.c in Sources */,
+				5E14CCAC38473238719D394A /* darwin-proctitle.c in Sources */,
+				DD649468934C63DE63795898 /* bsd-ifaddrs.c in Sources */,
+				FF9CEE804E476CD852D1E3E1 /* kqueue.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		09E3382A58AC44EBF17A6130 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INTERMEDIATE_DIR = "$(PROJECT_DERIVED_FILE_DIR)/$(CONFIGURATION)";
+				SDKROOT = macosx;
+				SHARED_INTERMEDIATE_DIR = "$(SYMROOT)/DerivedSources/$(CONFIGURATION)";
+			};
+			name = Release;
+		};
+		1BADF82C00ED8052513F3CAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CONFIGURATION_BUILD_DIR = ../build/debug;
+				EXECUTABLE_PREFIX = lib;
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_DARWIN_USE_64_BIT_INODE=1",
+					_LARGEFILE_SOURCE,
+					"_FILE_OFFSET_BITS=64",
+					"_DARWIN_UNLIMITED_SELECT=1",
+					DEBUG,
+					_DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THREADSAFE_STATICS = NO;
+				HEADER_SEARCH_PATHS = (
+					include,
+					src/,
+				);
+				OTHER_CFLAGS = (
+					"-g",
+					"--std=gnu89",
+					"-pedantic",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = uv;
+				SDKROOT = macosx10.13;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wendif-labels",
+					"-W",
+					"-Wno-unused-parameter",
+					"-Wstrict-prototypes",
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+					"-Wstrict-prototypes",
+				);
+			};
+			name = Debug;
+		};
+		6B09E5DB85158175EF89C87D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CONFIGURATION_BUILD_DIR = ../build/releaes;
+				EXECUTABLE_PREFIX = lib;
+				GCC_CW_ASM_SYNTAX = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_DARWIN_USE_64_BIT_INODE=1",
+					_LARGEFILE_SOURCE,
+					"_FILE_OFFSET_BITS=64",
+					"_DARWIN_UNLIMITED_SELECT=1",
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THREADSAFE_STATICS = NO;
+				HEADER_SEARCH_PATHS = (
+					include,
+					src/,
+				);
+				OTHER_CFLAGS = (
+					"-g",
+					"--std=gnu89",
+					"-pedantic",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = uv;
+				SDKROOT = macosx10.13;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wendif-labels",
+					"-W",
+					"-Wno-unused-parameter",
+					"-Wstrict-prototypes",
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+					"-Wstrict-prototypes",
+				);
+			};
+			name = Release;
+		};
+		EFD88018056DC2647A072D40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INTERMEDIATE_DIR = "$(PROJECT_DERIVED_FILE_DIR)/$(CONFIGURATION)";
+				SDKROOT = macosx;
+				SHARED_INTERMEDIATE_DIR = "$(SYMROOT)/DerivedSources/$(CONFIGURATION)";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8C5C4470AE99DE5DE330356A /* Build configuration list for PBXProject "uv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFD88018056DC2647A072D40 /* Debug */,
+				09E3382A58AC44EBF17A6130 /* Release */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Debug;
+		};
+		C25720DE719950FCE3D0A683 /* Build configuration list for PBXNativeTarget "libuv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BADF82C00ED8052513F3CAF /* Debug */,
+				6B09E5DB85158175EF89C87D /* Release */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 36EC565658762C7175600AFC /* Project object */;
+}
