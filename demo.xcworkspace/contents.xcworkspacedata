@@ -17,9 +17,6 @@
       location = "group:uv-test/uv-test.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../github/libevhtp/build-xcode/libevhtp.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:libuv/out/uv.xcodeproj">
    </FileRef>
 </Workspace>
