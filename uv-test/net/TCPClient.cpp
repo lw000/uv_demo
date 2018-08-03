@@ -264,8 +264,6 @@ namespace lw
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
             
-//            uv_buf_t* buf_t = (uv_buf_t*)malloc(sizeof(uv_buf_t));
-            
             uv_buf_t buf_t;
             buf_t.base = (char*)::malloc(msg->getSize());
             buf_t.len = msg->getSize();
@@ -277,8 +275,6 @@ namespace lw
             } else {
                 
             }
-            
-//            free(buf_t);
             
             return c;
         });
