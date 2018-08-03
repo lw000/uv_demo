@@ -31,29 +31,29 @@ namespace lw
 	///////////////////////////////////////////////////////////////////////////////////////////
 
     static void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata) {
-        TCPClient * server = (TCPClient*)userdata;
-        
+        TCPClient * cli = (TCPClient*)userdata;
+        cli->onParse(main_cmd, assi_cmd, buf, bufsize);
     }
     
 	static void _on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res)
 	{
-		TCPClient * server = (TCPClient*)req->data;
-		server->onResolved(status, res);
+		TCPClient * cli = (TCPClient*)req->data;
+		cli->onResolved(status, res);
 		uv_freeaddrinfo(res);
 	}
 
 	static void _alloc_buffer_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf)
 	{
-		TCPClient * server = (TCPClient*)handle->data;
-		server->onAllocBuffer(suggested_size, buf);	
+		TCPClient * cli = (TCPClient*)handle->data;
+		cli->onAllocBuffer(suggested_size, buf);
 	}
 
 	static void _read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 	{                   
 		if (nread > 0)
 		{
-			TCPClient * server = (TCPClient*)stream->data;
-			server->onRead(nread, buf);
+			TCPClient * cli = (TCPClient*)stream->data;
+			cli->onRead(nread, buf);
 		}
 		else if (nread == 0)
 		{
@@ -72,37 +72,45 @@ namespace lw
 
 	static void _write_cb(uv_write_t *req, int status)
 	{            
-		TCPClient * server = (TCPClient*)req->data;
-		server->onWrite(req, status);
+		TCPClient * cli = (TCPClient*)req->data;
+		cli->onWrite(req, status);
 	}
 
 	static void _connect_cb(uv_connect_t *req, int status)
 	{
-		TCPClient * server = (TCPClient*)req->data;
-		server->onConnect(req->handle, status);
+		TCPClient * cli = (TCPClient*)req->data;
+		cli->onConnect(req->handle, status);
 		free(req);
 	}
 
-	TCPClient::TCPClient(void)
+    TCPClient::TCPClient(void) : _delgate(NULL)
 	{	
-		_uv_loop = uv_default_loop();
-		//_uv_loop = uv_loop_new();
-		_uv_cli = (uv_tcp_t*) malloc(sizeof(uv_tcp_t));
-		int ret = uv_tcp_init(_uv_loop, _uv_cli);
+		_loop = uv_default_loop();
+		//_loop = uv_loop_new();
+		_cli = (uv_tcp_t*) malloc(sizeof(uv_tcp_t));
+		int ret = uv_tcp_init(_loop, _cli);
         if (ret == 0) {
             
         }
         
-		uv_mutex_init(&_mutex);
+//        uv_mutex_init(&_mutex);
 	}
 
+    TCPClient::TCPClient(Delegate* delgate) {
+        this->_delgate = delgate;
+    }
+    
 	TCPClient::~TCPClient(void)
 	{
-        uv_mutex_destroy(&_mutex);
+//        uv_mutex_destroy(&_mutex);
 		
-        free(_uv_cli);
+        free(_cli);
 	}
 
+    void TCPClient::setDelgate(Delegate* delgate) {
+        this->_delgate = delgate;
+    }
+    
 	void TCPClient::syncStart(const char* host, const char* port)
 	{
         struct addrinfo hints;
@@ -116,10 +124,10 @@ namespace lw
         
 		try
 		{
-			int ret = uv_getaddrinfo(_uv_loop, &resolver, _on_resolved, host, port, &hints);
+			int ret = uv_getaddrinfo(_loop, &resolver, _on_resolved, host, port, &hints);
 
 			if (0 == ret) {
-				ret = uv_run(_uv_loop, UV_RUN_DEFAULT);
+				ret = uv_run(_loop, UV_RUN_DEFAULT);
 			}
 			else {
 				fprintf(stderr, "getaddrinfo call error %s\n", uv_err_name(ret));
@@ -135,11 +143,59 @@ namespace lw
 
 		sockaddr_in addr;
 		int ret = uv_ip4_addr(ip, port, &addr);
-		ret = uv_tcp_connect(connect_req, _uv_cli, (const sockaddr*)&addr, _connect_cb);
+		ret = uv_tcp_connect(connect_req, _cli, (const sockaddr*)&addr, _connect_cb);
 		
-		ret = uv_run(_uv_loop, UV_RUN_DEFAULT);
+		ret = uv_run(_loop, UV_RUN_DEFAULT);
 	}
 
+    static void entry(void *arg) {
+        TCPClient* srv = (TCPClient*)arg;
+        int ret = uv_run(srv->getloop(), UV_RUN_DEFAULT);
+        if (ret == 0) {
+            // .....
+        } else {
+            // .....
+        }
+    }
+    
+    void TCPClient::asyncStart(const char* ip, unsigned int port) {
+        uv_connect_t *connect_req = (uv_connect_t*) malloc(sizeof(uv_connect_t));
+        connect_req->data = (void*)this;
+        
+        sockaddr_in addr;
+        int ret = uv_ip4_addr(ip, port, &addr);
+        ret = uv_tcp_connect(connect_req, _cli, (const sockaddr*)&addr, _connect_cb);
+        if (ret == 0) {
+            uv_thread_t tid;
+            uv_thread_create(&tid, entry, this);
+        }
+    }
+    
+    void TCPClient::asyncStart(const char* host, const char* port) {
+        struct addrinfo hints;
+        hints.ai_family = PF_INET;
+        hints.ai_socktype = SOCK_STREAM;
+        hints.ai_protocol = IPPROTO_TCP;
+        hints.ai_flags = 0;
+        
+        uv_getaddrinfo_t resolver = {0};
+        resolver.data = this;
+        
+        try
+        {
+            int ret = uv_getaddrinfo(_loop, &resolver, _on_resolved, host, port, &hints);
+            
+            if (0 == ret) {
+                uv_thread_t tid;
+                uv_thread_create(&tid, entry, this);
+            }
+            else {
+                fprintf(stderr, "getaddrinfo call error %s\n", uv_err_name(ret));
+            }
+        }
+        catch(...) {}
+    }
+    
 	void TCPClient::onAllocBuffer(size_t suggested_size, uv_buf_t* buf)
 	{
 		buf->base = (char*)malloc(4096);
@@ -150,7 +206,7 @@ namespace lw
 	{
 		if (nread > 0)
 		{
-            this->_ioBuffer.parse(buf->base, nread, NULL, NULL);
+            this->_ioBuffer.parse(buf->base, nread, parse_data_cb, this);
             if (buf->base != NULL) {
                 free(buf->base);
             }
@@ -167,10 +223,10 @@ namespace lw
 
 	void TCPClient::onWrite(uv_write_t *req, int status)
 	{
-		WriteData* writeData = (WriteData*)req->data;
-        if (writeData != NULL) {
-            delete writeData;
-        }
+//        WriteData* writeData = (WriteData*)req->data;
+//        if (writeData != NULL) {
+//            delete writeData;
+//        }
         
         if (req != NULL) {
             free(req);
@@ -184,14 +240,15 @@ namespace lw
 	
 		uv_connect_t* connect_req = (uv_connect_t*) malloc(sizeof(uv_connect_t));
 		connect_req->data = this;
-		int ret = uv_tcp_connect(connect_req, _uv_cli, res->ai_addr, _connect_cb);
+		int ret = uv_tcp_connect(connect_req, _cli, res->ai_addr, _connect_cb);
         if (ret == 0) {
             
         }
 	}
 	
     void TCPClient::onParse(int main_cmd, int assi_cmd, char* buf, int bufsize) {
-        
+        NetPackage msg(main_cmd, assi_cmd, buf, bufsize);
+        this->onMessage(&msg);
     }
     
 	void TCPClient::onConnect(uv_stream_t* handle, int status)
@@ -201,7 +258,7 @@ namespace lw
 			handle->data = this;
 			int ret = uv_read_start(handle, _alloc_buffer_cb, _read_cb);
             if (ret == 0) {
-                
+                this->onStatus(status);
             }
 		}
 		else
@@ -212,11 +269,26 @@ namespace lw
 	
 	int TCPClient::sendData(unsigned int main_cmd, unsigned int assi_cmd, void* object, int objectSize)
 	{
-        _ioBuffer.send(main_cmd, assi_cmd, object, objectSize, [this](NET_MESSAGE* msg) -> int {
-            WriteData* writeData = new WriteData(this, msg->buf, msg->size);
+        _ioBuffer.send(main_cmd, assi_cmd, object, objectSize, [this](NetPackage* msg) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            req->data = writeData;
-            int c = uv_write(req, (uv_stream_s*)_uv_cli, writeData->getBuft(), 1, _write_cb);
+            req->data = this;
+            
+//            uv_buf_t* buf_t = (uv_buf_t*)malloc(sizeof(uv_buf_t));
+            
+            uv_buf_t buf_t;
+            buf_t.base = (char*)::malloc(msg->getSize());
+            buf_t.len = msg->getSize();
+            memcpy(buf_t.base, msg->getBuf(), msg->getSize());
+            
+            int c = uv_write(req, (uv_stream_s*)_cli, &buf_t, 1, _write_cb);
+            if (c == 0) {
+                
+            } else {
+                
+            }
+            
+//            free(buf_t);
+            
             return c;
         });
         

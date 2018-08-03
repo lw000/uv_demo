@@ -41,12 +41,12 @@ void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* use
         reponse_a_data reponse;
         reponse.code = 0;
         reponse.c = request->a + request->b;
-        iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [buf, bufsize, client](NET_MESSAGE * msg) -> int {
+        iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [buf, bufsize, client](NetPackage * msg) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             uv_buf_t newbuf;
-            newbuf.base = (char*)::malloc(msg->size);
-            newbuf.len = msg->size;
-            memcpy(newbuf.base, msg->buf, msg->size);
+            newbuf.base = (char*)::malloc(msg->getSize());
+            newbuf.len = msg->getSize();
+            memcpy(newbuf.base, msg->getBuf(), msg->getSize());
             int ret = uv_write(req, client, &newbuf, 1, echo_write);
             return ret;
         });

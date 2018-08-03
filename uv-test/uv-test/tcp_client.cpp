@@ -62,25 +62,22 @@ void write_cb(uv_write_t* req, int status) {
 }
 
 void entry(void *arg) {
-    printf("begin\n");
     int i = 1;
     while (i) {
         reqest_a_data data;
         data.a = 1000;
         data.b = 2000;
-        iobuffer.send(100, 200, (void*)&data, sizeof(data), [](NET_MESSAGE * msg) -> int {
+        iobuffer.send(100, 200, (void*)&data, sizeof(data), [](NetPackage * msg) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             uv_buf_t newbuf;
-            newbuf.base = (char*)::malloc(msg->size);
-            newbuf.len = msg->size;
-            memcpy(newbuf.base, msg->buf, msg->size);
+            newbuf.base = (char*)::malloc(msg->getSize());
+            newbuf.len = msg->getSize();
+            memcpy(newbuf.base, msg->getBuf(), msg->getSize());
             int ret = uv_write(req, (uv_stream_s*)&client, &newbuf, 1, write_cb);
             return ret;
         });
         sleep(1);
     }
-    
-    printf("end\n");
 }
 
 void connect_cb(uv_connect_t* req, int status) {

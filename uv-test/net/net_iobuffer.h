@@ -4,14 +4,17 @@
 #include <functional>
 #include "cache_queue.h"
 #include "lock.h"
+#include "net_package.h"
 
 typedef void(*PARSE_DATA_CALLFUNC)(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata);
 
-struct NET_MESSAGE
-{
-	char* buf;
-	int size;
-};
+//struct NET_MESSAGE
+//{
+//    int main_cmd;
+//    int assi_cmd;
+//    char* buf;
+//    int size;
+//};
 
 class NetIOBuffer
 {
@@ -20,7 +23,7 @@ public:
 	~NetIOBuffer();
 
 public:
-	int send(int main_cmd, int assi_cmd, void* object, int objectSize, std::function<int(NET_MESSAGE* p)> func);
+	int send(int main_cmd, int assi_cmd, void* object, int objectSize, std::function<int(NetPackage* p)> func);
     
 public:
 	int parse(const char * buf, int size, PARSE_DATA_CALLFUNC call, void* userdata);

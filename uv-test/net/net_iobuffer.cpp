@@ -3,8 +3,6 @@
 #include <assert.h>
 #include <string.h>
 
-#include "net_package.h"
-
 #include "log4z.h"
 
 static const int C_NETHEAD_SIZE = sizeof(NetHead);
@@ -19,15 +17,17 @@ NetIOBuffer::~NetIOBuffer() {
 
 }
 
-int NetIOBuffer::send(int main_cmd, int assi_cmd, void* object, int objectSize, std::function<int(NET_MESSAGE* p)> func) {
+int NetIOBuffer::send(int main_cmd, int assi_cmd, void* object, int objectSize, std::function<int(NetPackage* p)> func) {
 	int c = -1;
 	{
 		NetPackage* msg = new NetPackage(main_cmd, assi_cmd, object, objectSize);
-		NET_MESSAGE netMsg;
-		netMsg.buf = msg->getBuf();
-		netMsg.size = msg->getSize();
+//        NET_MESSAGE netMsg;
+//        netMsg.main_cmd = msg->getHead()->msg_main_cmd;
+//        netMsg.assi_cmd = msg->getHead()->msg_assi_cmd;
+//        netMsg.buf = msg->getBuf();
+//        netMsg.size = msg->getSize();
 		{
-			c = func(&netMsg);
+			c = func(msg);
 		}
 		delete msg;
 	}

@@ -1,5 +1,4 @@
 #include "TCPServer.h"
-
 #include <assert.h>
 
 #include "Utils.h"
@@ -23,6 +22,12 @@ userenv.lib
 namespace lw
 {
 	///////////////////////////////////////////////////////////////////////////////////////////
+    
+    struct SharedData {
+        TCPServer* srv;
+        uv_stream_s* cli;
+    };
+    
 	class UVWrapper
 	{
 		TCPServer* server;
@@ -40,62 +45,72 @@ namespace lw
 		static void timer_cb(uv_timer_t* handle);
 		static void close_cb(uv_handle_t* handle);
 		static void idle_cb(uv_idle_t* handle);
+        static void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata);
 	};
 
 	UVWrapper::UVWrapper(TCPServer* server) : server(server)
 	{
-	}
+	
+    }
 
 	UVWrapper::~UVWrapper()
 	{
-	}
+	
+    }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    
+    void UVWrapper::parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata) {
+        SharedData * data = (SharedData*)userdata;
+        data->srv->onParse(main_cmd, assi_cmd, buf, bufsize, data->cli);
+    }
+    
 	void UVWrapper::idle_cb(uv_idle_t* handle)
 	{
-		TCPServer * tcpServer = (TCPServer*)handle->data;
-		tcpServer->onIdle();
+		TCPServer * srv = (TCPServer*)handle->data;
+		srv->onIdle();
 	}
 
 	void UVWrapper::close_cb(uv_handle_t* handle)
 	{
-		TCPServer * tcpServer = (TCPServer*)handle->data;
-		tcpServer->onClientClose(handle);
+		TCPServer * srv = (TCPServer*)handle->data;
+		srv->onClientClose(handle);
 	}
 
 	void UVWrapper::timer_cb(uv_timer_t* handle)
 	{
-		TCPServer * tcpServer = (TCPServer*)handle->data;
-		tcpServer->onTimer();
+		TCPServer * srv = (TCPServer*)handle->data;
+		srv->onTimer();
 	}
 
 	void UVWrapper::on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res)
 	{
-		TCPServer * tcpServer = (TCPServer*)req->data;
-		tcpServer->onResolved(status, res);
+		TCPServer * srv = (TCPServer*)req->data;
+		srv->onResolved(status, res);
 		uv_freeaddrinfo(res);
 	}
 
 	void UVWrapper::alloc_buffer_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf)
 	{
-		TCPServer * tcpServer = (TCPServer*)handle->data;
-		tcpServer->onAllocBuffer(suggested_size, buf);
+		TCPServer * srv = (TCPServer*)handle->data;
+		srv->onAllocBuffer(suggested_size, buf);
 	}
 
 	void UVWrapper::read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 	{     
 		if (nread > 0)
 		{
-			TCPServer * tcpServer = (TCPServer*)stream->data;
-			tcpServer->onRead(stream, nread, buf);
-		
+			TCPServer * srv = (TCPServer*)stream->data;
+            srv->onRead(stream, nread, buf);
 		}
 		else if (nread == 0)
 		{
-			printf("server close\n");
+			printf("server close. \n");
 		}
 		else
 		{
-			printf("read_cb error:%s\n", uv_err_name(nread));
+			printf("read_cb error: %s\n", uv_err_name(nread));
+            
 			assert(nread == UV_ECONNRESET || nread == UV_EOF);
 
 			uv_close((uv_handle_t*)stream, close_cb);
@@ -104,27 +119,27 @@ namespace lw
 
 	void UVWrapper::write_cb(uv_write_t *req, int status)
 	{            
-		TCPServer * tcpServer = (TCPServer*)req->data;
-		tcpServer->onAfterWrite(req, status);
+		TCPServer * srv = (TCPServer*)req->data;
+		srv->onAfterWrite(req, status);
 	}
 
 	void UVWrapper::connection_cb(uv_stream_t* server, int status)
 	{
-		TCPServer * tcpServer = (TCPServer*)server->data;
-		tcpServer->onConnect(server, status);
+		TCPServer * srv = (TCPServer*)server->data;
+		srv->onConnect(server, status);
 	}
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
     
 	TCPServer::TCPServer(void)
 	{
-		uv_mutex_init(&_mutex);
+//        loop = uv_default_loop();
+        loop = uv_loop_new();
 
-		uv_loop = uv_default_loop();
-		//uv_loop = uv_loop_new();
-
-		uv_tcp_init(uv_loop, &_tcp);
+		uv_tcp_init(loop, &_tcp);
 		_tcp.data = this;
+        
+        uv_mutex_init(&_mutex);
 	}
 
 	TCPServer::~TCPServer(void)
@@ -139,7 +154,7 @@ namespace lw
 
     void TCPServer::extSrv() {
         {
-            int ret = uv_idle_init(uv_loop, &_idle);
+            int ret = uv_idle_init(loop, &_idle);
             _idle.data = this;
             ret = uv_idle_start(&_idle, UVWrapper::idle_cb);
             if (ret) {
@@ -148,9 +163,9 @@ namespace lw
         }
         
         {
-            int ret = uv_timer_init(uv_loop, &_uv_timer);
-            _uv_timer.data = this;
-            ret = uv_timer_start(&_uv_timer, UVWrapper::timer_cb, 3000, 1);
+            int ret = uv_timer_init(loop, &_timer);
+            _timer.data = this;
+            ret = uv_timer_start(&_timer, UVWrapper::timer_cb, 3000, 1);
             if (ret) {
                 
             }
@@ -172,11 +187,10 @@ namespace lw
 
 		try
 		{
-			int ret = uv_getaddrinfo(uv_loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
-
+			int ret = uv_getaddrinfo(loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
 			if (0 == ret)
 			{
-				ret = uv_run(uv_loop, UV_RUN_DEFAULT);
+				ret = uv_run(loop, UV_RUN_DEFAULT);
 			}
 			else
 			{			
@@ -192,17 +206,14 @@ namespace lw
         
 		sockaddr_in addr;
 		int ret = uv_ip4_addr(ip, port, &addr);
-
 		ret = uv_tcp_bind(&_tcp, (const sockaddr*)&addr, 0);
-
 		ret = uv_listen((uv_stream_t*)&_tcp, 100, UVWrapper::connection_cb);
-
-		ret = uv_run(uv_loop, UV_RUN_DEFAULT);
+		ret = uv_run(loop, UV_RUN_DEFAULT);
 	}
     
-    void entry(void *arg) {
+    static void entry(void *arg) {
         TCPServer* srv = (TCPServer*)arg;
-        int ret = uv_run(srv->uv_loop, UV_RUN_DEFAULT);
+        int ret = uv_run(srv->loop, UV_RUN_DEFAULT);
         if (ret == 0) {
             // .....
         } else {
@@ -216,11 +227,9 @@ namespace lw
         
         sockaddr_in addr;
         int ret = uv_ip4_addr(ip, port, &addr);
-        
         ret = uv_tcp_bind(&_tcp, (const sockaddr*)&addr, 0);
-        
         ret = uv_listen((uv_stream_t*)&_tcp, 100, UVWrapper::connection_cb);
-        
+
         uv_thread_t tid;
         uv_thread_create(&tid, entry, this);
     }
@@ -240,8 +249,7 @@ namespace lw
         
         try
         {
-            int ret = uv_getaddrinfo(uv_loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
-            
+            int ret = uv_getaddrinfo(loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
             if (0 == ret)
             {
                 uv_thread_t tid;
@@ -296,13 +304,27 @@ namespace lw
 		buf->len = 4096;
 	}
 
-	int TCPServer::sendTCPData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* object, int objectSize)
+	int TCPServer::sendData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* object, int objectSize)
 	{
-        _ioBuffer.send(main_cmd, assi_cmd, object, objectSize, [this, cli](NET_MESSAGE* msg) -> int {
-            WriteData* writeData = new WriteData(this, msg->buf, msg->size);
+        _ioBuffer.send(main_cmd, assi_cmd, object, objectSize, [this, cli](NetPackage* msg) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            req->data = writeData;
-            int c = uv_write(req, (uv_stream_s*)cli, writeData->getBuf(), 1, UVWrapper::write_cb);
+            req->data = this;
+            
+//            uv_buf_t* buf_t = (uv_buf_t*)malloc(sizeof(uv_buf_t));
+            uv_buf_t buf_t;
+            buf_t.base = (char*)::malloc(msg->getSize());
+            buf_t.len = msg->getSize();
+            memcpy(buf_t.base, msg->getBuf(), msg->getSize());
+            
+            int c = uv_write(req, (uv_stream_s*)cli, &buf_t, 1, UVWrapper::write_cb);
+            if (c == 0) {
+                
+            } else {
+                
+            }
+            
+//            free(buf_t);
+            
             return c;
         });
         
@@ -311,18 +333,21 @@ namespace lw
 
 	void TCPServer::onRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf)
 	{
-		_ioBuffer.parse(buf->base, nread, NULL, NULL);
+        SharedData shared_data;
+        shared_data.srv = this;
+        shared_data.cli = client;
+        _ioBuffer.parse(buf->base, nread, UVWrapper::parse_data_cb, &shared_data);
         
         free(buf->base);
 	}
 
+    void TCPServer::onParse(int main_cmd, int assi_cmd, char* buf, int bufsize, uv_stream_t* client) {
+        NetPackage msg(main_cmd, assi_cmd, buf, bufsize);
+        this->onMessage(client, &msg);
+    }
+    
 	void TCPServer::onAfterWrite(uv_write_t *req, int status)
 	{
-		WriteData* writeData = (WriteData*)req->data;
-        if (writeData != NULL) {
-            delete writeData;
-        }
-        
         if (req != NULL) {
             free(req);
         }
@@ -333,36 +358,28 @@ namespace lw
 		if (0 == status)
 		{
 			uv_tcp_t *client = (uv_tcp_t*) malloc(sizeof(uv_tcp_t));
-			uv_tcp_init(uv_loop, client);
+			uv_tcp_init(loop, client);
 			client->data = this;
 
-			auto clientPair = std::make_pair(client, client);
-			_clients.insert(clientPair);
+			_clients.insert(std::make_pair(client, client));
 
 			if (uv_accept(server, (uv_stream_t*) client) == 0)
-			{		
-				sockaddr_in addr;
-				int len = sizeof(addr);
-				//uv_tcp_getsockname(client, (struct sockaddr*)&addr, &len);
-				uv_tcp_getpeername(client, (struct sockaddr*)&addr, &len);
-				char clientIP[17];
-				uv_ip4_name(&addr, clientIP, 17);
-				printf("client : %s, port:%d\n", clientIP, addr.sin_port);
-				//char* p = inet_ntoa(addr.sin_addr);
+			{
+                {
+                    sockaddr_in addr;
+                    int len = sizeof(addr);
+                    //uv_tcp_getsockname(client, (struct sockaddr*)&addr, &len);
+                    uv_tcp_getpeername(client, (struct sockaddr*)&addr, &len);
+                    char clientIP[17];
+                    uv_ip4_name(&addr, clientIP, 17);
+                    printf("client : %s, port:%d\n", clientIP, addr.sin_port);
+                    //char* p = inet_ntoa(addr.sin_addr);
+                }
 
 				int ret = uv_read_start((uv_stream_t*)client, UVWrapper::alloc_buffer_cb, UVWrapper::read_cb);
 				if (0 == ret)
 				{
-//                    MSG_S_ConnectSuccess ConnectSuccess = {0};
-//                    ConnectSuccess.bLessVer = 3;
-//                    ConnectSuccess.bMaxVer = 3;
-//                    ConnectSuccess.i64CheckCode = 20130705;
-//                    /*std::stringstream buf;
-//                    msgpack::pack(buf, ConnectSuccess);*/
-//                    sendTCPData(client, mainid_net_connect, assid_net_connect, 0, 0, &ConnectSuccess, sizeof(ConnectSuccess));
-//                    //sendTCPData(client, 1, 1, 0, 0, buf.str().data(), buf.str().size());
-//
-//                    sendTCPData(client, mainid_net_connect, assid_net_test, 0, 0, nullptr, 0);
+                    
 				}
 			}
 			else 

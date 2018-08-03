@@ -19,38 +19,14 @@ namespace lw
 	{	
 		friend UVWrapper;
 
-	public:
-		class WriteData
-		{
-			TCPServer* tcpServer;
-			uv_buf_t buf_t;
-		
-		public:
-			WriteData(TCPServer* server, const char* buf, int len) : tcpServer(server)
-			{
-				buf_t.base = (char*)::malloc(len);
-				buf_t.len = len;
-				memcpy(buf_t.base, buf, len);
-			}
-
-			~WriteData()
-			{
-				free(buf_t.base);
-			}
-
-		public:
-			uv_buf_t* getBuf() { return &buf_t; }
-			TCPServer* getTCPServer() { return tcpServer; }
-		};
-        
     public:
-        uv_loop_t * uv_loop;
+        uv_loop_t * loop;
         
 	private:
 		UVWrapper* uvWrapper;
 	
 	private:
-		uv_timer_t _uv_timer;
+		uv_timer_t _timer;
 		uv_tcp_t _tcp;	
 		uv_idle_t _idle;
 		uv_mutex_t _mutex;
@@ -72,11 +48,12 @@ namespace lw
         void asyncStart(const char* host, const char* port);
         
 	public:
-		int sendTCPData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* object, int objectSize);
+		int sendData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* object, int objectSize);
 
 	public:
-		virtual void onMessage(NET_MESSAGE* message) = 0;
-
+		virtual void onMessage(uv_stream_t* client, NetPackage* message) = 0;
+        virtual void onStatus(int status) = 0;
+        
 	private:
 		void onAllocBuffer(size_t suggested_size, uv_buf_t* buf);
 		void onRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf);
@@ -86,6 +63,7 @@ namespace lw
 		void onTimer();
 		void onClientClose(uv_handle_t* client);
 		void onIdle();
+        void onParse(int main_cmd, int assi_cmd, char* buf, int bufsize, uv_stream_t* client);
         
     private:
         void extSrv();

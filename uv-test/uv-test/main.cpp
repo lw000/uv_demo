@@ -19,6 +19,8 @@
 
 #include "data_struct.hpp"
 
+
+
 class CliServer : public lw::TCPClient {
 public:
     CliServer() {
@@ -30,26 +32,54 @@ public:
     }
     
 public:
-    virtual void onMessage(NET_MESSAGE* message) override {
+    class Delegate : public TCPClient::Delegate {
+    public:
+        Delegate() {
+            
+        }
+    
+    public:
+        void onMessage(NetPackage* msg) override {
+            
+        }
         
+        void onStatus(int status) override {
+            
+        }
+    };
+    
+public:
+    virtual void onMessage(NetPackage* message) override {
+        if (message->getHead()->msg_main_cmd == 1000 && message->getHead()->msg_assi_cmd == 2000) {
+            reponse_add_data* reponse = (reponse_add_data*)message;
+            printf("code: %d, c: %d\n", reponse->code, reponse->c);
+        }
+    }
+    
+    void onStatus(int status) override {
+        if (status == 0) {
+            sendTest();
+        }
     }
     
 public:
     void sendTest() {
         uv_thread_t tid;
-        
-        uv_thread_create(&tid, entry, NULL);
+        uv_thread_create(&tid, entry, this);
     }
     
 private:
     static void entry(void* args) {
         while (1) {
             CliServer* cli = (CliServer*)args;
-            reqest_add_data request;
-            request.a = 1000;
-            request.b = 2000;
-            cli->sendData(1000, 2000, &request, sizeof(request));
             
+            {
+                reqest_add_data request;
+                request.a = 1000;
+                request.b = 2000;
+                cli->sendData(1000, 2000, &request, sizeof(request));
+            }
+
             sleep(1);
         }
     }
@@ -67,22 +97,31 @@ public:
     }
     
 public:
-    virtual void onMessage(NET_MESSAGE* message) override {
-        printf("111111");
+    virtual void onMessage(uv_stream_t* client, NetPackage* message) override {
+        
+        if (message->getHead()->msg_main_cmd == 1000 && message->getHead()->msg_assi_cmd == 2000) {
+            reqest_add_data* request = (reqest_add_data*)(message->getBuf());
+            printf("a: %d, b: %d\n", request->a, request->b);
+            
+            {
+                reponse_add_data reponse;
+                reponse.c = request->a + request->b;
+                reponse.code = 0;
+                this->sendData((uv_tcp_s*)client, 1000, 2000, &reponse, sizeof(reponse));
+            }
+        }
     }
     
-public:
-    void sendTest() {
-        uv_thread_t tid;
-        uv_thread_create(&tid, entry, NULL);
+    void onStatus(int status) override {
+        if (status == 0) {
+        }
     }
-    
+
 private:
     static void entry(void* args) {
         
     }
 };
-
 
 int main(int argc, char** args)
 {
