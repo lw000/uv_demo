@@ -19,4 +19,10 @@
    <FileRef
       location = "group:libuv/out/uv.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:nanomsg/build/nanomsg.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:nanomsg-test/nanomsg-test.xcodeproj">
+   </FileRef>
 </Workspace>

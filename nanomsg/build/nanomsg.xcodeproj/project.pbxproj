@@ -1,0 +1,2393 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		54FFD18A911346FCAC38F0E8 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = AFCE06597B604333A7D52AC6 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				C312E17F6BC14423A9C9928E /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		55151FF8797B431F8ED624CB /* package */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1CC27ABDE08D41A695DFE514 /* Build configuration list for PBXAggregateTarget "package" */;
+			buildPhases = (
+				9E4AF25FC519421DB7424573 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				C406A4CBB2554447ADEE878B /* PBXTargetDependency */,
+			);
+			name = package;
+			productName = package;
+		};
+		845D5F46835D491B9880715C /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A32E23F2CDB14FEBAB9CB7EF /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				005CB8459D9B4C708283C483 /* CMake Rules */,
+			);
+			dependencies = (
+				C97CF63E43CC40A98BB536BA /* PBXTargetDependency */,
+				87D733961C724E6C9F078F7E /* PBXTargetDependency */,
+				27652A3EC0B14C9EB71E4E77 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		BC8EE2892C384037A00C3170 /* dist */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 69EBD9C2DA6443B6A64DD19C /* Build configuration list for PBXAggregateTarget "dist" */;
+			buildPhases = (
+				8D7FBDE01B984019BC5F1589 /* CMake Rules */,
+			);
+			dependencies = (
+				AE716044E71145D18E23FDEB /* PBXTargetDependency */,
+			);
+			name = dist;
+			productName = dist;
+		};
+		C29BA7745A29475A987BCCB9 /* install */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D9A32BA2207349DF97CAE735 /* Build configuration list for PBXAggregateTarget "install" */;
+			buildPhases = (
+				A1A7BAF32EF94E64A14B3937 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				CFAB10B365B44E4B90DA6898 /* PBXTargetDependency */,
+			);
+			name = install;
+			productName = install;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		00E52F36D0974AA18D0E6CAC /* cinproc.c in Sources */ = {isa = PBXBuildFile; fileRef = 0B3DFD98A3F74244A744C2C7 /* cinproc.c */; };
+		03FB1C8AD4CE44F593240786 /* ws_handshake.c in Sources */ = {isa = PBXBuildFile; fileRef = CA6C7180A01747C88E05EEC8 /* ws_handshake.c */; };
+		05CB3286B1424BF389AF320A /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = B37F195331674661BD092D01 /* alloc.c */; };
+		0A6D06D116104F6293A35629 /* pool.c in Sources */ = {isa = PBXBuildFile; fileRef = E6640C0A284E4B95844AB871 /* pool.c */; };
+		0BE04010645547ED8B746C10 /* iface.c in Sources */ = {isa = PBXBuildFile; fileRef = C63F271FD48F495C8732E20C /* iface.c */; };
+		1101B872232A444E9493CF0F /* excl.c in Sources */ = {isa = PBXBuildFile; fileRef = E03BFBA2C007415AA4FD9C29 /* excl.c */; };
+		131E48CE3BE64DBAA293AF5F /* ep.c in Sources */ = {isa = PBXBuildFile; fileRef = 94D28E08DAF94566A8955BAA /* ep.c */; };
+		149BD8EBF81547E480FA3683 /* sleep.c in Sources */ = {isa = PBXBuildFile; fileRef = A2817A264BE24308B3B3ED35 /* sleep.c */; };
+		15C9205DCEEA4CBEA57A2E21 /* sockbase.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E8DAC65A94ED9B836E7B7 /* sockbase.c */; };
+		1645DEDC2AEF4D3794861A22 /* chunkref.c in Sources */ = {isa = PBXBuildFile; fileRef = 14E34A8D55894149BC13C199 /* chunkref.c */; };
+		18834B2868D348DD81E2FCCB /* btcp.c in Sources */ = {isa = PBXBuildFile; fileRef = 25C47CECF70544C6B8F1F2FD /* btcp.c */; };
+		1B4969A6363B4EF68D30BB13 /* bipc.c in Sources */ = {isa = PBXBuildFile; fileRef = CF1848F2458049B9A96FF37B /* bipc.c */; };
+		1BBD437C8C604CEB96DCFDB8 /* usock.c in Sources */ = {isa = PBXBuildFile; fileRef = B2225AF607A842CCBB17BAC7 /* usock.c */; };
+		21B64887777645AABA6D097D /* ctcp.c in Sources */ = {isa = PBXBuildFile; fileRef = A7746C5DF25E41E39E0F4366 /* ctcp.c */; };
+		26DD7C5577324D40870549BE /* atomic.c in Sources */ = {isa = PBXBuildFile; fileRef = 456736E5F1994D5DA4A95770 /* atomic.c */; };
+		2772D4FCB8F8437BB5884DA2 /* queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DB1AC796A44008A9AF44A /* queue.c */; };
+		27E17205950A4F3E8CB7D233 /* err.c in Sources */ = {isa = PBXBuildFile; fileRef = 97879BC8A9444BC3A95E38CB /* err.c */; };
+		29791ACAE2964CF198642018 /* xbus.c in Sources */ = {isa = PBXBuildFile; fileRef = 746C544D8680435FBE4B2344 /* xbus.c */; };
+		2D65B0F12DB545BCB1E9B0CF /* xpull.c in Sources */ = {isa = PBXBuildFile; fileRef = 4CE3788EBD37402C864B86F1 /* xpull.c */; };
+		32D3EA9D6CAB4B7BA491BBC9 /* xreq.c in Sources */ = {isa = PBXBuildFile; fileRef = 169284BB9E2641FB97FC1BDD /* xreq.c */; };
+		38AE4E0779964F25B8BB5B8C /* pipe.c in Sources */ = {isa = PBXBuildFile; fileRef = 8109C3067D804012ACB1A520 /* pipe.c */; };
+		38B91031E460466A8D5CB366 /* task.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B680CDD3BB0416A812C391C /* task.c */; };
+		3C63C745E84D466A869F4321 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 3524AC6C5260474BB92B8ED0 /* sha1.c */; };
+		3E7E14DBD63C404DACFDAAF4 /* atcp.c in Sources */ = {isa = PBXBuildFile; fileRef = 54592B3B57154897965B17E6 /* atcp.c */; };
+		3E8E55C38D504F9B9AA097E2 /* clock.c in Sources */ = {isa = PBXBuildFile; fileRef = 74EC0256EE274278A97FFB81 /* clock.c */; };
+		43CBEDE2C8404BCC8A77D745 /* binproc.c in Sources */ = {isa = PBXBuildFile; fileRef = 7DE463FBA7084700A54E73E6 /* binproc.c */; };
+		44348D74F7FB4FC1BA75ED00 /* sinproc.c in Sources */ = {isa = PBXBuildFile; fileRef = E54E1FD7E81B49B39B3DB85E /* sinproc.c */; };
+		44CC198D581D4EC3BC125CDF /* tcp.c in Sources */ = {isa = PBXBuildFile; fileRef = EAD79A5BDA4449D6B768995D /* tcp.c */; };
+		45049475301D440CA6587206 /* msgqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = 08267897B80F4262B630DF22 /* msgqueue.c */; };
+		46C4A64C4D5C47918BF4ED9B /* options.c in Sources */ = {isa = PBXBuildFile; fileRef = 680ACF1D60A44D60A36B8757 /* options.c */; };
+		47E52305086C4741B28BDE00 /* symbol.c in Sources */ = {isa = PBXBuildFile; fileRef = A44426B5A42F4D8E9642653C /* symbol.c */; };
+		48A644EEDC0F4F2E80FADD4A /* strcasecmp.c in Sources */ = {isa = PBXBuildFile; fileRef = E5335E27696C4E53AE701478 /* strcasecmp.c */; };
+		48B0A54E66E549AC9D871517 /* sws.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FD46866AB894D7899CED8C8 /* sws.c */; };
+		5270C658722C427682E87E5B /* efd.c in Sources */ = {isa = PBXBuildFile; fileRef = D424A24EA8324714A6FDE525 /* efd.c */; };
+		53388DC7950F4DD3B63394D9 /* poller.c in Sources */ = {isa = PBXBuildFile; fileRef = 44DB2587B4CD45B0B08193EA /* poller.c */; };
+		592859A4B326406A80C265DC /* trie.c in Sources */ = {isa = PBXBuildFile; fileRef = 91A48EA8A15C40F287CE6379 /* trie.c */; };
+		5F51B941BB3B4DCABB09ED3F /* ipc.c in Sources */ = {isa = PBXBuildFile; fileRef = DD25075E03CC45598A4F3274 /* ipc.c */; };
+		63DB2E4C9BA1428E8A72DB8B /* respondent.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F3B16415645199232C335 /* respondent.c */; };
+		65D332B067DD43A0AF9C42E8 /* bws.c in Sources */ = {isa = PBXBuildFile; fileRef = 747386A2C7444C02BE4C6ADB /* bws.c */; };
+		674922A0092F4F19AD3E1EE8 /* ins.c in Sources */ = {isa = PBXBuildFile; fileRef = BF751F985D3947F4B6E7283A /* ins.c */; };
+		6BA88D22594944C299B7ABCC /* fsm.c in Sources */ = {isa = PBXBuildFile; fileRef = 8666E5E60F3A4B73A3D832A5 /* fsm.c */; };
+		7031AA511297483A935ED2E8 /* strcasestr.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BB632A931D34DCEAD7312BE /* strcasestr.c */; };
+		735A6D90272D4B96B0EE3E16 /* worker.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB8D34C078499BBDAE3BCB /* worker.c */; };
+		7527C284AF9A4A9BB29DC4DF /* mutex.c in Sources */ = {isa = PBXBuildFile; fileRef = 20836128FA9A4AB1B80FEF07 /* mutex.c */; };
+		806CD7354C3B450F96666A6E /* dist.c in Sources */ = {isa = PBXBuildFile; fileRef = D332FA35737A4411BDA6C794 /* dist.c */; };
+		81FEE75C1BFB4AA39CA4AE89 /* rep.c in Sources */ = {isa = PBXBuildFile; fileRef = 20E0049CBBCD4178B55344A9 /* rep.c */; };
+		83C6118E624B4D07AF37606A /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 3023487BEBB44462B7B1790C /* device.c */; };
+		846E16512F4B494ABDBC51E8 /* port.c in Sources */ = {isa = PBXBuildFile; fileRef = 124111E6CC7F49F198A84FFC /* port.c */; };
+		84A8DE52FA72457B9033E93E /* aipc.c in Sources */ = {isa = PBXBuildFile; fileRef = A754F54F97E84505B3FE5310 /* aipc.c */; };
+		84D62EC952A447EE9FCE37DE /* backoff.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D6E324418BB41DFA512CB05 /* backoff.c */; };
+		8653B356B4FE4EEB86BFE3CD /* xpair.c in Sources */ = {isa = PBXBuildFile; fileRef = DEB7FD6764A044FFA5D75F3B /* xpair.c */; };
+		86F5B84E8D114323BF3CBCE8 /* chunk.c in Sources */ = {isa = PBXBuildFile; fileRef = 63875F3D5EEF4914981DE592 /* chunk.c */; };
+		87C7D48E033C4BFE9E8F4A2B /* surveyor.c in Sources */ = {isa = PBXBuildFile; fileRef = 989FC89859964C22A5D9D9C4 /* surveyor.c */; };
+		8AC29CD67DDD45D8A50A57E4 /* pull.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B0430D7A2974028B018CD6A /* pull.c */; };
+		8D4441DB17FE4F6897D780E1 /* global.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F6FD2ADD5C47DE9C581112 /* global.c */; };
+		8E021E4563854378BD06D608 /* thread.c in Sources */ = {isa = PBXBuildFile; fileRef = E5A2D4D0AA5844719D440DBB /* thread.c */; };
+		8F44651C47224BB48E77268A /* xrep.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D92A6967BEA4602BA7113F6 /* xrep.c */; };
+		93840B55B45E4888AEDBC036 /* xpush.c in Sources */ = {isa = PBXBuildFile; fileRef = 5B4513BEEC1E42FA8A373690 /* xpush.c */; };
+		9549D68B318C40BBB964EE6E /* strncasecmp.c in Sources */ = {isa = PBXBuildFile; fileRef = 8FB5424D14734F6C877C46B5 /* strncasecmp.c */; };
+		99355C1AB2AA4BE1B739F64F /* timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 6034AFBBC24A4FD0B3C8187B /* timer.c */; };
+		9E0CAA97932F4D0097698457 /* streamhdr.c in Sources */ = {isa = PBXBuildFile; fileRef = 683426C0E0734DF4B4DF382F /* streamhdr.c */; };
+		9E0F6DFE1ACC497D90EA9987 /* sipc.c in Sources */ = {isa = PBXBuildFile; fileRef = BAE9210DC5B04FE0BA01B58C /* sipc.c */; };
+		9E96D4878E9C4A69BE1FC960 /* lb.c in Sources */ = {isa = PBXBuildFile; fileRef = 53471B47E4CE4D9083499767 /* lb.c */; };
+		9F7F38648DC646E09B0AEEE2 /* stcp.c in Sources */ = {isa = PBXBuildFile; fileRef = B766F56DB08642AEB60D07DE /* stcp.c */; };
+		A83D792AC1C54FAEBF37C2AD /* sub.c in Sources */ = {isa = PBXBuildFile; fileRef = 98BFDF1112104A7488103CC3 /* sub.c */; };
+		A8E634A36C4C42EAB666DA7A /* priolist.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE448C40B74E94AE301A58 /* priolist.c */; };
+		A94723B18E3B458183A9EC65 /* msg.c in Sources */ = {isa = PBXBuildFile; fileRef = 58BB125920DA4F6E93D98C9E /* msg.c */; };
+		A9BFD513FE4C4416A2BB26BD /* cipc.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B05016F6E5C431D984709EC /* cipc.c */; };
+		AAB04FADBEA94CEC9EA6D32E /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 7C74BA51B9BA40B9848AE6CE /* base64.c */; };
+		AACD7F245C044CA1934A0D93 /* sock.c in Sources */ = {isa = PBXBuildFile; fileRef = 57A5C976AEC74D328E468A4E /* sock.c */; };
+		AB445D1FFB1C44369E312A50 /* inproc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B3971958B4B0D8CC71DBA /* inproc.c */; };
+		ADD758CC2A9743DBA2A26DC5 /* ws.c in Sources */ = {isa = PBXBuildFile; fileRef = F9C5E53642EC4F0D841CA1DE /* ws.c */; };
+		B1791B2496314BA39C4955CE /* push.c in Sources */ = {isa = PBXBuildFile; fileRef = 41AA1457E581466B9A550258 /* push.c */; };
+		B4C0F7793AF748C6AD867023 /* ctx.c in Sources */ = {isa = PBXBuildFile; fileRef = EEA355F9206841B68D242C5C /* ctx.c */; };
+		BC293EE23EB941CF9314078B /* xsub.c in Sources */ = {isa = PBXBuildFile; fileRef = F34E98F426424A98A6EFCD2E /* xsub.c */; };
+		BD0635C344A040A882ADFB8A /* dns.c in Sources */ = {isa = PBXBuildFile; fileRef = 06149D51CCBC4F9EB4E37C0B /* dns.c */; };
+		BD6C8BC8D50C4612B73BBE21 /* once.c in Sources */ = {isa = PBXBuildFile; fileRef = ED03B75724F24A81B9BAA11C /* once.c */; };
+		BE51C2461C934558BFA28D9F /* list.c in Sources */ = {isa = PBXBuildFile; fileRef = 92325519869E47C39709E3D9 /* list.c */; };
+		BF9D6CB6D0C949779857D451 /* xsurveyor.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A038E64CD444ECFB744B968 /* xsurveyor.c */; };
+		C490D65E45E5407C8C76DCB4 /* pair.c in Sources */ = {isa = PBXBuildFile; fileRef = BA9280F8B1E8435E90F175B9 /* pair.c */; };
+		C73C06A061BA403D8E0B3F20 /* condvar.c in Sources */ = {isa = PBXBuildFile; fileRef = 028CF7B4A7CB4FB294BE022F /* condvar.c */; };
+		C851C693C2F14575996790D9 /* wire.c in Sources */ = {isa = PBXBuildFile; fileRef = 0BC806DE23484BB78A61CDB8 /* wire.c */; };
+		C8A576DC503741289EDF3099 /* closefd.c in Sources */ = {isa = PBXBuildFile; fileRef = AF05AB05ACD44AB49390051B /* closefd.c */; };
+		CD7AE45C88864A02BAE28B4E /* nanocat.c in Sources */ = {isa = PBXBuildFile; fileRef = 37141C6B2D734B39BE494615 /* nanocat.c */; };
+		CED4315DA6B04C02B670A454 /* req.c in Sources */ = {isa = PBXBuildFile; fileRef = 026682B8EDE84300B478CD61 /* req.c */; };
+		D24BC10C648D42759C139218 /* xrespondent.c in Sources */ = {isa = PBXBuildFile; fileRef = 539F9010AE5645DB9CA810D8 /* xrespondent.c */; };
+		D5462E0CD56248D0B89FAA85 /* literal.c in Sources */ = {isa = PBXBuildFile; fileRef = 649D959A73DF444E87710E53 /* literal.c */; };
+		D5A355DA28EA42089C77A6ED /* random.c in Sources */ = {isa = PBXBuildFile; fileRef = F2C2B856FFFD44B6BA927C05 /* random.c */; };
+		D929E3E09BC2430B864371A3 /* sem.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A3114D2F27243DCBA773B7B /* sem.c */; };
+		DD8842DEA0994900B2056D4D /* hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C2E3B4BF56D4B8898F7728F /* hash.c */; };
+		DF20A6A1BF0C4ACBA13FA101 /* xpub.c in Sources */ = {isa = PBXBuildFile; fileRef = B334E8AF73BA4D95A59CA347 /* xpub.c */; };
+		DF9577D6589F4C3B94F19B9C /* pub.c in Sources */ = {isa = PBXBuildFile; fileRef = 1631903B3CA84400BDC1E2B7 /* pub.c */; };
+		E339CB61A9EF49C18D4B7C09 /* bus.c in Sources */ = {isa = PBXBuildFile; fileRef = 1AF4940A2BA1455C81DEF87B /* bus.c */; };
+		EBD4C9BBE57746F4B4593A97 /* poll.c in Sources */ = {isa = PBXBuildFile; fileRef = 186DC5E7729344FFA0852870 /* poll.c */; };
+		F2A6B2EE32A34BC19D56A3A0 /* cws.c in Sources */ = {isa = PBXBuildFile; fileRef = 0CB78D345E074814BC15088D /* cws.c */; };
+		F9BC2705C1E349D6AC028063 /* timerset.c in Sources */ = {isa = PBXBuildFile; fileRef = 50641FC792D642A7A68DDB3C /* timerset.c */; };
+		FC5EA682DEAE4A10B3104866 /* aws.c in Sources */ = {isa = PBXBuildFile; fileRef = BC1D39EFAB9A4D2494497724 /* aws.c */; };
+		FF8540CB48104D0C813B87AF /* fq.c in Sources */ = {isa = PBXBuildFile; fileRef = DC35D4FBA7CA4B3FA93A04F4 /* fq.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		044E38DD3A274653BC068550 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 394468250927434A9B9C4CAA;
+			remoteInfo = nanomsg;
+		};
+		287A9D84521142DC8FAD9273 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 394468250927434A9B9C4CAA;
+			remoteInfo = nanomsg;
+		};
+		29CBAA1D1A1E4DCBBAA3ACCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54FFD18A911346FCAC38F0E8;
+			remoteInfo = ZERO_CHECK;
+		};
+		45779D0ABAFA422BA737B9C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54FFD18A911346FCAC38F0E8;
+			remoteInfo = ZERO_CHECK;
+		};
+		46946F0CC8EF449D9467E7CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54FFD18A911346FCAC38F0E8;
+			remoteInfo = ZERO_CHECK;
+		};
+		51D714E3F48048B280AF2D78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 845D5F46835D491B9880715C;
+			remoteInfo = ALL_BUILD;
+		};
+		5C605F88C20C4EFB91405895 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54FFD18A911346FCAC38F0E8;
+			remoteInfo = ZERO_CHECK;
+		};
+		6BBEFABFC5764B3AB86EC319 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B14302A108140658D1B2D46;
+			remoteInfo = nanocat;
+		};
+		8DDD61214CFD45C194EFB949 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 845D5F46835D491B9880715C;
+			remoteInfo = ALL_BUILD;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0069FC4A8A604389AD597735 /* random.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = random.h; path = src/utils/random.h; sourceTree = SOURCE_ROOT; };
+		01921581BB6A4E45975794B3 /* wire.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = wire.h; path = src/utils/wire.h; sourceTree = SOURCE_ROOT; };
+		026682B8EDE84300B478CD61 /* req.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = req.c; path = src/protocols/reqrep/req.c; sourceTree = SOURCE_ROOT; };
+		028CF7B4A7CB4FB294BE022F /* condvar.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = condvar.c; path = src/utils/condvar.c; sourceTree = SOURCE_ROOT; };
+		02FFCCE61C7A4E38AC367642 /* cipc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = cipc.h; path = src/transports/ipc/cipc.h; sourceTree = SOURCE_ROOT; };
+		031411D5D5164067AF5A09B8 /* bws.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = bws.h; path = src/transports/ws/bws.h; sourceTree = SOURCE_ROOT; };
+		06149D51CCBC4F9EB4E37C0B /* dns.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = dns.c; path = src/transports/utils/dns.c; sourceTree = SOURCE_ROOT; };
+		072F8ED4F1E447A4B80E4692 /* err.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = err.h; path = src/utils/err.h; sourceTree = SOURCE_ROOT; };
+		08267897B80F4262B630DF22 /* msgqueue.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = msgqueue.c; path = src/transports/inproc/msgqueue.c; sourceTree = SOURCE_ROOT; };
+		0A3114D2F27243DCBA773B7B /* sem.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sem.c; path = src/utils/sem.c; sourceTree = SOURCE_ROOT; };
+		0B3DFD98A3F74244A744C2C7 /* cinproc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = cinproc.c; path = src/transports/inproc/cinproc.c; sourceTree = SOURCE_ROOT; };
+		0BC806DE23484BB78A61CDB8 /* wire.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = wire.c; path = src/utils/wire.c; sourceTree = SOURCE_ROOT; };
+		0CB78D345E074814BC15088D /* cws.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = cws.c; path = src/transports/ws/cws.c; sourceTree = SOURCE_ROOT; };
+		0DDE448C40B74E94AE301A58 /* priolist.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = priolist.c; path = src/protocols/utils/priolist.c; sourceTree = SOURCE_ROOT; };
+		0FD46866AB894D7899CED8C8 /* sws.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sws.c; path = src/transports/ws/sws.c; sourceTree = SOURCE_ROOT; };
+		124111E6CC7F49F198A84FFC /* port.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = port.c; path = src/transports/utils/port.c; sourceTree = SOURCE_ROOT; };
+		12D8B58D08F04997A6202E46 /* bipc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = bipc.h; path = src/transports/ipc/bipc.h; sourceTree = SOURCE_ROOT; };
+		12F9FD0D450E4568A1ED75E3 /* libnanomsg.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = libnanomsg.dylib; path = libnanomsg.5.1.0.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		13BCDABD99C94DC0A6AFEF2C /* task.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = task.h; path = src/protocols/reqrep/task.h; sourceTree = SOURCE_ROOT; };
+		1450F45C0F4A4E65B2768ED7 /* dns_getaddrinfo.inc */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = dns_getaddrinfo.inc; path = src/transports/utils/dns_getaddrinfo.inc; sourceTree = SOURCE_ROOT; };
+		14E34A8D55894149BC13C199 /* chunkref.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = chunkref.c; path = src/utils/chunkref.c; sourceTree = SOURCE_ROOT; };
+		15C360574F634939A2875A95 /* sleep.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = sleep.h; path = src/utils/sleep.h; sourceTree = SOURCE_ROOT; };
+		1631903B3CA84400BDC1E2B7 /* pub.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = pub.c; path = src/protocols/pubsub/pub.c; sourceTree = SOURCE_ROOT; };
+		169284BB9E2641FB97FC1BDD /* xreq.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xreq.c; path = src/protocols/reqrep/xreq.c; sourceTree = SOURCE_ROOT; };
+		186DC5E7729344FFA0852870 /* poll.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = poll.c; path = src/core/poll.c; sourceTree = SOURCE_ROOT; };
+		1AF4940A2BA1455C81DEF87B /* bus.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = bus.c; path = src/protocols/bus/bus.c; sourceTree = SOURCE_ROOT; };
+		1B05016F6E5C431D984709EC /* cipc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = cipc.c; path = src/transports/ipc/cipc.c; sourceTree = SOURCE_ROOT; };
+		1B4340AE4AD54DBE861CE633 /* device.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = device.h; path = src/devices/device.h; sourceTree = SOURCE_ROOT; };
+		1C4051839C21481789DC5DF4 /* sws.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = sws.h; path = src/transports/ws/sws.h; sourceTree = SOURCE_ROOT; };
+		1C8938B4E9CA48AE84DEE3BF /* excl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = excl.h; path = src/protocols/utils/excl.h; sourceTree = SOURCE_ROOT; };
+		1FA3E37A0D33424895241F26 /* msgqueue.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = msgqueue.h; path = src/transports/inproc/msgqueue.h; sourceTree = SOURCE_ROOT; };
+		20836128FA9A4AB1B80FEF07 /* mutex.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = mutex.c; path = src/utils/mutex.c; sourceTree = SOURCE_ROOT; };
+		20E0049CBBCD4178B55344A9 /* rep.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = rep.c; path = src/protocols/reqrep/rep.c; sourceTree = SOURCE_ROOT; };
+		238D21AF7A9F48B7A572817A /* closefd.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = closefd.h; path = src/utils/closefd.h; sourceTree = SOURCE_ROOT; };
+		25C47CECF70544C6B8F1F2FD /* btcp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = btcp.c; path = src/transports/tcp/btcp.c; sourceTree = SOURCE_ROOT; };
+		2BADC897EB0F4FBBBEA43F1F /* xpush.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xpush.h; path = src/protocols/pipeline/xpush.h; sourceTree = SOURCE_ROOT; };
+		2CFB8D34C078499BBDAE3BCB /* worker.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = worker.c; path = src/aio/worker.c; sourceTree = SOURCE_ROOT; };
+		2D2E8DAC65A94ED9B836E7B7 /* sockbase.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sockbase.c; path = src/core/sockbase.c; sourceTree = SOURCE_ROOT; };
+		2DAE7743DFD54B5183C967E5 /* dist.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = dist.h; path = src/protocols/utils/dist.h; sourceTree = SOURCE_ROOT; };
+		2DC33E4D28224470A069A1CF /* pair.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = pair.h; path = src/pair.h; sourceTree = SOURCE_ROOT; };
+		2EB3F299403942138A0B7A55 /* dns_getaddrinfo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = dns_getaddrinfo.h; path = src/transports/utils/dns_getaddrinfo.h; sourceTree = SOURCE_ROOT; };
+		3023487BEBB44462B7B1790C /* device.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = device.c; path = src/devices/device.c; sourceTree = SOURCE_ROOT; };
+		321430073DD043DE8FF601A7 /* usock_posix.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = usock_posix.h; path = src/aio/usock_posix.h; sourceTree = SOURCE_ROOT; };
+		3332272A0B614D74ACD413D3 /* queue.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = queue.h; path = src/utils/queue.h; sourceTree = SOURCE_ROOT; };
+		345708CF534042CA9E79B79A /* xreq.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xreq.h; path = src/protocols/reqrep/xreq.h; sourceTree = SOURCE_ROOT; };
+		3524AC6C5260474BB92B8ED0 /* sha1.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sha1.c; path = src/transports/ws/sha1.c; sourceTree = SOURCE_ROOT; };
+		3647BDE51D374728AAF011E6 /* literal.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = literal.h; path = src/transports/utils/literal.h; sourceTree = SOURCE_ROOT; };
+		37141C6B2D734B39BE494615 /* nanocat.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = nanocat.c; path = tools/nanocat.c; sourceTree = SOURCE_ROOT; };
+		3A4DCD313965409FBB553632 /* poller_kqueue.inc */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = poller_kqueue.inc; path = src/aio/poller_kqueue.inc; sourceTree = SOURCE_ROOT; };
+		3E42FBADA072454BB9ED9531 /* once.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = once.h; path = src/utils/once.h; sourceTree = SOURCE_ROOT; };
+		3E614D69ED79469BBA6B1090 /* chunk.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = chunk.h; path = src/utils/chunk.h; sourceTree = SOURCE_ROOT; };
+		3EE8C28F9D174765BFC09C4A /* backoff.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = backoff.h; path = src/transports/utils/backoff.h; sourceTree = SOURCE_ROOT; };
+		3FB4ABC6F0EE49438BE60339 /* ctcp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ctcp.h; path = src/transports/tcp/ctcp.h; sourceTree = SOURCE_ROOT; };
+		4129E549DA0C472187B36413 /* list.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = list.h; path = src/utils/list.h; sourceTree = SOURCE_ROOT; };
+		41AA1457E581466B9A550258 /* push.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = push.c; path = src/protocols/pipeline/push.c; sourceTree = SOURCE_ROOT; };
+		44DB2587B4CD45B0B08193EA /* poller.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = poller.c; path = src/aio/poller.c; sourceTree = SOURCE_ROOT; };
+		456736E5F1994D5DA4A95770 /* atomic.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = atomic.c; path = src/utils/atomic.c; sourceTree = SOURCE_ROOT; };
+		45EBD55163064D708EAE7010 /* aws.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = aws.h; path = src/transports/ws/aws.h; sourceTree = SOURCE_ROOT; };
+		46A1B32B7AC54EC18719B40C /* xbus.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xbus.h; path = src/protocols/bus/xbus.h; sourceTree = SOURCE_ROOT; };
+		4A54E4085C6C4F7A83A9F7EA /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		4C7C1261F60D42C5975FFFEC /* strcasestr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = strcasestr.h; path = src/utils/strcasestr.h; sourceTree = SOURCE_ROOT; };
+		4CE3788EBD37402C864B86F1 /* xpull.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xpull.c; path = src/protocols/pipeline/xpull.c; sourceTree = SOURCE_ROOT; };
+		4D6E324418BB41DFA512CB05 /* backoff.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = backoff.c; path = src/transports/utils/backoff.c; sourceTree = SOURCE_ROOT; };
+		4E73CE775B6F45D2B6BD8227 /* thread.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = thread.h; path = src/utils/thread.h; sourceTree = SOURCE_ROOT; };
+		50641FC792D642A7A68DDB3C /* timerset.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = timerset.c; path = src/aio/timerset.c; sourceTree = SOURCE_ROOT; };
+		519B907D3247437B81725AAF /* reqrep.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = reqrep.h; path = src/reqrep.h; sourceTree = SOURCE_ROOT; };
+		53471B47E4CE4D9083499767 /* lb.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = lb.c; path = src/protocols/utils/lb.c; sourceTree = SOURCE_ROOT; };
+		5390DF9D607B430EAC32360B /* ctx.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ctx.h; path = src/aio/ctx.h; sourceTree = SOURCE_ROOT; };
+		539F9010AE5645DB9CA810D8 /* xrespondent.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xrespondent.c; path = src/protocols/survey/xrespondent.c; sourceTree = SOURCE_ROOT; };
+		53DB095BA7D941E6BB79D72C /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		54592B3B57154897965B17E6 /* atcp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = atcp.c; path = src/transports/tcp/atcp.c; sourceTree = SOURCE_ROOT; };
+		54A8CA66D7E840BDA8A3DB7C /* sock.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = sock.h; path = src/core/sock.h; sourceTree = SOURCE_ROOT; };
+		57A5C976AEC74D328E468A4E /* sock.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sock.c; path = src/core/sock.c; sourceTree = SOURCE_ROOT; };
+		58061B8352BE4355A956F413 /* cinproc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = cinproc.h; path = src/transports/inproc/cinproc.h; sourceTree = SOURCE_ROOT; };
+		582293DEE6C9432ABABC5560 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = src/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		58BB125920DA4F6E93D98C9E /* msg.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = msg.c; path = src/utils/msg.c; sourceTree = SOURCE_ROOT; };
+		5B0BC33E8E24445AA08EC5BA /* worker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = worker.h; path = src/aio/worker.h; sourceTree = SOURCE_ROOT; };
+		5B223FFCB1224B28A761442D /* nanocat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = nanocat; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B4513BEEC1E42FA8A373690 /* xpush.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xpush.c; path = src/protocols/pipeline/xpush.c; sourceTree = SOURCE_ROOT; };
+		5B680CDD3BB0416A812C391C /* task.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = task.c; path = src/protocols/reqrep/task.c; sourceTree = SOURCE_ROOT; };
+		5D92A6967BEA4602BA7113F6 /* xrep.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xrep.c; path = src/protocols/reqrep/xrep.c; sourceTree = SOURCE_ROOT; };
+		5F3F6C88E67C477585EE2956 /* port.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = port.h; path = src/transports/utils/port.h; sourceTree = SOURCE_ROOT; };
+		5F50B497ADC642F1BB234B3C /* aipc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = aipc.h; path = src/transports/ipc/aipc.h; sourceTree = SOURCE_ROOT; };
+		6034AFBBC24A4FD0B3C8187B /* timer.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = timer.c; path = src/aio/timer.c; sourceTree = SOURCE_ROOT; };
+		60C6B08972EB422DA8E291DD /* pubsub.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = pubsub.h; path = src/pubsub.h; sourceTree = SOURCE_ROOT; };
+		6186A44DC9FE4CE2BEA58118 /* sha1.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = sha1.h; path = src/transports/ws/sha1.h; sourceTree = SOURCE_ROOT; };
+		63875F3D5EEF4914981DE592 /* chunk.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = chunk.c; path = src/utils/chunk.c; sourceTree = SOURCE_ROOT; };
+		63B68C439CFF49E083C8590E /* hash.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = hash.h; path = src/utils/hash.h; sourceTree = SOURCE_ROOT; };
+		649D959A73DF444E87710E53 /* literal.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = literal.c; path = src/transports/utils/literal.c; sourceTree = SOURCE_ROOT; };
+		661D42A37E24425C931C5FD5 /* msg.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = msg.h; path = src/utils/msg.h; sourceTree = SOURCE_ROOT; };
+		6683426EBF544CD490FA2AFF /* efd_pipe.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = efd_pipe.h; path = src/utils/efd_pipe.h; sourceTree = SOURCE_ROOT; };
+		680ACF1D60A44D60A36B8757 /* options.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = options.c; path = tools/options.c; sourceTree = SOURCE_ROOT; };
+		683426C0E0734DF4B4DF382F /* streamhdr.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = streamhdr.c; path = src/transports/utils/streamhdr.c; sourceTree = SOURCE_ROOT; };
+		6A038E64CD444ECFB744B968 /* xsurveyor.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xsurveyor.c; path = src/protocols/survey/xsurveyor.c; sourceTree = SOURCE_ROOT; };
+		6A7EBED604874CA9947E5D28 /* priolist.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = priolist.h; path = src/protocols/utils/priolist.h; sourceTree = SOURCE_ROOT; };
+		6B0430D7A2974028B018CD6A /* pull.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = pull.c; path = src/protocols/pipeline/pull.c; sourceTree = SOURCE_ROOT; };
+		6B9DB1AC796A44008A9AF44A /* queue.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = queue.c; path = src/utils/queue.c; sourceTree = SOURCE_ROOT; };
+		6BA63915636C4A0BBE6DBBA6 /* strncasecmp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = strncasecmp.h; path = src/utils/strncasecmp.h; sourceTree = SOURCE_ROOT; };
+		6BB632A931D34DCEAD7312BE /* strcasestr.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = strcasestr.c; path = src/utils/strcasestr.c; sourceTree = SOURCE_ROOT; };
+		6C2E3B4BF56D4B8898F7728F /* hash.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = hash.c; path = src/utils/hash.c; sourceTree = SOURCE_ROOT; };
+		6C671DF578624FE08BFD8B8C /* efd.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = efd.h; path = src/utils/efd.h; sourceTree = SOURCE_ROOT; };
+		6E78E4B526E841399BA4463F /* strcasecmp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = strcasecmp.h; path = src/utils/strcasecmp.h; sourceTree = SOURCE_ROOT; };
+		6EFDED6479DC42459ED6D9AA /* ep.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ep.h; path = src/core/ep.h; sourceTree = SOURCE_ROOT; };
+		71323E599C354D9EB496E5A1 /* timer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = timer.h; path = src/aio/timer.h; sourceTree = SOURCE_ROOT; };
+		746C544D8680435FBE4B2344 /* xbus.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xbus.c; path = src/protocols/bus/xbus.c; sourceTree = SOURCE_ROOT; };
+		747386A2C7444C02BE4C6ADB /* bws.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = bws.c; path = src/transports/ws/bws.c; sourceTree = SOURCE_ROOT; };
+		74EC0256EE274278A97FFB81 /* clock.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = clock.c; path = src/utils/clock.c; sourceTree = SOURCE_ROOT; };
+		76CD0A1D0C7348248142B5B6 /* ipc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ipc.h; path = src/ipc.h; sourceTree = SOURCE_ROOT; };
+		792428770C994BD58A896C86 /* dns_getaddrinfo_a.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = dns_getaddrinfo_a.h; path = src/transports/utils/dns_getaddrinfo_a.h; sourceTree = SOURCE_ROOT; };
+		79C8B36A83524FC18AB3968B /* sinproc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = sinproc.h; path = src/transports/inproc/sinproc.h; sourceTree = SOURCE_ROOT; };
+		7B273397AB8F4FEEBA855363 /* worker_posix.inc */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = worker_posix.inc; path = src/aio/worker_posix.inc; sourceTree = SOURCE_ROOT; };
+		7BDD1C0FD9B9451A8F448D9F /* inproc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = inproc.h; path = src/inproc.h; sourceTree = SOURCE_ROOT; };
+		7C74BA51B9BA40B9848AE6CE /* base64.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = base64.c; path = src/transports/utils/base64.c; sourceTree = SOURCE_ROOT; };
+		7DE463FBA7084700A54E73E6 /* binproc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = binproc.c; path = src/transports/inproc/binproc.c; sourceTree = SOURCE_ROOT; };
+		7E5F3B16415645199232C335 /* respondent.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = respondent.c; path = src/protocols/survey/respondent.c; sourceTree = SOURCE_ROOT; };
+		7EF0E2CDB8004181B6743C22 /* xpull.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xpull.h; path = src/protocols/pipeline/xpull.h; sourceTree = SOURCE_ROOT; };
+		7F803501DEDA4F00A1E708E2 /* poller_kqueue.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = poller_kqueue.h; path = src/aio/poller_kqueue.h; sourceTree = SOURCE_ROOT; };
+		8109C3067D804012ACB1A520 /* pipe.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = pipe.c; path = src/core/pipe.c; sourceTree = SOURCE_ROOT; };
+		82767BA1165844F8BB4037FE /* bus.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = bus.h; path = src/bus.h; sourceTree = SOURCE_ROOT; };
+		8328085E62234C6A945DE24A /* fd.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fd.h; path = src/utils/fd.h; sourceTree = SOURCE_ROOT; };
+		8666E5E60F3A4B73A3D832A5 /* fsm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = fsm.c; path = src/aio/fsm.c; sourceTree = SOURCE_ROOT; };
+		866CB0478DA247EEBC00EF07 /* attr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = attr.h; path = src/utils/attr.h; sourceTree = SOURCE_ROOT; };
+		867D0C7469B24C9484AF772A /* clock.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = clock.h; path = src/utils/clock.h; sourceTree = SOURCE_ROOT; };
+		8986733AB5314C69869BDE79 /* chunkref.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = chunkref.h; path = src/utils/chunkref.h; sourceTree = SOURCE_ROOT; };
+		8BA939A40A28444B9AE94708 /* req.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = req.h; path = src/protocols/reqrep/req.h; sourceTree = SOURCE_ROOT; };
+		8CDBE11BD55B46A2AF90DCCB /* thread_posix.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = thread_posix.h; path = src/utils/thread_posix.h; sourceTree = SOURCE_ROOT; };
+		8E8B3971958B4B0D8CC71DBA /* inproc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = inproc.c; path = src/transports/inproc/inproc.c; sourceTree = SOURCE_ROOT; };
+		8FB5424D14734F6C877C46B5 /* strncasecmp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = strncasecmp.c; path = src/utils/strncasecmp.c; sourceTree = SOURCE_ROOT; };
+		91A48EA8A15C40F287CE6379 /* trie.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = trie.c; path = src/protocols/pubsub/trie.c; sourceTree = SOURCE_ROOT; };
+		92325519869E47C39709E3D9 /* list.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = list.c; path = src/utils/list.c; sourceTree = SOURCE_ROOT; };
+		928E5182046743FFB9046EEA /* base64.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = base64.h; path = src/transports/utils/base64.h; sourceTree = SOURCE_ROOT; };
+		94D28E08DAF94566A8955BAA /* ep.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ep.c; path = src/core/ep.c; sourceTree = SOURCE_ROOT; };
+		978481941A314FBEB508D2A1 /* efd_pipe.inc */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = efd_pipe.inc; path = src/utils/efd_pipe.inc; sourceTree = SOURCE_ROOT; };
+		97879BC8A9444BC3A95E38CB /* err.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = err.c; path = src/utils/err.c; sourceTree = SOURCE_ROOT; };
+		989FC89859964C22A5D9D9C4 /* surveyor.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = surveyor.c; path = src/protocols/survey/surveyor.c; sourceTree = SOURCE_ROOT; };
+		98BFDF1112104A7488103CC3 /* sub.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sub.c; path = src/protocols/pubsub/sub.c; sourceTree = SOURCE_ROOT; };
+		9C5F3AB8F2D446F9B950F748 /* streamhdr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = streamhdr.h; path = src/transports/utils/streamhdr.h; sourceTree = SOURCE_ROOT; };
+		9FFFD57A79B0466AA6BCDA28 /* xpair.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xpair.h; path = src/protocols/pair/xpair.h; sourceTree = SOURCE_ROOT; };
+		A154B897D54245A887C37828 /* ins.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ins.h; path = src/transports/inproc/ins.h; sourceTree = SOURCE_ROOT; };
+		A2817A264BE24308B3B3ED35 /* sleep.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sleep.c; path = src/utils/sleep.c; sourceTree = SOURCE_ROOT; };
+		A44426B5A42F4D8E9642653C /* symbol.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = symbol.c; path = src/core/symbol.c; sourceTree = SOURCE_ROOT; };
+		A49EC62AE2F04A4E9B4D8574 /* nn.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = nn.h; path = src/nn.h; sourceTree = SOURCE_ROOT; };
+		A54F86060CCB475F99E94964 /* alloc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = alloc.h; path = src/utils/alloc.h; sourceTree = SOURCE_ROOT; };
+		A61E04BD61404D56806A2E98 /* worker_posix.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = worker_posix.h; path = src/aio/worker_posix.h; sourceTree = SOURCE_ROOT; };
+		A754F54F97E84505B3FE5310 /* aipc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = aipc.c; path = src/transports/ipc/aipc.c; sourceTree = SOURCE_ROOT; };
+		A7746C5DF25E41E39E0F4366 /* ctcp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ctcp.c; path = src/transports/tcp/ctcp.c; sourceTree = SOURCE_ROOT; };
+		A7B086E3EB814DEA81296EAD /* rep.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = rep.h; path = src/protocols/reqrep/rep.h; sourceTree = SOURCE_ROOT; };
+		A8BB1A0B1A3C45AFA4D87022 /* global.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = global.h; path = src/core/global.h; sourceTree = SOURCE_ROOT; };
+		A9B5F95BBED54C7EB71DD8BB /* usock_posix.inc */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = usock_posix.inc; path = src/aio/usock_posix.inc; sourceTree = SOURCE_ROOT; };
+		ACCAB62C1F6841879D98CE9A /* dns_getaddrinfo_a.inc */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = dns_getaddrinfo_a.inc; path = src/transports/utils/dns_getaddrinfo_a.inc; sourceTree = SOURCE_ROOT; };
+		AE88AC40AAC34BC4A9224F1B /* poller.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = poller.h; path = src/aio/poller.h; sourceTree = SOURCE_ROOT; };
+		AF05AB05ACD44AB49390051B /* closefd.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = closefd.c; path = src/utils/closefd.c; sourceTree = SOURCE_ROOT; };
+		B2225AF607A842CCBB17BAC7 /* usock.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = usock.c; path = src/aio/usock.c; sourceTree = SOURCE_ROOT; };
+		B302158E59714EEB963A1859 /* ws_handshake.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ws_handshake.h; path = src/transports/ws/ws_handshake.h; sourceTree = SOURCE_ROOT; };
+		B334E8AF73BA4D95A59CA347 /* xpub.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xpub.c; path = src/protocols/pubsub/xpub.c; sourceTree = SOURCE_ROOT; };
+		B353C9D66DC049B08CBEE8EB /* btcp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = btcp.h; path = src/transports/tcp/btcp.h; sourceTree = SOURCE_ROOT; };
+		B37F195331674661BD092D01 /* alloc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = alloc.c; path = src/utils/alloc.c; sourceTree = SOURCE_ROOT; };
+		B40D2771384A494FA5E0736C /* sipc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = sipc.h; path = src/transports/ipc/sipc.h; sourceTree = SOURCE_ROOT; };
+		B4F6FD2ADD5C47DE9C581112 /* global.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = global.c; path = src/core/global.c; sourceTree = SOURCE_ROOT; };
+		B54A0EB102824B849E6A3B80 /* xrespondent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xrespondent.h; path = src/protocols/survey/xrespondent.h; sourceTree = SOURCE_ROOT; };
+		B766F56DB08642AEB60D07DE /* stcp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = stcp.c; path = src/transports/tcp/stcp.c; sourceTree = SOURCE_ROOT; };
+		B909621F1A024B068248D8DD /* xpub.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xpub.h; path = src/protocols/pubsub/xpub.h; sourceTree = SOURCE_ROOT; };
+		BA9280F8B1E8435E90F175B9 /* pair.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = pair.c; path = src/protocols/pair/pair.c; sourceTree = SOURCE_ROOT; };
+		BAE9210DC5B04FE0BA01B58C /* sipc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sipc.c; path = src/transports/ipc/sipc.c; sourceTree = SOURCE_ROOT; };
+		BB8E0062711E4872A5195D88 /* cont.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = cont.h; path = src/utils/cont.h; sourceTree = SOURCE_ROOT; };
+		BBBABC74E7694688AAADA2D1 /* fsm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fsm.h; path = src/aio/fsm.h; sourceTree = SOURCE_ROOT; };
+		BBD689DF4AE943B0B09573F2 /* pool.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = pool.h; path = src/aio/pool.h; sourceTree = SOURCE_ROOT; };
+		BC0BAE0969114148B5B2184A /* lb.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = lb.h; path = src/protocols/utils/lb.h; sourceTree = SOURCE_ROOT; };
+		BC1D39EFAB9A4D2494497724 /* aws.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = aws.c; path = src/transports/ws/aws.c; sourceTree = SOURCE_ROOT; };
+		BE611C7542A44CAFB9F632CC /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		BEF146C834AC4A5E8EFBD6E8 /* cws.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = cws.h; path = src/transports/ws/cws.h; sourceTree = SOURCE_ROOT; };
+		BF751F985D3947F4B6E7283A /* ins.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ins.c; path = src/transports/inproc/ins.c; sourceTree = SOURCE_ROOT; };
+		C0B872CA265A468E86B6C22E /* fast.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fast.h; path = src/utils/fast.h; sourceTree = SOURCE_ROOT; };
+		C63F271FD48F495C8732E20C /* iface.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iface.c; path = src/transports/utils/iface.c; sourceTree = SOURCE_ROOT; };
+		CA6C7180A01747C88E05EEC8 /* ws_handshake.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ws_handshake.c; path = src/transports/ws/ws_handshake.c; sourceTree = SOURCE_ROOT; };
+		CDA1A3E956A249FB8B37C6C5 /* usock.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = usock.h; path = src/aio/usock.h; sourceTree = SOURCE_ROOT; };
+		CDB60285946F4A19A1A9BA36 /* trie.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = trie.h; path = src/protocols/pubsub/trie.h; sourceTree = SOURCE_ROOT; };
+		CF1848F2458049B9A96FF37B /* bipc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = bipc.c; path = src/transports/ipc/bipc.c; sourceTree = SOURCE_ROOT; };
+		D02597291FEF47678D467BAA /* survey.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = survey.h; path = src/survey.h; sourceTree = SOURCE_ROOT; };
+		D19BFFF686BE414399B1182B /* atomic.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = atomic.h; path = src/utils/atomic.h; sourceTree = SOURCE_ROOT; };
+		D28D014D56ED4B5EAD20B821 /* timerset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = timerset.h; path = src/aio/timerset.h; sourceTree = SOURCE_ROOT; };
+		D3153E27007D471CA17869F6 /* ws.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ws.h; path = src/ws.h; sourceTree = SOURCE_ROOT; };
+		D332FA35737A4411BDA6C794 /* dist.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = dist.c; path = src/protocols/utils/dist.c; sourceTree = SOURCE_ROOT; };
+		D424A24EA8324714A6FDE525 /* efd.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = efd.c; path = src/utils/efd.c; sourceTree = SOURCE_ROOT; };
+		D44891F0AADD4DCDB3A5F5C5 /* fq.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fq.h; path = src/protocols/utils/fq.h; sourceTree = SOURCE_ROOT; };
+		DC35D4FBA7CA4B3FA93A04F4 /* fq.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = fq.c; path = src/protocols/utils/fq.c; sourceTree = SOURCE_ROOT; };
+		DD25075E03CC45598A4F3274 /* ipc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ipc.c; path = src/transports/ipc/ipc.c; sourceTree = SOURCE_ROOT; };
+		DEB7FD6764A044FFA5D75F3B /* xpair.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xpair.c; path = src/protocols/pair/xpair.c; sourceTree = SOURCE_ROOT; };
+		E03BFBA2C007415AA4FD9C29 /* excl.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = excl.c; path = src/protocols/utils/excl.c; sourceTree = SOURCE_ROOT; };
+		E0421E18E99D46989012E74A /* sem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = sem.h; path = src/utils/sem.h; sourceTree = SOURCE_ROOT; };
+		E2CEA5D2F78844DE974E39E7 /* xsurveyor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xsurveyor.h; path = src/protocols/survey/xsurveyor.h; sourceTree = SOURCE_ROOT; };
+		E5335E27696C4E53AE701478 /* strcasecmp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = strcasecmp.c; path = src/utils/strcasecmp.c; sourceTree = SOURCE_ROOT; };
+		E54E1FD7E81B49B39B3DB85E /* sinproc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sinproc.c; path = src/transports/inproc/sinproc.c; sourceTree = SOURCE_ROOT; };
+		E5A2D4D0AA5844719D440DBB /* thread.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = thread.c; path = src/utils/thread.c; sourceTree = SOURCE_ROOT; };
+		E6640C0A284E4B95844AB871 /* pool.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = pool.c; path = src/aio/pool.c; sourceTree = SOURCE_ROOT; };
+		E69626A77FFC4D3EA948CB53 /* tcp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = tcp.h; path = src/tcp.h; sourceTree = SOURCE_ROOT; };
+		EAD79A5BDA4449D6B768995D /* tcp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = tcp.c; path = src/transports/tcp/tcp.c; sourceTree = SOURCE_ROOT; };
+		EB4C3662898D459480DC6597 /* condvar.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = condvar.h; path = src/utils/condvar.h; sourceTree = SOURCE_ROOT; };
+		EC261B50C22D49C6B5CF55C6 /* thread_posix.inc */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = thread_posix.inc; path = src/utils/thread_posix.inc; sourceTree = SOURCE_ROOT; };
+		ED03B75724F24A81B9BAA11C /* once.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = once.c; path = src/utils/once.c; sourceTree = SOURCE_ROOT; };
+		ED2035C69FD8424987D0BF20 /* dns.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = dns.h; path = src/transports/utils/dns.h; sourceTree = SOURCE_ROOT; };
+		EEA355F9206841B68D242C5C /* ctx.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ctx.c; path = src/aio/ctx.c; sourceTree = SOURCE_ROOT; };
+		EEBC85C2D8C44DEFA11383E3 /* pipeline.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = pipeline.h; path = src/pipeline.h; sourceTree = SOURCE_ROOT; };
+		F1625DF425014D0390A88C9E /* iface.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = iface.h; path = src/transports/utils/iface.h; sourceTree = SOURCE_ROOT; };
+		F1F8A79830184B9BA9A32A90 /* stcp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = stcp.h; path = src/transports/tcp/stcp.h; sourceTree = SOURCE_ROOT; };
+		F2C2B856FFFD44B6BA927C05 /* random.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = random.c; path = src/utils/random.c; sourceTree = SOURCE_ROOT; };
+		F34E98F426424A98A6EFCD2E /* xsub.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = xsub.c; path = src/protocols/pubsub/xsub.c; sourceTree = SOURCE_ROOT; };
+		F4003DBD46E740DDBBB17EA2 /* atcp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = atcp.h; path = src/transports/tcp/atcp.h; sourceTree = SOURCE_ROOT; };
+		F9C5E53642EC4F0D841CA1DE /* ws.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ws.c; path = src/transports/ws/ws.c; sourceTree = SOURCE_ROOT; };
+		FB3B27DCC58B423C8843F0DF /* xsub.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xsub.h; path = src/protocols/pubsub/xsub.h; sourceTree = SOURCE_ROOT; };
+		FC99FB34C0CE4CF3BA826C9D /* binproc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = binproc.h; path = src/transports/inproc/binproc.h; sourceTree = SOURCE_ROOT; };
+		FD7403467C034EBCADCBFD0F /* mutex.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = mutex.h; path = src/utils/mutex.h; sourceTree = SOURCE_ROOT; };
+		FFEB06B04F3941129ACD8DDE /* xrep.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = xrep.h; path = src/protocols/reqrep/xrep.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		00E9847B474642D697EF192A /* tcp */ = {
+			isa = PBXGroup;
+			children = (
+				54592B3B57154897965B17E6 /* atcp.c */,
+				F4003DBD46E740DDBBB17EA2 /* atcp.h */,
+				25C47CECF70544C6B8F1F2FD /* btcp.c */,
+				B353C9D66DC049B08CBEE8EB /* btcp.h */,
+				A7746C5DF25E41E39E0F4366 /* ctcp.c */,
+				3FB4ABC6F0EE49438BE60339 /* ctcp.h */,
+				B766F56DB08642AEB60D07DE /* stcp.c */,
+				F1F8A79830184B9BA9A32A90 /* stcp.h */,
+				EAD79A5BDA4449D6B768995D /* tcp.c */,
+			);
+			name = tcp;
+			sourceTree = "<group>";
+		};
+		01B8DEA7EB6B41A5B90D03C1 /* aio */ = {
+			isa = PBXGroup;
+			children = (
+				EEA355F9206841B68D242C5C /* ctx.c */,
+				5390DF9D607B430EAC32360B /* ctx.h */,
+				8666E5E60F3A4B73A3D832A5 /* fsm.c */,
+				BBBABC74E7694688AAADA2D1 /* fsm.h */,
+				44DB2587B4CD45B0B08193EA /* poller.c */,
+				AE88AC40AAC34BC4A9224F1B /* poller.h */,
+				7F803501DEDA4F00A1E708E2 /* poller_kqueue.h */,
+				3A4DCD313965409FBB553632 /* poller_kqueue.inc */,
+				E6640C0A284E4B95844AB871 /* pool.c */,
+				BBD689DF4AE943B0B09573F2 /* pool.h */,
+				6034AFBBC24A4FD0B3C8187B /* timer.c */,
+				71323E599C354D9EB496E5A1 /* timer.h */,
+				50641FC792D642A7A68DDB3C /* timerset.c */,
+				D28D014D56ED4B5EAD20B821 /* timerset.h */,
+				B2225AF607A842CCBB17BAC7 /* usock.c */,
+				CDA1A3E956A249FB8B37C6C5 /* usock.h */,
+				321430073DD043DE8FF601A7 /* usock_posix.h */,
+				A9B5F95BBED54C7EB71DD8BB /* usock_posix.inc */,
+				2CFB8D34C078499BBDAE3BCB /* worker.c */,
+				5B0BC33E8E24445AA08EC5BA /* worker.h */,
+				A61E04BD61404D56806A2E98 /* worker_posix.h */,
+				7B273397AB8F4FEEBA855363 /* worker_posix.inc */,
+			);
+			name = aio;
+			sourceTree = "<group>";
+		};
+		058E048D2A174788B62B9BA4 /* nanomsg */ = {
+			isa = PBXGroup;
+			children = (
+				9A0B8D6F59104F18963D212C /* nn.h */,
+				7D65EE4F8D844354872B95EC /* inproc.h */,
+				0DA29E0F38404D29B507BF54 /* ipc.h */,
+				C2C3A96C82C3468EAE0F7973 /* tcp.h */,
+				8C91D035E1664FDFA29ED6E2 /* ws.h */,
+				AFD9C06837EB483E8C94801F /* pair.h */,
+				C02DB81D795D44ABA551A408 /* pubsub.h */,
+				10638010427442F484064C68 /* reqrep.h */,
+				EE41BFDE99494001880CFC90 /* pipeline.h */,
+				71BC6ADE5FD94A968FB4B25F /* survey.h */,
+				062F78A6652C4D6683755870 /* bus.h */,
+				22E56E58D7D24ADFBCA77DE5 /* core */,
+				01B8DEA7EB6B41A5B90D03C1 /* aio */,
+				8BAE834015A049218AF6316D /* utils */,
+				56E954A1873144A2A9713C24 /* devices */,
+				065A60A1B2AF46D486B5CDB5 /* protocols */,
+				C5F8A80A1FAF478E9AECAD3A /* transports */,
+				582293DEE6C9432ABABC5560 /* CMakeLists.txt */,
+			);
+			name = nanomsg;
+			sourceTree = "<group>";
+		};
+		062F78A6652C4D6683755870 /* bus.h */ = {
+			isa = PBXGroup;
+			children = (
+				82767BA1165844F8BB4037FE /* bus.h */,
+			);
+			name = bus.h;
+			sourceTree = "<group>";
+		};
+		065A60A1B2AF46D486B5CDB5 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D03D2319A2E54A08A34F303E /* utils */,
+				5B2719CF37F64539ACA955CF /* bus */,
+				71DDC7DABE89444D830664EB /* pipeline */,
+				5F59B31EB3C34AF483377751 /* pair */,
+				DA6242637967431F89BEBCF8 /* pubsub */,
+				F348DD40D86C4D05A57B1B9E /* reqrep */,
+				F5EF8FD156D042CDBE3898D0 /* survey */,
+			);
+			name = protocols;
+			sourceTree = "<group>";
+		};
+		0DA29E0F38404D29B507BF54 /* ipc.h */ = {
+			isa = PBXGroup;
+			children = (
+				76CD0A1D0C7348248142B5B6 /* ipc.h */,
+			);
+			name = ipc.h;
+			sourceTree = "<group>";
+		};
+		10638010427442F484064C68 /* reqrep.h */ = {
+			isa = PBXGroup;
+			children = (
+				519B907D3247437B81725AAF /* reqrep.h */,
+			);
+			name = reqrep.h;
+			sourceTree = "<group>";
+		};
+		159EA9B79DC24C6592236B58 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				407256A7CCC74596B5948963 /* CMake Rules */,
+				53DB095BA7D941E6BB79D72C /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		1DE0F539CB6B43E1B97FF661 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		22E56E58D7D24ADFBCA77DE5 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				94D28E08DAF94566A8955BAA /* ep.c */,
+				6EFDED6479DC42459ED6D9AA /* ep.h */,
+				B4F6FD2ADD5C47DE9C581112 /* global.c */,
+				A8BB1A0B1A3C45AFA4D87022 /* global.h */,
+				8109C3067D804012ACB1A520 /* pipe.c */,
+				186DC5E7729344FFA0852870 /* poll.c */,
+				57A5C976AEC74D328E468A4E /* sock.c */,
+				54A8CA66D7E840BDA8A3DB7C /* sock.h */,
+				2D2E8DAC65A94ED9B836E7B7 /* sockbase.c */,
+				A44426B5A42F4D8E9642653C /* symbol.c */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
+		27CC2327E50E4AB3A8140C2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B223FFCB1224B28A761442D /* nanocat */,
+				12F9FD0D450E4568A1ED75E3 /* libnanomsg.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32559738959240E0AD0E792E /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				37141C6B2D734B39BE494615 /* nanocat.c */,
+				680ACF1D60A44D60A36B8757 /* options.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		407256A7CCC74596B5948963 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		56E954A1873144A2A9713C24 /* devices */ = {
+			isa = PBXGroup;
+			children = (
+				3023487BEBB44462B7B1790C /* device.c */,
+				1B4340AE4AD54DBE861CE633 /* device.h */,
+			);
+			name = devices;
+			sourceTree = "<group>";
+		};
+		5B2719CF37F64539ACA955CF /* bus */ = {
+			isa = PBXGroup;
+			children = (
+				1AF4940A2BA1455C81DEF87B /* bus.c */,
+				746C544D8680435FBE4B2344 /* xbus.c */,
+				46A1B32B7AC54EC18719B40C /* xbus.h */,
+			);
+			name = bus;
+			sourceTree = "<group>";
+		};
+		5F59B31EB3C34AF483377751 /* pair */ = {
+			isa = PBXGroup;
+			children = (
+				BA9280F8B1E8435E90F175B9 /* pair.c */,
+				DEB7FD6764A044FFA5D75F3B /* xpair.c */,
+				9FFFD57A79B0466AA6BCDA28 /* xpair.h */,
+			);
+			name = pair;
+			sourceTree = "<group>";
+		};
+		71BC6ADE5FD94A968FB4B25F /* survey.h */ = {
+			isa = PBXGroup;
+			children = (
+				D02597291FEF47678D467BAA /* survey.h */,
+			);
+			name = survey.h;
+			sourceTree = "<group>";
+		};
+		71DDC7DABE89444D830664EB /* pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				6B0430D7A2974028B018CD6A /* pull.c */,
+				41AA1457E581466B9A550258 /* push.c */,
+				4CE3788EBD37402C864B86F1 /* xpull.c */,
+				7EF0E2CDB8004181B6743C22 /* xpull.h */,
+				5B4513BEEC1E42FA8A373690 /* xpush.c */,
+				2BADC897EB0F4FBBBEA43F1F /* xpush.h */,
+			);
+			name = pipeline;
+			sourceTree = "<group>";
+		};
+		79B8095331D5483B85BEE37C /* dist */ = {
+			isa = PBXGroup;
+			children = (
+				1DE0F539CB6B43E1B97FF661 /* CMake Rules */,
+				4A54E4085C6C4F7A83A9F7EA /* CMakeLists.txt */,
+			);
+			name = dist;
+			sourceTree = "<group>";
+		};
+		7D65EE4F8D844354872B95EC /* inproc.h */ = {
+			isa = PBXGroup;
+			children = (
+				7BDD1C0FD9B9451A8F448D9F /* inproc.h */,
+			);
+			name = inproc.h;
+			sourceTree = "<group>";
+		};
+		7DDD57700DEF4E9CA7FF1ADD /* ipc */ = {
+			isa = PBXGroup;
+			children = (
+				A754F54F97E84505B3FE5310 /* aipc.c */,
+				5F50B497ADC642F1BB234B3C /* aipc.h */,
+				CF1848F2458049B9A96FF37B /* bipc.c */,
+				12D8B58D08F04997A6202E46 /* bipc.h */,
+				1B05016F6E5C431D984709EC /* cipc.c */,
+				02FFCCE61C7A4E38AC367642 /* cipc.h */,
+				DD25075E03CC45598A4F3274 /* ipc.c */,
+				BAE9210DC5B04FE0BA01B58C /* sipc.c */,
+				B40D2771384A494FA5E0736C /* sipc.h */,
+			);
+			name = ipc;
+			sourceTree = "<group>";
+		};
+		8BAE834015A049218AF6316D /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				B37F195331674661BD092D01 /* alloc.c */,
+				A54F86060CCB475F99E94964 /* alloc.h */,
+				456736E5F1994D5DA4A95770 /* atomic.c */,
+				D19BFFF686BE414399B1182B /* atomic.h */,
+				866CB0478DA247EEBC00EF07 /* attr.h */,
+				63875F3D5EEF4914981DE592 /* chunk.c */,
+				3E614D69ED79469BBA6B1090 /* chunk.h */,
+				14E34A8D55894149BC13C199 /* chunkref.c */,
+				8986733AB5314C69869BDE79 /* chunkref.h */,
+				74EC0256EE274278A97FFB81 /* clock.c */,
+				867D0C7469B24C9484AF772A /* clock.h */,
+				AF05AB05ACD44AB49390051B /* closefd.c */,
+				238D21AF7A9F48B7A572817A /* closefd.h */,
+				028CF7B4A7CB4FB294BE022F /* condvar.c */,
+				EB4C3662898D459480DC6597 /* condvar.h */,
+				BB8E0062711E4872A5195D88 /* cont.h */,
+				D424A24EA8324714A6FDE525 /* efd.c */,
+				6C671DF578624FE08BFD8B8C /* efd.h */,
+				6683426EBF544CD490FA2AFF /* efd_pipe.h */,
+				978481941A314FBEB508D2A1 /* efd_pipe.inc */,
+				97879BC8A9444BC3A95E38CB /* err.c */,
+				072F8ED4F1E447A4B80E4692 /* err.h */,
+				C0B872CA265A468E86B6C22E /* fast.h */,
+				8328085E62234C6A945DE24A /* fd.h */,
+				6C2E3B4BF56D4B8898F7728F /* hash.c */,
+				63B68C439CFF49E083C8590E /* hash.h */,
+				92325519869E47C39709E3D9 /* list.c */,
+				4129E549DA0C472187B36413 /* list.h */,
+				58BB125920DA4F6E93D98C9E /* msg.c */,
+				661D42A37E24425C931C5FD5 /* msg.h */,
+				20836128FA9A4AB1B80FEF07 /* mutex.c */,
+				FD7403467C034EBCADCBFD0F /* mutex.h */,
+				ED03B75724F24A81B9BAA11C /* once.c */,
+				3E42FBADA072454BB9ED9531 /* once.h */,
+				6B9DB1AC796A44008A9AF44A /* queue.c */,
+				3332272A0B614D74ACD413D3 /* queue.h */,
+				F2C2B856FFFD44B6BA927C05 /* random.c */,
+				0069FC4A8A604389AD597735 /* random.h */,
+				0A3114D2F27243DCBA773B7B /* sem.c */,
+				E0421E18E99D46989012E74A /* sem.h */,
+				A2817A264BE24308B3B3ED35 /* sleep.c */,
+				15C360574F634939A2875A95 /* sleep.h */,
+				E5335E27696C4E53AE701478 /* strcasecmp.c */,
+				6E78E4B526E841399BA4463F /* strcasecmp.h */,
+				6BB632A931D34DCEAD7312BE /* strcasestr.c */,
+				4C7C1261F60D42C5975FFFEC /* strcasestr.h */,
+				8FB5424D14734F6C877C46B5 /* strncasecmp.c */,
+				6BA63915636C4A0BBE6DBBA6 /* strncasecmp.h */,
+				E5A2D4D0AA5844719D440DBB /* thread.c */,
+				4E73CE775B6F45D2B6BD8227 /* thread.h */,
+				8CDBE11BD55B46A2AF90DCCB /* thread_posix.h */,
+				EC261B50C22D49C6B5CF55C6 /* thread_posix.inc */,
+				0BC806DE23484BB78A61CDB8 /* wire.c */,
+				01921581BB6A4E45975794B3 /* wire.h */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		8C91D035E1664FDFA29ED6E2 /* ws.h */ = {
+			isa = PBXGroup;
+			children = (
+				D3153E27007D471CA17869F6 /* ws.h */,
+			);
+			name = ws.h;
+			sourceTree = "<group>";
+		};
+		9A0B8D6F59104F18963D212C /* nn.h */ = {
+			isa = PBXGroup;
+			children = (
+				A49EC62AE2F04A4E9B4D8574 /* nn.h */,
+			);
+			name = nn.h;
+			sourceTree = "<group>";
+		};
+		9D1C6245C4CC472683910538 /* ws */ = {
+			isa = PBXGroup;
+			children = (
+				BC1D39EFAB9A4D2494497724 /* aws.c */,
+				45EBD55163064D708EAE7010 /* aws.h */,
+				747386A2C7444C02BE4C6ADB /* bws.c */,
+				031411D5D5164067AF5A09B8 /* bws.h */,
+				0CB78D345E074814BC15088D /* cws.c */,
+				BEF146C834AC4A5E8EFBD6E8 /* cws.h */,
+				3524AC6C5260474BB92B8ED0 /* sha1.c */,
+				6186A44DC9FE4CE2BEA58118 /* sha1.h */,
+				0FD46866AB894D7899CED8C8 /* sws.c */,
+				1C4051839C21481789DC5DF4 /* sws.h */,
+				F9C5E53642EC4F0D841CA1DE /* ws.c */,
+				CA6C7180A01747C88E05EEC8 /* ws_handshake.c */,
+				B302158E59714EEB963A1859 /* ws_handshake.h */,
+			);
+			name = ws;
+			sourceTree = "<group>";
+		};
+		AFD9C06837EB483E8C94801F /* pair.h */ = {
+			isa = PBXGroup;
+			children = (
+				2DC33E4D28224470A069A1CF /* pair.h */,
+			);
+			name = pair.h;
+			sourceTree = "<group>";
+		};
+		C02DB81D795D44ABA551A408 /* pubsub.h */ = {
+			isa = PBXGroup;
+			children = (
+				60C6B08972EB422DA8E291DD /* pubsub.h */,
+			);
+			name = pubsub.h;
+			sourceTree = "<group>";
+		};
+		C2C3A96C82C3468EAE0F7973 /* tcp.h */ = {
+			isa = PBXGroup;
+			children = (
+				E69626A77FFC4D3EA948CB53 /* tcp.h */,
+			);
+			name = tcp.h;
+			sourceTree = "<group>";
+		};
+		C5F8A80A1FAF478E9AECAD3A /* transports */ = {
+			isa = PBXGroup;
+			children = (
+				FDFA8978527A4E38A7B62C77 /* utils */,
+				F337C9AE470040F1893B4E74 /* inproc */,
+				7DDD57700DEF4E9CA7FF1ADD /* ipc */,
+				00E9847B474642D697EF192A /* tcp */,
+				9D1C6245C4CC472683910538 /* ws */,
+			);
+			name = transports;
+			sourceTree = "<group>";
+		};
+		D03D2319A2E54A08A34F303E /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				D332FA35737A4411BDA6C794 /* dist.c */,
+				2DAE7743DFD54B5183C967E5 /* dist.h */,
+				E03BFBA2C007415AA4FD9C29 /* excl.c */,
+				1C8938B4E9CA48AE84DEE3BF /* excl.h */,
+				DC35D4FBA7CA4B3FA93A04F4 /* fq.c */,
+				D44891F0AADD4DCDB3A5F5C5 /* fq.h */,
+				53471B47E4CE4D9083499767 /* lb.c */,
+				BC0BAE0969114148B5B2184A /* lb.h */,
+				0DDE448C40B74E94AE301A58 /* priolist.c */,
+				6A7EBED604874CA9947E5D28 /* priolist.h */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		D177E017633545099CED7A8E /* nanocat */ = {
+			isa = PBXGroup;
+			children = (
+				32559738959240E0AD0E792E /* Source Files */,
+				BE611C7542A44CAFB9F632CC /* CMakeLists.txt */,
+			);
+			name = nanocat;
+			sourceTree = "<group>";
+		};
+		DA6242637967431F89BEBCF8 /* pubsub */ = {
+			isa = PBXGroup;
+			children = (
+				1631903B3CA84400BDC1E2B7 /* pub.c */,
+				98BFDF1112104A7488103CC3 /* sub.c */,
+				91A48EA8A15C40F287CE6379 /* trie.c */,
+				CDB60285946F4A19A1A9BA36 /* trie.h */,
+				B334E8AF73BA4D95A59CA347 /* xpub.c */,
+				B909621F1A024B068248D8DD /* xpub.h */,
+				F34E98F426424A98A6EFCD2E /* xsub.c */,
+				FB3B27DCC58B423C8843F0DF /* xsub.h */,
+			);
+			name = pubsub;
+			sourceTree = "<group>";
+		};
+		DBF8D5F89316481589D72A30 = {
+			isa = PBXGroup;
+			children = (
+				79B8095331D5483B85BEE37C /* dist */,
+				D177E017633545099CED7A8E /* nanocat */,
+				159EA9B79DC24C6592236B58 /* ALL_BUILD */,
+				058E048D2A174788B62B9BA4 /* nanomsg */,
+				27CC2327E50E4AB3A8140C2D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE41BFDE99494001880CFC90 /* pipeline.h */ = {
+			isa = PBXGroup;
+			children = (
+				EEBC85C2D8C44DEFA11383E3 /* pipeline.h */,
+			);
+			name = pipeline.h;
+			sourceTree = "<group>";
+		};
+		F337C9AE470040F1893B4E74 /* inproc */ = {
+			isa = PBXGroup;
+			children = (
+				7DE463FBA7084700A54E73E6 /* binproc.c */,
+				FC99FB34C0CE4CF3BA826C9D /* binproc.h */,
+				0B3DFD98A3F74244A744C2C7 /* cinproc.c */,
+				58061B8352BE4355A956F413 /* cinproc.h */,
+				8E8B3971958B4B0D8CC71DBA /* inproc.c */,
+				BF751F985D3947F4B6E7283A /* ins.c */,
+				A154B897D54245A887C37828 /* ins.h */,
+				08267897B80F4262B630DF22 /* msgqueue.c */,
+				1FA3E37A0D33424895241F26 /* msgqueue.h */,
+				E54E1FD7E81B49B39B3DB85E /* sinproc.c */,
+				79C8B36A83524FC18AB3968B /* sinproc.h */,
+			);
+			name = inproc;
+			sourceTree = "<group>";
+		};
+		F348DD40D86C4D05A57B1B9E /* reqrep */ = {
+			isa = PBXGroup;
+			children = (
+				20E0049CBBCD4178B55344A9 /* rep.c */,
+				A7B086E3EB814DEA81296EAD /* rep.h */,
+				026682B8EDE84300B478CD61 /* req.c */,
+				8BA939A40A28444B9AE94708 /* req.h */,
+				5B680CDD3BB0416A812C391C /* task.c */,
+				13BCDABD99C94DC0A6AFEF2C /* task.h */,
+				5D92A6967BEA4602BA7113F6 /* xrep.c */,
+				FFEB06B04F3941129ACD8DDE /* xrep.h */,
+				169284BB9E2641FB97FC1BDD /* xreq.c */,
+				345708CF534042CA9E79B79A /* xreq.h */,
+			);
+			name = reqrep;
+			sourceTree = "<group>";
+		};
+		F5EF8FD156D042CDBE3898D0 /* survey */ = {
+			isa = PBXGroup;
+			children = (
+				7E5F3B16415645199232C335 /* respondent.c */,
+				989FC89859964C22A5D9D9C4 /* surveyor.c */,
+				539F9010AE5645DB9CA810D8 /* xrespondent.c */,
+				B54A0EB102824B849E6A3B80 /* xrespondent.h */,
+				6A038E64CD444ECFB744B968 /* xsurveyor.c */,
+				E2CEA5D2F78844DE974E39E7 /* xsurveyor.h */,
+			);
+			name = survey;
+			sourceTree = "<group>";
+		};
+		FDFA8978527A4E38A7B62C77 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				4D6E324418BB41DFA512CB05 /* backoff.c */,
+				3EE8C28F9D174765BFC09C4A /* backoff.h */,
+				7C74BA51B9BA40B9848AE6CE /* base64.c */,
+				928E5182046743FFB9046EEA /* base64.h */,
+				06149D51CCBC4F9EB4E37C0B /* dns.c */,
+				ED2035C69FD8424987D0BF20 /* dns.h */,
+				2EB3F299403942138A0B7A55 /* dns_getaddrinfo.h */,
+				1450F45C0F4A4E65B2768ED7 /* dns_getaddrinfo.inc */,
+				792428770C994BD58A896C86 /* dns_getaddrinfo_a.h */,
+				ACCAB62C1F6841879D98CE9A /* dns_getaddrinfo_a.inc */,
+				C63F271FD48F495C8732E20C /* iface.c */,
+				F1625DF425014D0390A88C9E /* iface.h */,
+				649D959A73DF444E87710E53 /* literal.c */,
+				3647BDE51D374728AAF011E6 /* literal.h */,
+				124111E6CC7F49F198A84FFC /* port.c */,
+				5F3F6C88E67C477585EE2956 /* port.h */,
+				683426C0E0734DF4B4DF382F /* streamhdr.c */,
+				9C5F3AB8F2D446F9B950F748 /* streamhdr.h */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		394468250927434A9B9C4CAA /* nanomsg */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2EC0BB078234E7D9669ABAF /* Build configuration list for PBXNativeTarget "nanomsg" */;
+			buildPhases = (
+				1F1D35CF56114FD0B51B4FF5 /* Sources */,
+				A829FB594AC64EC7BDD4806B /* CMake PostBuild Rules */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4C355B05AB9478B8D3F2319 /* PBXTargetDependency */,
+			);
+			name = nanomsg;
+			productName = nanomsg;
+			productReference = 12F9FD0D450E4568A1ED75E3 /* libnanomsg.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		4B14302A108140658D1B2D46 /* nanocat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E379E9D998B1437398B7E610 /* Build configuration list for PBXNativeTarget "nanocat" */;
+			buildPhases = (
+				0CE8350C3EF7447D8E2FF910 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6704A59342AD45818F5F02F5 /* PBXTargetDependency */,
+				E5F07EA57C664D2897F336B3 /* PBXTargetDependency */,
+			);
+			name = nanocat;
+			productName = nanocat;
+			productReference = 5B223FFCB1224B28A761442D /* nanocat */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		33B7BE7E8D6C46ED85B22D72 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 89A49F369B764903A717A705 /* Build configuration list for PBXProject "nanomsg" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DBF8D5F89316481589D72A30;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				845D5F46835D491B9880715C /* ALL_BUILD */,
+				54FFD18A911346FCAC38F0E8 /* ZERO_CHECK */,
+				BC8EE2892C384037A00C3170 /* dist */,
+				C29BA7745A29475A987BCCB9 /* install */,
+				4B14302A108140658D1B2D46 /* nanocat */,
+				55151FF8797B431F8ED624CB /* package */,
+				394468250927434A9B9C4CAA /* nanomsg */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		005CB8459D9B4C708283C483 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/nanomsg/build -f /Users/liwei/github/uv_demo/nanomsg/build/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		8D7FBDE01B984019BC5F1589 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/nanomsg/build -f /Users/liwei/github/uv_demo/nanomsg/build/CMakeScripts/dist_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		9E4AF25FC519421DB7424573 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/nanomsg/build -f /Users/liwei/github/uv_demo/nanomsg/build/CMakeScripts/package_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		A1A7BAF32EF94E64A14B3937 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/nanomsg/build -f /Users/liwei/github/uv_demo/nanomsg/build/CMakeScripts/install_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		A829FB594AC64EC7BDD4806B /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/nanomsg/build/src -f /Users/liwei/github/uv_demo/nanomsg/build/src/CMakeScripts/nanomsg_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		C312E17F6BC14423A9C9928E /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/nanomsg/build -f /Users/liwei/github/uv_demo/nanomsg/build/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0CE8350C3EF7447D8E2FF910 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD7AE45C88864A02BAE28B4E /* nanocat.c in Sources */,
+				46C4A64C4D5C47918BF4ED9B /* options.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F1D35CF56114FD0B51B4FF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4C0F7793AF748C6AD867023 /* ctx.c in Sources */,
+				6BA88D22594944C299B7ABCC /* fsm.c in Sources */,
+				53388DC7950F4DD3B63394D9 /* poller.c in Sources */,
+				0A6D06D116104F6293A35629 /* pool.c in Sources */,
+				99355C1AB2AA4BE1B739F64F /* timer.c in Sources */,
+				F9BC2705C1E349D6AC028063 /* timerset.c in Sources */,
+				1BBD437C8C604CEB96DCFDB8 /* usock.c in Sources */,
+				735A6D90272D4B96B0EE3E16 /* worker.c in Sources */,
+				131E48CE3BE64DBAA293AF5F /* ep.c in Sources */,
+				8D4441DB17FE4F6897D780E1 /* global.c in Sources */,
+				38AE4E0779964F25B8BB5B8C /* pipe.c in Sources */,
+				EBD4C9BBE57746F4B4593A97 /* poll.c in Sources */,
+				AACD7F245C044CA1934A0D93 /* sock.c in Sources */,
+				15C9205DCEEA4CBEA57A2E21 /* sockbase.c in Sources */,
+				47E52305086C4741B28BDE00 /* symbol.c in Sources */,
+				83C6118E624B4D07AF37606A /* device.c in Sources */,
+				E339CB61A9EF49C18D4B7C09 /* bus.c in Sources */,
+				29791ACAE2964CF198642018 /* xbus.c in Sources */,
+				C490D65E45E5407C8C76DCB4 /* pair.c in Sources */,
+				8653B356B4FE4EEB86BFE3CD /* xpair.c in Sources */,
+				8AC29CD67DDD45D8A50A57E4 /* pull.c in Sources */,
+				B1791B2496314BA39C4955CE /* push.c in Sources */,
+				2D65B0F12DB545BCB1E9B0CF /* xpull.c in Sources */,
+				93840B55B45E4888AEDBC036 /* xpush.c in Sources */,
+				DF9577D6589F4C3B94F19B9C /* pub.c in Sources */,
+				A83D792AC1C54FAEBF37C2AD /* sub.c in Sources */,
+				592859A4B326406A80C265DC /* trie.c in Sources */,
+				DF20A6A1BF0C4ACBA13FA101 /* xpub.c in Sources */,
+				BC293EE23EB941CF9314078B /* xsub.c in Sources */,
+				81FEE75C1BFB4AA39CA4AE89 /* rep.c in Sources */,
+				CED4315DA6B04C02B670A454 /* req.c in Sources */,
+				38B91031E460466A8D5CB366 /* task.c in Sources */,
+				8F44651C47224BB48E77268A /* xrep.c in Sources */,
+				32D3EA9D6CAB4B7BA491BBC9 /* xreq.c in Sources */,
+				63DB2E4C9BA1428E8A72DB8B /* respondent.c in Sources */,
+				87C7D48E033C4BFE9E8F4A2B /* surveyor.c in Sources */,
+				D24BC10C648D42759C139218 /* xrespondent.c in Sources */,
+				BF9D6CB6D0C949779857D451 /* xsurveyor.c in Sources */,
+				806CD7354C3B450F96666A6E /* dist.c in Sources */,
+				1101B872232A444E9493CF0F /* excl.c in Sources */,
+				FF8540CB48104D0C813B87AF /* fq.c in Sources */,
+				9E96D4878E9C4A69BE1FC960 /* lb.c in Sources */,
+				A8E634A36C4C42EAB666DA7A /* priolist.c in Sources */,
+				43CBEDE2C8404BCC8A77D745 /* binproc.c in Sources */,
+				00E52F36D0974AA18D0E6CAC /* cinproc.c in Sources */,
+				AB445D1FFB1C44369E312A50 /* inproc.c in Sources */,
+				674922A0092F4F19AD3E1EE8 /* ins.c in Sources */,
+				45049475301D440CA6587206 /* msgqueue.c in Sources */,
+				44348D74F7FB4FC1BA75ED00 /* sinproc.c in Sources */,
+				84A8DE52FA72457B9033E93E /* aipc.c in Sources */,
+				1B4969A6363B4EF68D30BB13 /* bipc.c in Sources */,
+				A9BFD513FE4C4416A2BB26BD /* cipc.c in Sources */,
+				5F51B941BB3B4DCABB09ED3F /* ipc.c in Sources */,
+				9E0F6DFE1ACC497D90EA9987 /* sipc.c in Sources */,
+				3E7E14DBD63C404DACFDAAF4 /* atcp.c in Sources */,
+				18834B2868D348DD81E2FCCB /* btcp.c in Sources */,
+				21B64887777645AABA6D097D /* ctcp.c in Sources */,
+				9F7F38648DC646E09B0AEEE2 /* stcp.c in Sources */,
+				44CC198D581D4EC3BC125CDF /* tcp.c in Sources */,
+				84D62EC952A447EE9FCE37DE /* backoff.c in Sources */,
+				AAB04FADBEA94CEC9EA6D32E /* base64.c in Sources */,
+				BD0635C344A040A882ADFB8A /* dns.c in Sources */,
+				0BE04010645547ED8B746C10 /* iface.c in Sources */,
+				D5462E0CD56248D0B89FAA85 /* literal.c in Sources */,
+				846E16512F4B494ABDBC51E8 /* port.c in Sources */,
+				9E0CAA97932F4D0097698457 /* streamhdr.c in Sources */,
+				FC5EA682DEAE4A10B3104866 /* aws.c in Sources */,
+				65D332B067DD43A0AF9C42E8 /* bws.c in Sources */,
+				F2A6B2EE32A34BC19D56A3A0 /* cws.c in Sources */,
+				3C63C745E84D466A869F4321 /* sha1.c in Sources */,
+				48B0A54E66E549AC9D871517 /* sws.c in Sources */,
+				ADD758CC2A9743DBA2A26DC5 /* ws.c in Sources */,
+				03FB1C8AD4CE44F593240786 /* ws_handshake.c in Sources */,
+				05CB3286B1424BF389AF320A /* alloc.c in Sources */,
+				26DD7C5577324D40870549BE /* atomic.c in Sources */,
+				86F5B84E8D114323BF3CBCE8 /* chunk.c in Sources */,
+				1645DEDC2AEF4D3794861A22 /* chunkref.c in Sources */,
+				3E8E55C38D504F9B9AA097E2 /* clock.c in Sources */,
+				C8A576DC503741289EDF3099 /* closefd.c in Sources */,
+				C73C06A061BA403D8E0B3F20 /* condvar.c in Sources */,
+				5270C658722C427682E87E5B /* efd.c in Sources */,
+				27E17205950A4F3E8CB7D233 /* err.c in Sources */,
+				DD8842DEA0994900B2056D4D /* hash.c in Sources */,
+				BE51C2461C934558BFA28D9F /* list.c in Sources */,
+				A94723B18E3B458183A9EC65 /* msg.c in Sources */,
+				7527C284AF9A4A9BB29DC4DF /* mutex.c in Sources */,
+				BD6C8BC8D50C4612B73BBE21 /* once.c in Sources */,
+				2772D4FCB8F8437BB5884DA2 /* queue.c in Sources */,
+				D5A355DA28EA42089C77A6ED /* random.c in Sources */,
+				D929E3E09BC2430B864371A3 /* sem.c in Sources */,
+				149BD8EBF81547E480FA3683 /* sleep.c in Sources */,
+				48A644EEDC0F4F2E80FADD4A /* strcasecmp.c in Sources */,
+				7031AA511297483A935ED2E8 /* strcasestr.c in Sources */,
+				9549D68B318C40BBB964EE6E /* strncasecmp.c in Sources */,
+				8E021E4563854378BD06D608 /* thread.c in Sources */,
+				C851C693C2F14575996790D9 /* wire.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27652A3EC0B14C9EB71E4E77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54FFD18A911346FCAC38F0E8 /* ZERO_CHECK */;
+			targetProxy = 29CBAA1D1A1E4DCBBAA3ACCC /* PBXContainerItemProxy */;
+		};
+		6704A59342AD45818F5F02F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 394468250927434A9B9C4CAA /* nanomsg */;
+			targetProxy = 287A9D84521142DC8FAD9273 /* PBXContainerItemProxy */;
+		};
+		87D733961C724E6C9F078F7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 394468250927434A9B9C4CAA /* nanomsg */;
+			targetProxy = 044E38DD3A274653BC068550 /* PBXContainerItemProxy */;
+		};
+		AE716044E71145D18E23FDEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54FFD18A911346FCAC38F0E8 /* ZERO_CHECK */;
+			targetProxy = 45779D0ABAFA422BA737B9C7 /* PBXContainerItemProxy */;
+		};
+		B4C355B05AB9478B8D3F2319 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54FFD18A911346FCAC38F0E8 /* ZERO_CHECK */;
+			targetProxy = 46946F0CC8EF449D9467E7CF /* PBXContainerItemProxy */;
+		};
+		C406A4CBB2554447ADEE878B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 845D5F46835D491B9880715C /* ALL_BUILD */;
+			targetProxy = 51D714E3F48048B280AF2D78 /* PBXContainerItemProxy */;
+		};
+		C97CF63E43CC40A98BB536BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B14302A108140658D1B2D46 /* nanocat */;
+			targetProxy = 6BBEFABFC5764B3AB86EC319 /* PBXContainerItemProxy */;
+		};
+		CFAB10B365B44E4B90DA6898 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 845D5F46835D491B9880715C /* ALL_BUILD */;
+			targetProxy = 8DDD61214CFD45C194EFB949 /* PBXContainerItemProxy */;
+		};
+		E5F07EA57C664D2897F336B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54FFD18A911346FCAC38F0E8 /* ZERO_CHECK */;
+			targetProxy = 5C605F88C20C4EFB91405895 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0534D0EDA2574827A9F9D00C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		139315F732D24767A8072D76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = dist;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		1474A23E1C20482880B2A530 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		1BA91F2BA90B45E3A3C6F37D /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		28DF56F5B77C401383A76A86 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		2EFFA9EDA2BD4070BF511B4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					NN_HAVE_OSX,
+					_GNU_SOURCE,
+					_REENTRANT,
+					_THREAD_SAFE,
+					_POSIX_PTHREAD_SEMANTICS,
+					"'NN_HAVE_SOCKETPAIR=1'",
+					"'NN_HAVE_PIPE=1'",
+					"'NN_HAVE_KQUEUE=1'",
+					"'NN_HAVE_POLL=1'",
+					"'NN_HAVE_SEMAPHORE_PTHREAD=1'",
+					"'NN_HAVE_CLOCK_MONOTONIC=1'",
+					"'NN_HAVE_UNIX_SOCKETS=1'",
+					"'NN_HAVE_BACKTRACE=1'",
+					"'NN_HAVE_MSG_CONTROL=1'",
+					NN_HAVE_GCC_ATOMIC_BUILTINS,
+					"'NN_MAX_SOCKETS=512'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/liwei/github/uv_demo/nanomsg/build/Release;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/nanomsg/build/Release/libnanomsg.5.1.0.dylib,
+					"-lpthread",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = nanocat;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		3016A03BA28742A4B1FD3C74 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build/build;
+			};
+			name = RelWithDebInfo;
+		};
+		34AB7771221C4E658F221C28 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		3EEA7A87976347A8BE4CDEEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = dist;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		47F77B49642B443DA51E0F1E /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					NN_HAVE_OSX,
+					_GNU_SOURCE,
+					_REENTRANT,
+					_THREAD_SAFE,
+					_POSIX_PTHREAD_SEMANTICS,
+					"'NN_HAVE_SOCKETPAIR=1'",
+					"'NN_HAVE_PIPE=1'",
+					"'NN_HAVE_KQUEUE=1'",
+					"'NN_HAVE_POLL=1'",
+					"'NN_HAVE_SEMAPHORE_PTHREAD=1'",
+					"'NN_HAVE_CLOCK_MONOTONIC=1'",
+					"'NN_HAVE_UNIX_SOCKETS=1'",
+					"'NN_HAVE_BACKTRACE=1'",
+					"'NN_HAVE_MSG_CONTROL=1'",
+					NN_HAVE_GCC_ATOMIC_BUILTINS,
+					"'NN_MAX_SOCKETS=512'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/liwei/github/uv_demo/nanomsg/build/MinSizeRel;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/nanomsg/build/MinSizeRel/libnanomsg.5.1.0.dylib,
+					"-lpthread",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = nanocat;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		4AA9ADAFCB73422D8059EC0E /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		500FD12294994D8E94390331 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = dist;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		6A8C8FD1350047E489C8FB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/liwei/github/uv_demo/nanomsg/build/Release;
+				DYLIB_COMPATIBILITY_VERSION = 5.0.0;
+				DYLIB_CURRENT_VERSION = 5.1.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					nanomsg_EXPORTS,
+					NN_HAVE_OSX,
+					_GNU_SOURCE,
+					_REENTRANT,
+					_THREAD_SAFE,
+					_POSIX_PTHREAD_SEMANTICS,
+					"'NN_HAVE_SOCKETPAIR=1'",
+					"'NN_HAVE_PIPE=1'",
+					"'NN_HAVE_KQUEUE=1'",
+					"'NN_HAVE_POLL=1'",
+					"'NN_HAVE_SEMAPHORE_PTHREAD=1'",
+					"'NN_HAVE_CLOCK_MONOTONIC=1'",
+					"'NN_HAVE_UNIX_SOCKETS=1'",
+					"'NN_HAVE_BACKTRACE=1'",
+					"'NN_HAVE_MSG_CONTROL=1'",
+					NN_HAVE_GCC_ATOMIC_BUILTINS,
+					"'NN_MAX_SOCKETS=512'",
+					NN_USE_KQUEUE,
+					NN_USE_PIPE,
+					NN_SHARED_LIB,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-DNDEBUG",
+					"-fPIC",
+				);
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-Wl,-headerpad_max_install_names",
+					"-install_name",
+					"@rpath/libnanomsg.5.dylib",
+					"-lpthread",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = nanomsg.5.1.0;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		7118EA71D47947328C52B4B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		71D113DA53E246418FB694B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		7623811E9E6A4E51A25065D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build/build;
+			};
+			name = Debug;
+		};
+		82EEF7E8DF864BE1B119FB4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		9123ED36CCB7404FA45A79FC /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		92BD3F665C6F4984A4625D6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/liwei/github/uv_demo/nanomsg/build/Debug;
+				DYLIB_COMPATIBILITY_VERSION = 5.0.0;
+				DYLIB_CURRENT_VERSION = 5.1.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					nanomsg_EXPORTS,
+					NN_HAVE_OSX,
+					_GNU_SOURCE,
+					_REENTRANT,
+					_THREAD_SAFE,
+					_POSIX_PTHREAD_SEMANTICS,
+					"'NN_HAVE_SOCKETPAIR=1'",
+					"'NN_HAVE_PIPE=1'",
+					"'NN_HAVE_KQUEUE=1'",
+					"'NN_HAVE_POLL=1'",
+					"'NN_HAVE_SEMAPHORE_PTHREAD=1'",
+					"'NN_HAVE_CLOCK_MONOTONIC=1'",
+					"'NN_HAVE_UNIX_SOCKETS=1'",
+					"'NN_HAVE_BACKTRACE=1'",
+					"'NN_HAVE_MSG_CONTROL=1'",
+					NN_HAVE_GCC_ATOMIC_BUILTINS,
+					"'NN_MAX_SOCKETS=512'",
+					NN_USE_KQUEUE,
+					NN_USE_PIPE,
+					NN_SHARED_LIB,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-fPIC",
+				);
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-Wl,-headerpad_max_install_names",
+					"-install_name",
+					"@rpath/libnanomsg.5.dylib",
+					"-lpthread",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = nanomsg.5.1.0;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		9A38E28E96674ACAA8C0217F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		9A7E2B5CFF144710A389D6AF /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = dist;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		9EA07ED358B047A9AB7D8DBD /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/liwei/github/uv_demo/nanomsg/build/MinSizeRel;
+				DYLIB_COMPATIBILITY_VERSION = 5.0.0;
+				DYLIB_CURRENT_VERSION = 5.1.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					nanomsg_EXPORTS,
+					NN_HAVE_OSX,
+					_GNU_SOURCE,
+					_REENTRANT,
+					_THREAD_SAFE,
+					_POSIX_PTHREAD_SEMANTICS,
+					"'NN_HAVE_SOCKETPAIR=1'",
+					"'NN_HAVE_PIPE=1'",
+					"'NN_HAVE_KQUEUE=1'",
+					"'NN_HAVE_POLL=1'",
+					"'NN_HAVE_SEMAPHORE_PTHREAD=1'",
+					"'NN_HAVE_CLOCK_MONOTONIC=1'",
+					"'NN_HAVE_UNIX_SOCKETS=1'",
+					"'NN_HAVE_BACKTRACE=1'",
+					"'NN_HAVE_MSG_CONTROL=1'",
+					NN_HAVE_GCC_ATOMIC_BUILTINS,
+					"'NN_MAX_SOCKETS=512'",
+					NN_USE_KQUEUE,
+					NN_USE_PIPE,
+					NN_SHARED_LIB,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-DNDEBUG",
+					"-fPIC",
+				);
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-Wl,-headerpad_max_install_names",
+					"-install_name",
+					"@rpath/libnanomsg.5.dylib",
+					"-lpthread",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = nanomsg.5.1.0;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		B2307A43EF2B4F828EF354B0 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					NN_HAVE_OSX,
+					_GNU_SOURCE,
+					_REENTRANT,
+					_THREAD_SAFE,
+					_POSIX_PTHREAD_SEMANTICS,
+					"'NN_HAVE_SOCKETPAIR=1'",
+					"'NN_HAVE_PIPE=1'",
+					"'NN_HAVE_KQUEUE=1'",
+					"'NN_HAVE_POLL=1'",
+					"'NN_HAVE_SEMAPHORE_PTHREAD=1'",
+					"'NN_HAVE_CLOCK_MONOTONIC=1'",
+					"'NN_HAVE_UNIX_SOCKETS=1'",
+					"'NN_HAVE_BACKTRACE=1'",
+					"'NN_HAVE_MSG_CONTROL=1'",
+					NN_HAVE_GCC_ATOMIC_BUILTINS,
+					"'NN_MAX_SOCKETS=512'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/liwei/github/uv_demo/nanomsg/build/RelWithDebInfo;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/nanomsg/build/RelWithDebInfo/libnanomsg.5.1.0.dylib,
+					"-lpthread",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = nanocat;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		BF1FC65F6D574E348ED84618 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/liwei/github/uv_demo/nanomsg/build/RelWithDebInfo;
+				DYLIB_COMPATIBILITY_VERSION = 5.0.0;
+				DYLIB_CURRENT_VERSION = 5.1.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					nanomsg_EXPORTS,
+					NN_HAVE_OSX,
+					_GNU_SOURCE,
+					_REENTRANT,
+					_THREAD_SAFE,
+					_POSIX_PTHREAD_SEMANTICS,
+					"'NN_HAVE_SOCKETPAIR=1'",
+					"'NN_HAVE_PIPE=1'",
+					"'NN_HAVE_KQUEUE=1'",
+					"'NN_HAVE_POLL=1'",
+					"'NN_HAVE_SEMAPHORE_PTHREAD=1'",
+					"'NN_HAVE_CLOCK_MONOTONIC=1'",
+					"'NN_HAVE_UNIX_SOCKETS=1'",
+					"'NN_HAVE_BACKTRACE=1'",
+					"'NN_HAVE_MSG_CONTROL=1'",
+					NN_HAVE_GCC_ATOMIC_BUILTINS,
+					"'NN_MAX_SOCKETS=512'",
+					NN_USE_KQUEUE,
+					NN_USE_PIPE,
+					NN_SHARED_LIB,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-DNDEBUG",
+					"-fPIC",
+				);
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-Wl,-headerpad_max_install_names",
+					"-install_name",
+					"@rpath/libnanomsg.5.dylib",
+					"-lpthread",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = nanomsg.5.1.0;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		C37F3F4601174238A66EC391 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		C5246906BD4345CE96FBFB33 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		CE69464547694BA4939CD6F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		D905C64A903F44A8A05DEEBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					NN_HAVE_OSX,
+					_GNU_SOURCE,
+					_REENTRANT,
+					_THREAD_SAFE,
+					_POSIX_PTHREAD_SEMANTICS,
+					"'NN_HAVE_SOCKETPAIR=1'",
+					"'NN_HAVE_PIPE=1'",
+					"'NN_HAVE_KQUEUE=1'",
+					"'NN_HAVE_POLL=1'",
+					"'NN_HAVE_SEMAPHORE_PTHREAD=1'",
+					"'NN_HAVE_CLOCK_MONOTONIC=1'",
+					"'NN_HAVE_UNIX_SOCKETS=1'",
+					"'NN_HAVE_BACKTRACE=1'",
+					"'NN_HAVE_MSG_CONTROL=1'",
+					NN_HAVE_GCC_ATOMIC_BUILTINS,
+					"'NN_MAX_SOCKETS=512'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/liwei/github/uv_demo/nanomsg/build/Debug;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/nanomsg/build/Debug/libnanomsg.5.1.0.dylib,
+					"-lpthread",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = nanocat;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		E02F0B5782A8426FAFCE1CB5 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		E1A77CA58E6F4662880EB8C2 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build/build;
+			};
+			name = MinSizeRel;
+		};
+		FA3DFDC9BE2146DB8951BEC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build/build;
+			};
+			name = Release;
+		};
+		FEE81B47889A4DE2973C3583 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/nanomsg/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1CC27ABDE08D41A695DFE514 /* Build configuration list for PBXAggregateTarget "package" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0534D0EDA2574827A9F9D00C /* Debug */,
+				1474A23E1C20482880B2A530 /* Release */,
+				E02F0B5782A8426FAFCE1CB5 /* MinSizeRel */,
+				C5246906BD4345CE96FBFB33 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		69EBD9C2DA6443B6A64DD19C /* Build configuration list for PBXAggregateTarget "dist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EEA7A87976347A8BE4CDEEB /* Debug */,
+				139315F732D24767A8072D76 /* Release */,
+				500FD12294994D8E94390331 /* MinSizeRel */,
+				9A7E2B5CFF144710A389D6AF /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		89A49F369B764903A717A705 /* Build configuration list for PBXProject "nanomsg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7623811E9E6A4E51A25065D1 /* Debug */,
+				FA3DFDC9BE2146DB8951BEC0 /* Release */,
+				E1A77CA58E6F4662880EB8C2 /* MinSizeRel */,
+				3016A03BA28742A4B1FD3C74 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A32E23F2CDB14FEBAB9CB7EF /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C37F3F4601174238A66EC391 /* Debug */,
+				82EEF7E8DF864BE1B119FB4F /* Release */,
+				9123ED36CCB7404FA45A79FC /* MinSizeRel */,
+				FEE81B47889A4DE2973C3583 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AFCE06597B604333A7D52AC6 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7118EA71D47947328C52B4B7 /* Debug */,
+				71D113DA53E246418FB694B5 /* Release */,
+				4AA9ADAFCB73422D8059EC0E /* MinSizeRel */,
+				28DF56F5B77C401383A76A86 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B2EC0BB078234E7D9669ABAF /* Build configuration list for PBXNativeTarget "nanomsg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92BD3F665C6F4984A4625D6D /* Debug */,
+				6A8C8FD1350047E489C8FB54 /* Release */,
+				9EA07ED358B047A9AB7D8DBD /* MinSizeRel */,
+				BF1FC65F6D574E348ED84618 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D9A32BA2207349DF97CAE735 /* Build configuration list for PBXAggregateTarget "install" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE69464547694BA4939CD6F8 /* Debug */,
+				9A38E28E96674ACAA8C0217F /* Release */,
+				34AB7771221C4E658F221C28 /* MinSizeRel */,
+				1BA91F2BA90B45E3A3C6F37D /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E379E9D998B1437398B7E610 /* Build configuration list for PBXNativeTarget "nanocat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D905C64A903F44A8A05DEEBF /* Debug */,
+				2EFFA9EDA2BD4070BF511B4B /* Release */,
+				47F77B49642B443DA51E0F1E /* MinSizeRel */,
+				B2307A43EF2B4F828EF354B0 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 33B7BE7E8D6C46ED85B22D72 /* Project object */;
+}

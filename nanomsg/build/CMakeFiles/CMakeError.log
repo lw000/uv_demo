@@ -1,0 +1,378 @@
+Determining if the function gethrtime exists failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_80ebc" "-configuration" "Debug"
+=== BUILD TARGET cmTC_80ebc OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/Objects-normal/x86_64/cmTC_80ebc.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=gethrtime -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_80ebc normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/Objects-normal/x86_64/cmTC_80ebc.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/Objects-normal/x86_64/cmTC_80ebc_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_80ebc.build/Objects-normal/x86_64/cmTC_80ebc_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_80ebc
+Undefined symbols for architecture x86_64:
+  "_gethrtime", referenced from:
+      _main in CheckFunctionExists.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_80ebc normal x86_64
+(1 failure)
+
+
+Determining if the function eventfd exists failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_7fd6d" "-configuration" "Debug"
+=== BUILD TARGET cmTC_7fd6d OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/Objects-normal/x86_64/cmTC_7fd6d.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=eventfd -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_7fd6d normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/Objects-normal/x86_64/cmTC_7fd6d.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/Objects-normal/x86_64/cmTC_7fd6d_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_7fd6d.build/Objects-normal/x86_64/cmTC_7fd6d_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_7fd6d
+Undefined symbols for architecture x86_64:
+  "_eventfd", referenced from:
+      _main in CheckFunctionExists.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_7fd6d normal x86_64
+(1 failure)
+
+
+Determining if the function pipe2 exists failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_dd3f8" "-configuration" "Debug"
+=== BUILD TARGET cmTC_dd3f8 OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/Objects-normal/x86_64/cmTC_dd3f8.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=pipe2 -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_dd3f8 normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/Objects-normal/x86_64/cmTC_dd3f8.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/Objects-normal/x86_64/cmTC_dd3f8_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_dd3f8.build/Objects-normal/x86_64/cmTC_dd3f8_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_dd3f8
+Undefined symbols for architecture x86_64:
+  "_pipe2", referenced from:
+      _main in CheckFunctionExists.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_dd3f8 normal x86_64
+(1 failure)
+
+
+Determining if the function accept4 exists failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_db8d5" "-configuration" "Debug"
+=== BUILD TARGET cmTC_db8d5 OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/Objects-normal/x86_64/cmTC_db8d5.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=accept4 -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_db8d5 normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/Objects-normal/x86_64/cmTC_db8d5.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/Objects-normal/x86_64/cmTC_db8d5_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_db8d5.build/Objects-normal/x86_64/cmTC_db8d5_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_db8d5
+Undefined symbols for architecture x86_64:
+  "_accept4", referenced from:
+      _main in CheckFunctionExists.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_db8d5 normal x86_64
+(1 failure)
+
+
+Determining if the function epoll_create exists failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_9b13b" "-configuration" "Debug"
+=== BUILD TARGET cmTC_9b13b OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/Objects-normal/x86_64/cmTC_9b13b.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=epoll_create -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_9b13b normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/Objects-normal/x86_64/cmTC_9b13b.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/Objects-normal/x86_64/cmTC_9b13b_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_9b13b.build/Objects-normal/x86_64/cmTC_9b13b_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_9b13b
+Undefined symbols for architecture x86_64:
+  "_epoll_create", referenced from:
+      _main in CheckFunctionExists.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_9b13b normal x86_64
+(1 failure)
+
+
+Determining if the function getaddrinfo_a exists in the anl failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_0eee4" "-configuration" "Debug"
+=== BUILD TARGET cmTC_0eee4 OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/Objects-normal/x86_64/cmTC_0eee4.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=getaddrinfo_a -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_0eee4 normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/Objects-normal/x86_64/cmTC_0eee4.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/Objects-normal/x86_64/cmTC_0eee4_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -lanl -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_0eee4.build/Objects-normal/x86_64/cmTC_0eee4_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_0eee4
+ld: library not found for -lanl
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_0eee4 normal x86_64
+(1 failure)
+
+
+Determining if the function clock_gettime exists in the rt failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_4ecc7" "-configuration" "Debug"
+=== BUILD TARGET cmTC_4ecc7 OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/Objects-normal/x86_64/cmTC_4ecc7.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=clock_gettime -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_4ecc7 normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/Objects-normal/x86_64/cmTC_4ecc7.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/Objects-normal/x86_64/cmTC_4ecc7_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -lrt -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_4ecc7.build/Objects-normal/x86_64/cmTC_4ecc7_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_4ecc7
+ld: library not found for -lrt
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_4ecc7 normal x86_64
+(1 failure)
+
+
+Determining if the function sem_wait exists in the rt failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_1ce66" "-configuration" "Debug"
+=== BUILD TARGET cmTC_1ce66 OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/Objects-normal/x86_64/cmTC_1ce66.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=sem_wait -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_1ce66 normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/Objects-normal/x86_64/cmTC_1ce66.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/Objects-normal/x86_64/cmTC_1ce66_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -lrt -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_1ce66.build/Objects-normal/x86_64/cmTC_1ce66_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_1ce66
+ld: library not found for -lrt
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_1ce66 normal x86_64
+(1 failure)
+
+
+Determining if the function gethostbyname exists in the nsl failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_63a9d" "-configuration" "Debug"
+=== BUILD TARGET cmTC_63a9d OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/Objects-normal/x86_64/cmTC_63a9d.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=gethostbyname -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_63a9d normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/Objects-normal/x86_64/cmTC_63a9d.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/Objects-normal/x86_64/cmTC_63a9d_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -lnsl -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_63a9d.build/Objects-normal/x86_64/cmTC_63a9d_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_63a9d
+ld: library not found for -lnsl
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_63a9d normal x86_64
+(1 failure)
+
+
+Determining if the function socket exists in the socket failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_85398" "-configuration" "Debug"
+=== BUILD TARGET cmTC_85398 OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/Objects-normal/x86_64/cmTC_85398.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/Objects-normal/x86_64/CheckFunctionExists.o /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -DCHECK_FUNCTION_EXISTS=socket -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/Objects-normal/x86_64/CheckFunctionExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/Objects-normal/x86_64/CheckFunctionExists.dia -c /Applications/CMake.app/Contents/share/cmake-3.12/Modules/CheckFunctionExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/Objects-normal/x86_64/CheckFunctionExists.o
+
+Ld Debug/cmTC_85398 normal x86_64
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export MACOSX_DEPLOYMENT_TARGET=10.13
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -L/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -filelist /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/Objects-normal/x86_64/cmTC_85398.LinkFileList -mmacosx-version-min=10.13 -Xlinker -object_path_lto -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/Objects-normal/x86_64/cmTC_85398_lto.o -Xlinker -no_deduplicate -Wl,-search_paths_first -Wl,-headerpad_max_install_names -lsocket -Xlinker -dependency_info -Xlinker /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_85398.build/Objects-normal/x86_64/cmTC_85398_dependency_info.dat -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/cmTC_85398
+ld: library not found for -lsocket
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Ld Debug/cmTC_85398 normal x86_64
+(1 failure)
+
+
+Determining if the atomic_cas_32 exist failed with the following output:
+Change Dir: /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/xcodebuild" "-project" "CMAKE_TRY_COMPILE.xcodeproj" "build" "-target" "cmTC_d7c68" "-configuration" "Debug"
+=== BUILD TARGET cmTC_d7c68 OF PROJECT CMAKE_TRY_COMPILE WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+Write auxiliary files
+/bin/mkdir -p /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_d7c68.build/Objects-normal/x86_64
+write-file /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_d7c68.build/Objects-normal/x86_64/cmTC_d7c68.LinkFileList
+
+CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_d7c68.build/Objects-normal/x86_64/CheckSymbolExists.o CheckSymbolExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+    cd /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp
+    export LANG=en_US.US-ASCII
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.13 -g -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug/include -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_d7c68.build/DerivedSources/x86_64 -I/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_d7c68.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/Debug -Wall -Wextra -MMD -MT dependencies -MF /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_d7c68.build/Objects-normal/x86_64/CheckSymbolExists.d --serialize-diagnostics /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_d7c68.build/Objects-normal/x86_64/CheckSymbolExists.dia -c /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c -o /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CMAKE_TRY_COMPILE.build/Debug/cmTC_d7c68.build/Objects-normal/x86_64/CheckSymbolExists.o
+/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:2:10: fatal error: 'atomic.h' file not found
+#include <atomic.h>
+         ^~~~~~~~~~
+1 error generated.
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	CompileC CMAKE_TRY_COMPILE.build/Debug/cmTC_d7c68.build/Objects-normal/x86_64/CheckSymbolExists.o CheckSymbolExists.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
+(1 failure)
+
+File /Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <atomic.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef atomic_cas_32
+  return ((int*)(&atomic_cas_32))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

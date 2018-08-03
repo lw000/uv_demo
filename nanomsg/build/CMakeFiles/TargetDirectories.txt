@@ -1,0 +1,9 @@
+/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/install.dir
+/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/package.dir
+/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/dist.dir
+/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/nanocat.dir
+/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/ALL_BUILD.dir
+/Users/liwei/github/uv_demo/nanomsg/build/CMakeFiles/ZERO_CHECK.dir
+/Users/liwei/github/uv_demo/nanomsg/build/src/CMakeFiles/install.dir
+/Users/liwei/github/uv_demo/nanomsg/build/src/CMakeFiles/package.dir
+/Users/liwei/github/uv_demo/nanomsg/build/src/CMakeFiles/nanomsg.dir
