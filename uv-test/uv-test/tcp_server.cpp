@@ -29,19 +29,24 @@ static void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *b
 static void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf);
 static void echo_write(uv_write_t *req, int status);
 
-static void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata);
+static void parse_data_cb(NetPackage* msg, void* userdata);
 
-void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata) {
+void parse_data_cb(NetPackage* msg, void* userdata) {
     uv_stream_t *client = (uv_stream_t *)userdata;
+    
+    int main_cmd = msg->getHead()->main_cmd;
+    int assi_cmd = msg->getHead()->assi_cmd;
+    char* buf = msg->getBuf();
+    int size = msg->getSize();
     
     if (main_cmd == 100 && assi_cmd == 200) {
         reqest_a_data * request = (reqest_a_data*)(buf);
-        printf("main_id: %d, ass_id: %d, a: %d, b: %d\n", main_cmd, assi_cmd, request->a, request->b);
+        printf("main_id: %d, ass_id: %d, a: %d, b: %d\n", msg->getHead()->main_cmd, msg->getHead()->assi_cmd, request->a, request->b);
         
         reponse_a_data reponse;
         reponse.code = 0;
         reponse.c = request->a + request->b;
-        iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [buf, bufsize, client](NetPackage * msg) -> int {
+        iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [client](NetPackage * msg) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             uv_buf_t newbuf;
             newbuf.base = (char*)::malloc(msg->getSize());

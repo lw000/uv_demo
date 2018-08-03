@@ -45,7 +45,7 @@ namespace lw
 		static void timer_cb(uv_timer_t* handle);
 		static void close_cb(uv_handle_t* handle);
 		static void idle_cb(uv_idle_t* handle);
-        static void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata);
+        static void parse_data_cb(NetPackage* msg, void* userdata);
 	};
 
 	UVWrapper::UVWrapper(TCPServer* server) : server(server)
@@ -60,9 +60,9 @@ namespace lw
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     
-    void UVWrapper::parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata) {
+    void UVWrapper::parse_data_cb(NetPackage* msg, void* userdata) {
         SharedData * data = (SharedData*)userdata;
-        data->srv->onParse(main_cmd, assi_cmd, buf, bufsize, data->cli);
+        data->srv->onMessage(data->cli, msg);
     }
     
 	void UVWrapper::idle_cb(uv_idle_t* handle)
@@ -304,9 +304,9 @@ namespace lw
 		buf->len = 4096;
 	}
 
-	int TCPServer::sendData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* object, int objectSize)
+	int TCPServer::sendData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)
 	{
-        _ioBuffer.send(main_cmd, assi_cmd, object, objectSize, [this, cli](NetPackage* msg) -> int {
+        _ioBuffer.send(main_cmd, assi_cmd, buf, size, [this, cli](NetPackage* msg) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
             
@@ -341,9 +341,8 @@ namespace lw
         free(buf->base);
 	}
 
-    void TCPServer::onParse(int main_cmd, int assi_cmd, char* buf, int bufsize, uv_stream_t* client) {
-        NetPackage msg(main_cmd, assi_cmd, buf, bufsize);
-        this->onMessage(client, &msg);
+    void TCPServer::onParse(NetPackage* msg, uv_stream_t* client) {
+        
     }
     
 	void TCPServer::onAfterWrite(uv_write_t *req, int status)

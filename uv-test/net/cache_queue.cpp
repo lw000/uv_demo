@@ -28,6 +28,9 @@ void CacheQueue::pop(int size)
 	if (size > _cq.size()) return;
 		
 	std::vector<char>::iterator iter = _cq.erase(_cq.begin(), _cq.begin() + size);
+    if (iter != _cq.end()) {
+        
+    }
 }
 
 void CacheQueue::copyto(char* buffer, int size) {

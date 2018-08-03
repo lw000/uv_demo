@@ -54,7 +54,7 @@ namespace lw
         void asyncStart(const char* host, const char* port);
         
 	public:
-		int sendData(unsigned int main_cmd, unsigned int assi_cmd, void* object, int objectSize);
+		int sendData(unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size);
 
 	public:
 		virtual void onMessage(NetPackage* message) = 0;
@@ -66,7 +66,6 @@ namespace lw
 		void onWrite(uv_write_t *req, int status);
 		void onConnect(uv_stream_t* handle, int status);
 		void onResolved(int status, struct addrinfo *res);
-        void onParse(int main_cmd, int assi_cmd, char* buf, int bufsize);
 	};
 }
 

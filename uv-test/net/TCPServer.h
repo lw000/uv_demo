@@ -48,7 +48,7 @@ namespace lw
         void asyncStart(const char* host, const char* port);
         
 	public:
-		int sendData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* object, int objectSize);
+		int sendData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size);
 
 	public:
 		virtual void onMessage(uv_stream_t* client, NetPackage* message) = 0;
@@ -63,7 +63,7 @@ namespace lw
 		void onTimer();
 		void onClientClose(uv_handle_t* client);
 		void onIdle();
-        void onParse(int main_cmd, int assi_cmd, char* buf, int bufsize, uv_stream_t* client);
+        void onParse(NetPackage* msg, uv_stream_t* client);
         
     private:
         void extSrv();

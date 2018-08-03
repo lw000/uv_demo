@@ -30,10 +30,12 @@ static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
 static void write_cb(uv_write_t* req, int status);
 static void connect_cb(uv_connect_t* req, int status);
 
-static void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata);
+static void parse_data_cb(NetPackage* msg, void* userdata);
 
-void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata) {
-    printf("%s %d \n", buf, bufsize);
+void parse_data_cb(NetPackage* msg, void* userdata) {
+    char* buf = msg->getBuf();
+    int size = msg->getSize();
+    printf("%s %d \n", buf, size);
 }
 
 void alloc_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) {

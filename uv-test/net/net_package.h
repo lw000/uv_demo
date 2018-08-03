@@ -16,11 +16,11 @@ typedef struct _tagNetHead
 	friend std::ostream& operator<<(std::ostream & os, _tagNetHead & o);
 
 public:
-	int	            msg_size;			// 数据包大小
-	unsigned short  msg_v;	            // 通讯版本
-    int             msg_main_cmd;       // 指令
-    int             msg_assi_cmd;       // 指令
-	unsigned int    msg_ctime;	        // 发送时间
+	int	            size;			// 数据包大小
+	unsigned short  v;	            // 通讯版本
+    int             main_cmd;       // 指令
+    int             assi_cmd;       // 指令
+	unsigned int    ctime;	        // 发送时间
 
 public:
 	_tagNetHead();
@@ -38,15 +38,13 @@ public:
 	NetPackage();
 	NetPackage(const NetHead* head);
     NetPackage(int main_cmd, int assi_cmd, void* msg = nullptr, int size = 0);
-//    NetPackage(void* msg = nullptr, int size = 0);
     
 public:
 	~NetPackage();
 
 public:
-	void setMessage(char* msg, int size);
+//    void setMessage(char* msg, int size);
 	int setMessage(int main_cmd, int assi_cmd, void* msg, int size);
-//    int setMessage(void* msg, int size);
     
 public:
 	char* getBuf() const;

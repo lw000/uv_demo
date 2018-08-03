@@ -29,10 +29,10 @@ std::ostream& operator<<(std::ostream & os, _tagNetHead & o)
 
 _tagNetHead::_tagNetHead()
 {
-	this->msg_size = 0;			// 数据包大小
+	this->size = 0;			// 数据包大小
 //    this->msg_cmd = 0;          // 指令
-	this->msg_ctime = 0;		// 发送时间
-	this->msg_v = __make_package_version(1, 1);
+	this->ctime = 0;		// 发送时间
+	this->v = __make_package_version(1, 1);
 }
 
 std::string _tagNetHead::debug()
@@ -40,8 +40,8 @@ std::string _tagNetHead::debug()
 	char buf[512];
 	unsigned char v1;
 	unsigned char v2;
-	__package_version(this->msg_v, v1, v2);
-	sprintf(buf, "size:%d, time:%u, v:%d.%d", this->msg_size, this->msg_ctime, v1, v2);
+	__package_version(this->v, v1, v2);
+	sprintf(buf, "size:%d, time:%u, v:%d.%d", this->size, this->ctime, v1, v2);
 	return std::string(buf);
 }
 
@@ -91,15 +91,15 @@ NetPackage::~NetPackage()
 	}
 }
 
-void NetPackage::setMessage(char* msg, int size)
-{
-	if (msg == NULL) return;
-	if (size <= 0) return;
-
-	this->_size = size;
-	_buf = (char*)malloc(size * sizeof(char));
-	memcpy(this->_buf, msg, size);
-}
+//void NetPackage::setMessage(char* msg, int size)
+//{
+//    if (msg == NULL) return;
+//    if (size <= 0) return;
+//
+//    this->_size = size;
+//    _buf = (char*)malloc(size * sizeof(char));
+//    memcpy(this->_buf, msg, size);
+//}
 
 int NetPackage::setMessage(int main_cmd, int assi_cmd, void* msg, int size)
 {
@@ -107,15 +107,15 @@ int NetPackage::setMessage(int main_cmd, int assi_cmd, void* msg, int size)
 		return -1;
 	}
 
-	this->_head->msg_size = size + C_NETHEAD_SIZE;
-    this->_head->msg_main_cmd = main_cmd;
-    this->_head->msg_assi_cmd = assi_cmd;
-	this->_head->msg_ctime = (unsigned int)time(NULL);
-	this->_buf = (char*)malloc(this->_head->msg_size * sizeof(char));
+	this->_head->size = size + C_NETHEAD_SIZE;
+    this->_head->main_cmd = main_cmd;
+    this->_head->assi_cmd = assi_cmd;
+	this->_head->ctime = (unsigned int)time(NULL);
+	this->_buf = (char*)malloc(this->_head->size * sizeof(char));
 	
 	::memcpy(this->_buf, this->_head, C_NETHEAD_SIZE);
 	
-	this->_size = this->_head->msg_size;
+	this->_size = this->_head->size;
 
 	if ((NULL != msg) && (size > 0)) {
 		::memcpy(&this->_buf[C_NETHEAD_SIZE], (void*)msg, size);
@@ -123,27 +123,6 @@ int NetPackage::setMessage(int main_cmd, int assi_cmd, void* msg, int size)
 
 	return 0;
 }
-
-//int NetPackage::setMessage(void* msg, int size)
-//{
-//    if ((msg != NULL) && (size <= 0)) {
-//        return -1;
-//    }
-//
-//    this->_head->msg_size = size + C_NETHEAD_SIZE;
-//    this->_head->msg_ctime = (unsigned int)time(NULL);
-//    this->_buf = (char*)malloc(this->_head->msg_size * sizeof(char));
-//
-//    ::memcpy(this->_buf, this->_head, C_NETHEAD_SIZE);
-//
-//    this->_size = this->_head->msg_size;
-//
-//    if ((NULL != msg) && (size > 0)) {
-//        ::memcpy(&this->_buf[C_NETHEAD_SIZE], (void*)msg, size);
-//    }
-//
-//    return 0;
-//}
 
 std::string NetPackage::debug()
 {

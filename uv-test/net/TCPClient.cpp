@@ -26,13 +26,14 @@ namespace lw
 	static void _write_cb(uv_write_t *req, int status);
 	static void _connect_cb(uv_connect_t *req, int status);
 	static void _on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res);
-    static void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata);
+    static void parse_data_cb(NetPackage* msg, void* userdata);
     
 	///////////////////////////////////////////////////////////////////////////////////////////
 
-    static void parse_data_cb(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata) {
+    static void parse_data_cb(NetPackage* msg, void* userdata) {
         TCPClient * cli = (TCPClient*)userdata;
-        cli->onParse(main_cmd, assi_cmd, buf, bufsize);
+
+        cli->onMessage(msg);
     }
     
 	static void _on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res)
@@ -223,11 +224,6 @@ namespace lw
 
 	void TCPClient::onWrite(uv_write_t *req, int status)
 	{
-//        WriteData* writeData = (WriteData*)req->data;
-//        if (writeData != NULL) {
-//            delete writeData;
-//        }
-        
         if (req != NULL) {
             free(req);
         }
@@ -245,11 +241,6 @@ namespace lw
             
         }
 	}
-	
-    void TCPClient::onParse(int main_cmd, int assi_cmd, char* buf, int bufsize) {
-        NetPackage msg(main_cmd, assi_cmd, buf, bufsize);
-        this->onMessage(&msg);
-    }
     
 	void TCPClient::onConnect(uv_stream_t* handle, int status)
 	{
@@ -267,9 +258,9 @@ namespace lw
 		}
 	}
 	
-	int TCPClient::sendData(unsigned int main_cmd, unsigned int assi_cmd, void* object, int objectSize)
+	int TCPClient::sendData(unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)
 	{
-        _ioBuffer.send(main_cmd, assi_cmd, object, objectSize, [this](NetPackage* msg) -> int {
+        _ioBuffer.send(main_cmd, assi_cmd, buf, size, [this](NetPackage* msg) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
             

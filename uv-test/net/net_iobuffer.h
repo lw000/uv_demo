@@ -6,15 +6,7 @@
 #include "lock.h"
 #include "net_package.h"
 
-typedef void(*PARSE_DATA_CALLFUNC)(int main_cmd, int assi_cmd, char* buf, int bufsize, void* userdata);
-
-//struct NET_MESSAGE
-//{
-//    int main_cmd;
-//    int assi_cmd;
-//    char* buf;
-//    int size;
-//};
+typedef void(*PARSE_DATA_CALLFUNC)(NetPackage* msg, void* userdata);
 
 class NetIOBuffer
 {
@@ -23,7 +15,7 @@ public:
 	~NetIOBuffer();
 
 public:
-	int send(int main_cmd, int assi_cmd, void* object, int objectSize, std::function<int(NetPackage* p)> func);
+	int send(int main_cmd, int assi_cmd, void* buf, int size, std::function<int(NetPackage* p)> func);
     
 public:
 	int parse(const char * buf, int size, PARSE_DATA_CALLFUNC call, void* userdata);
@@ -33,7 +25,7 @@ private:
 	NetIOBuffer& operator=(const NetIOBuffer&);
 
 private:
-	CacheQueue	_cacheQueue;
+	CacheQueue	_cache;
 	lw_fast_mutex _rlock;
 };
 

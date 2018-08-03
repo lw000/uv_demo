@@ -50,7 +50,7 @@ public:
     
 public:
     virtual void onMessage(NetPackage* message) override {
-        if (message->getHead()->msg_main_cmd == 1000 && message->getHead()->msg_assi_cmd == 2000) {
+        if (message->getHead()->main_cmd == 1000 && message->getHead()->assi_cmd == 2000) {
             reponse_add_data* reponse = (reponse_add_data*)message;
             printf("code: %d, c: %d\n", reponse->code, reponse->c);
         }
@@ -99,8 +99,9 @@ public:
 public:
     virtual void onMessage(uv_stream_t* client, NetPackage* message) override {
         
-        if (message->getHead()->msg_main_cmd == 1000 && message->getHead()->msg_assi_cmd == 2000) {
+        if (message->getHead()->main_cmd == 1000 && message->getHead()->assi_cmd == 2000) {
             reqest_add_data* request = (reqest_add_data*)(message->getBuf());
+            
             printf("a: %d, b: %d\n", request->a, request->b);
             
             {
