@@ -49,10 +49,10 @@ public:
     };
     
 public:
-    virtual void onMessage(MSG* pack) override {
-        int main_cmd = pack->main_cmd;
-        int assi_cmd = pack->assi_cmd;
-        char* buf = pack->buf;
+    virtual void onMessage(MSG* msg) override {
+        int main_cmd = msg->main_cmd;
+        int assi_cmd = msg->assi_cmd;
+        char* buf = msg->buf;
         
         if (main_cmd == 1000 && assi_cmd == 2000) {
             reponse_add_data* reponse = reinterpret_cast<reponse_add_data*>(buf);
@@ -101,10 +101,10 @@ public:
     }
     
 public:
-    virtual void onMessage(uv_stream_t* cli, MSG* pack) override {
-        int main_cmd = pack->main_cmd;
-        int assi_cmd = pack->assi_cmd;
-        char* buf = pack->buf;
+    virtual void onMessage(uv_stream_t* cli, MSG* msg) override {
+        int main_cmd = msg->main_cmd;
+        int assi_cmd = msg->assi_cmd;
+        char* buf = msg->buf;
         
         if (main_cmd == 1000 && assi_cmd == 2000) {
             reqest_add_data* request = reinterpret_cast<reqest_add_data*>(buf);

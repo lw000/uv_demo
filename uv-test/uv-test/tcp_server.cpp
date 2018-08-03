@@ -28,13 +28,13 @@ static void on_new_connection(uv_stream_t *server, int status);
 static void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
 static void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf);
 static void echo_write(uv_write_t *req, int status);
-static void parse_data_cb(NetPackage* pack, void* userdata);
+static void parse_data_cb(MSG* msg, void* userdata);
 
-void parse_data_cb(MSG* pack, void* userdata) {
+void parse_data_cb(MSG* msg, void* userdata) {
 
-    int main_cmd = pack->main_cmd;
-    int assi_cmd = pack->assi_cmd;
-    char* buf = pack->buf;
+    int main_cmd = msg->main_cmd;
+    int assi_cmd = msg->assi_cmd;
+    char* buf = msg->buf;
     
     if (main_cmd == 100 && assi_cmd == 200) {
         

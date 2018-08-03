@@ -29,13 +29,13 @@ static void alloc_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf);
 static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
 static void write_cb(uv_write_t* req, int status);
 static void connect_cb(uv_connect_t* req, int status);
-
 static void parse_data_cb(MSG* pack, void* userdata);
 
-void parse_data_cb(MSG* pack, void* userdata) {
-    int main_cmd = pack->main_cmd;
-    int assi_cmd = pack->assi_cmd;
-    char* buf = pack->buf;
+void parse_data_cb(MSG* msg, void* userdata) {
+    
+    int main_cmd = msg->main_cmd;
+    int assi_cmd = msg->assi_cmd;
+    char* buf = msg->buf;
     
     reponse_a_data * reponse = reinterpret_cast<reponse_a_data*>(buf);
     printf("main_id: %d, ass_id: %d, code: %d, c: %d\n", main_cmd, assi_cmd, reponse->code, reponse->c);
