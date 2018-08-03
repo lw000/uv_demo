@@ -310,15 +310,12 @@ namespace lw
 
 	int TCPServer::sendData(uv_tcp_t* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)
 	{
-        this->_ioBuffer.send(main_cmd, assi_cmd, buf, size, [this, cli](NetPackage* msg) -> int {
+        this->_ioBuffer.send(main_cmd, assi_cmd, buf, size, [this, cli](NetPackage* pack) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
 
-            uv_buf_t buf_t;
-            buf_t.base = (char*)::malloc(msg->getSize());
-            buf_t.len = msg->getSize();
-            memcpy(buf_t.base, msg->getBuf(), msg->getSize());
-            
+            uv_buf_t buf_t = uv_buf_init((char*)pack->getBuf(), pack->getSize());
+        
             int c = uv_write(req, (uv_stream_t*)cli, &buf_t, 1, UVWrapper::write_cb);
             if (c == 0) {
                 

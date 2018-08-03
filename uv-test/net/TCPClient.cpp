@@ -268,12 +268,9 @@ namespace lw
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
             
-            uv_buf_t buf_t;
-            buf_t.base = (char*)::malloc(pack->getSize());
-            buf_t.len = pack->getSize();
-            memcpy(buf_t.base, pack->getBuf(), pack->getSize());
-            
-            int c = uv_write(req, (uv_stream_s*)_cli, &buf_t, 1, _write_cb);
+            uv_buf_t buf_t = uv_buf_init((char*)pack->getBuf(), pack->getSize());
+        
+            int c = uv_write(req, (uv_stream_t*)_cli, &buf_t, 1, _write_cb);
             if (c == 0) {
                 
             } else {
