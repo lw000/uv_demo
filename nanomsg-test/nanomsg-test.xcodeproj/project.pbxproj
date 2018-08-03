@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D02FB53B21146D40007A30D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB53A21146D40007A30D9 /* main.cpp */; };
+		D02FB54921146E21007A30D9 /* libnanomsg.5.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB54821146E21007A30D9 /* libnanomsg.5.1.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		D02FB53721146D40007A30D9 /* nanomsg-test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "nanomsg-test"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02FB53A21146D40007A30D9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D02FB54821146E21007A30D9 /* libnanomsg.5.1.0.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libnanomsg.5.1.0.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02FB54921146E21007A30D9 /* libnanomsg.5.1.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +46,7 @@
 			children = (
 				D02FB53921146D40007A30D9 /* nanomsg-test */,
 				D02FB53821146D40007A30D9 /* Products */,
+				D02FB54721146E21007A30D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +64,14 @@
 				D02FB53A21146D40007A30D9 /* main.cpp */,
 			);
 			path = "nanomsg-test";
+			sourceTree = "<group>";
+		};
+		D02FB54721146E21007A30D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D02FB54821146E21007A30D9 /* libnanomsg.5.1.0.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,7 +251,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HZXUTMSZT;
+				HEADER_SEARCH_PATHS = ../nanomsg/src;
+				LIBRARY_SEARCH_PATHS = ../nanomsg/build/Debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -248,7 +263,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HZXUTMSZT;
+				HEADER_SEARCH_PATHS = ../nanomsg/src;
+				LIBRARY_SEARCH_PATHS = ../nanomsg/build/Debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
