@@ -133,38 +133,42 @@ namespace lw
     
 	TCPServer::TCPServer(void)
 	{
-//        loop = uv_default_loop();
-        loop = uv_loop_new();
+//        this->_loop = uv_default_loop();
+        this->_loop = uv_loop_new();
 
-		uv_tcp_init(loop, &_tcp);
-		_tcp.data = this;
+		uv_tcp_init(this->_loop, &this->_tcp);
+		this->_tcp.data = this;
         
-        uv_mutex_init(&_mutex);
+        uv_mutex_init(&this->_mutex);
 	}
 
 	TCPServer::~TCPServer(void)
 	{
-		uv_mutex_destroy(&_mutex);
+		uv_mutex_destroy(&this->_mutex);
 
-		for (auto& c : _clients)
+		for (auto& c : this->_clients)
 		{
 			free(c.second);
 		}
 	}
 
+    uv_loop_t* TCPServer::getLoop() {
+        return this->_loop;
+    }
+    
     void TCPServer::extSrv() {
         {
-            int ret = uv_idle_init(loop, &_idle);
-            _idle.data = this;
-            ret = uv_idle_start(&_idle, UVWrapper::idle_cb);
+            int ret = uv_idle_init(this->_loop, &this->_idle);
+            this->_idle.data = this;
+            ret = uv_idle_start(&this->_idle, UVWrapper::idle_cb);
             if (ret) {
                 
             }
         }
         
         {
-            int ret = uv_timer_init(loop, &_timer);
-            _timer.data = this;
+            int ret = uv_timer_init(this->_loop, &this->_timer);
+            this->_timer.data = this;
             ret = uv_timer_start(&_timer, UVWrapper::timer_cb, 3000, 1);
             if (ret) {
                 
@@ -187,10 +191,10 @@ namespace lw
 
 		try
 		{
-			int ret = uv_getaddrinfo(loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
+			int ret = uv_getaddrinfo(this->_loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
 			if (0 == ret)
 			{
-				ret = uv_run(loop, UV_RUN_DEFAULT);
+				ret = uv_run(this->_loop, UV_RUN_DEFAULT);
 			}
 			else
 			{			
@@ -206,14 +210,14 @@ namespace lw
         
 		sockaddr_in addr;
 		int ret = uv_ip4_addr(ip, port, &addr);
-		ret = uv_tcp_bind(&_tcp, (const sockaddr*)&addr, 0);
-		ret = uv_listen((uv_stream_t*)&_tcp, 100, UVWrapper::connection_cb);
-		ret = uv_run(loop, UV_RUN_DEFAULT);
+		ret = uv_tcp_bind(&this->_tcp, (const sockaddr*)&addr, 0);
+		ret = uv_listen((uv_stream_t*)&this->_tcp, 100, UVWrapper::connection_cb);
+		ret = uv_run(this->_loop, UV_RUN_DEFAULT);
 	}
     
     static void entry(void *arg) {
         TCPServer* srv = (TCPServer*)arg;
-        int ret = uv_run(srv->loop, UV_RUN_DEFAULT);
+        int ret = uv_run(srv->getLoop(), UV_RUN_DEFAULT);
         if (ret == 0) {
             // .....
         } else {
@@ -227,8 +231,8 @@ namespace lw
         
         sockaddr_in addr;
         int ret = uv_ip4_addr(ip, port, &addr);
-        ret = uv_tcp_bind(&_tcp, (const sockaddr*)&addr, 0);
-        ret = uv_listen((uv_stream_t*)&_tcp, 100, UVWrapper::connection_cb);
+        ret = uv_tcp_bind(&this->_tcp, (const sockaddr*)&addr, 0);
+        ret = uv_listen((uv_stream_t*)&this->_tcp, 100, UVWrapper::connection_cb);
 
         uv_thread_t tid;
         uv_thread_create(&tid, entry, this);
@@ -249,7 +253,7 @@ namespace lw
         
         try
         {
-            int ret = uv_getaddrinfo(loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
+            int ret = uv_getaddrinfo(this->_loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
             if (0 == ret)
             {
                 uv_thread_t tid;
@@ -270,17 +274,17 @@ namespace lw
 
 	void TCPServer::onClientClose(uv_handle_t* client)
 	{
-		auto selector = _clients.find((uv_tcp_s*)client);
-		if (selector != _clients.end())
+		auto selector = this->_clients.find((uv_tcp_s*)client);
+		if (selector != this->_clients.end())
 		{
 			free(selector->second);
-			_clients.erase(selector);
+			this->_clients.erase(selector);
 		}
 	}
 
 	void TCPServer::onTimer()
 	{
-		for (auto c : _clients)
+		for (auto c : this->_clients)
 		{
 //            sendTCPData(c.second, mainid_net_connect, assid_net_test, 0, 0, nullptr, 0);
 		}
@@ -294,8 +298,8 @@ namespace lw
 
 		//ret = uv_timer_start(&_timer, _timer_cb, 3000, 1);
 
-		ret = uv_tcp_bind(&_tcp, (const sockaddr*)&addr, 1);
-		ret = uv_listen((uv_stream_t*)&_tcp, 5, UVWrapper::connection_cb);
+		ret = uv_tcp_bind(&this->_tcp, (const sockaddr*)&addr, 1);
+		ret = uv_listen((uv_stream_t*)&this->_tcp, 1024, UVWrapper::connection_cb);
 	}
 	
 	void TCPServer::onAllocBuffer(size_t suggested_size, uv_buf_t* buf)
@@ -304,9 +308,9 @@ namespace lw
 		buf->len = 4096;
 	}
 
-	int TCPServer::sendData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)
+	int TCPServer::sendData(uv_tcp_t* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)
 	{
-        _ioBuffer.send(main_cmd, assi_cmd, buf, size, [this, cli](NetPackage* msg) -> int {
+        this->_ioBuffer.send(main_cmd, assi_cmd, buf, size, [this, cli](NetPackage* msg) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
 
@@ -315,7 +319,7 @@ namespace lw
             buf_t.len = msg->getSize();
             memcpy(buf_t.base, msg->getBuf(), msg->getSize());
             
-            int c = uv_write(req, (uv_stream_s*)cli, &buf_t, 1, UVWrapper::write_cb);
+            int c = uv_write(req, (uv_stream_t*)cli, &buf_t, 1, UVWrapper::write_cb);
             if (c == 0) {
                 
             } else {
@@ -332,15 +336,11 @@ namespace lw
         SharedData shared_data;
         shared_data.srv = this;
         shared_data.cli = client;
-        _ioBuffer.parse(buf->base, nread, UVWrapper::parse_data_cb, &shared_data);
+        this->_ioBuffer.parse(buf->base, nread, UVWrapper::parse_data_cb, &shared_data);
         
         free(buf->base);
 	}
 
-    void TCPServer::onParse(NetPackage* msg, uv_stream_t* client) {
-        
-    }
-    
 	void TCPServer::onAfterWrite(uv_write_t *req, int status)
 	{
         if (req != NULL) {
@@ -353,12 +353,12 @@ namespace lw
 		if (0 == status)
 		{
 			uv_tcp_t *client = (uv_tcp_t*) malloc(sizeof(uv_tcp_t));
-			uv_tcp_init(loop, client);
+			uv_tcp_init(this->_loop, client);
 			client->data = this;
 
 			_clients.insert(std::make_pair(client, client));
 
-			if (uv_accept(server, (uv_stream_t*) client) == 0)
+			if (uv_accept(server, (uv_stream_t*)client) == 0)
 			{
                 {
                     sockaddr_in addr;
@@ -379,7 +379,7 @@ namespace lw
 			}
 			else 
 			{
-				uv_close((uv_handle_t*) client, UVWrapper::close_cb);
+				uv_close((uv_handle_t*)client, UVWrapper::close_cb);
 			}
 		}
 		else

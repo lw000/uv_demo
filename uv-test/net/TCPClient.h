@@ -43,7 +43,7 @@ namespace lw
         void setDelgate(Delegate* delgate);
         
     public:
-        uv_loop_t* getloop() { return _loop; }
+        uv_loop_t* getloop();
         
 	public:
 		void syncStart(const char* ip, unsigned int port);

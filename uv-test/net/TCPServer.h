@@ -18,27 +18,27 @@ namespace lw
 	class TCPServer
 	{	
 		friend UVWrapper;
-
-    public:
-        uv_loop_t * loop;
-        
-	private:
-		UVWrapper* uvWrapper;
 	
 	private:
 		uv_timer_t _timer;
 		uv_tcp_t _tcp;	
 		uv_idle_t _idle;
 		uv_mutex_t _mutex;
+        
+    private:
 		std::unordered_map<uv_tcp_t *, uv_tcp_t *> _clients;
 
 	private:
+        uv_loop_t * _loop;
 		NetIOBuffer _ioBuffer;
 
 	public:
 		TCPServer(void);
 		virtual ~TCPServer(void);
 
+    public:
+        uv_loop_t* getLoop();
+        
 	public:
 		void syncStart(const char* ip, unsigned int port);
 		void syncStart(const char* host, const char* port);
@@ -48,7 +48,7 @@ namespace lw
         void asyncStart(const char* host, const char* port);
         
 	public:
-		int sendData(uv_tcp_s* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size);
+		int sendData(uv_tcp_t* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size);
 
 	public:
 		virtual void onMessage(uv_stream_t* client, NetPackage* message) = 0;

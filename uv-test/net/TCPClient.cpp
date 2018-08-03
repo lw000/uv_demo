@@ -112,6 +112,10 @@ namespace lw
         this->_delgate = delgate;
     }
     
+    uv_loop_t* TCPClient::getloop() {
+        return this->_loop;
+    }
+    
 	void TCPClient::syncStart(const char* host, const char* port)
 	{
         struct addrinfo hints;
@@ -125,10 +129,10 @@ namespace lw
         
 		try
 		{
-			int ret = uv_getaddrinfo(_loop, &resolver, _on_resolved, host, port, &hints);
+			int ret = uv_getaddrinfo(this->_loop, &resolver, _on_resolved, host, port, &hints);
 
 			if (0 == ret) {
-				ret = uv_run(_loop, UV_RUN_DEFAULT);
+				ret = uv_run(this->_loop, UV_RUN_DEFAULT);
 			}
 			else {
 				fprintf(stderr, "getaddrinfo call error %s\n", uv_err_name(ret));
@@ -144,9 +148,9 @@ namespace lw
 
 		sockaddr_in addr;
 		int ret = uv_ip4_addr(ip, port, &addr);
-		ret = uv_tcp_connect(connect_req, _cli, (const sockaddr*)&addr, _connect_cb);
+		ret = uv_tcp_connect(connect_req, this->_cli, (const sockaddr*)&addr, _connect_cb);
 		
-		ret = uv_run(_loop, UV_RUN_DEFAULT);
+		ret = uv_run(this->_loop, UV_RUN_DEFAULT);
 	}
 
     static void entry(void *arg) {
@@ -165,7 +169,7 @@ namespace lw
         
         sockaddr_in addr;
         int ret = uv_ip4_addr(ip, port, &addr);
-        ret = uv_tcp_connect(connect_req, _cli, (const sockaddr*)&addr, _connect_cb);
+        ret = uv_tcp_connect(connect_req, this->_cli, (const sockaddr*)&addr, _connect_cb);
         if (ret == 0) {
             uv_thread_t tid;
             uv_thread_create(&tid, entry, this);
@@ -184,7 +188,7 @@ namespace lw
         
         try
         {
-            int ret = uv_getaddrinfo(_loop, &resolver, _on_resolved, host, port, &hints);
+            int ret = uv_getaddrinfo(this->_loop, &resolver, _on_resolved, host, port, &hints);
             
             if (0 == ret) {
                 uv_thread_t tid;
@@ -236,7 +240,7 @@ namespace lw
 	
 		uv_connect_t* connect_req = (uv_connect_t*) malloc(sizeof(uv_connect_t));
 		connect_req->data = this;
-		int ret = uv_tcp_connect(connect_req, _cli, res->ai_addr, _connect_cb);
+		int ret = uv_tcp_connect(connect_req, this->_cli, res->ai_addr, _connect_cb);
         if (ret == 0) {
             
         }
