@@ -26,11 +26,11 @@ namespace lw
 	static void _write_cb(uv_write_t *req, int status);
 	static void _connect_cb(uv_connect_t *req, int status);
 	static void _on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res);
-    static void parse_data_cb(NetPackage* pack, void* userdata);
+    static void parse_data_cb(MSG* pack, void* userdata);
     
 	///////////////////////////////////////////////////////////////////////////////////////////
 
-    static void parse_data_cb(NetPackage* pack, void* userdata) {
+    static void parse_data_cb(MSG* pack, void* userdata) {
         TCPClient * cli = (TCPClient*)userdata;
 
         cli->onMessage(pack);
@@ -268,7 +268,7 @@ namespace lw
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
             
-            uv_buf_t buf_t = uv_buf_init((char*)pack->getBuf(), pack->getSize());
+            uv_buf_t buf_t = uv_buf_init(pack->getBuf(), pack->getSize());
         
             int c = uv_write(req, (uv_stream_t*)_cli, &buf_t, 1, _write_cb);
             if (c == 0) {

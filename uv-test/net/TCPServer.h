@@ -51,7 +51,7 @@ namespace lw
 		int sendData(uv_tcp_t* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size);
 
 	public:
-		virtual void onMessage(uv_stream_t* cli, NetPackage* pack) = 0;
+		virtual void onMessage(uv_stream_t* cli, MSG* pack) = 0;
         virtual void onStatus(int status) = 0;
         
 	private:
@@ -63,7 +63,6 @@ namespace lw
 		void onTimer();
 		void onClientClose(uv_handle_t* client);
 		void onIdle();
-        void onParse(NetPackage* msg, uv_stream_t* client);
         
     private:
         void extSrv();

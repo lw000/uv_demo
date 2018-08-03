@@ -45,7 +45,7 @@ namespace lw
 		static void timer_cb(uv_timer_t* handle);
 		static void close_cb(uv_handle_t* handle);
 		static void idle_cb(uv_idle_t* handle);
-        static void parse_data_cb(NetPackage* pack, void* userdata);
+        static void parse_data_cb(MSG* pack, void* userdata);
 	};
 
 	UVWrapper::UVWrapper(TCPServer* server) : server(server)
@@ -60,7 +60,7 @@ namespace lw
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     
-    void UVWrapper::parse_data_cb(NetPackage* pack, void* userdata) {
+    void UVWrapper::parse_data_cb(MSG* pack, void* userdata) {
         SharedData * data = (SharedData*)userdata;
         data->srv->onMessage(data->cli, pack);
     }
@@ -314,7 +314,7 @@ namespace lw
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
 
-            uv_buf_t buf_t = uv_buf_init((char*)pack->getBuf(), pack->getSize());
+            uv_buf_t buf_t = uv_buf_init(pack->getBuf(), pack->getSize());
         
             int c = uv_write(req, (uv_stream_t*)cli, &buf_t, 1, UVWrapper::write_cb);
             if (c == 0) {

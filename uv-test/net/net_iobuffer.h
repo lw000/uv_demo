@@ -6,7 +6,16 @@
 #include "lock.h"
 #include "net_package.h"
 
-typedef void(*PARSE_DATA_CALLFUNC)(NetPackage* pack, void* userdata);
+struct MSG;
+
+typedef void(*PARSE_DATA_CALLFUNC)(MSG* pack, void* userdata);
+
+struct MSG {
+    int main_cmd;
+    int assi_cmd;
+    char* buf;
+    int size;
+};
 
 class NetIOBuffer
 {

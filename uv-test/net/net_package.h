@@ -6,9 +6,6 @@
 #include <iostream>
 #include <string>
 
-static const int NET_HEART_BEAT_PING = -10000;
-static const int NET_HEART_BEAT_PONG = -10001;
-
 #pragma pack(1)
 
 typedef struct _tagNetHead
@@ -20,7 +17,7 @@ public:
     int             main_cmd;       // 指令
     int             assi_cmd;       // 指令
 	unsigned int    ctime;	        // 发送时间
-    unsigned short  v;                // 通讯版本
+    unsigned short  v;              // 通讯版本
 
 public:
 	_tagNetHead();

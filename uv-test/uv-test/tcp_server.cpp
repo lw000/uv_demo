@@ -21,38 +21,35 @@
 #define DEFAULT_PORT 7000
 #define DEFAULT_BACKLOG 128
 
-static uv_loop_t *uvloop;
+static uv_loop_t *loop;
 static NetIOBuffer iobuffer;
 
 static void on_new_connection(uv_stream_t *server, int status);
 static void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
 static void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf);
 static void echo_write(uv_write_t *req, int status);
+static void parse_data_cb(NetPackage* pack, void* userdata);
 
-static void parse_data_cb(NetPackage* msg, void* userdata);
+void parse_data_cb(MSG* pack, void* userdata) {
 
-void parse_data_cb(NetPackage* msg, void* userdata) {
-    uv_stream_t *client = (uv_stream_t *)userdata;
-    
-    int main_cmd = msg->getHead()->main_cmd;
-    int assi_cmd = msg->getHead()->assi_cmd;
-    char* buf = msg->getBuf();
-    int size = msg->getSize();
+    int main_cmd = pack->main_cmd;
+    int assi_cmd = pack->assi_cmd;
+    char* buf = pack->buf;
     
     if (main_cmd == 100 && assi_cmd == 200) {
-        reqest_a_data * request = (reqest_a_data*)(buf);
-        printf("main_id: %d, ass_id: %d, a: %d, b: %d\n", msg->getHead()->main_cmd, msg->getHead()->assi_cmd, request->a, request->b);
         
+        reqest_a_data * request = reinterpret_cast<reqest_a_data*>(buf);
+        printf("main_id: %d, ass_id: %d, a: %d, b: %d\n", main_cmd, assi_cmd, request->a, request->b);
+        
+        uv_stream_t *stream = reinterpret_cast<uv_stream_t*>(userdata);
+    
         reponse_a_data reponse;
         reponse.code = 0;
         reponse.c = request->a + request->b;
-        iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [client](NetPackage * msg) -> int {
+        iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [stream](NetPackage * pack) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            uv_buf_t newbuf;
-            newbuf.base = (char*)::malloc(msg->getSize());
-            newbuf.len = msg->getSize();
-            memcpy(newbuf.base, msg->getBuf(), msg->getSize());
-            int ret = uv_write(req, client, &newbuf, 1, echo_write);
+            uv_buf_t newbuf = uv_buf_init(pack->getBuf(), pack->getSize());
+            int ret = uv_write(req, stream, &newbuf, 1, echo_write);
             return ret;
         });
     }
@@ -98,7 +95,7 @@ void on_new_connection(uv_stream_t *server, int status) {
     }
     
     uv_tcp_t *client = (uv_tcp_t*) malloc(sizeof(uv_tcp_t));
-    uv_tcp_init(uvloop, client);
+    uv_tcp_init(loop, client);
     if (uv_accept(server, (uv_stream_t*) client) == 0) {
         uv_read_start((uv_stream_t*) client, alloc_buffer, echo_read);
     }
@@ -120,11 +117,11 @@ void timer_cb(uv_timer_t* handle) {
 
 int server_run(int argc, char** args)
 {
-//    uvloop = uv_default_loop();
-    uvloop = uv_loop_new();
+//    loop = uv_default_loop();
+    loop = uv_loop_new();
     
     uv_tcp_t server;
-    uv_tcp_init(uvloop, &server);
+    uv_tcp_init(loop, &server);
     
     struct sockaddr_in addr;
     uv_ip4_addr("0.0.0.0", DEFAULT_PORT, &addr);
@@ -147,5 +144,5 @@ int server_run(int argc, char** args)
 //    uv_timer_init(uvloop, &timer);
 //    uv_timer_start(&timer, timer_cb, 10000, 0);
     
-    return uv_run(uvloop, UV_RUN_DEFAULT);
+    return uv_run(loop, UV_RUN_DEFAULT);
 }

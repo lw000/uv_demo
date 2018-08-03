@@ -96,12 +96,11 @@ int NetPackage::setMessage(int main_cmd, int assi_cmd, void* buf, int size)
     this->_head->main_cmd = main_cmd;
     this->_head->assi_cmd = assi_cmd;
 	this->_head->ctime = (unsigned int)time(NULL);
-	this->_buf = (char*)malloc(this->_head->size * sizeof(char));
 	
+    this->_size = this->_head->size;
+    this->_buf = (char*)malloc(this->_head->size * sizeof(char));
 	::memcpy(this->_buf, this->_head, C_NETHEAD_SIZE);
 	
-	this->_size = this->_head->size;
-
 	if ((NULL != buf) && (size > 0)) {
 		::memcpy(&this->_buf[C_NETHEAD_SIZE], buf, size);
 	}

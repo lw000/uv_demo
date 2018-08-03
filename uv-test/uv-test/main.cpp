@@ -39,7 +39,7 @@ public:
         }
     
     public:
-        void onMessage(NetPackage* pack) override {
+        void onMessage(MSG* pack) override {
             
         }
         
@@ -49,13 +49,13 @@ public:
     };
     
 public:
-    virtual void onMessage(NetPackage* pack) override {
-        int main_cmd = pack->getHead()->main_cmd;
-        int assi_cmd = pack->getHead()->assi_cmd;
-        char* buf = pack->getBuf();
+    virtual void onMessage(MSG* pack) override {
+        int main_cmd = pack->main_cmd;
+        int assi_cmd = pack->assi_cmd;
+        char* buf = pack->buf;
         
         if (main_cmd == 1000 && assi_cmd == 2000) {
-            reponse_add_data* reponse = (reponse_add_data*)buf;
+            reponse_add_data* reponse = reinterpret_cast<reponse_add_data*>(buf);
             printf("recv code: %d, c: %d\n", reponse->code, reponse->c);
         }
     }
@@ -101,13 +101,13 @@ public:
     }
     
 public:
-    virtual void onMessage(uv_stream_t* cli, NetPackage* pack) override {
-        int main_cmd = pack->getHead()->main_cmd;
-        int assi_cmd = pack->getHead()->assi_cmd;
-        char* buf = pack->getBuf();
+    virtual void onMessage(uv_stream_t* cli, MSG* pack) override {
+        int main_cmd = pack->main_cmd;
+        int assi_cmd = pack->assi_cmd;
+        char* buf = pack->buf;
         
         if (main_cmd == 1000 && assi_cmd == 2000) {
-            reqest_add_data* request = (reqest_add_data*)(buf);
+            reqest_add_data* request = reinterpret_cast<reqest_add_data*>(buf);
             {
                 printf("recv a: %d, b: %d\n", request->a, request->b);
             }

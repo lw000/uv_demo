@@ -30,12 +30,15 @@ static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
 static void write_cb(uv_write_t* req, int status);
 static void connect_cb(uv_connect_t* req, int status);
 
-static void parse_data_cb(NetPackage* msg, void* userdata);
+static void parse_data_cb(MSG* pack, void* userdata);
 
-void parse_data_cb(NetPackage* msg, void* userdata) {
-    char* buf = msg->getBuf();
-    int size = msg->getSize();
-    printf("%s %d \n", buf, size);
+void parse_data_cb(MSG* pack, void* userdata) {
+    int main_cmd = pack->main_cmd;
+    int assi_cmd = pack->assi_cmd;
+    char* buf = pack->buf;
+    
+    reponse_a_data * reponse = reinterpret_cast<reponse_a_data*>(buf);
+    printf("main_id: %d, ass_id: %d, code: %d, c: %d\n", main_cmd, assi_cmd, reponse->code, reponse->c);
 }
 
 void alloc_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) {
@@ -67,15 +70,12 @@ void entry(void *arg) {
     int i = 1;
     while (i) {
         reqest_a_data data;
-        data.a = 1000;
-        data.b = 2000;
-        iobuffer.send(100, 200, (void*)&data, sizeof(data), [](NetPackage * msg) -> int {
+        data.a = 10;
+        data.b = 20;
+        iobuffer.send(100, 200, (void*)&data, sizeof(data), [](NetPackage * pack) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            uv_buf_t newbuf;
-            newbuf.base = (char*)::malloc(msg->getSize());
-            newbuf.len = msg->getSize();
-            memcpy(newbuf.base, msg->getBuf(), msg->getSize());
-            int ret = uv_write(req, (uv_stream_s*)&client, &newbuf, 1, write_cb);
+            uv_buf_t newbuf = uv_buf_init(pack->getBuf(), pack->getSize());
+            int ret = uv_write(req, (uv_stream_t*)&client, &newbuf, 1, write_cb);
             return ret;
         });
         sleep(1);

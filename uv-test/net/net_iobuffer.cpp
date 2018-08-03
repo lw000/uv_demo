@@ -70,18 +70,24 @@ int NetIOBuffer::parse(const char * buf, int size, PARSE_DATA_CALLFUNC func, voi
 				break;
 			}
 
-			NetPackage* nmsg = new NetPackage(nh);
-			if (nullptr != nmsg) {
+			NetPackage* pack = new NetPackage(nh);
+			if (nullptr != pack) {
                 char* buf = _cache.front();
                 char* tbuf = &buf[C_NETHEAD_SIZE];
                 int tbuf_len = nh->size - C_NETHEAD_SIZE;
-                nmsg->setMessage(nmsg->getHead()->main_cmd, nmsg->getHead()->assi_cmd, tbuf, tbuf_len);
                 
-                func(nmsg, userdata);
+                MSG msg;
+                msg.main_cmd = pack->getHead()->main_cmd;
+                msg.assi_cmd = pack->getHead()->assi_cmd;
+                msg.buf = tbuf;
+                msg.size = tbuf_len;
+                
+                func(&msg, userdata);
 			}
-			delete nmsg;
+			delete pack;
 
 			_cache.pop(nh->size);
+            
 			tmpCacheLength = (int)_cache.size();
 		} while (tmpCacheLength >= C_NETHEAD_SIZE);
 
