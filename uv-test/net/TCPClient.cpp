@@ -26,14 +26,14 @@ namespace lw
 	static void _write_cb(uv_write_t *req, int status);
 	static void _connect_cb(uv_connect_t *req, int status);
 	static void _on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res);
-    static void parse_data_cb(NetPackage* msg, void* userdata);
+    static void parse_data_cb(NetPackage* pack, void* userdata);
     
 	///////////////////////////////////////////////////////////////////////////////////////////
 
-    static void parse_data_cb(NetPackage* msg, void* userdata) {
+    static void parse_data_cb(NetPackage* pack, void* userdata) {
         TCPClient * cli = (TCPClient*)userdata;
 
-        cli->onMessage(msg);
+        cli->onMessage(pack);
     }
     
 	static void _on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res)
@@ -264,14 +264,14 @@ namespace lw
 	
 	int TCPClient::sendData(unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)
 	{
-        _ioBuffer.send(main_cmd, assi_cmd, buf, size, [this](NetPackage* msg) -> int {
+        _ioBuffer.send(main_cmd, assi_cmd, buf, size, [this](NetPackage* pack) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
             
             uv_buf_t buf_t;
-            buf_t.base = (char*)::malloc(msg->getSize());
-            buf_t.len = msg->getSize();
-            memcpy(buf_t.base, msg->getBuf(), msg->getSize());
+            buf_t.base = (char*)::malloc(pack->getSize());
+            buf_t.len = pack->getSize();
+            memcpy(buf_t.base, pack->getBuf(), pack->getSize());
             
             int c = uv_write(req, (uv_stream_s*)_cli, &buf_t, 1, _write_cb);
             if (c == 0) {

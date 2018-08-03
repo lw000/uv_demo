@@ -18,7 +18,7 @@ namespace lw
             virtual ~Delegate() {}
             
         public:
-            virtual void onMessage(NetPackage* msg) = 0;
+            virtual void onMessage(NetPackage* pack) = 0;
             virtual void onStatus(int status) = 0;
         };
         
@@ -57,7 +57,7 @@ namespace lw
 		int sendData(unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size);
 
 	public:
-		virtual void onMessage(NetPackage* message) = 0;
+		virtual void onMessage(NetPackage* pack) = 0;
         virtual void onStatus(int status) = 0;
         
 	public:

@@ -6,7 +6,7 @@
 #include "lock.h"
 #include "net_package.h"
 
-typedef void(*PARSE_DATA_CALLFUNC)(NetPackage* msg, void* userdata);
+typedef void(*PARSE_DATA_CALLFUNC)(NetPackage* pack, void* userdata);
 
 class NetIOBuffer
 {
@@ -18,7 +18,7 @@ public:
 	int send(int main_cmd, int assi_cmd, void* buf, int size, std::function<int(NetPackage* p)> func);
     
 public:
-	int parse(const char * buf, int size, PARSE_DATA_CALLFUNC call, void* userdata);
+	int parse(const char * buf, int size, PARSE_DATA_CALLFUNC func, void* userdata);
 	
 private:
 	NetIOBuffer(const NetIOBuffer&);

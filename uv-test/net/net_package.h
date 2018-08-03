@@ -17,10 +17,10 @@ typedef struct _tagNetHead
 
 public:
 	int	            size;			// 数据包大小
-	unsigned short  v;	            // 通讯版本
     int             main_cmd;       // 指令
     int             assi_cmd;       // 指令
 	unsigned int    ctime;	        // 发送时间
+    unsigned short  v;                // 通讯版本
 
 public:
 	_tagNetHead();
@@ -37,13 +37,12 @@ class NetPackage
 public:
 	NetPackage();
 	NetPackage(const NetHead* head);
-    NetPackage(int main_cmd, int assi_cmd, void* msg = nullptr, int size = 0);
+    NetPackage(int main_cmd, int assi_cmd, void* buf, int size);
     
 public:
 	~NetPackage();
 
 public:
-//    void setMessage(char* msg, int size);
 	int setMessage(int main_cmd, int assi_cmd, void* msg, int size);
     
 public:

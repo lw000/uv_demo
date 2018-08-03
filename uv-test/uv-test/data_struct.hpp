@@ -9,8 +9,6 @@
 #ifndef data_struct_hpp
 #define data_struct_hpp
 
-#include <stdio.h>
-
 #pragma pack(1)
 
 struct reqest_a_data {

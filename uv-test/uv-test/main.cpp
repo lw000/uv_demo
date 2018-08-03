@@ -39,7 +39,7 @@ public:
         }
     
     public:
-        void onMessage(NetPackage* msg) override {
+        void onMessage(NetPackage* pack) override {
             
         }
         
@@ -49,10 +49,14 @@ public:
     };
     
 public:
-    virtual void onMessage(NetPackage* message) override {
-        if (message->getHead()->main_cmd == 1000 && message->getHead()->assi_cmd == 2000) {
-            reponse_add_data* reponse = (reponse_add_data*)message;
-            printf("code: %d, c: %d\n", reponse->code, reponse->c);
+    virtual void onMessage(NetPackage* pack) override {
+        int main_cmd = pack->getHead()->main_cmd;
+        int assi_cmd = pack->getHead()->assi_cmd;
+        char* buf = pack->getBuf();
+        
+        if (main_cmd == 1000 && assi_cmd == 2000) {
+            reponse_add_data* reponse = (reponse_add_data*)buf;
+            printf("recv code: %d, c: %d\n", reponse->code, reponse->c);
         }
     }
     
@@ -97,18 +101,22 @@ public:
     }
     
 public:
-    virtual void onMessage(uv_stream_t* client, NetPackage* message) override {
+    virtual void onMessage(uv_stream_t* cli, NetPackage* pack) override {
+        int main_cmd = pack->getHead()->main_cmd;
+        int assi_cmd = pack->getHead()->assi_cmd;
+        char* buf = pack->getBuf();
         
-        if (message->getHead()->main_cmd == 1000 && message->getHead()->assi_cmd == 2000) {
-            reqest_add_data* request = (reqest_add_data*)(message->getBuf());
-            
-            printf("a: %d, b: %d\n", request->a, request->b);
+        if (main_cmd == 1000 && assi_cmd == 2000) {
+            reqest_add_data* request = (reqest_add_data*)(buf);
+            {
+                printf("recv a: %d, b: %d\n", request->a, request->b);
+            }
             
             {
                 reponse_add_data reponse;
                 reponse.c = request->a + request->b;
                 reponse.code = 0;
-                this->sendData((uv_tcp_s*)client, 1000, 2000, &reponse, sizeof(reponse));
+                this->sendData((uv_tcp_t*)cli, 1000, 2000, &reponse, sizeof(reponse));
             }
         }
     }

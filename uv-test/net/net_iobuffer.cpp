@@ -26,7 +26,7 @@ int NetIOBuffer::send(int main_cmd, int assi_cmd, void* buf, int size, std::func
 	return c;
 }
 
-int NetIOBuffer::parse(const char * buf, int size, PARSE_DATA_CALLFUNC call, void* userdata)
+int NetIOBuffer::parse(const char * buf, int size, PARSE_DATA_CALLFUNC func, void* userdata)
 {
 	assert(size > 0);
     
@@ -41,9 +41,9 @@ int NetIOBuffer::parse(const char * buf, int size, PARSE_DATA_CALLFUNC call, voi
 		return -1;
 	}
 
-	assert(NULL != call);
-	if (NULL == call) {
-		LOGFMTD("callback is null.");
+	assert(NULL != func);
+	if (NULL == func) {
+		LOGFMTD("func is null.");
 		return -2;
 	}
 
@@ -72,13 +72,12 @@ int NetIOBuffer::parse(const char * buf, int size, PARSE_DATA_CALLFUNC call, voi
 
 			NetPackage* nmsg = new NetPackage(nh);
 			if (nullptr != nmsg) {
-//                char* buf = _cache.front();
-//                char* tbuf = &buf[C_NETHEAD_SIZE];
-//                int tbuf_len = nh->size - C_NETHEAD_SIZE;
-//                nmsg->setMessage(tbuf, tbuf_len);
-//                call(nmsg->getHead()->main_cmd, nmsg->getHead()->assi_cmd, nmsg->getBuf(), nmsg->getSize(), userdata);
+                char* buf = _cache.front();
+                char* tbuf = &buf[C_NETHEAD_SIZE];
+                int tbuf_len = nh->size - C_NETHEAD_SIZE;
+                nmsg->setMessage(nmsg->getHead()->main_cmd, nmsg->getHead()->assi_cmd, tbuf, tbuf_len);
                 
-                call(nmsg, userdata);
+                func(nmsg, userdata);
 			}
 			delete nmsg;
 

@@ -29,9 +29,10 @@ std::ostream& operator<<(std::ostream & os, _tagNetHead & o)
 
 _tagNetHead::_tagNetHead()
 {
-	this->size = 0;			// 数据包大小
-//    this->msg_cmd = 0;          // 指令
-	this->ctime = 0;		// 发送时间
+	this->size = -1;			// 数据包大小
+    this->main_cmd = -1;        //
+    this->assi_cmd = -1;        //
+	this->ctime = 0;		    // 发送时间
 	this->v = __make_package_version(1, 1);
 }
 
@@ -53,17 +54,11 @@ NetPackage::NetPackage() : _size(0), _buf(NULL)
 	this->_head = new NetHead;
 }
 
-NetPackage::NetPackage(int main_cmd, int assi_cmd, void* msg, int size) : _size(0), _buf(NULL)
+NetPackage::NetPackage(int main_cmd, int assi_cmd, void* buf, int size) : _size(0), _buf(NULL)
 {
     this->_head = new NetHead;
-    this->setMessage(main_cmd, assi_cmd, msg, size);
+    this->setMessage(main_cmd, assi_cmd, buf, size);
 }
-
-//NetPackage::NetPackage(void* msg, int size) : _size(0), _buf(NULL)
-//{
-//    this->_head = new NetHead;
-//    this->setMessage(msg, size);
-//}
 
 NetPackage::NetPackage(const NetHead* head) : _size(0), _buf(NULL)
 {
@@ -91,19 +86,9 @@ NetPackage::~NetPackage()
 	}
 }
 
-//void NetPackage::setMessage(char* msg, int size)
-//{
-//    if (msg == NULL) return;
-//    if (size <= 0) return;
-//
-//    this->_size = size;
-//    _buf = (char*)malloc(size * sizeof(char));
-//    memcpy(this->_buf, msg, size);
-//}
-
-int NetPackage::setMessage(int main_cmd, int assi_cmd, void* msg, int size)
+int NetPackage::setMessage(int main_cmd, int assi_cmd, void* buf, int size)
 {
-	if ((msg != NULL) && (size <= 0)) {
+	if ((buf != NULL) && (size <= 0)) {
 		return -1;
 	}
 
@@ -117,8 +102,8 @@ int NetPackage::setMessage(int main_cmd, int assi_cmd, void* msg, int size)
 	
 	this->_size = this->_head->size;
 
-	if ((NULL != msg) && (size > 0)) {
-		::memcpy(&this->_buf[C_NETHEAD_SIZE], (void*)msg, size);
+	if ((NULL != buf) && (size > 0)) {
+		::memcpy(&this->_buf[C_NETHEAD_SIZE], buf, size);
 	}
 
 	return 0;
@@ -127,7 +112,7 @@ int NetPackage::setMessage(int main_cmd, int assi_cmd, void* msg, int size)
 std::string NetPackage::debug()
 {
 	char buf[256];
-	sprintf(buf, "NetPackage:%s", this->_head->debug().c_str());
+	sprintf(buf, "NetPackage: %s", this->_head->debug().c_str());
 	return std::string(buf);
 }
 
