@@ -296,7 +296,7 @@ namespace lw
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
 
-            uv_buf_t buft = uv_buf_init(pkt->getBuf(), pkt->getSize());
+            uv_buf_t buft = uv_buf_init(pkt->Buffer(), pkt->BufferSize());
         
             int c = uv_write(req, (uv_stream_t*)cli, &buft, 1, UVWrapper::write_cb);
             if (c == 0) {

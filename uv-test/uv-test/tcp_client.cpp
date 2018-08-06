@@ -74,11 +74,12 @@ void entry(void *arg) {
         data.b = 20;
         iobuffer.send(100, 200, (void*)&data, sizeof(data), [](NetPacket * pkt) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            uv_buf_t newbuf = uv_buf_init(pkt->getBuf(), pkt->getSize());
+            uv_buf_t newbuf = uv_buf_init(pkt->Buffer(), pkt->BufferSize());
             int r = uv_write(req, (uv_stream_t*)&client, &newbuf, 1, write_cb);
             return r;
         });
-        sleep(0.1);
+        
+        sleep(1);
     }
 }
 

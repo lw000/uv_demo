@@ -48,7 +48,7 @@ void parse_cb(MSG* msg, void* userdata) {
         reponse.c = request->a + request->b;
         iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [stream](NetPacket * pkt) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            uv_buf_t newbuf = uv_buf_init(pkt->getBuf(), pkt->getSize());
+            uv_buf_t newbuf = uv_buf_init(pkt->Buffer(), pkt->BufferSize());
             int ret = uv_write(req, stream, &newbuf, 1, echo_write);
             return ret;
         });

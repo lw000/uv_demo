@@ -8,9 +8,9 @@
 
 #pragma pack(1)
 
-typedef struct _tagNetHead
+typedef struct NetPacketHead
 {
-	friend std::ostream& operator<<(std::ostream & os, _tagNetHead & o);
+	friend std::ostream& operator<<(std::ostream & os, NetPacketHead & o);
 
 public:
 	int	            size;			// 数据包大小
@@ -20,39 +20,43 @@ public:
     unsigned short  v;              // 通讯版本
 
 public:
-	_tagNetHead();
+	NetPacketHead(int main_cmd, int assi_cmd);
 
 public:
 	std::string debug();
 
-} NetHead;
+};
 
 #pragma pack()
 
 class NetPacket
 {
 public:
-	NetPacket();
-	NetPacket(const NetHead* head);
-    NetPacket(int main_cmd, int assi_cmd, void* buf, int size);
+	NetPacket(const NetPacketHead* head);
     
 public:
 	~NetPacket();
 
 public:
-	int setMessage(int main_cmd, int assi_cmd, void* msg, int size);
+	int setMessage(void* buf, int size);
     
 public:
-	char* getBuf() const;
-	int getSize() const;
-	const NetHead* getHead() const;
+	char* Buffer() const;
+	int BufferSize() const;
+    
+public:
+    char* Data() const;
+    int DataSize() const;
+    
+public:
+	const NetPacketHead* PacketHead() const;
 
 public:
 	std::string debug();
 
 private:
-	NetHead* _head;
-	char *_buf;
+	NetPacketHead* _head;
+	char *_buffer;
 	unsigned int _size;
 };
 
