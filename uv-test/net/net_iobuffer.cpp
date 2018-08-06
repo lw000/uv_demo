@@ -28,6 +28,11 @@ int NetIOBuffer::send(int main_cmd, int assi_cmd, void* buf, int size, std::func
 	return c;
 }
 
+//int NetIOBuffer::parse(const char * buf, int size, std::function<int(MSG*, void* userdata)> func, void* userdata) {
+//
+//    return 0;
+//}
+
 int NetIOBuffer::parse(const char * buf, int size, PARSE_CALLFUNC func, void* userdata)
 {
 	assert(size > 0);
@@ -86,7 +91,6 @@ int NetIOBuffer::parse(const char * buf, int size, PARSE_CALLFUNC func, void* us
                 
                 func(&msg, userdata);
             }
-            
             
 //            {
 //                NetPacket pkt(nph);

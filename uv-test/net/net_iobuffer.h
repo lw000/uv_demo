@@ -28,7 +28,8 @@ public:
     
 public:
 	int parse(const char * buf, int size, PARSE_CALLFUNC func, void* userdata);
-	
+//    int parse(const char * buf, int size, std::function<int(MSG*, void* userdata)> func, void* userdata);
+    
 private:
 	NetIOBuffer(const NetIOBuffer&);
 	NetIOBuffer& operator=(const NetIOBuffer&);
