@@ -11,6 +11,9 @@
 		D02FB4802112B618007A30D9 /* TCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB47D2112B618007A30D9 /* TCPClient.cpp */; };
 		D02FB4832112C3AB007A30D9 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4822112C3AB007A30D9 /* Utils.cpp */; };
 		D02FB48B211417BB007A30D9 /* net_reactor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB489211417BB007A30D9 /* net_reactor.cpp */; };
+		D02FB54C211477FC007A30D9 /* idle_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB54A211477FC007A30D9 /* idle_server.cpp */; };
+		D02FB54F2114780C007A30D9 /* timer_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB54D2114780C007A30D9 /* timer_server.cpp */; };
+		D02FB5522117E1CB007A30D9 /* uv_querying_dns.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB5502117E1CB007A30D9 /* uv_querying_dns.cpp */; };
 		D0D63AFC2110723A00E65F68 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63AFB2110723A00E65F68 /* main.cpp */; };
 		D0D63B0D21107B3800E65F68 /* tcp_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B0B21107B3800E65F68 /* tcp_client.cpp */; };
 		D0D63B1021107B4D00E65F68 /* tcp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B0E21107B4D00E65F68 /* tcp_server.cpp */; };
@@ -45,6 +48,12 @@
 		D02FB4822112C3AB007A30D9 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		D02FB489211417BB007A30D9 /* net_reactor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = net_reactor.cpp; sourceTree = "<group>"; };
 		D02FB48A211417BB007A30D9 /* net_reactor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = net_reactor.hpp; sourceTree = "<group>"; };
+		D02FB54A211477FC007A30D9 /* idle_server.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = idle_server.cpp; sourceTree = "<group>"; };
+		D02FB54B211477FC007A30D9 /* idle_server.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = idle_server.hpp; sourceTree = "<group>"; };
+		D02FB54D2114780C007A30D9 /* timer_server.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = timer_server.cpp; sourceTree = "<group>"; };
+		D02FB54E2114780C007A30D9 /* timer_server.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = timer_server.hpp; sourceTree = "<group>"; };
+		D02FB5502117E1CB007A30D9 /* uv_querying_dns.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = uv_querying_dns.cpp; sourceTree = "<group>"; };
+		D02FB5512117E1CB007A30D9 /* uv_querying_dns.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = uv_querying_dns.hpp; sourceTree = "<group>"; };
 		D0D63AF82110723A00E65F68 /* uv-test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "uv-test"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D63AFB2110723A00E65F68 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D0D63B092110728300E65F68 /* libuv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libuv.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,12 +111,18 @@
 		D0D63AFA2110723A00E65F68 /* uv-test */ = {
 			isa = PBXGroup;
 			children = (
+				D02FB5502117E1CB007A30D9 /* uv_querying_dns.cpp */,
+				D02FB5512117E1CB007A30D9 /* uv_querying_dns.hpp */,
 				D0D63AFB2110723A00E65F68 /* main.cpp */,
 				D0D63B0B21107B3800E65F68 /* tcp_client.cpp */,
 				D0D63B0C21107B3800E65F68 /* tcp_client.hpp */,
 				D0D63B0E21107B4D00E65F68 /* tcp_server.cpp */,
 				D0D63B0F21107B4D00E65F68 /* tcp_server.hpp */,
 				D02FB4792111C0DD007A30D9 /* data_struct.hpp */,
+				D02FB54A211477FC007A30D9 /* idle_server.cpp */,
+				D02FB54B211477FC007A30D9 /* idle_server.hpp */,
+				D02FB54D2114780C007A30D9 /* timer_server.cpp */,
+				D02FB54E2114780C007A30D9 /* timer_server.hpp */,
 			);
 			path = "uv-test";
 			sourceTree = "<group>";
@@ -212,10 +227,13 @@
 				D0D63B662111830C00E65F68 /* net_package.cpp in Sources */,
 				D0D63B672111830C00E65F68 /* queue.c in Sources */,
 				D0D63B0D21107B3800E65F68 /* tcp_client.cpp in Sources */,
+				D02FB5522117E1CB007A30D9 /* uv_querying_dns.cpp in Sources */,
 				D02FB4802112B618007A30D9 /* TCPClient.cpp in Sources */,
 				D02FB4832112C3AB007A30D9 /* Utils.cpp in Sources */,
+				D02FB54F2114780C007A30D9 /* timer_server.cpp in Sources */,
 				D0D63B6A2111835300E65F68 /* lock.cpp in Sources */,
 				D02FB48B211417BB007A30D9 /* net_reactor.cpp in Sources */,
+				D02FB54C211477FC007A30D9 /* idle_server.cpp in Sources */,
 				D0D63B1021107B4D00E65F68 /* tcp_server.cpp in Sources */,
 				D0D63AFC2110723A00E65F68 /* main.cpp in Sources */,
 				D0D63B6D2111839A00E65F68 /* log4z.cpp in Sources */,

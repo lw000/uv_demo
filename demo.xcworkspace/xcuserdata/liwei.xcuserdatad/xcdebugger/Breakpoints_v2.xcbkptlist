@@ -154,13 +154,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uv-test/net/net_package.cpp"
-            timestampString = "554986047.441394"
+            timestampString = "555214301.014313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
             landmarkName = "NetPackage::NetPackage(int main_cmd, int assi_cmd, void* buf, int size)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uv-test/uv-test/uv_querying_dns.cpp"
+            timestampString = "555214301.014424"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "getaddrinfo_cb(uv_getaddrinfo_t* req, int status, struct addrinfo* res)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

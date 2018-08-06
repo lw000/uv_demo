@@ -8,17 +8,21 @@
 
 #include <string.h>
 #include <unistd.h>
+#include <string>
+#include <vector>
+#include <map>
+
+#include "uv.h"
 
 #include "tcp_server.hpp"
 #include "tcp_client.hpp"
+#include "timer_server.hpp"
+#include "uv_querying_dns.hpp"
 
 #include "TCPClient.h"
 #include "TCPServer.h"
 
-#include "uv.h"
-
 #include "data_struct.hpp"
-
 
 
 class CliServer : public lw::TCPClient {
@@ -132,8 +136,45 @@ private:
     }
 };
 
+struct CONFFIG {
+    std::string c;
+    std::string v;
+    
+public:
+    CONFFIG(const std::string& c, const std::string& v) {
+        this->c = c;
+        this->v = v;
+    }
+    
+    bool operator < (const CONFFIG& conf) const {
+        return (this->c.compare(conf.v) < 0) || (this->v.compare(conf.v) < 0);
+    }
+};
+
 int main(int argc, char** args)
 {
+    std::vector<CONFFIG> config = {
+        {"-s", "server_run"},
+        {"-c", "client_run"},
+        {"-ss", "SrvServer"},
+        {"-cc", "server_run"},
+        {"-t", "timer_run"}
+    };
+    
+    std::map<std::string, std::string> config_map;
+    config_map["-s"] = "server_run";
+    config_map["-c"] = "client_run";
+    config_map["-ss"] = "SrvServer";
+    config_map["-cc"] = "server_run";
+    config_map["-t"] = "timer_run";
+    
+    std::map<CONFFIG, std::string> map_config;
+    map_config[CONFFIG("1", "1")] = "1111111111";
+    map_config[CONFFIG("2", "2")] = "2222222222";
+    map_config[CONFFIG("3", "3")] = "3333333333";
+    map_config[CONFFIG("4", "4")] = "4444444444";
+    map_config[CONFFIG("5", "5")] = "5555555555";
+    
     if (strcmp(args[1], "-s") == 0) {
         server_run(argc, args);
     }
@@ -146,6 +187,12 @@ int main(int argc, char** args)
     else if(strcmp(args[1], "-cc") == 0) {
         CliServer srv;
         srv.syncStart("127.0.0.1", 9090);
+    }
+    else if(strcmp(args[1], "-t") == 0) {
+        timer_run(argc, args);
+    }
+    else if(strcmp(args[1], "-q") == 0) {
+        querting_dns_run(argc, args);
     }
     else {
         printf("-s or -c");

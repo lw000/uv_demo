@@ -9,6 +9,14 @@
 #ifndef data_struct_hpp
 #define data_struct_hpp
 
+enum class SysCmd{
+    login = 1,          //登陆系统
+};
+
+enum class BusCmd{
+    login = 1,          //登陆系统
+};
+
 #pragma pack(1)
 
 struct reqest_a_data {
