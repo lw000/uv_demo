@@ -16,7 +16,6 @@ userenv.lib
 #pragma comment(lib, "Psapi.lib")
 #pragma comment(lib, "userenv.lib")
 #pragma comment(lib, "libuv-1.4.2.lib")
-#pragma comment(lib, "MessagePack.lib")
 #endif
 
 namespace lw
@@ -30,104 +29,87 @@ namespace lw
     
 	class UVWrapper
 	{
-		TCPServer* server;
+	public:
+        UVWrapper() {
+        }
+        
+        ~UVWrapper() {
+        }
 
 	public:
-		UVWrapper(TCPServer* server);
-		~UVWrapper();
-
-	public:
-		static void connection_cb(uv_stream_t* server, int status);
-		static void on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res);
-		static void alloc_buffer_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf);
-		static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
-		static void write_cb(uv_write_t *req, int status);
-		static void timer_cb(uv_timer_t* handle);
-		static void close_cb(uv_handle_t* handle);
-		static void idle_cb(uv_idle_t* handle);
-        static void parse_data_cb(MSG* pack, void* userdata);
+        static void parse_cb(MSG* pack, void* userdata) {
+            SharedData * data = (SharedData*)userdata;
+            data->srv->onMessage(data->cli, pack);
+        }
+        
+        static void idle_cb(uv_idle_t* handle)
+        {
+            TCPServer * srv = (TCPServer*)handle->data;
+            srv->onIdle();
+        }
+        
+        static void close_cb(uv_handle_t* handle)
+        {
+            TCPServer * srv = (TCPServer*)handle->data;
+            srv->onClientClose(handle);
+        }
+        
+        static void timer_cb(uv_timer_t* handle)
+        {
+            TCPServer * srv = (TCPServer*)handle->data;
+            srv->onTimer();
+        }
+        
+        static void on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res)
+        {
+            TCPServer * srv = (TCPServer*)req->data;
+            srv->onResolved(status, res);
+            uv_freeaddrinfo(res);
+        }
+        
+        static void alloc_buffer_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf)
+        {
+            TCPServer * srv = (TCPServer*)handle->data;
+            srv->onAllocBuffer(suggested_size, buf);
+        }
+        
+        static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
+        {
+            if (nread > 0)
+            {
+                TCPServer * srv = (TCPServer*)stream->data;
+                srv->onRead(stream, nread, buf);
+            }
+            else if (nread == 0)
+            {
+                printf("server close. \n");
+            }
+            else
+            {
+                printf("read_cb error: %s\n", uv_err_name(nread));
+                
+                assert(nread == UV_ECONNRESET || nread == UV_EOF);
+                
+                uv_close((uv_handle_t*)stream, close_cb);
+            }
+        }
+        
+        static void write_cb(uv_write_t *req, int status)
+        {
+            TCPServer * srv = (TCPServer*)req->data;
+            srv->onAfterWrite(req, status);
+        }
+        
+        static void connection_cb(uv_stream_t* server, int status)
+        {
+            TCPServer * srv = (TCPServer*)server->data;
+            srv->onConnect(server, status);
+        }
+        
 	};
-
-	UVWrapper::UVWrapper(TCPServer* server) : server(server)
-	{
-	
-    }
-
-	UVWrapper::~UVWrapper()
-	{
-	
-    }
-
+    
     ///////////////////////////////////////////////////////////////////////////////////////////
     
-    void UVWrapper::parse_data_cb(MSG* pack, void* userdata) {
-        SharedData * data = (SharedData*)userdata;
-        data->srv->onMessage(data->cli, pack);
-    }
-    
-	void UVWrapper::idle_cb(uv_idle_t* handle)
-	{
-		TCPServer * srv = (TCPServer*)handle->data;
-		srv->onIdle();
-	}
-
-	void UVWrapper::close_cb(uv_handle_t* handle)
-	{
-		TCPServer * srv = (TCPServer*)handle->data;
-		srv->onClientClose(handle);
-	}
-
-	void UVWrapper::timer_cb(uv_timer_t* handle)
-	{
-		TCPServer * srv = (TCPServer*)handle->data;
-		srv->onTimer();
-	}
-
-	void UVWrapper::on_resolved(uv_getaddrinfo_t *req, int status, struct addrinfo *res)
-	{
-		TCPServer * srv = (TCPServer*)req->data;
-		srv->onResolved(status, res);
-		uv_freeaddrinfo(res);
-	}
-
-	void UVWrapper::alloc_buffer_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf)
-	{
-		TCPServer * srv = (TCPServer*)handle->data;
-		srv->onAllocBuffer(suggested_size, buf);
-	}
-
-	void UVWrapper::read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
-	{     
-		if (nread > 0)
-		{
-			TCPServer * srv = (TCPServer*)stream->data;
-            srv->onRead(stream, nread, buf);
-		}
-		else if (nread == 0)
-		{
-			printf("server close. \n");
-		}
-		else
-		{
-			printf("read_cb error: %s\n", uv_err_name(nread));
-            
-			assert(nread == UV_ECONNRESET || nread == UV_EOF);
-
-			uv_close((uv_handle_t*)stream, close_cb);
-		}
-	}
-
-	void UVWrapper::write_cb(uv_write_t *req, int status)
-	{            
-		TCPServer * srv = (TCPServer*)req->data;
-		srv->onAfterWrite(req, status);
-	}
-
-	void UVWrapper::connection_cb(uv_stream_t* server, int status)
-	{
-		TCPServer * srv = (TCPServer*)server->data;
-		srv->onConnect(server, status);
-	}
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -328,12 +310,12 @@ namespace lw
         return 0;
 	}
 
-	void TCPServer::onRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf)
+	void TCPServer::onRead(uv_stream_t* cli, ssize_t nread, const uv_buf_t* buf)
 	{
         SharedData shared_data;
         shared_data.srv = this;
-        shared_data.cli = client;
-        this->_ioBuffer.parse(buf->base, nread, UVWrapper::parse_data_cb, &shared_data);
+        shared_data.cli = cli;
+        this->_ioBuffer.parse(buf->base, nread, UVWrapper::parse_cb, &shared_data);
         
         free(buf->base);
 	}

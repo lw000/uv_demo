@@ -56,7 +56,7 @@ namespace lw
         
 	private:
 		void onAllocBuffer(size_t suggested_size, uv_buf_t* buf);
-		void onRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf);
+		void onRead(uv_stream_t* cli, ssize_t nread, const uv_buf_t* buf);
 		void onAfterWrite(uv_write_t *req, int status);
 		void onConnect(uv_stream_t* server, int status);
 		void onTimer();
