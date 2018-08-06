@@ -199,7 +199,7 @@ namespace lw
 			else
 			{			
 				fprintf(stderr, "getaddrinfo call error %s\n", uv_err_name(ret));
-			}			
+			}
 		}
 		catch(...) {}
 	}

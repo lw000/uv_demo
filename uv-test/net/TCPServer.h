@@ -59,10 +59,12 @@ namespace lw
 		void onRead(uv_stream_t* client, ssize_t nread, const uv_buf_t* buf);
 		void onAfterWrite(uv_write_t *req, int status);
 		void onConnect(uv_stream_t* server, int status);
-		void onResolved(int status, struct addrinfo *res);
 		void onTimer();
 		void onClientClose(uv_handle_t* client);
 		void onIdle();
+        
+    private:
+        void onResolved(int status, struct addrinfo *res);
         
     private:
         void extSrv();
