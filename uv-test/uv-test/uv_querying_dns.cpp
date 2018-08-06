@@ -27,11 +27,11 @@ static void getaddrinfo_cb(uv_getaddrinfo_t* req,
     
 //    uv_tcp_t *socket = (uv_tcp_t*) malloc(sizeof(uv_tcp_t));
 //    uv_tcp_init(loop, socket);
-//    
+//
 //    uv_connect_t *connect_req = (uv_connect_t*) malloc(sizeof(uv_connect_t));
 //    connect_req->data = (void*) socket;
 //    uv_tcp_connect(connect_req, socket, *(struct sockaddr_in*) res->ai_addr, on_connect);
-//    
+//
 //    uv_freeaddrinfo(res);
 }
 

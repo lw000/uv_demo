@@ -8,7 +8,7 @@
 
 struct MSG;
 
-typedef void(*PARSE_DATA_CALLFUNC)(MSG* pack, void* userdata);
+typedef void(*PARSE_CALLFUNC)(MSG* pack, void* userdata);
 
 struct MSG {
     int main_cmd;
@@ -27,7 +27,7 @@ public:
 	int send(int main_cmd, int assi_cmd, void* buf, int size, std::function<int(NetPackage* p)> func);
     
 public:
-	int parse(const char * buf, int size, PARSE_DATA_CALLFUNC func, void* userdata);
+	int parse(const char * buf, int size, PARSE_CALLFUNC func, void* userdata);
 	
 private:
 	NetIOBuffer(const NetIOBuffer&);

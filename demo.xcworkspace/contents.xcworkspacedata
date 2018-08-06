@@ -25,4 +25,7 @@
    <FileRef
       location = "group:nanomsg-test/nanomsg-test.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:libevhtp/build-xcode/libevhtp.xcodeproj">
+   </FileRef>
 </Workspace>

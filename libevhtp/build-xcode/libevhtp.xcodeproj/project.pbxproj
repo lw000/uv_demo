@@ -1,0 +1,3591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		0D8881AE649E486DB6DCBAFB /* package */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 36B1837FADBB47E7A1DE4254 /* Build configuration list for PBXAggregateTarget "package" */;
+			buildPhases = (
+				D2792C836B3F4C2FB65BC7F5 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				4D871EC96D3045418CA827E9 /* PBXTargetDependency */,
+			);
+			name = package;
+			productName = package;
+		};
+		0FB21B4686B640AEA3F863F1 /* install */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0A0FB99F0C77452DAA79F0A1 /* Build configuration list for PBXAggregateTarget "install" */;
+			buildPhases = (
+				E0441D91128A45EDAF667781 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				0ABF65F1FCB747B89E087732 /* PBXTargetDependency */,
+			);
+			name = install;
+			productName = install;
+		};
+		788E08A0741A4591BC3C88C3 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 9E6DE2867EBC46AA9D4A6B3A /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				CB4A11B876F148CE92464260 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		BA0BDFAA01B84637979FF5B4 /* examples */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1B6AD8D831804DEEA57E6782 /* Build configuration list for PBXAggregateTarget "examples" */;
+			buildPhases = (
+			);
+			dependencies = (
+				F4F0A826AD3D4413853DBEE7 /* PBXTargetDependency */,
+				5E07E641471C4000A42ECC34 /* PBXTargetDependency */,
+				F8CC899A5F4D476DA742DAAC /* PBXTargetDependency */,
+				53E2B84B5D494091B7114B33 /* PBXTargetDependency */,
+				72971F520C6D4589A65BDA47 /* PBXTargetDependency */,
+				9E7D4DBF3A074E74AB2216E8 /* PBXTargetDependency */,
+				63601CFA265E4EE99CA418F4 /* PBXTargetDependency */,
+				C59CF9A93C9543E782FDA9EC /* PBXTargetDependency */,
+			);
+			name = examples;
+			productName = examples;
+		};
+		FC02393B5C6649A89721D983 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 90BD59E64D8F41F8B3702217 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				03810442CC624F2080C2B73B /* CMake Rules */,
+			);
+			dependencies = (
+				6E8772F870BB433F991EAC3F /* PBXTargetDependency */,
+				7E7165F796F54105A0506AF9 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		022D047890F84516AA0FC61D /* iso8859_4.c in Sources */ = {isa = PBXBuildFile; fileRef = 28C3B708EEF64C54BBA7849C /* iso8859_4.c */; };
+		024F2C451BD44A40966391B4 /* thread.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AC6EC6441AA406D8AB4B713 /* thread.c */; };
+		05BC5624D33D4A97ACD61A4F /* iso8859_13.c in Sources */ = {isa = PBXBuildFile; fileRef = B4DEB4BD28CF4B47B3E7A674 /* iso8859_13.c */; };
+		0E562E44EBE344B6BE011660 /* test_proxy.c in Sources */ = {isa = PBXBuildFile; fileRef = F3F62C0BEA49460D8155806B /* test_proxy.c */; };
+		13EE1D72155446E2B89B4A26 /* regposerr.c in Sources */ = {isa = PBXBuildFile; fileRef = EBEBE24BAFB54AE7830DDD5F /* regposerr.c */; };
+		147587335279447AA8EB14CE /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 942AD4532B53484DB70FAB65 /* parser.c */; };
+		1CE441816F94465EA23979F8 /* iso8859_7.c in Sources */ = {isa = PBXBuildFile; fileRef = 9532B9B293F1439A90BD5815 /* iso8859_7.c */; };
+		201A749D04C244FE90A6540A /* koi8_r.c in Sources */ = {isa = PBXBuildFile; fileRef = 050843A88DD441D18804CA1A /* koi8_r.c */; };
+		2784333815CC4F5FA28F28BE /* numtoa.c in Sources */ = {isa = PBXBuildFile; fileRef = 4E51FA2EF2EE4865B1D232B5 /* numtoa.c */; };
+		2C63F411ACBF49A6AD90111A /* iso8859_15.c in Sources */ = {isa = PBXBuildFile; fileRef = 5EC1B7EE94764A149AD6B587 /* iso8859_15.c */; };
+		327AB3EF760440F58B1C77EB /* unicode.c in Sources */ = {isa = PBXBuildFile; fileRef = 5400E477B53D44BC82685FC6 /* unicode.c */; };
+		33AAEF00EF2445EDB66CD48A /* test_vhost.c in Sources */ = {isa = PBXBuildFile; fileRef = 1BED4698DC2545B9B3449873 /* test_vhost.c */; };
+		3416815E0C88492E8F7A4998 /* iso8859_1.c in Sources */ = {isa = PBXBuildFile; fileRef = 26376234B47449F08D014D6D /* iso8859_1.c */; };
+		3A68FD18D58345A7AB8EEA5A /* iso8859_11.c in Sources */ = {isa = PBXBuildFile; fileRef = 5F93AC27D4834134B4A93376 /* iso8859_11.c */; };
+		40C0EBD9D87A462FB2E76E9F /* euc_kr.c in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B29FC6857442892C102AC /* euc_kr.c */; };
+		45547CF3BCB64B89A76B40F1 /* utf16_be.c in Sources */ = {isa = PBXBuildFile; fileRef = 3923D36C91E340CAA9BDC00D /* utf16_be.c */; };
+		4E9F7A35612440DFA0EF1237 /* test_query.c in Sources */ = {isa = PBXBuildFile; fileRef = F06D9D3E60DF427C9E4519D5 /* test_query.c */; };
+		51581023274A41E5873EA1F2 /* euc_jp.c in Sources */ = {isa = PBXBuildFile; fileRef = A4CEA719472A47CF9727B69E /* euc_jp.c */; };
+		56624C82BA3042B2BD659F5E /* regsyntax.c in Sources */ = {isa = PBXBuildFile; fileRef = 39B3E4AEB034473CBB6E0F3A /* regsyntax.c */; };
+		581572DA25FC4D848ECE83C4 /* regext.c in Sources */ = {isa = PBXBuildFile; fileRef = D9B85577CBA8449488E44464 /* regext.c */; };
+		6205858D14F34820A6497AB3 /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = 726E94A08EE5454C9BD24C57 /* test.c */; };
+		6BF866387FAC48C8A9A6EAA1 /* iso8859_5.c in Sources */ = {isa = PBXBuildFile; fileRef = EA00292F59614D7AA9BB2912 /* iso8859_5.c */; };
+		71D1074F9B2A43D089FC9804 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = 428598DA3F57441EBDE6C46C /* utf8.c */; };
+		77719855FECD4B9990D67B32 /* utf32_be.c in Sources */ = {isa = PBXBuildFile; fileRef = 580C428E1D96469E8BF76B61 /* utf32_be.c */; };
+		7885E5D6605F486B81F29B2D /* iso8859_10.c in Sources */ = {isa = PBXBuildFile; fileRef = 610216B3B7624A86ACD7D9CA /* iso8859_10.c */; };
+		7F60E5ABD6914260854FF6E4 /* st.c in Sources */ = {isa = PBXBuildFile; fileRef = 3530934786EF491294832EFB /* st.c */; };
+		7FBAB3837D844A75A41BC0DD /* regexec.c in Sources */ = {isa = PBXBuildFile; fileRef = EE2ED14AAC5845B9AAB74616 /* regexec.c */; };
+		8E29B391C56E4FE5B200AC53 /* regposix.c in Sources */ = {isa = PBXBuildFile; fileRef = F3B662144C4F4ADF9A3E1B10 /* regposix.c */; };
+		9234DC9827264A00AB876A54 /* ascii.c in Sources */ = {isa = PBXBuildFile; fileRef = F956A388E0C047DDBD03734B /* ascii.c */; };
+		92CBDED1535746A3BC15C523 /* test_client.c in Sources */ = {isa = PBXBuildFile; fileRef = 52846C62C71043099D03D77B /* test_client.c */; };
+		99E85B36481049BBB419DC5D /* regerror.c in Sources */ = {isa = PBXBuildFile; fileRef = 85FFF138D76B4E0AACF165FA /* regerror.c */; };
+		9A4E7E4C87434CDA98F8C485 /* euc_tw.c in Sources */ = {isa = PBXBuildFile; fileRef = 07006AC00ACE46A1AD15A155 /* euc_tw.c */; };
+		9AD4787C92C64C1E852AFBDD /* evhtp.c in Sources */ = {isa = PBXBuildFile; fileRef = F8CCEF53044C4B0FA6372C53 /* evhtp.c */; };
+		9F1E77B977B14EA5B9942F6C /* test_perf.c in Sources */ = {isa = PBXBuildFile; fileRef = 27DC731A0CED40609E6961AB /* test_perf.c */; };
+		AD6B403D6FF043C79F35BA90 /* big5.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E216701A612409EB26D89D7 /* big5.c */; };
+		AE6E04E521454E4DA3EA9CFD /* iso8859_16.c in Sources */ = {isa = PBXBuildFile; fileRef = 34A53B8632424F2EA9C95032 /* iso8859_16.c */; };
+		B64572B3892F40609747018C /* iso8859_8.c in Sources */ = {isa = PBXBuildFile; fileRef = DB8EB3FCE6744B6EB606E109 /* iso8859_8.c */; };
+		B73A2FF4D9194E6EBF1E67D1 /* gb18030.c in Sources */ = {isa = PBXBuildFile; fileRef = B36D9070C9BA4E5B87EDAE75 /* gb18030.c */; };
+		BD3F362642A743FFBE27E05C /* iso8859_9.c in Sources */ = {isa = PBXBuildFile; fileRef = 638B33F372C94DBF964652A3 /* iso8859_9.c */; };
+		C540C95C2AB24C29A7405DDB /* regcomp.c in Sources */ = {isa = PBXBuildFile; fileRef = F2B20A5CF63844FEA8ECC522 /* regcomp.c */; };
+		C8DA4C8584884D3A8851CA0F /* utf16_le.c in Sources */ = {isa = PBXBuildFile; fileRef = 5BE436FE4ADF4B0E9796B3A5 /* utf16_le.c */; };
+		C9778A8B65234585A639E04F /* regtrav.c in Sources */ = {isa = PBXBuildFile; fileRef = 7CEB7D8FEB0C4276A3B54213 /* regtrav.c */; };
+		CC236C91FC6F4A5087750614 /* test_basic.c in Sources */ = {isa = PBXBuildFile; fileRef = 33E42022DA0A4D04A0F4BE93 /* test_basic.c */; };
+		D06F666088334BA497CBC3EA /* iso8859_3.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D69187F31D149659638445D /* iso8859_3.c */; };
+		D24051D085F44EB58D947EA3 /* cp1251.c in Sources */ = {isa = PBXBuildFile; fileRef = BF04096CC0FB4E53B0AD62DA /* cp1251.c */; };
+		D32B22CAE56646748F6B3030 /* reggnu.c in Sources */ = {isa = PBXBuildFile; fileRef = E214C194AD3847D5A004C4F6 /* reggnu.c */; };
+		D713CB329DF54FA289BA24EE /* utf32_le.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AD52A1408B7400098606B00 /* utf32_le.c */; };
+		D75D9779A6E446F4978DAC75 /* sjis.c in Sources */ = {isa = PBXBuildFile; fileRef = FAE3DA1BA476405DB9FD99DF /* sjis.c */; };
+		E0B226E992BA46F4AA6567F7 /* regversion.c in Sources */ = {isa = PBXBuildFile; fileRef = 7C81AB6717814529A64DB9C0 /* regversion.c */; };
+		E31781D0283C49048CD59C62 /* iso8859_14.c in Sources */ = {isa = PBXBuildFile; fileRef = B1E551421FD64F67BDDACA50 /* iso8859_14.c */; };
+		E39D9EFC1D6B4FE694FA1A60 /* regparse.c in Sources */ = {isa = PBXBuildFile; fileRef = D5EAAC27B6314588AB231E93 /* regparse.c */; };
+		EC98CAB533B74852BBBF2B25 /* regenc.c in Sources */ = {isa = PBXBuildFile; fileRef = DF2F2EFECD7849F18ACAB8E2 /* regenc.c */; };
+		FBCFE7562D564B8189DA77E5 /* iso8859_6.c in Sources */ = {isa = PBXBuildFile; fileRef = 00293668A3F84CF9ABA96243 /* iso8859_6.c */; };
+		FDB8FB043FC143888E5B8B82 /* iso8859_2.c in Sources */ = {isa = PBXBuildFile; fileRef = ED3A3C6E21574BC380797B42 /* iso8859_2.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		083404FA145A4F86881F30C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC02393B5C6649A89721D983;
+			remoteInfo = ALL_BUILD;
+		};
+		17BE1645EC2F4459B3EC54C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+		20B6D7CFC01140B0AEEF6D82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+		254CCD903B0B411F8EA26A40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04D81388FB9E43CD83FB546F;
+			remoteInfo = test;
+		};
+		3D68BCF0030040DB85365137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+		40D88972C1034366A9696F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70AF7C16C5C74144957090D1;
+			remoteInfo = test_proxy;
+		};
+		4E5EE5D0DF504ED386E87473 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842274230E0A4F45A409B616;
+			remoteInfo = evhtp;
+		};
+		4FCCD8A3E5E8496082D61C30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842274230E0A4F45A409B616;
+			remoteInfo = evhtp;
+		};
+		662DD5B520BD44FDAB27D4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B29223493C874343B719E7D8;
+			remoteInfo = test_perf;
+		};
+		68171871AAB74EA88541EAC8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+		7AAECFF815594004AD4CCD20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+		85221D4C06314389B2F2A3DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CD4F140CBBA457B9ACEB643;
+			remoteInfo = test_query;
+		};
+		88878A4BBCA44184931FC2D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842274230E0A4F45A409B616;
+			remoteInfo = evhtp;
+		};
+		96B6486F4ABA4E1BA0AC5EF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+		B1BE9C41355C47FCAD889FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18B948C9C1944EBD8FA9A52C;
+			remoteInfo = test_vhost;
+		};
+		B33C0B30ACA54BD4849DA493 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC02393B5C6649A89721D983;
+			remoteInfo = ALL_BUILD;
+		};
+		B55BBF85609644B5A7B142EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842274230E0A4F45A409B616;
+			remoteInfo = evhtp;
+		};
+		C839E9CA4CFD415AB445ADAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842274230E0A4F45A409B616;
+			remoteInfo = evhtp;
+		};
+		C889208E5EBC4CFAA5586656 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09747B2967FB46EABA5A9B58;
+			remoteInfo = test_client;
+		};
+		CA9F431FCB454E398B0B3C72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842274230E0A4F45A409B616;
+			remoteInfo = evhtp;
+		};
+		CBF80B05316349DFA9215CA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+		DFCE132253474FED8EA7B62E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+		E215CFF8C77947C38C6E5A14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842274230E0A4F45A409B616;
+			remoteInfo = evhtp;
+		};
+		F01A071F0D8B41BAA2A2625D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F66A040B80DD48F2B7B1F85A;
+			remoteInfo = test_basic;
+		};
+		F26C69896BCA4FE7A6E7CB16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+		F44E1C109CC54C4383085E22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842274230E0A4F45A409B616;
+			remoteInfo = evhtp;
+		};
+		F5256A4D3C594CCC9F6BA6DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A26900CCBFA46709D56B1FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 788E08A0741A4591BC3C88C3;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00293668A3F84CF9ABA96243 /* iso8859_6.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_6.c; path = oniguruma/enc/iso8859_6.c; sourceTree = SOURCE_ROOT; };
+		050843A88DD441D18804CA1A /* koi8_r.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = koi8_r.c; path = oniguruma/enc/koi8_r.c; sourceTree = SOURCE_ROOT; };
+		07006AC00ACE46A1AD15A155 /* euc_tw.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = euc_tw.c; path = oniguruma/enc/euc_tw.c; sourceTree = SOURCE_ROOT; };
+		08548E33B6704F4B93DB2332 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = examples/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		1BED4698DC2545B9B3449873 /* test_vhost.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = test_vhost.c; path = examples/test_vhost.c; sourceTree = SOURCE_ROOT; };
+		26376234B47449F08D014D6D /* iso8859_1.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_1.c; path = oniguruma/enc/iso8859_1.c; sourceTree = SOURCE_ROOT; };
+		26B1AA48674F43F9808DF9B4 /* test_vhost */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = test_vhost; sourceTree = BUILT_PRODUCTS_DIR; };
+		27DC731A0CED40609E6961AB /* test_perf.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = test_perf.c; path = examples/test_perf.c; sourceTree = SOURCE_ROOT; };
+		28C3B708EEF64C54BBA7849C /* iso8859_4.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_4.c; path = oniguruma/enc/iso8859_4.c; sourceTree = SOURCE_ROOT; };
+		2E6002746B464CB89C81AB90 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = examples/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		33E42022DA0A4D04A0F4BE93 /* test_basic.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = test_basic.c; path = examples/test_basic.c; sourceTree = SOURCE_ROOT; };
+		34A53B8632424F2EA9C95032 /* iso8859_16.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_16.c; path = oniguruma/enc/iso8859_16.c; sourceTree = SOURCE_ROOT; };
+		3530934786EF491294832EFB /* st.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = st.c; path = oniguruma/st.c; sourceTree = SOURCE_ROOT; };
+		3923D36C91E340CAA9BDC00D /* utf16_be.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = utf16_be.c; path = oniguruma/enc/utf16_be.c; sourceTree = SOURCE_ROOT; };
+		39B3E4AEB034473CBB6E0F3A /* regsyntax.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regsyntax.c; path = oniguruma/regsyntax.c; sourceTree = SOURCE_ROOT; };
+		3E216701A612409EB26D89D7 /* big5.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = big5.c; path = oniguruma/enc/big5.c; sourceTree = SOURCE_ROOT; };
+		428598DA3F57441EBDE6C46C /* utf8.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = utf8.c; path = oniguruma/enc/utf8.c; sourceTree = SOURCE_ROOT; };
+		4E51FA2EF2EE4865B1D232B5 /* numtoa.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; path = numtoa.c; sourceTree = SOURCE_ROOT; };
+		52846C62C71043099D03D77B /* test_client.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = test_client.c; path = examples/test_client.c; sourceTree = SOURCE_ROOT; };
+		5400E477B53D44BC82685FC6 /* unicode.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = unicode.c; path = oniguruma/enc/unicode.c; sourceTree = SOURCE_ROOT; };
+		580C428E1D96469E8BF76B61 /* utf32_be.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = utf32_be.c; path = oniguruma/enc/utf32_be.c; sourceTree = SOURCE_ROOT; };
+		5A5858C25D4E4C05B53517E8 /* test_client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = test_client; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BE436FE4ADF4B0E9796B3A5 /* utf16_le.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = utf16_le.c; path = oniguruma/enc/utf16_le.c; sourceTree = SOURCE_ROOT; };
+		5EC1B7EE94764A149AD6B587 /* iso8859_15.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_15.c; path = oniguruma/enc/iso8859_15.c; sourceTree = SOURCE_ROOT; };
+		5F93AC27D4834134B4A93376 /* iso8859_11.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_11.c; path = oniguruma/enc/iso8859_11.c; sourceTree = SOURCE_ROOT; };
+		610216B3B7624A86ACD7D9CA /* iso8859_10.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_10.c; path = oniguruma/enc/iso8859_10.c; sourceTree = SOURCE_ROOT; };
+		638B33F372C94DBF964652A3 /* iso8859_9.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_9.c; path = oniguruma/enc/iso8859_9.c; sourceTree = SOURCE_ROOT; };
+		699A4690D8B24A908568D600 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = examples/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		6A5B29FC6857442892C102AC /* euc_kr.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = euc_kr.c; path = oniguruma/enc/euc_kr.c; sourceTree = SOURCE_ROOT; };
+		6AC6EC6441AA406D8AB4B713 /* thread.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; path = thread.c; sourceTree = SOURCE_ROOT; };
+		6D69187F31D149659638445D /* iso8859_3.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_3.c; path = oniguruma/enc/iso8859_3.c; sourceTree = SOURCE_ROOT; };
+		726E94A08EE5454C9BD24C57 /* test.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = test.c; path = examples/test.c; sourceTree = SOURCE_ROOT; };
+		76E441EE3BDD4EB6826B61A0 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = examples/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		7C81AB6717814529A64DB9C0 /* regversion.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regversion.c; path = oniguruma/regversion.c; sourceTree = SOURCE_ROOT; };
+		7CEB7D8FEB0C4276A3B54213 /* regtrav.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regtrav.c; path = oniguruma/regtrav.c; sourceTree = SOURCE_ROOT; };
+		85FFF138D76B4E0AACF165FA /* regerror.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regerror.c; path = oniguruma/regerror.c; sourceTree = SOURCE_ROOT; };
+		8AD52A1408B7400098606B00 /* utf32_le.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = utf32_le.c; path = oniguruma/enc/utf32_le.c; sourceTree = SOURCE_ROOT; };
+		8E769E50911F42769B0C8CA3 /* test_proxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = test_proxy; sourceTree = BUILT_PRODUCTS_DIR; };
+		942AD4532B53484DB70FAB65 /* parser.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; path = parser.c; sourceTree = SOURCE_ROOT; };
+		9532B9B293F1439A90BD5815 /* iso8859_7.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_7.c; path = oniguruma/enc/iso8859_7.c; sourceTree = SOURCE_ROOT; };
+		991107D222B7423B8C339027 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4CEA719472A47CF9727B69E /* euc_jp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = euc_jp.c; path = oniguruma/enc/euc_jp.c; sourceTree = SOURCE_ROOT; };
+		A73A629292774EE9BDE90248 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = examples/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		AD698B139F6745118F3C818D /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = examples/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		B1E551421FD64F67BDDACA50 /* iso8859_14.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_14.c; path = oniguruma/enc/iso8859_14.c; sourceTree = SOURCE_ROOT; };
+		B36D9070C9BA4E5B87EDAE75 /* gb18030.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = gb18030.c; path = oniguruma/enc/gb18030.c; sourceTree = SOURCE_ROOT; };
+		B4DEB4BD28CF4B47B3E7A674 /* iso8859_13.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_13.c; path = oniguruma/enc/iso8859_13.c; sourceTree = SOURCE_ROOT; };
+		B7661194FFF04269B33F18C6 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		BD10B43CDE84479ABD31CA48 /* libevhtp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libevhtp.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF04096CC0FB4E53B0AD62DA /* cp1251.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = cp1251.c; path = oniguruma/enc/cp1251.c; sourceTree = SOURCE_ROOT; };
+		C41FE7D42A2E4B3A875C5B25 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = examples/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		CA1F80F9054A4B48A0ED2DE7 /* test_perf */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = test_perf; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5EAAC27B6314588AB231E93 /* regparse.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regparse.c; path = oniguruma/regparse.c; sourceTree = SOURCE_ROOT; };
+		D9B85577CBA8449488E44464 /* regext.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regext.c; path = oniguruma/regext.c; sourceTree = SOURCE_ROOT; };
+		DB8EB3FCE6744B6EB606E109 /* iso8859_8.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_8.c; path = oniguruma/enc/iso8859_8.c; sourceTree = SOURCE_ROOT; };
+		DF2F2EFECD7849F18ACAB8E2 /* regenc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regenc.c; path = oniguruma/regenc.c; sourceTree = SOURCE_ROOT; };
+		E214C194AD3847D5A004C4F6 /* reggnu.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = reggnu.c; path = oniguruma/reggnu.c; sourceTree = SOURCE_ROOT; };
+		E924E73F47144497BBD3A7CE /* test_basic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = test_basic; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA00292F59614D7AA9BB2912 /* iso8859_5.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_5.c; path = oniguruma/enc/iso8859_5.c; sourceTree = SOURCE_ROOT; };
+		EBAC09A1E9184B0BA6FE92E0 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		EBEBE24BAFB54AE7830DDD5F /* regposerr.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regposerr.c; path = oniguruma/regposerr.c; sourceTree = SOURCE_ROOT; };
+		ED3A3C6E21574BC380797B42 /* iso8859_2.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = iso8859_2.c; path = oniguruma/enc/iso8859_2.c; sourceTree = SOURCE_ROOT; };
+		EE2ED14AAC5845B9AAB74616 /* regexec.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regexec.c; path = oniguruma/regexec.c; sourceTree = SOURCE_ROOT; };
+		EEB33871417D49FAB1B5697A /* test_query */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = test_query; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF4B1408BDE44FF1B8522D8F /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = examples/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		F06D9D3E60DF427C9E4519D5 /* test_query.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = test_query.c; path = examples/test_query.c; sourceTree = SOURCE_ROOT; };
+		F2B20A5CF63844FEA8ECC522 /* regcomp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regcomp.c; path = oniguruma/regcomp.c; sourceTree = SOURCE_ROOT; };
+		F3B662144C4F4ADF9A3E1B10 /* regposix.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = regposix.c; path = oniguruma/regposix.c; sourceTree = SOURCE_ROOT; };
+		F3F62C0BEA49460D8155806B /* test_proxy.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = test_proxy.c; path = examples/test_proxy.c; sourceTree = SOURCE_ROOT; };
+		F8CCEF53044C4B0FA6372C53 /* evhtp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; path = evhtp.c; sourceTree = SOURCE_ROOT; };
+		F956A388E0C047DDBD03734B /* ascii.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ascii.c; path = oniguruma/enc/ascii.c; sourceTree = SOURCE_ROOT; };
+		FAE3DA1BA476405DB9FD99DF /* sjis.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sjis.c; path = oniguruma/enc/sjis.c; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		03678FE86F0F401198827C3F /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				27DC731A0CED40609E6961AB /* test_perf.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		0BD5B06E32EB4D42B3989B8F /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				52846C62C71043099D03D77B /* test_client.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		0DE1A663DADE4B1BBC92164B /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				BEF5E72A162B447BB971005E /* CMake Rules */,
+				B7661194FFF04269B33F18C6 /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		13DFB20574C44AA3BDBF8C12 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				726E94A08EE5454C9BD24C57 /* test.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		187DF9813749498CAA47F3CC /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8CCEF53044C4B0FA6372C53 /* evhtp.c */,
+				4E51FA2EF2EE4865B1D232B5 /* numtoa.c */,
+				F956A388E0C047DDBD03734B /* ascii.c */,
+				3E216701A612409EB26D89D7 /* big5.c */,
+				BF04096CC0FB4E53B0AD62DA /* cp1251.c */,
+				A4CEA719472A47CF9727B69E /* euc_jp.c */,
+				6A5B29FC6857442892C102AC /* euc_kr.c */,
+				07006AC00ACE46A1AD15A155 /* euc_tw.c */,
+				B36D9070C9BA4E5B87EDAE75 /* gb18030.c */,
+				26376234B47449F08D014D6D /* iso8859_1.c */,
+				610216B3B7624A86ACD7D9CA /* iso8859_10.c */,
+				5F93AC27D4834134B4A93376 /* iso8859_11.c */,
+				B4DEB4BD28CF4B47B3E7A674 /* iso8859_13.c */,
+				B1E551421FD64F67BDDACA50 /* iso8859_14.c */,
+				5EC1B7EE94764A149AD6B587 /* iso8859_15.c */,
+				34A53B8632424F2EA9C95032 /* iso8859_16.c */,
+				ED3A3C6E21574BC380797B42 /* iso8859_2.c */,
+				6D69187F31D149659638445D /* iso8859_3.c */,
+				28C3B708EEF64C54BBA7849C /* iso8859_4.c */,
+				EA00292F59614D7AA9BB2912 /* iso8859_5.c */,
+				00293668A3F84CF9ABA96243 /* iso8859_6.c */,
+				9532B9B293F1439A90BD5815 /* iso8859_7.c */,
+				DB8EB3FCE6744B6EB606E109 /* iso8859_8.c */,
+				638B33F372C94DBF964652A3 /* iso8859_9.c */,
+				050843A88DD441D18804CA1A /* koi8_r.c */,
+				FAE3DA1BA476405DB9FD99DF /* sjis.c */,
+				5400E477B53D44BC82685FC6 /* unicode.c */,
+				3923D36C91E340CAA9BDC00D /* utf16_be.c */,
+				5BE436FE4ADF4B0E9796B3A5 /* utf16_le.c */,
+				580C428E1D96469E8BF76B61 /* utf32_be.c */,
+				8AD52A1408B7400098606B00 /* utf32_le.c */,
+				428598DA3F57441EBDE6C46C /* utf8.c */,
+				F2B20A5CF63844FEA8ECC522 /* regcomp.c */,
+				DF2F2EFECD7849F18ACAB8E2 /* regenc.c */,
+				85FFF138D76B4E0AACF165FA /* regerror.c */,
+				EE2ED14AAC5845B9AAB74616 /* regexec.c */,
+				D9B85577CBA8449488E44464 /* regext.c */,
+				E214C194AD3847D5A004C4F6 /* reggnu.c */,
+				D5EAAC27B6314588AB231E93 /* regparse.c */,
+				EBEBE24BAFB54AE7830DDD5F /* regposerr.c */,
+				F3B662144C4F4ADF9A3E1B10 /* regposix.c */,
+				39B3E4AEB034473CBB6E0F3A /* regsyntax.c */,
+				7CEB7D8FEB0C4276A3B54213 /* regtrav.c */,
+				7C81AB6717814529A64DB9C0 /* regversion.c */,
+				3530934786EF491294832EFB /* st.c */,
+				942AD4532B53484DB70FAB65 /* parser.c */,
+				6AC6EC6441AA406D8AB4B713 /* thread.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		4269DD5459FF466183125906 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				1BED4698DC2545B9B3449873 /* test_vhost.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		49F75D85C5BE4DE7B78E54BA /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				F06D9D3E60DF427C9E4519D5 /* test_query.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		4CEE1531AAB7402C8391B741 /* evhtp */ = {
+			isa = PBXGroup;
+			children = (
+				187DF9813749498CAA47F3CC /* Source Files */,
+				EBAC09A1E9184B0BA6FE92E0 /* CMakeLists.txt */,
+			);
+			name = evhtp;
+			sourceTree = "<group>";
+		};
+		534757F3D01F4C02A54EB51A /* test_basic */ = {
+			isa = PBXGroup;
+			children = (
+				DB60CE520CE14BB38897A3DD /* Source Files */,
+				76E441EE3BDD4EB6826B61A0 /* CMakeLists.txt */,
+			);
+			name = test_basic;
+			sourceTree = "<group>";
+		};
+		5B11673084574EC5A7BBB64A /* test_perf */ = {
+			isa = PBXGroup;
+			children = (
+				03678FE86F0F401198827C3F /* Source Files */,
+				EF4B1408BDE44FF1B8522D8F /* CMakeLists.txt */,
+			);
+			name = test_perf;
+			sourceTree = "<group>";
+		};
+		5D3DD46F4AC14F2EBAF2D371 = {
+			isa = PBXGroup;
+			children = (
+				4CEE1531AAB7402C8391B741 /* evhtp */,
+				0DE1A663DADE4B1BBC92164B /* ALL_BUILD */,
+				5B11673084574EC5A7BBB64A /* test_perf */,
+				B445656C65144C0A8DFF8520 /* test_query */,
+				61ECB85DB39F447EABE005C1 /* test_vhost */,
+				534757F3D01F4C02A54EB51A /* test_basic */,
+				E1C53F3A867242A48382DA2D /* test_proxy */,
+				8ADCDFD18DB2402B87379218 /* test */,
+				C610570574F3438085C95C52 /* test_client */,
+				622733FBD2774227B8A633B1 /* examples */,
+				CBF4E9DC4DD34EF3B32B2350 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61ECB85DB39F447EABE005C1 /* test_vhost */ = {
+			isa = PBXGroup;
+			children = (
+				4269DD5459FF466183125906 /* Source Files */,
+				2E6002746B464CB89C81AB90 /* CMakeLists.txt */,
+			);
+			name = test_vhost;
+			sourceTree = "<group>";
+		};
+		622733FBD2774227B8A633B1 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				08548E33B6704F4B93DB2332 /* CMakeLists.txt */,
+			);
+			name = examples;
+			sourceTree = "<group>";
+		};
+		8ADCDFD18DB2402B87379218 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				13DFB20574C44AA3BDBF8C12 /* Source Files */,
+				C41FE7D42A2E4B3A875C5B25 /* CMakeLists.txt */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+		B445656C65144C0A8DFF8520 /* test_query */ = {
+			isa = PBXGroup;
+			children = (
+				49F75D85C5BE4DE7B78E54BA /* Source Files */,
+				699A4690D8B24A908568D600 /* CMakeLists.txt */,
+			);
+			name = test_query;
+			sourceTree = "<group>";
+		};
+		BEC058EE8F61424881F71724 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				F3F62C0BEA49460D8155806B /* test_proxy.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		BEF5E72A162B447BB971005E /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		C610570574F3438085C95C52 /* test_client */ = {
+			isa = PBXGroup;
+			children = (
+				0BD5B06E32EB4D42B3989B8F /* Source Files */,
+				AD698B139F6745118F3C818D /* CMakeLists.txt */,
+			);
+			name = test_client;
+			sourceTree = "<group>";
+		};
+		CBF4E9DC4DD34EF3B32B2350 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD10B43CDE84479ABD31CA48 /* libevhtp.a */,
+				991107D222B7423B8C339027 /* test */,
+				E924E73F47144497BBD3A7CE /* test_basic */,
+				5A5858C25D4E4C05B53517E8 /* test_client */,
+				CA1F80F9054A4B48A0ED2DE7 /* test_perf */,
+				8E769E50911F42769B0C8CA3 /* test_proxy */,
+				EEB33871417D49FAB1B5697A /* test_query */,
+				26B1AA48674F43F9808DF9B4 /* test_vhost */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB60CE520CE14BB38897A3DD /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				33E42022DA0A4D04A0F4BE93 /* test_basic.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		E1C53F3A867242A48382DA2D /* test_proxy */ = {
+			isa = PBXGroup;
+			children = (
+				BEC058EE8F61424881F71724 /* Source Files */,
+				A73A629292774EE9BDE90248 /* CMakeLists.txt */,
+			);
+			name = test_proxy;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04D81388FB9E43CD83FB546F /* test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00F2E2E7ECD0458E98081948 /* Build configuration list for PBXNativeTarget "test" */;
+			buildPhases = (
+				87F6A3FEFED24F8AAA0FB8D7 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72885D87C0EA43D288933E3D /* PBXTargetDependency */,
+				19EE235E3E4646A3B6F4D451 /* PBXTargetDependency */,
+			);
+			name = test;
+			productName = test;
+			productReference = 991107D222B7423B8C339027 /* test */;
+			productType = "com.apple.product-type.tool";
+		};
+		09747B2967FB46EABA5A9B58 /* test_client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7FC526D64A2481F9C91CEBE /* Build configuration list for PBXNativeTarget "test_client" */;
+			buildPhases = (
+				A06B7DBD7A8E4FCBA8CC5739 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67719A6C99E447E8BA2B72A0 /* PBXTargetDependency */,
+				2AB0CAFD3AF942D1A8113200 /* PBXTargetDependency */,
+			);
+			name = test_client;
+			productName = test_client;
+			productReference = 5A5858C25D4E4C05B53517E8 /* test_client */;
+			productType = "com.apple.product-type.tool";
+		};
+		18B948C9C1944EBD8FA9A52C /* test_vhost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41771EC3BAFE48DD9DB0C402 /* Build configuration list for PBXNativeTarget "test_vhost" */;
+			buildPhases = (
+				685FA32D0141425A8AA6B9B8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6CA791237FE4B6589756C71 /* PBXTargetDependency */,
+				45D64802CC254D02884B8C98 /* PBXTargetDependency */,
+			);
+			name = test_vhost;
+			productName = test_vhost;
+			productReference = 26B1AA48674F43F9808DF9B4 /* test_vhost */;
+			productType = "com.apple.product-type.tool";
+		};
+		70AF7C16C5C74144957090D1 /* test_proxy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B87A9DC224E94383A5DE0C37 /* Build configuration list for PBXNativeTarget "test_proxy" */;
+			buildPhases = (
+				29670B8415DC42199D5BB1ED /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3A5FCC0BFC34DA790379130 /* PBXTargetDependency */,
+				013E13278FB445CDB3F5A13F /* PBXTargetDependency */,
+			);
+			name = test_proxy;
+			productName = test_proxy;
+			productReference = 8E769E50911F42769B0C8CA3 /* test_proxy */;
+			productType = "com.apple.product-type.tool";
+		};
+		842274230E0A4F45A409B616 /* evhtp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25860D1844104506A6C4464B /* Build configuration list for PBXNativeTarget "evhtp" */;
+			buildPhases = (
+				832E6DA22B0F48DA93CCCAA2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78B3A892724E4D838065029A /* PBXTargetDependency */,
+			);
+			name = evhtp;
+			productName = evhtp;
+			productReference = BD10B43CDE84479ABD31CA48 /* libevhtp.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9CD4F140CBBA457B9ACEB643 /* test_query */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA3FA2249DAC4172836F0DC0 /* Build configuration list for PBXNativeTarget "test_query" */;
+			buildPhases = (
+				C3326D343E734C508CD86A44 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				478C12826F6C4FB2896D4257 /* PBXTargetDependency */,
+				2AE7FE9380C4446DAF804321 /* PBXTargetDependency */,
+			);
+			name = test_query;
+			productName = test_query;
+			productReference = EEB33871417D49FAB1B5697A /* test_query */;
+			productType = "com.apple.product-type.tool";
+		};
+		B29223493C874343B719E7D8 /* test_perf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF51A3AA0D46451C97F61BB4 /* Build configuration list for PBXNativeTarget "test_perf" */;
+			buildPhases = (
+				A262576307E3404DB4C10B4D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0199C8BA46D444D583E823C3 /* PBXTargetDependency */,
+				758BEF9CBD454CDABE341B90 /* PBXTargetDependency */,
+			);
+			name = test_perf;
+			productName = test_perf;
+			productReference = CA1F80F9054A4B48A0ED2DE7 /* test_perf */;
+			productType = "com.apple.product-type.tool";
+		};
+		F66A040B80DD48F2B7B1F85A /* test_basic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCC91E584BF24E279986CB7C /* Build configuration list for PBXNativeTarget "test_basic" */;
+			buildPhases = (
+				C5D1E37028DB4AFD8B1A930C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CCEE3B7C99B4DAF9E3D86F7 /* PBXTargetDependency */,
+				CA19FF84585D44E5ABD0B569 /* PBXTargetDependency */,
+			);
+			name = test_basic;
+			productName = test_basic;
+			productReference = E924E73F47144497BBD3A7CE /* test_basic */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A26900CCBFA46709D56B1FD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = F9930D2829774AEB9E82BCA0 /* Build configuration list for PBXProject "libevhtp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5D3DD46F4AC14F2EBAF2D371;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				FC02393B5C6649A89721D983 /* ALL_BUILD */,
+				788E08A0741A4591BC3C88C3 /* ZERO_CHECK */,
+				842274230E0A4F45A409B616 /* evhtp */,
+				0FB21B4686B640AEA3F863F1 /* install */,
+				0D8881AE649E486DB6DCBAFB /* package */,
+				BA0BDFAA01B84637979FF5B4 /* examples */,
+				04D81388FB9E43CD83FB546F /* test */,
+				F66A040B80DD48F2B7B1F85A /* test_basic */,
+				09747B2967FB46EABA5A9B58 /* test_client */,
+				B29223493C874343B719E7D8 /* test_perf */,
+				70AF7C16C5C74144957090D1 /* test_proxy */,
+				9CD4F140CBBA457B9ACEB643 /* test_query */,
+				18B948C9C1944EBD8FA9A52C /* test_vhost */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03810442CC624F2080C2B73B /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/libevhtp/build-xcode -f /Users/liwei/github/uv_demo/libevhtp/build-xcode/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		CB4A11B876F148CE92464260 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/libevhtp/build-xcode -f /Users/liwei/github/uv_demo/libevhtp/build-xcode/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		D2792C836B3F4C2FB65BC7F5 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/libevhtp/build-xcode -f /Users/liwei/github/uv_demo/libevhtp/build-xcode/CMakeScripts/package_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		E0441D91128A45EDAF667781 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/libevhtp/build-xcode -f /Users/liwei/github/uv_demo/libevhtp/build-xcode/CMakeScripts/install_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		29670B8415DC42199D5BB1ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E562E44EBE344B6BE011660 /* test_proxy.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		685FA32D0141425A8AA6B9B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33AAEF00EF2445EDB66CD48A /* test_vhost.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		832E6DA22B0F48DA93CCCAA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD4787C92C64C1E852AFBDD /* evhtp.c in Sources */,
+				2784333815CC4F5FA28F28BE /* numtoa.c in Sources */,
+				9234DC9827264A00AB876A54 /* ascii.c in Sources */,
+				AD6B403D6FF043C79F35BA90 /* big5.c in Sources */,
+				D24051D085F44EB58D947EA3 /* cp1251.c in Sources */,
+				51581023274A41E5873EA1F2 /* euc_jp.c in Sources */,
+				40C0EBD9D87A462FB2E76E9F /* euc_kr.c in Sources */,
+				9A4E7E4C87434CDA98F8C485 /* euc_tw.c in Sources */,
+				B73A2FF4D9194E6EBF1E67D1 /* gb18030.c in Sources */,
+				3416815E0C88492E8F7A4998 /* iso8859_1.c in Sources */,
+				7885E5D6605F486B81F29B2D /* iso8859_10.c in Sources */,
+				3A68FD18D58345A7AB8EEA5A /* iso8859_11.c in Sources */,
+				05BC5624D33D4A97ACD61A4F /* iso8859_13.c in Sources */,
+				E31781D0283C49048CD59C62 /* iso8859_14.c in Sources */,
+				2C63F411ACBF49A6AD90111A /* iso8859_15.c in Sources */,
+				AE6E04E521454E4DA3EA9CFD /* iso8859_16.c in Sources */,
+				FDB8FB043FC143888E5B8B82 /* iso8859_2.c in Sources */,
+				D06F666088334BA497CBC3EA /* iso8859_3.c in Sources */,
+				022D047890F84516AA0FC61D /* iso8859_4.c in Sources */,
+				6BF866387FAC48C8A9A6EAA1 /* iso8859_5.c in Sources */,
+				FBCFE7562D564B8189DA77E5 /* iso8859_6.c in Sources */,
+				1CE441816F94465EA23979F8 /* iso8859_7.c in Sources */,
+				B64572B3892F40609747018C /* iso8859_8.c in Sources */,
+				BD3F362642A743FFBE27E05C /* iso8859_9.c in Sources */,
+				201A749D04C244FE90A6540A /* koi8_r.c in Sources */,
+				D75D9779A6E446F4978DAC75 /* sjis.c in Sources */,
+				327AB3EF760440F58B1C77EB /* unicode.c in Sources */,
+				45547CF3BCB64B89A76B40F1 /* utf16_be.c in Sources */,
+				C8DA4C8584884D3A8851CA0F /* utf16_le.c in Sources */,
+				77719855FECD4B9990D67B32 /* utf32_be.c in Sources */,
+				D713CB329DF54FA289BA24EE /* utf32_le.c in Sources */,
+				71D1074F9B2A43D089FC9804 /* utf8.c in Sources */,
+				C540C95C2AB24C29A7405DDB /* regcomp.c in Sources */,
+				EC98CAB533B74852BBBF2B25 /* regenc.c in Sources */,
+				99E85B36481049BBB419DC5D /* regerror.c in Sources */,
+				7FBAB3837D844A75A41BC0DD /* regexec.c in Sources */,
+				581572DA25FC4D848ECE83C4 /* regext.c in Sources */,
+				D32B22CAE56646748F6B3030 /* reggnu.c in Sources */,
+				E39D9EFC1D6B4FE694FA1A60 /* regparse.c in Sources */,
+				13EE1D72155446E2B89B4A26 /* regposerr.c in Sources */,
+				8E29B391C56E4FE5B200AC53 /* regposix.c in Sources */,
+				56624C82BA3042B2BD659F5E /* regsyntax.c in Sources */,
+				C9778A8B65234585A639E04F /* regtrav.c in Sources */,
+				E0B226E992BA46F4AA6567F7 /* regversion.c in Sources */,
+				7F60E5ABD6914260854FF6E4 /* st.c in Sources */,
+				147587335279447AA8EB14CE /* parser.c in Sources */,
+				024F2C451BD44A40966391B4 /* thread.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F6A3FEFED24F8AAA0FB8D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6205858D14F34820A6497AB3 /* test.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A06B7DBD7A8E4FCBA8CC5739 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92CBDED1535746A3BC15C523 /* test_client.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A262576307E3404DB4C10B4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F1E77B977B14EA5B9942F6C /* test_perf.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3326D343E734C508CD86A44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E9F7A35612440DFA0EF1237 /* test_query.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5D1E37028DB4AFD8B1A930C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC236C91FC6F4A5087750614 /* test_basic.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		013E13278FB445CDB3F5A13F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842274230E0A4F45A409B616 /* evhtp */;
+			targetProxy = C839E9CA4CFD415AB445ADAC /* PBXContainerItemProxy */;
+		};
+		0199C8BA46D444D583E823C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = 7AAECFF815594004AD4CCD20 /* PBXContainerItemProxy */;
+		};
+		0ABF65F1FCB747B89E087732 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC02393B5C6649A89721D983 /* ALL_BUILD */;
+			targetProxy = 083404FA145A4F86881F30C2 /* PBXContainerItemProxy */;
+		};
+		19EE235E3E4646A3B6F4D451 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842274230E0A4F45A409B616 /* evhtp */;
+			targetProxy = 4E5EE5D0DF504ED386E87473 /* PBXContainerItemProxy */;
+		};
+		2AB0CAFD3AF942D1A8113200 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842274230E0A4F45A409B616 /* evhtp */;
+			targetProxy = B55BBF85609644B5A7B142EE /* PBXContainerItemProxy */;
+		};
+		2AE7FE9380C4446DAF804321 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842274230E0A4F45A409B616 /* evhtp */;
+			targetProxy = 4FCCD8A3E5E8496082D61C30 /* PBXContainerItemProxy */;
+		};
+		3CCEE3B7C99B4DAF9E3D86F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = CBF80B05316349DFA9215CA8 /* PBXContainerItemProxy */;
+		};
+		45D64802CC254D02884B8C98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842274230E0A4F45A409B616 /* evhtp */;
+			targetProxy = F44E1C109CC54C4383085E22 /* PBXContainerItemProxy */;
+		};
+		478C12826F6C4FB2896D4257 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = 3D68BCF0030040DB85365137 /* PBXContainerItemProxy */;
+		};
+		4D871EC96D3045418CA827E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC02393B5C6649A89721D983 /* ALL_BUILD */;
+			targetProxy = B33C0B30ACA54BD4849DA493 /* PBXContainerItemProxy */;
+		};
+		53E2B84B5D494091B7114B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B29223493C874343B719E7D8 /* test_perf */;
+			targetProxy = 662DD5B520BD44FDAB27D4EE /* PBXContainerItemProxy */;
+		};
+		5E07E641471C4000A42ECC34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CD4F140CBBA457B9ACEB643 /* test_query */;
+			targetProxy = 85221D4C06314389B2F2A3DF /* PBXContainerItemProxy */;
+		};
+		63601CFA265E4EE99CA418F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04D81388FB9E43CD83FB546F /* test */;
+			targetProxy = 254CCD903B0B411F8EA26A40 /* PBXContainerItemProxy */;
+		};
+		67719A6C99E447E8BA2B72A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = F26C69896BCA4FE7A6E7CB16 /* PBXContainerItemProxy */;
+		};
+		6E8772F870BB433F991EAC3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = DFCE132253474FED8EA7B62E /* PBXContainerItemProxy */;
+		};
+		72885D87C0EA43D288933E3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = 20B6D7CFC01140B0AEEF6D82 /* PBXContainerItemProxy */;
+		};
+		72971F520C6D4589A65BDA47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F66A040B80DD48F2B7B1F85A /* test_basic */;
+			targetProxy = F01A071F0D8B41BAA2A2625D /* PBXContainerItemProxy */;
+		};
+		758BEF9CBD454CDABE341B90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842274230E0A4F45A409B616 /* evhtp */;
+			targetProxy = E215CFF8C77947C38C6E5A14 /* PBXContainerItemProxy */;
+		};
+		78B3A892724E4D838065029A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = F5256A4D3C594CCC9F6BA6DE /* PBXContainerItemProxy */;
+		};
+		7E7165F796F54105A0506AF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842274230E0A4F45A409B616 /* evhtp */;
+			targetProxy = CA9F431FCB454E398B0B3C72 /* PBXContainerItemProxy */;
+		};
+		9E7D4DBF3A074E74AB2216E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70AF7C16C5C74144957090D1 /* test_proxy */;
+			targetProxy = 40D88972C1034366A9696F46 /* PBXContainerItemProxy */;
+		};
+		C3A5FCC0BFC34DA790379130 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = 68171871AAB74EA88541EAC8 /* PBXContainerItemProxy */;
+		};
+		C59CF9A93C9543E782FDA9EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09747B2967FB46EABA5A9B58 /* test_client */;
+			targetProxy = C889208E5EBC4CFAA5586656 /* PBXContainerItemProxy */;
+		};
+		CA19FF84585D44E5ABD0B569 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842274230E0A4F45A409B616 /* evhtp */;
+			targetProxy = 88878A4BBCA44184931FC2D4 /* PBXContainerItemProxy */;
+		};
+		D6CA791237FE4B6589756C71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = 96B6486F4ABA4E1BA0AC5EF2 /* PBXContainerItemProxy */;
+		};
+		F4F0A826AD3D4413853DBEE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 788E08A0741A4591BC3C88C3 /* ZERO_CHECK */;
+			targetProxy = 17BE1645EC2F4459B3EC54C5 /* PBXContainerItemProxy */;
+		};
+		F8CC899A5F4D476DA742DAAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18B948C9C1944EBD8FA9A52C /* test_vhost */;
+			targetProxy = B1BE9C41355C47FCAD889FCE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0176B373A25C4AD88BABDDB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Release/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_query;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		020DA2BCA65648848F9E0C4C /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		0221614CBD18458CB3E9781A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = examples;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		02D2D2BBCAFB49EABBAA7604 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/RelWithDebInfo/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_proxy;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		065ECBF923444628AF615351 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Release/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_basic;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		0819699099964A2C97A48F68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Debug/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_proxy;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		09363196F4A547B6B5666D2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		0B1EF9179F3847A1ABD55BC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		264C1BFF2BF6461AA97958F9 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/RelWithDebInfo/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_client;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		311107B3931B41A8A791D540 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/build";
+			};
+			name = Debug;
+		};
+		32610D2FB57F43EE9F5769C3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/RelWithDebInfo/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_query;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		34C6C69FD4324CE2A5D56EC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Debug/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		37A5DF69F67647CFAAAA4FD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Debug/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_query;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		3AB43ECD33B3466887770C54 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		3D61894635524FA1A5E7EC73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		3F72D69EB889418FAADD08E5 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/build";
+			};
+			name = MinSizeRel;
+		};
+		41F0DB83C98B4E759473E955 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Debug/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_basic;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		467F9491CA6044C2A0A93401 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Debug/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_client;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		48975BE176CA4DD6917749DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = examples;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		4B55ED9B966F4BCD9D293004 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = examples;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		5064D1C47C0B447DAC16A117 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/build";
+			};
+			name = Release;
+		};
+		5EEFA1A3A3AE439DB2E85E1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Release/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_vhost;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		624A2CA61DFA4B9CA51BCC9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Debug/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_vhost;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		65831E5138414C55B927C7D2 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		6B281D6B5A3A4851BAE110CD /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/MinSizeRel/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_client;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		7485825E61604547B6D0E4C9 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = examples;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		7653E3D61E33480992D7F8F3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/build";
+			};
+			name = RelWithDebInfo;
+		};
+		79CBF28967E2411891C1B71D /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = evhtp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		8426FA1670484136ABBE3D1C /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/MinSizeRel/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_query;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		93719DC58BC247C6A1DD242B /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/MinSizeRel/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_vhost;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		952962C480604126BA4C3553 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		9D594A77C79E4BA78D6FADE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		9F5D5B2E97844831B8B70F3F /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/RelWithDebInfo/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_vhost;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		A3092438DD254D678CC7E416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Release/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_perf;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		A8AE99EC31174DBAB7EE3773 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		A92A67EFFE1A4C05AF4CFD4D /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/MinSizeRel/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_proxy;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		AA55711643E44B7AA6BB1C8A /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		ACCD3EA377FD4432A5332830 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/MinSizeRel/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		B09FBCEA47A2416B8799E7B8 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/MinSizeRel/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_basic;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		B1914E4A7ACD429F9AD0447E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		BC111EFAA1E64BCFB57ADEE8 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/RelWithDebInfo/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		BE471CBA81A7452191833A38 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/RelWithDebInfo/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_basic;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		C2017F27D1294FD6A9254B2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Release/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_proxy;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		C43C4082D71C46A692111FC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = evhtp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		C750B869A63A48E481FAA73B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		D0FCDE4C0B1845D9A205C87D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+				);
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = evhtp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		D820F724B5B5496FA6962FFE /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		D9702537300642DEA5448E2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Release/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_client;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		DE7ADEEBAECC4FFCBC966A6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		E404E6A35959451397CE79B4 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = evhtp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		EA20D71242D34FC9B4653678 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/RelWithDebInfo/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_perf;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		ED12E66BE4074F5980001AF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Debug/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_perf;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		F22E0E3F700E4117BDB1F2DC /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/MinSizeRel/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test_perf;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		F4050738FA5846E8B2CDF9E3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		F8B82EBFDD8C4255B307DA27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					EVHTP_HAS_C99,
+					"'EVHTP_SYS_ARCH=64'",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples",
+					/Users/liwei/github/uv_demo/libevhtp/examples,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/compat",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode",
+					/Users/liwei/github/uv_demo/libevhtp/include,
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/include",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/oniguruma",
+					/Users/liwei/github/uv_demo/libevhtp/oniguruma,
+					/usr/local/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DPROJECT_VERSION=1.2.12",
+					"-Wall",
+					"-fvisibility=hidden",
+					"-DNDEBUG",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/Users/liwei/github/uv_demo/libevhtp/build-xcode/Release/libevhtp.a",
+					/usr/local/lib/libevent.dylib,
+					/usr/local/lib/libevent_pthreads.dylib,
+					"-lpthread",
+					/usr/lib/libdl.dylib,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		FB46027E8A90464EB27456AB /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/liwei/github/uv_demo/libevhtp/build-xcode";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00F2E2E7ECD0458E98081948 /* Build configuration list for PBXNativeTarget "test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34C6C69FD4324CE2A5D56EC9 /* Debug */,
+				F8B82EBFDD8C4255B307DA27 /* Release */,
+				ACCD3EA377FD4432A5332830 /* MinSizeRel */,
+				BC111EFAA1E64BCFB57ADEE8 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		0A0FB99F0C77452DAA79F0A1 /* Build configuration list for PBXAggregateTarget "install" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D594A77C79E4BA78D6FADE2 /* Debug */,
+				09363196F4A547B6B5666D2A /* Release */,
+				FB46027E8A90464EB27456AB /* MinSizeRel */,
+				65831E5138414C55B927C7D2 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1B6AD8D831804DEEA57E6782 /* Build configuration list for PBXAggregateTarget "examples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0221614CBD18458CB3E9781A /* Debug */,
+				48975BE176CA4DD6917749DC /* Release */,
+				4B55ED9B966F4BCD9D293004 /* MinSizeRel */,
+				7485825E61604547B6D0E4C9 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		25860D1844104506A6C4464B /* Build configuration list for PBXNativeTarget "evhtp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0FCDE4C0B1845D9A205C87D /* Debug */,
+				C43C4082D71C46A692111FC0 /* Release */,
+				79CBF28967E2411891C1B71D /* MinSizeRel */,
+				E404E6A35959451397CE79B4 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		36B1837FADBB47E7A1DE4254 /* Build configuration list for PBXAggregateTarget "package" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C750B869A63A48E481FAA73B /* Debug */,
+				A8AE99EC31174DBAB7EE3773 /* Release */,
+				AA55711643E44B7AA6BB1C8A /* MinSizeRel */,
+				F4050738FA5846E8B2CDF9E3 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		41771EC3BAFE48DD9DB0C402 /* Build configuration list for PBXNativeTarget "test_vhost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				624A2CA61DFA4B9CA51BCC9E /* Debug */,
+				5EEFA1A3A3AE439DB2E85E1A /* Release */,
+				93719DC58BC247C6A1DD242B /* MinSizeRel */,
+				9F5D5B2E97844831B8B70F3F /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		90BD59E64D8F41F8B3702217 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1914E4A7ACD429F9AD0447E /* Debug */,
+				0B1EF9179F3847A1ABD55BC4 /* Release */,
+				3AB43ECD33B3466887770C54 /* MinSizeRel */,
+				020DA2BCA65648848F9E0C4C /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9E6DE2867EBC46AA9D4A6B3A /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE7ADEEBAECC4FFCBC966A6F /* Debug */,
+				3D61894635524FA1A5E7EC73 /* Release */,
+				952962C480604126BA4C3553 /* MinSizeRel */,
+				D820F724B5B5496FA6962FFE /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B87A9DC224E94383A5DE0C37 /* Build configuration list for PBXNativeTarget "test_proxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0819699099964A2C97A48F68 /* Debug */,
+				C2017F27D1294FD6A9254B2C /* Release */,
+				A92A67EFFE1A4C05AF4CFD4D /* MinSizeRel */,
+				02D2D2BBCAFB49EABBAA7604 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BCC91E584BF24E279986CB7C /* Build configuration list for PBXNativeTarget "test_basic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41F0DB83C98B4E759473E955 /* Debug */,
+				065ECBF923444628AF615351 /* Release */,
+				B09FBCEA47A2416B8799E7B8 /* MinSizeRel */,
+				BE471CBA81A7452191833A38 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BF51A3AA0D46451C97F61BB4 /* Build configuration list for PBXNativeTarget "test_perf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED12E66BE4074F5980001AF3 /* Debug */,
+				A3092438DD254D678CC7E416 /* Release */,
+				F22E0E3F700E4117BDB1F2DC /* MinSizeRel */,
+				EA20D71242D34FC9B4653678 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CA3FA2249DAC4172836F0DC0 /* Build configuration list for PBXNativeTarget "test_query" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37A5DF69F67647CFAAAA4FD8 /* Debug */,
+				0176B373A25C4AD88BABDDB7 /* Release */,
+				8426FA1670484136ABBE3D1C /* MinSizeRel */,
+				32610D2FB57F43EE9F5769C3 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F7FC526D64A2481F9C91CEBE /* Build configuration list for PBXNativeTarget "test_client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				467F9491CA6044C2A0A93401 /* Debug */,
+				D9702537300642DEA5448E2C /* Release */,
+				6B281D6B5A3A4851BAE110CD /* MinSizeRel */,
+				264C1BFF2BF6461AA97958F9 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F9930D2829774AEB9E82BCA0 /* Build configuration list for PBXProject "libevhtp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				311107B3931B41A8A791D540 /* Debug */,
+				5064D1C47C0B447DAC16A117 /* Release */,
+				3F72D69EB889418FAADD08E5 /* MinSizeRel */,
+				7653E3D61E33480992D7F8F3 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A26900CCBFA46709D56B1FD /* Project object */;
+}

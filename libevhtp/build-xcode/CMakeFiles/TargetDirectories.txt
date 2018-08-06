@@ -1,0 +1,15 @@
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/CMakeFiles/install.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/CMakeFiles/package.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/CMakeFiles/evhtp.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/CMakeFiles/ALL_BUILD.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/CMakeFiles/ZERO_CHECK.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/package.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/test_perf.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/install.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/test_query.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/test_vhost.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/test_basic.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/test_proxy.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/test.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/test_client.dir
+/Users/liwei/github/uv_demo/libevhtp/build-xcode/examples/CMakeFiles/examples.dir

@@ -26,7 +26,7 @@ int NetIOBuffer::send(int main_cmd, int assi_cmd, void* buf, int size, std::func
 	return c;
 }
 
-int NetIOBuffer::parse(const char * buf, int size, PARSE_DATA_CALLFUNC func, void* userdata)
+int NetIOBuffer::parse(const char * buf, int size, PARSE_CALLFUNC func, void* userdata)
 {
 	assert(size > 0);
     
@@ -54,19 +54,19 @@ int NetIOBuffer::parse(const char * buf, int size, PARSE_DATA_CALLFUNC func, voi
 	{
 		lw_fast_lock_guard l(_rlock);
 		_cache.push(const_cast<char*>(buf), size);
-		int tmpCacheLength = (int)_cache.size();
+		int cache_size = (int)_cache.size();
 
-		if (tmpCacheLength < C_NETHEAD_SIZE) {
+		if (cache_size < C_NETHEAD_SIZE) {
 			return -3;
-			LOGFMTD("not a complete data packet [cache_size:%d head_size:%d]", tmpCacheLength, C_NETHEAD_SIZE);
+			LOGFMTD("not a complete data packet [cache_size:%d head_size:%d]", cache_size, C_NETHEAD_SIZE);
 		}
 
 		do
 		{
 			NetHead *nh = (NetHead*)_cache.front();
 
-			if (tmpCacheLength < nh->size) {
-				LOGFMTD("not a complete data packet [cache_size:%d, head_size:%d]", tmpCacheLength, nh->size);
+			if (cache_size < nh->size) {
+				LOGFMTD("not a complete data packet [cache_size:%d, head_size:%d]", cache_size, nh->size);
 				break;
 			}
 
@@ -88,8 +88,8 @@ int NetIOBuffer::parse(const char * buf, int size, PARSE_DATA_CALLFUNC func, voi
 
 			_cache.pop(nh->size);
             
-			tmpCacheLength = (int)_cache.size();
-		} while (tmpCacheLength >= C_NETHEAD_SIZE);
+			cache_size = (int)_cache.size();
+		} while (cache_size >= C_NETHEAD_SIZE);
 
 // 		clock_t t1 = clock();
 // 		LOGFMTD("NetCore::parse time [%f]", ((double)t1 - t) / CLOCKS_PER_SEC);

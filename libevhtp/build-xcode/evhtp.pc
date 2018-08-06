@@ -1,0 +1,11 @@
+prefix=/usr/local
+libdir=/usr/local/lib
+includedir=/usr/local/include/evhtp
+
+Name: libevhtp
+Description: A more flexible replacement for libevent's httpd API
+Version: 1.2.12
+Libs: -L${libdir} -levhtp
+Libs.private: /usr/local/lib/libevent.dylib;/usr/local/lib/libevent_pthreads.dylib;pthread
+Cflags: -I${includedir}
+
