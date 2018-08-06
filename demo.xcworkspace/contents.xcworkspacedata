@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:fork-demo/fork-demo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:mill/mill.xcodeproj">
    </FileRef>
    <FileRef

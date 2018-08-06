@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-cc liwei"
+            argument = "-t"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
