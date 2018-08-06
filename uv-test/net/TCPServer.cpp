@@ -292,7 +292,7 @@ namespace lw
 
 	void TCPServer::onResolved(int status, struct addrinfo *res)
 	{
-		char addr[17] = {0};
+		char addr[16+1] = {0};
 		int ret = uv_ip4_name((struct sockaddr_in*)res->ai_addr, addr, sizeof(addr)/sizeof(addr[0]));
 		printf("ip : %s\n", addr);
 
@@ -310,13 +310,13 @@ namespace lw
 
 	int TCPServer::sendData(uv_tcp_t* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)
 	{
-        this->_ioBuffer.send(main_cmd, assi_cmd, buf, size, [this, cli](NetPackage* pack) -> int {
+        this->_ioBuffer.send(main_cmd, assi_cmd, buf, size, [this, cli](NetPacket* pkt) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
 
-            uv_buf_t buf_t = uv_buf_init(pack->getBuf(), pack->getSize());
+            uv_buf_t buft = uv_buf_init(pkt->getBuf(), pkt->getSize());
         
-            int c = uv_write(req, (uv_stream_t*)cli, &buf_t, 1, UVWrapper::write_cb);
+            int c = uv_write(req, (uv_stream_t*)cli, &buft, 1, UVWrapper::write_cb);
             if (c == 0) {
                 
             } else {

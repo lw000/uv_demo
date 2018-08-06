@@ -29,9 +29,9 @@ static void alloc_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf);
 static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
 static void write_cb(uv_write_t* req, int status);
 static void connect_cb(uv_connect_t* req, int status);
-static void parse_data_cb(MSG* pack, void* userdata);
+static void parse_cb(MSG* pack, void* userdata);
 
-void parse_data_cb(MSG* msg, void* userdata) {
+void parse_cb(MSG* msg, void* userdata) {
     
     int main_cmd = msg->main_cmd;
     int assi_cmd = msg->assi_cmd;
@@ -54,7 +54,7 @@ void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf) {
         uv_close((uv_handle_t*)&client, NULL);
     }
     else {
-        iobuffer.parse(buf->base, nread, parse_data_cb, NULL);
+        iobuffer.parse(buf->base, nread, parse_cb, NULL);
     }
     
     if (buf->base) {
@@ -72,13 +72,13 @@ void entry(void *arg) {
         reqest_a_data data;
         data.a = 10;
         data.b = 20;
-        iobuffer.send(100, 200, (void*)&data, sizeof(data), [](NetPackage * pack) -> int {
+        iobuffer.send(100, 200, (void*)&data, sizeof(data), [](NetPacket * pkt) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            uv_buf_t newbuf = uv_buf_init(pack->getBuf(), pack->getSize());
-            int ret = uv_write(req, (uv_stream_t*)&client, &newbuf, 1, write_cb);
-            return ret;
+            uv_buf_t newbuf = uv_buf_init(pkt->getBuf(), pkt->getSize());
+            int r = uv_write(req, (uv_stream_t*)&client, &newbuf, 1, write_cb);
+            return r;
         });
-        sleep(1);
+        sleep(0.1);
     }
 }
 

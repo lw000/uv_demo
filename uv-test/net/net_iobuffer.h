@@ -3,8 +3,8 @@
 
 #include <functional>
 #include "cache_queue.h"
+#include "net_packet.h"
 #include "lock.h"
-#include "net_package.h"
 
 struct MSG;
 
@@ -24,7 +24,7 @@ public:
 	~NetIOBuffer();
 
 public:
-	int send(int main_cmd, int assi_cmd, void* buf, int size, std::function<int(NetPackage* p)> func);
+	int send(int main_cmd, int assi_cmd, void* buf, int size, std::function<int(NetPacket*)> func);
     
 public:
 	int parse(const char * buf, int size, PARSE_CALLFUNC func, void* userdata);

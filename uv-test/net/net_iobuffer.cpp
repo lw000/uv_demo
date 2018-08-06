@@ -17,11 +17,11 @@ NetIOBuffer::~NetIOBuffer() {
 
 }
 
-int NetIOBuffer::send(int main_cmd, int assi_cmd, void* buf, int size, std::function<int(NetPackage* p)> func) {
+int NetIOBuffer::send(int main_cmd, int assi_cmd, void* buf, int size, std::function<int(NetPacket*)> func) {
     
-    NetPackage* package = new NetPackage(main_cmd, assi_cmd, buf, size);
-    int c = func(package);
-    delete package;
+    NetPacket* pkt = new NetPacket(main_cmd, assi_cmd, buf, size);
+    int c = func(pkt);
+    delete pkt;
     
 	return c;
 }
@@ -47,15 +47,14 @@ int NetIOBuffer::parse(const char * buf, int size, PARSE_CALLFUNC func, void* us
 		return -2;
 	}
 
-	int ret = -3;
-
 // 	clock_t t = clock();
 
 	{
 		lw_fast_lock_guard l(_rlock);
+        
 		_cache.push(const_cast<char*>(buf), size);
+        
 		int cache_size = (int)_cache.size();
-
 		if (cache_size < C_NETHEAD_SIZE) {
 			return -3;
 			LOGFMTD("not a complete data packet [cache_size:%d head_size:%d]", cache_size, C_NETHEAD_SIZE);
@@ -64,27 +63,26 @@ int NetIOBuffer::parse(const char * buf, int size, PARSE_CALLFUNC func, void* us
 		do
 		{
 			NetHead *nh = (NetHead*)_cache.front();
-
 			if (cache_size < nh->size) {
 				LOGFMTD("not a complete data packet [cache_size:%d, head_size:%d]", cache_size, nh->size);
 				break;
 			}
 
-			NetPackage* pack = new NetPackage(nh);
-			if (nullptr != pack) {
+			NetPacket* pkt = new NetPacket(nh);
+			if (nullptr != pkt) {
                 char* buf = _cache.front();
                 char* tbuf = &buf[C_NETHEAD_SIZE];
                 int tbuf_len = nh->size - C_NETHEAD_SIZE;
                 
                 MSG msg;
-                msg.main_cmd = pack->getHead()->main_cmd;
-                msg.assi_cmd = pack->getHead()->assi_cmd;
+                msg.main_cmd = pkt->getHead()->main_cmd;
+                msg.assi_cmd = pkt->getHead()->assi_cmd;
                 msg.buf = tbuf;
                 msg.size = tbuf_len;
                 
                 func(&msg, userdata);
 			}
-			delete pack;
+			delete pkt;
 
 			_cache.pop(nh->size);
             

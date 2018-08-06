@@ -264,11 +264,11 @@ namespace lw
 	
 	int TCPClient::sendData(unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)
 	{
-        _ioBuffer.send(main_cmd, assi_cmd, buf, size, [this](NetPackage* pack) -> int {
+        _ioBuffer.send(main_cmd, assi_cmd, buf, size, [this](NetPacket* pkt) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
             req->data = this;
             
-            uv_buf_t buf_t = uv_buf_init(pack->getBuf(), pack->getSize());
+            uv_buf_t buf_t = uv_buf_init(pkt->getBuf(), pkt->getSize());
         
             int c = uv_write(req, (uv_stream_t*)_cli, &buf_t, 1, _write_cb);
             if (c == 0) {

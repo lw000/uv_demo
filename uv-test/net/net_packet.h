@@ -29,15 +29,15 @@ public:
 
 #pragma pack()
 
-class NetPackage
+class NetPacket
 {
 public:
-	NetPackage();
-	NetPackage(const NetHead* head);
-    NetPackage(int main_cmd, int assi_cmd, void* buf, int size);
+	NetPacket();
+	NetPacket(const NetHead* head);
+    NetPacket(int main_cmd, int assi_cmd, void* buf, int size);
     
 public:
-	~NetPackage();
+	~NetPacket();
 
 public:
 	int setMessage(int main_cmd, int assi_cmd, void* msg, int size);

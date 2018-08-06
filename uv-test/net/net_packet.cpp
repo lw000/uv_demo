@@ -1,4 +1,4 @@
-#include "net_package.h"
+#include "net_packet.h"
 
 #include <time.h>
 #include <stdlib.h>
@@ -48,19 +48,19 @@ std::string _tagNetHead::debug()
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-NetPackage::NetPackage() : _size(0), _buf(NULL)
+NetPacket::NetPacket() : _size(0), _buf(NULL)
 {
 	this->_buf = NULL;
 	this->_head = new NetHead;
 }
 
-NetPackage::NetPackage(int main_cmd, int assi_cmd, void* buf, int size) : _size(0), _buf(NULL)
+NetPacket::NetPacket(int main_cmd, int assi_cmd, void* buf, int size) : _size(0), _buf(NULL)
 {
     this->_head = new NetHead;
     this->setMessage(main_cmd, assi_cmd, buf, size);
 }
 
-NetPackage::NetPackage(const NetHead* head) : _size(0), _buf(NULL)
+NetPacket::NetPacket(const NetHead* head) : _size(0), _buf(NULL)
 {
 	if (head != NULL) {
 		this->_head = new NetHead;
@@ -71,7 +71,7 @@ NetPackage::NetPackage(const NetHead* head) : _size(0), _buf(NULL)
 	}
 }
 
-NetPackage::~NetPackage()
+NetPacket::~NetPacket()
 {
 	if (this->_buf != NULL)
 	{
@@ -86,7 +86,7 @@ NetPackage::~NetPackage()
 	}
 }
 
-int NetPackage::setMessage(int main_cmd, int assi_cmd, void* buf, int size)
+int NetPacket::setMessage(int main_cmd, int assi_cmd, void* buf, int size)
 {
 	if ((buf != NULL) && (size <= 0)) {
 		return -1;
@@ -108,24 +108,24 @@ int NetPackage::setMessage(int main_cmd, int assi_cmd, void* buf, int size)
 	return 0;
 }
 
-std::string NetPackage::debug()
+std::string NetPacket::debug()
 {
 	char buf[256];
 	sprintf(buf, "NetPackage: %s", this->_head->debug().c_str());
 	return std::string(buf);
 }
 
-char* NetPackage::getBuf() const
+char* NetPacket::getBuf() const
 {
 	return this->_buf;
 }
 
-int NetPackage::getSize() const
+int NetPacket::getSize() const
 {
 	return this->_size;
 }
 
-const NetHead* NetPackage::getHead() const
+const NetHead* NetPacket::getHead() const
 {
 	return this->_head;
 }

@@ -7,7 +7,7 @@
 
 #include "uv.h"
 
-#include "net_package.h"
+#include "net_packet.h"
 #include "net_iobuffer.h"
 
 

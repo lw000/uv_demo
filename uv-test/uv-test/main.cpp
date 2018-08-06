@@ -36,23 +36,6 @@ public:
     }
     
 public:
-    class Delegate : public TCPClient::Delegate {
-    public:
-        Delegate() {
-            
-        }
-    
-    public:
-        void onMessage(MSG* pack) override {
-            
-        }
-        
-        void onStatus(int status) override {
-            
-        }
-    };
-    
-public:
     virtual void onMessage(MSG* msg) override {
         int main_cmd = msg->main_cmd;
         int assi_cmd = msg->assi_cmd;
@@ -88,7 +71,7 @@ private:
                 cli->sendData(1000, 2000, &request, sizeof(request));
             }
 
-            sleep(1);
+            sleep(0.5);
         }
     }
 };

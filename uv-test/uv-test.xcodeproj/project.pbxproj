@@ -20,7 +20,7 @@
 		D0D63B5A21115D0D00E65F68 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D63B5921115D0D00E65F68 /* libuv.a */; };
 		D0D63B642111830C00E65F68 /* cache_queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B5C2111828A00E65F68 /* cache_queue.cpp */; };
 		D0D63B652111830C00E65F68 /* net_iobuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B5E2111828A00E65F68 /* net_iobuffer.cpp */; };
-		D0D63B662111830C00E65F68 /* net_package.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B602111828A00E65F68 /* net_package.cpp */; };
+		D0D63B662111830C00E65F68 /* net_packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B602111828A00E65F68 /* net_packet.cpp */; };
 		D0D63B672111830C00E65F68 /* queue.c in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B622111828A00E65F68 /* queue.c */; };
 		D0D63B6A2111835300E65F68 /* lock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B682111835300E65F68 /* lock.cpp */; };
 		D0D63B6D2111839A00E65F68 /* log4z.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B6C2111839A00E65F68 /* log4z.cpp */; };
@@ -68,8 +68,8 @@
 		D0D63B5D2111828A00E65F68 /* cache_queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cache_queue.h; sourceTree = "<group>"; };
 		D0D63B5E2111828A00E65F68 /* net_iobuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = net_iobuffer.cpp; sourceTree = "<group>"; };
 		D0D63B5F2111828A00E65F68 /* net_iobuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = net_iobuffer.h; sourceTree = "<group>"; };
-		D0D63B602111828A00E65F68 /* net_package.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = net_package.cpp; sourceTree = "<group>"; };
-		D0D63B612111828A00E65F68 /* net_package.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = net_package.h; sourceTree = "<group>"; };
+		D0D63B602111828A00E65F68 /* net_packet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = net_packet.cpp; sourceTree = "<group>"; };
+		D0D63B612111828A00E65F68 /* net_packet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = net_packet.h; sourceTree = "<group>"; };
 		D0D63B622111828A00E65F68 /* queue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = queue.c; sourceTree = "<group>"; };
 		D0D63B632111828A00E65F68 /* queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		D0D63B682111835300E65F68 /* lock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock.cpp; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 				D0D63B5D2111828A00E65F68 /* cache_queue.h */,
 				D0D63B5E2111828A00E65F68 /* net_iobuffer.cpp */,
 				D0D63B5F2111828A00E65F68 /* net_iobuffer.h */,
-				D0D63B602111828A00E65F68 /* net_package.cpp */,
-				D0D63B612111828A00E65F68 /* net_package.h */,
+				D0D63B602111828A00E65F68 /* net_packet.cpp */,
+				D0D63B612111828A00E65F68 /* net_packet.h */,
 				D0D63B622111828A00E65F68 /* queue.c */,
 				D0D63B632111828A00E65F68 /* queue.h */,
 				D02FB489211417BB007A30D9 /* net_reactor.cpp */,
@@ -224,7 +224,7 @@
 				D0D63B642111830C00E65F68 /* cache_queue.cpp in Sources */,
 				D0D63B652111830C00E65F68 /* net_iobuffer.cpp in Sources */,
 				D02FB47F2112B618007A30D9 /* TCPServer.cpp in Sources */,
-				D0D63B662111830C00E65F68 /* net_package.cpp in Sources */,
+				D0D63B662111830C00E65F68 /* net_packet.cpp in Sources */,
 				D0D63B672111830C00E65F68 /* queue.c in Sources */,
 				D0D63B0D21107B3800E65F68 /* tcp_client.cpp in Sources */,
 				D02FB5522117E1CB007A30D9 /* uv_querying_dns.cpp in Sources */,

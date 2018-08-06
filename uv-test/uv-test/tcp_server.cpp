@@ -28,9 +28,9 @@ static void on_new_connection(uv_stream_t *server, int status);
 static void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
 static void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf);
 static void echo_write(uv_write_t *req, int status);
-static void parse_data_cb(MSG* msg, void* userdata);
+static void parse_cb(MSG* msg, void* userdata);
 
-void parse_data_cb(MSG* msg, void* userdata) {
+void parse_cb(MSG* msg, void* userdata) {
 
     int main_cmd = msg->main_cmd;
     int assi_cmd = msg->assi_cmd;
@@ -46,9 +46,9 @@ void parse_data_cb(MSG* msg, void* userdata) {
         reponse_a_data reponse;
         reponse.code = 0;
         reponse.c = request->a + request->b;
-        iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [stream](NetPackage * pack) -> int {
+        iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [stream](NetPacket * pkt) -> int {
             uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            uv_buf_t newbuf = uv_buf_init(pack->getBuf(), pack->getSize());
+            uv_buf_t newbuf = uv_buf_init(pkt->getBuf(), pkt->getSize());
             int ret = uv_write(req, stream, &newbuf, 1, echo_write);
             return ret;
         });
@@ -79,7 +79,7 @@ void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
          uv_buf_t wrbuf = uv_buf_init(buf->base, nread);
          uv_write(req, client, &wrbuf, 1, echo_write);*/
 
-        iobuffer.parse(buf->base, nread, parse_data_cb, client);
+        iobuffer.parse(buf->base, nread, parse_cb, client);
     }
     
     if (buf->base) {
