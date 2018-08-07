@@ -110,6 +110,7 @@ public:
     
     void onStatus(int status) override {
         if (status == 0) {
+            
         }
     }
 
@@ -165,11 +166,11 @@ int main(int argc, char** args)
         client_run(argc, args);
     } else if (strcmp(args[1], "-ss") == 0) {
         SrvServer srv;
-        srv.syncStart("0.0.0.0", 9090);
+        srv.run("0.0.0.0", 9090);
     }
     else if(strcmp(args[1], "-cc") == 0) {
         CliServer srv;
-        srv.syncStart("127.0.0.1", 9090);
+        srv.run("127.0.0.1", 9090);
     }
     else if(strcmp(args[1], "-t") == 0) {
         timer_run(argc, args);

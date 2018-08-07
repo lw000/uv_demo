@@ -191,7 +191,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
             endingLineNumber = "206"
-            landmarkName = "TCPClient::onAllocBuffer(size_t suggested_size, uv_buf_t* buf)"
+            landmarkName = "TCPClient::onResolved(int status, struct addrinfo *res)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

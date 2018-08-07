@@ -158,7 +158,7 @@ namespace lw
         }
     }
     
-	void TCPServer::syncStart(const char* host, const char* port)
+	int TCPServer::run(const char* host, const char* port)
 	{
         this->extSrv();
         
@@ -171,87 +171,28 @@ namespace lw
         uv_getaddrinfo_t resolver = {0};
         resolver.data = (void*)this;
 
-		try
-		{
-			int ret = uv_getaddrinfo(this->_loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
-			if (0 == ret)
-			{
-				ret = uv_run(this->_loop, UV_RUN_DEFAULT);
-			}
-			else
-			{			
-				fprintf(stderr, "getaddrinfo call error %s\n", uv_err_name(ret));
-			}
-		}
-		catch(...) {}
+        int r = uv_getaddrinfo(this->_loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
+        if (0 == r)
+        {
+            r = uv_run(this->_loop, UV_RUN_DEFAULT);
+        }
+        else
+        {
+            fprintf(stderr, "getaddrinfo call error %s\n", uv_err_name(r));
+        }
+        
+        return r;
 	}
 
-	void TCPServer::syncStart(const char* ip, unsigned int port)
+	int TCPServer::run(const char* ip, unsigned int port)
 	{
         this->extSrv();
         
 		sockaddr_in addr;
-		int ret = uv_ip4_addr(ip, port, &addr);
-		ret = uv_tcp_bind(&this->_tcp, (const sockaddr*)&addr, 0);
-		ret = uv_listen((uv_stream_t*)&this->_tcp, 100, UVWrapper::connection_cb);
-		ret = uv_run(this->_loop, UV_RUN_DEFAULT);
-	}
-    
-    static void entry(void *arg) {
-        TCPServer* srv = (TCPServer*)arg;
-        int ret = uv_run(srv->getLoop(), UV_RUN_DEFAULT);
-        if (ret == 0) {
-            // .....
-        } else {
-            // .....
-        }
-    }
-    
-    void TCPServer::asyncStart(const char* ip, unsigned int port)
-    {
-        this->extSrv();
-        
-        sockaddr_in addr;
-        int ret = uv_ip4_addr(ip, port, &addr);
-        ret = uv_tcp_bind(&this->_tcp, (const sockaddr*)&addr, 0);
-        ret = uv_listen((uv_stream_t*)&this->_tcp, 100, UVWrapper::connection_cb);
-
-        uv_thread_t tid;
-        uv_thread_create(&tid, entry, this);
-    }
-    
-    void TCPServer::asyncStart(const char* host, const char* port)
-    {
-       this->extSrv();
-        
-        struct addrinfo hints;
-        hints.ai_family = PF_INET;
-        hints.ai_socktype = SOCK_STREAM;
-        hints.ai_protocol = IPPROTO_TCP;
-        hints.ai_flags = 0;
-        
-        uv_getaddrinfo_t resolver = {0};
-        resolver.data = (void*)this;
-        
-        try
-        {
-            int ret = uv_getaddrinfo(this->_loop, &resolver, UVWrapper::on_resolved, host, port, &hints);
-            if (0 == ret)
-            {
-                uv_thread_t tid;
-                uv_thread_create(&tid, entry, this);
-            }
-            else
-            {
-                fprintf(stderr, "getaddrinfo call error %s\n", uv_err_name(ret));
-            }
-        }
-        catch(...) {}
-    }
-    
-	void TCPServer::onIdle()
-	{
-
+		int r = uv_ip4_addr(ip, port, &addr);
+		r = uv_tcp_bind(&this->_tcp, (const sockaddr*)&addr, 0);
+		r = uv_listen((uv_stream_t*)&this->_tcp, 100, UVWrapper::connection_cb);
+        return uv_run(this->_loop, UV_RUN_DEFAULT);
 	}
 
 	void TCPServer::onClientClose(uv_handle_t* client)
@@ -263,6 +204,10 @@ namespace lw
 			this->_clients.erase(selector);
 		}
 	}
+    
+    void TCPServer::onIdle() {
+        
+    }
 
 	void TCPServer::onTimer()
 	{

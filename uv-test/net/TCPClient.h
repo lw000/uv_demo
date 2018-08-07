@@ -46,12 +46,8 @@ namespace lw
         uv_loop_t* getloop();
         
 	public:
-		void syncStart(const char* ip, unsigned int port);
-		void syncStart(const char* host, const char* port);
-
-    public:
-        void asyncStart(const char* ip, unsigned int port);
-        void asyncStart(const char* host, const char* port);
+		int run(const char* ip, unsigned int port);
+		int run(const char* host, const char* port);
         
 	public:
 		int sendData(unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size);
