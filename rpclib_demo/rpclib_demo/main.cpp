@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-
+#include <unistd.h>
 #include <rpc/server.h>
 #include <rpc/client.h>
 
@@ -30,12 +30,14 @@ int client_run(int argc, const char * argv[]) {
     
     rpc::client cli("127.0.0.1", PORT);
     
-    int c = cli.call("add", 2, 3).as<int>();
-    printf("add: %d\n", c);
-    int c1 = cli.call("mul", 2, 3).as<int>();
-    printf("mul: %d\n", c1);
-    int c2 = cli.call("sub", 2, 3).as<int>();
-    printf("sub: %d\n", c2);
+    for (int i = 0; i < 100000; i++) {
+        int c = cli.call("add", 2, 3).as<int>();
+        printf("add: %d\n", c);
+        int c1 = cli.call("mul", 2, 3).as<int>();
+        printf("mul: %d\n", c1);
+        int c2 = cli.call("sub", 2, 3).as<int>();
+        printf("sub: %d\n", c2);
+    }
     
     return 0;
 }
@@ -50,7 +52,12 @@ int server_run(int argc, const char * argv[]) {
     Sub sub;
     srv.bind("sub", sub);
     
-    srv.run();
+//    srv.run();
+    srv.async_run(6);
+    
+    while (1) {
+        sleep(1);
+    }
     
     return 0;
 }
