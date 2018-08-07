@@ -18,6 +18,7 @@
 		D02FB5C6211965EA007A30D9 /* fs_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB5C4211965EA007A30D9 /* fs_handler.cpp */; };
 		D02FB5C921196C06007A30D9 /* udp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB5C721196C06007A30D9 /* udp_server.cpp */; };
 		D02FB5CC21196C18007A30D9 /* udp_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB5CA21196C18007A30D9 /* udp_client.cpp */; };
+		D02FB5CF21197711007A30D9 /* work_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB5CD21197711007A30D9 /* work_demo.cpp */; };
 		D0D63AFC2110723A00E65F68 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63AFB2110723A00E65F68 /* main.cpp */; };
 		D0D63B0D21107B3800E65F68 /* tcp_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B0B21107B3800E65F68 /* tcp_client.cpp */; };
 		D0D63B1021107B4D00E65F68 /* tcp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B0E21107B4D00E65F68 /* tcp_server.cpp */; };
@@ -87,6 +88,8 @@
 		D02FB5C821196C06007A30D9 /* udp_server.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = udp_server.hpp; sourceTree = "<group>"; };
 		D02FB5CA21196C18007A30D9 /* udp_client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = udp_client.cpp; sourceTree = "<group>"; };
 		D02FB5CB21196C18007A30D9 /* udp_client.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = udp_client.hpp; sourceTree = "<group>"; };
+		D02FB5CD21197711007A30D9 /* work_demo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = work_demo.cpp; sourceTree = "<group>"; };
+		D02FB5CE21197711007A30D9 /* work_demo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = work_demo.hpp; sourceTree = "<group>"; };
 		D0D63AF82110723A00E65F68 /* uv-test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "uv-test"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D63AFB2110723A00E65F68 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D0D63B092110728300E65F68 /* libuv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libuv.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +194,8 @@
 				D02FB5C821196C06007A30D9 /* udp_server.hpp */,
 				D02FB5CA21196C18007A30D9 /* udp_client.cpp */,
 				D02FB5CB21196C18007A30D9 /* udp_client.hpp */,
+				D02FB5CD21197711007A30D9 /* work_demo.cpp */,
+				D02FB5CE21197711007A30D9 /* work_demo.hpp */,
 			);
 			path = "uv-test";
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 			files = (
 				D0D63B642111830C00E65F68 /* cache_queue.cpp in Sources */,
 				D0D63B652111830C00E65F68 /* net_iobuffer.cpp in Sources */,
+				D02FB5CF21197711007A30D9 /* work_demo.cpp in Sources */,
 				D02FB47F2112B618007A30D9 /* TCPServer.cpp in Sources */,
 				D0D63B662111830C00E65F68 /* net_packet.cpp in Sources */,
 				D02FB5C321194D5A007A30D9 /* Session.cpp in Sources */,

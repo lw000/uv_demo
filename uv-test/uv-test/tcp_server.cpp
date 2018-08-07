@@ -116,7 +116,7 @@ void timer_cb(uv_timer_t* handle) {
     printf("timer called [%d]\n", ++counter);
 }
 
-void signal_cb(uv_signal_t* handle, int signum) {
+void signal_handler(uv_signal_t* handle, int signum) {
     printf("pid %d get a signal: %d, process exit\n", getpid(), signum);
     uv_signal_stop(handle);
     
@@ -137,7 +137,7 @@ int server_run(int argc, char** args)
     
     uv_signal_t sign;
     uv_signal_init(loop, &sign);
-    uv_signal_start(&sign, signal_cb, SIGINT);
+    uv_signal_start(&sign, signal_handler, SIGINT);
     
     uv_tcp_t server;
     uv_tcp_init(loop, &server);

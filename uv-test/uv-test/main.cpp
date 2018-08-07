@@ -18,6 +18,7 @@
 #include "tcp_client.hpp"
 #include "timer_server.hpp"
 #include "uv_querying_dns.hpp"
+#include "work_demo.hpp"
 
 #include "TCPClient.h"
 #include "TCPServer.h"
@@ -182,6 +183,9 @@ int main(int argc, char** args)
     }
     else if(strcmp(args[1], "-q") == 0) {
         querting_dns_run(argc, args);
+    }
+    else if(strcmp(args[1], "-w") == 0) {
+        work_demo_run(argc, args);
     }
     else {
         printf("-s or -c");
