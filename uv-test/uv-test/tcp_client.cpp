@@ -17,19 +17,28 @@
 #include "net_iobuffer.h"
 #include "data_struct.hpp"
 
-#define DEFAULT_PORT 7000
-
 static uv_loop_t* loop;
 static uv_tcp_t client;
-static uv_connect_t connect_req;
 static NetIOBuffer iobuffer;
 static std::string flag;
+
+typedef struct {
+    uv_write_t req;
+    uv_buf_t buf;
+} write_req_t;
+
+static void free_write_req(uv_write_t *req) {
+    write_req_t *wr = (write_req_t*) req;
+    free(wr->buf.base);
+    free(wr);
+}
 
 static void alloc_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf);
 static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
 static void write_cb(uv_write_t* req, int status);
 static void connect_cb(uv_connect_t* req, int status);
 static void parse_cb(MSG* pack, void* userdata);
+
 
 void parse_cb(MSG* msg, void* userdata) {
     
@@ -64,6 +73,7 @@ void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf) {
 
 void write_cb(uv_write_t* req, int status) {
     free(req);
+    
 }
 
 void entry(void *arg) {
@@ -105,20 +115,23 @@ int client_run(int argc, char ** args)
     
     flag = args[2];
     
-//    loop = uv_default_loop();
     loop = uv_loop_new();
     uv_tcp_init(loop, &client);
 
     sockaddr_in addr;
-    int ret = uv_ip4_addr("127.0.0.1", DEFAULT_PORT, &addr);
-    ret = uv_tcp_connect(&connect_req, &client, (const sockaddr*)&addr, connect_cb);
+    int r = uv_ip4_addr("127.0.0.1", 7000, &addr);
+    uv_connect_t* connect_req = (uv_connect_t*)::malloc(sizeof(uv_connect_t));
+    r = uv_tcp_connect(connect_req, &client, (const sockaddr*)&addr, connect_cb);
     
-    int r = uv_run(loop, UV_RUN_DEFAULT);
+    r = uv_run(loop, UV_RUN_DEFAULT);
     if (r != 0) {
         
     }
     
     uv_loop_close(loop);
+    
+    free(connect_req);
+    free(loop);
     
     return r;
 }

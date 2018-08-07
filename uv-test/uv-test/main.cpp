@@ -159,6 +159,11 @@ int main(int argc, char** args)
     map_config[CONFFIG("4", "4")] = "4444444444";
     map_config[CONFFIG("5", "5")] = "5555555555";
     
+    uv_cpu_info_t *info;
+    int cpu_count;
+    uv_cpu_info(&info, &cpu_count);
+    uv_free_cpu_info(info, cpu_count);
+    
     if (strcmp(args[1], "-s") == 0) {
         server_run(argc, args);
     }

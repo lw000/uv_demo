@@ -220,7 +220,7 @@ namespace lw
 	void TCPServer::onResolved(int status, struct addrinfo *res)
 	{
 		char addr[16+1] = {0};
-		int ret = uv_ip4_name((struct sockaddr_in*)res->ai_addr, addr, sizeof(addr)/sizeof(addr[0]));
+		int ret = uv_ip4_name((struct sockaddr_in*)res->ai_addr, addr, sizeof(addr));
 		printf("ip : %s\n", addr);
 
 		//ret = uv_timer_start(&_timer, _timer_cb, 3000, 1);
@@ -231,8 +231,8 @@ namespace lw
 	
 	void TCPServer::onAllocBuffer(size_t suggested_size, uv_buf_t* buf)
 	{
-		buf->base = (char*)malloc(4096);
-		buf->len = 4096;
+		buf->base = (char*)malloc(suggested_size);
+		buf->len = suggested_size;
 	}
 
 	int TCPServer::sendData(uv_tcp_t* cli, unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)

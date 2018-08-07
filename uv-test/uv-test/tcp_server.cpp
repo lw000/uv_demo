@@ -12,6 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <unistd.h>
+
 #include "uv.h"
 
 #include "net_iobuffer.h"
@@ -114,17 +116,34 @@ void timer_cb(uv_timer_t* handle) {
     printf("timer called [%d]\n", ++counter);
 }
 
+void signal_cb(uv_signal_t* handle, int signum) {
+    printf("pid %d get a signal: %d, process exit\n", getpid(), signum);
+    uv_signal_stop(handle);
+    
+    exit(0);
+}
+
 int server_run(int argc, char** args)
 {
-//    loop = uv_default_loop();
     loop = uv_loop_new();
+    
+    //    uv_idle_t idle;
+    //    uv_idle_init(uvloop, &idle);
+    //    uv_idle_start(&idle, idle_cb);
+    //
+    //    uv_timer_t timer;
+    //    uv_timer_init(uvloop, &timer);
+    //    uv_timer_start(&timer, timer_cb, 10000, 0);
+    
+    uv_signal_t sign;
+    uv_signal_init(loop, &sign);
+    uv_signal_start(&sign, signal_cb, SIGINT);
     
     uv_tcp_t server;
     uv_tcp_init(loop, &server);
     
     struct sockaddr_in addr;
     uv_ip4_addr("0.0.0.0", DEFAULT_PORT, &addr);
-    
     uv_tcp_bind(&server, (const struct sockaddr*)&addr, 0);
 
     int r = uv_listen((uv_stream_t*) &server, DEFAULT_BACKLOG, on_new_connection);
@@ -135,13 +154,14 @@ int server_run(int argc, char** args)
     
     printf("listening %d\n", DEFAULT_PORT);
     
-//    uv_idle_t idle;
-//    uv_idle_init(uvloop, &idle);
-//    uv_idle_start(&idle, idle_cb);
-//
-//    uv_timer_t timer;
-//    uv_timer_init(uvloop, &timer);
-//    uv_timer_start(&timer, timer_cb, 10000, 0);
+    r = uv_run(loop, UV_RUN_DEFAULT);
     
-    return uv_run(loop, UV_RUN_DEFAULT);
+    uv_loop_close(loop);
+    if (r != 0) {
+        
+    }
+    
+    free(loop);
+    
+    return r;
 }

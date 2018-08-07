@@ -20,6 +20,17 @@ userenv.lib
 
 namespace lw
 {
+    typedef struct {
+        uv_write_t req;
+        uv_buf_t buf;
+    } write_req_t;
+    
+    static void free_write_req(uv_write_t *req) {
+        write_req_t *wr = (write_req_t*) req;
+        free(wr->buf.base);
+        free(wr);
+    }
+    
 	///////////////////////////////////////////////////////////////////////////////////////////
 	static void _alloc_buffer_cb(uv_handle_t* handle, size_t suggested_size);
 	static void _read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
@@ -151,19 +162,32 @@ namespace lw
     int TCPClient::sendData(unsigned int main_cmd, unsigned int assi_cmd, void* buf, int size)
     {
         _ioBuffer.send(main_cmd, assi_cmd, buf, size, [this](NetPacket* pkt) -> int {
-            uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            req->data = this;
-            
-            uv_buf_t buf_t = uv_buf_init(pkt->Buffer(), pkt->BufferSize());
-            
-            int c = uv_write(req, (uv_stream_t*)_cli, &buf_t, 1, _write_cb);
-            if (c == 0) {
+            {
+                uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
+                req->data = this;
+                uv_buf_t buf_t = uv_buf_init(pkt->Buffer(), pkt->BufferSize());
                 
-            } else {
-                
+                int c = uv_write(req, (uv_stream_t*)_cli, &buf_t, 1, _write_cb);
+                if (c == 0) {
+                    
+                } else {
+                    
+                }
+                return c;
             }
             
-            return c;
+//            {
+//                write_req_t * req = (write_req_t*)::malloc(sizeof(write_req_t));
+//                req->buf = uv_buf_init(pkt->Buffer(), pkt->BufferSize());
+//                int c = uv_write((uv_write_t*)req, (uv_stream_t*)_cli, &req->buf, 1, _write_cb);
+//                if (c == 0) {
+//                    
+//                } else {
+//                    
+//                }
+//                return c;
+//            }
+            
         });
         
         return 0;
@@ -171,8 +195,8 @@ namespace lw
     
 	void TCPClient::onAllocBuffer(size_t suggested_size, uv_buf_t* buf)
 	{
-		buf->base = (char*)malloc(4096);
-		buf->len = 4096;
+        buf->base = (char*)malloc(suggested_size);
+        buf->len = suggested_size;
 	}
 
 	void TCPClient::onRead(ssize_t nread, const uv_buf_t* buf)
