@@ -72,7 +72,7 @@ NetPacket::~NetPacket()
 	}
 }
 
-int NetPacket::setMessage(void* buf, int size)
+int NetPacket::setBuffer(void* buf, int size)
 {
 	if ((buf != NULL) && (size <= 0)) {
 		return -1;

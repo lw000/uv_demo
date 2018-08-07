@@ -21,7 +21,7 @@ int NetIOBuffer::send(int main_cmd, int assi_cmd, void* buf, int size, std::func
     
     NetPacketHead packetHead(main_cmd, assi_cmd);
     NetPacket* pkt = new NetPacket(&packetHead);
-    pkt->setMessage(buf, size);
+    pkt->setBuffer(buf, size);
     int c = func(pkt);
     delete pkt;
     
@@ -81,7 +81,7 @@ int NetIOBuffer::parse(const char * buf, int size, PARSE_CALLFUNC func, void* us
 
             {
                 NetPacket pkt(nph);
-                pkt.setMessage(tbuf, tbuf_size);
+                pkt.setBuffer(tbuf, tbuf_size);
                 
                 MSG msg;
                 msg.main_cmd = nph->main_cmd;

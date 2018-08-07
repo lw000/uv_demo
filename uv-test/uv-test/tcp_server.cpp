@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #include "uv.h"
 
 #include "net_iobuffer.h"

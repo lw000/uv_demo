@@ -105,12 +105,20 @@ int client_run(int argc, char ** args)
     
     flag = args[2];
     
-    loop = uv_default_loop();
+//    loop = uv_default_loop();
+    loop = uv_loop_new();
     uv_tcp_init(loop, &client);
 
     sockaddr_in addr;
     int ret = uv_ip4_addr("127.0.0.1", DEFAULT_PORT, &addr);
     ret = uv_tcp_connect(&connect_req, &client, (const sockaddr*)&addr, connect_cb);
     
-    return uv_run(loop, UV_RUN_DEFAULT);
+    int r = uv_run(loop, UV_RUN_DEFAULT);
+    if (r != 0) {
+        
+    }
+    
+    uv_loop_close(loop);
+    
+    return r;
 }

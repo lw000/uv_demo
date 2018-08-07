@@ -38,7 +38,7 @@ public:
 	~NetPacket();
 
 public:
-	int setMessage(void* buf, int size);
+	int setBuffer(void* buf, int size);
     
 public:
 	char* Buffer() const;
