@@ -23,6 +23,7 @@
 		D02FB5D521198985007A30D9 /* net_request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB5D321198985007A30D9 /* net_request.cpp */; };
 		D02FB5D821198991007A30D9 /* net_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB5D621198991007A30D9 /* net_response.cpp */; };
 		D02FB5DB21199A11007A30D9 /* net_cookie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB5D921199A11007A30D9 /* net_cookie.cpp */; };
+		D02FB5DE21199B30007A30D9 /* net_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB5DC21199B30007A30D9 /* net_object.cpp */; };
 		D0D63AFC2110723A00E65F68 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63AFB2110723A00E65F68 /* main.cpp */; };
 		D0D63B0D21107B3800E65F68 /* tcp_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B0B21107B3800E65F68 /* tcp_client.cpp */; };
 		D0D63B1021107B4D00E65F68 /* tcp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B0E21107B4D00E65F68 /* tcp_server.cpp */; };
@@ -102,6 +103,9 @@
 		D02FB5D721198991007A30D9 /* net_response.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = net_response.hpp; sourceTree = "<group>"; };
 		D02FB5D921199A11007A30D9 /* net_cookie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = net_cookie.cpp; sourceTree = "<group>"; };
 		D02FB5DA21199A11007A30D9 /* net_cookie.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = net_cookie.hpp; sourceTree = "<group>"; };
+		D02FB5DC21199B30007A30D9 /* net_object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = net_object.cpp; sourceTree = "<group>"; };
+		D02FB5DD21199B30007A30D9 /* net_object.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = net_object.hpp; sourceTree = "<group>"; };
+		D02FB5DF2119A176007A30D9 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebsockets.a; path = ../../../../../usr/local/lib/libwebsockets.a; sourceTree = "<group>"; };
 		D0D63AF82110723A00E65F68 /* uv-test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "uv-test"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D63AFB2110723A00E65F68 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D0D63B092110728300E65F68 /* libuv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libuv.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +221,7 @@
 		D0D63B082110728300E65F68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D02FB5DF2119A176007A30D9 /* libwebsockets.a */,
 				D0D63B5921115D0D00E65F68 /* libuv.a */,
 				D0D63B5721115A7E00E65F68 /* libuv.a */,
 				D0D63B2521114C4A00E65F68 /* libuv.a */,
@@ -256,6 +261,8 @@
 				D02FB5D721198991007A30D9 /* net_response.hpp */,
 				D02FB5D921199A11007A30D9 /* net_cookie.cpp */,
 				D02FB5DA21199A11007A30D9 /* net_cookie.hpp */,
+				D02FB5DC21199B30007A30D9 /* net_object.cpp */,
+				D02FB5DD21199B30007A30D9 /* net_object.hpp */,
 			);
 			path = net;
 			sourceTree = "<group>";
@@ -322,6 +329,7 @@
 				D02FB47F2112B618007A30D9 /* TCPServer.cpp in Sources */,
 				D0D63B662111830C00E65F68 /* net_packet.cpp in Sources */,
 				D02FB5C321194D5A007A30D9 /* net_session.cpp in Sources */,
+				D02FB5DE21199B30007A30D9 /* net_object.cpp in Sources */,
 				D0D63B672111830C00E65F68 /* queue.c in Sources */,
 				D02FB5D521198985007A30D9 /* net_request.cpp in Sources */,
 				D0D63B0D21107B3800E65F68 /* tcp_client.cpp in Sources */,
