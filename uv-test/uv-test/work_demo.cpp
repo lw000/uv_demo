@@ -34,7 +34,8 @@ static void work_cb(uv_work_t* req) {
 }
 
 static void after_work_cb(uv_work_t* req, int status) {
-    
+    fprintf(stderr, "download complete\n");
+    uv_close((uv_handle_t*)&async, NULL);
 }
 
 int work_demo_run(int argc, char** args) {

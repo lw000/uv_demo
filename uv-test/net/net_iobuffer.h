@@ -2,7 +2,7 @@
 #define __net_core_h__
 
 #include <functional>
-#include "cache_queue.h"
+#include "net_cache_queue.h"
 #include "net_packet.h"
 #include "lock.h"
 

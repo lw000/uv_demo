@@ -20,41 +20,14 @@
 #include "data_struct.hpp"
 
 #define DEFAULT_PORT 7000
-#define DEFAULT_BACKLOG 128
+#define DEFAULT_BACKLOG 1024
 
 static uv_loop_t *loop;
-static NetIOBuffer iobuffer;
 
 static void on_new_connection(uv_stream_t *server, int status);
 static void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
 static void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf);
 static void echo_write(uv_write_t *req, int status);
-static void parse_cb(MSG* msg, void* userdata);
-
-void parse_cb(MSG* msg, void* userdata) {
-
-    int main_cmd = msg->main_cmd;
-    int assi_cmd = msg->assi_cmd;
-    char* buf = msg->buf;
-    
-    if (main_cmd == 100 && assi_cmd == 200) {
-        
-        reqest_a_data * request = reinterpret_cast<reqest_a_data*>(buf);
-        printf("main_id: %d, ass_id: %d, a: %d, b: %d\n", main_cmd, assi_cmd, request->a, request->b);
-        
-        uv_stream_t *stream = reinterpret_cast<uv_stream_t*>(userdata);
-    
-        reponse_a_data reponse;
-        reponse.code = 0;
-        reponse.c = request->a + request->b;
-        iobuffer.send(100, 200, (void*)&reponse, sizeof(reponse), [stream](NetPacket * pkt) -> int {
-            uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
-            uv_buf_t newbuf = uv_buf_init(pkt->Buffer(), pkt->BufferSize());
-            int ret = uv_write(req, stream, &newbuf, 1, echo_write);
-            return ret;
-        });
-    }
-}
 
 void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf) {
     buf->base = (char*) malloc(1024);
@@ -76,11 +49,19 @@ void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
         }
         uv_close((uv_handle_t*) client, NULL);
     } else if (nread > 0) {
-        /*uv_write_t *req = (uv_write_t *) malloc(sizeof(uv_write_t));
-         uv_buf_t wrbuf = uv_buf_init(buf->base, nread);
-         uv_write(req, client, &wrbuf, 1, echo_write);*/
-
-        iobuffer.parse(buf->base, nread, parse_cb, client);
+        
+        printf("%s\n", buf->base);
+        
+        uv_write_t *req = (uv_write_t *) malloc(sizeof(uv_write_t));
+        uv_buf_t wrbuf;
+        std::string http_respone("HTTP/1.1 200 OK\r\n"
+                                 "Content-Type:text/html;charset=utf-8\r\n"
+                                 "Content-Length:13\r\n"
+                                 "\r\n"
+                                 "{\"what\":\"ok\"}");
+        wrbuf.base = (char*)http_respone.c_str();
+        wrbuf.len = http_respone.size()+1;
+        uv_write(req, client, &wrbuf, 1, echo_write);
     }
     
     if (buf->base) {
@@ -106,16 +87,6 @@ void on_new_connection(uv_stream_t *server, int status) {
     printf("on new connection, status:%d\r\n", status);
 }
 
-static int idle_counter = 0;
-static void idle_cb(uv_idle_t* handle) {
-    printf("server idle [%d]\n", ++idle_counter);
-}
-
-static int counter = 0;
-static void timer_cb(uv_timer_t* handle) {
-    printf("timer called [%d]\n", ++counter);
-}
-
 static void signal_handler(uv_signal_t* handle, int signum) {
     printf("pid %d get a signal: %d, process exit\n", getpid(), signum);
     uv_signal_stop(handle);
@@ -123,17 +94,9 @@ static void signal_handler(uv_signal_t* handle, int signum) {
     exit(0);
 }
 
-int server_run(int argc, char** args)
+int http_server_run(int argc, char** args)
 {
     loop = uv_loop_new();
-    
-    //    uv_idle_t idle;
-    //    uv_idle_init(uvloop, &idle);
-    //    uv_idle_start(&idle, idle_cb);
-    //
-    //    uv_timer_t timer;
-    //    uv_timer_init(uvloop, &timer);
-    //    uv_timer_start(&timer, timer_cb, 10000, 0);
     
     uv_signal_t sign;
     uv_signal_init(loop, &sign);
@@ -145,7 +108,7 @@ int server_run(int argc, char** args)
     struct sockaddr_in addr;
     uv_ip4_addr("0.0.0.0", DEFAULT_PORT, &addr);
     uv_tcp_bind(&server, (const struct sockaddr*)&addr, 0);
-
+    
     int r = uv_listen((uv_stream_t*) &server, DEFAULT_BACKLOG, on_new_connection);
     if (r) {
         fprintf(stderr, "Listen error %s\n", uv_strerror(r));
