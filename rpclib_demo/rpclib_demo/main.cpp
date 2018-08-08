@@ -11,6 +11,11 @@
 #include <rpc/server.h>
 #include <rpc/client.h>
 
+#include <rapidjson/rapidjson.h>
+#include <rapidjson/document.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+
 #define PORT 6789
 
 static void bad(int x) {
@@ -23,21 +28,31 @@ struct Sub {
     int operator()(int a, int b) {
         return a-b;
     }
+    
+    std::string ok() {
+        return "1234567890";
+    }
 };
 
-
 int client_run(int argc, const char * argv[]) {
-    
     rpc::client cli("127.0.0.1", PORT);
     
-    for (int i = 0; i < 100000; i++) {
+    int execount = 10000;
+    clock_t t = clock();
+    for (int i = 0; i < execount; i++) {
         int c = cli.call("add", 2, 3).as<int>();
-        printf("add: %d\n", c);
+        printf("[%4d] add: %d\n", i, c);
         int c1 = cli.call("mul", 2, 3).as<int>();
-        printf("mul: %d\n", c1);
+        printf("[%4d] mul: %d\n", i, c1);
         int c2 = cli.call("sub", 2, 3).as<int>();
-        printf("sub: %d\n", c2);
+        printf("[%4d] sub: %d\n", i, c2);
+        std::string c3 = cli.call("getUserInfo").as<std::string>();
+        printf("[%4d] getUserInfo: %s\n", i, c3.c_str());
+        std::string c4 = cli.call("ok").as<std::string>();
+        printf("[%4d] ok: %s\n", i, c4.c_str());
     }
+    clock_t t1 = clock();
+    printf("exec:[%d], times:[%f]\n", execount, ((double)t1-t)/CLOCKS_PER_SEC);
     
     return 0;
 }
@@ -49,9 +64,24 @@ int server_run(int argc, const char * argv[]) {
     srv.bind("add", [](int a, int b) { return a + b; });
     srv.bind("mul", [](int a, int b) { return a * b; });
     srv.bind("bad", &bad);
+    srv.bind("getUserInfo", [](){
+        rapidjson::Document doc;
+        doc.SetObject();
+        rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
+        doc.AddMember("name", "liwei", alloctor);
+        doc.AddMember("address", "shenzhenshinanshanqu", alloctor);
+        rapidjson::StringBuffer buffer;
+        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+        doc.Accept(writer);
+        std::string jsondst = buffer.GetString();
+        return jsondst;
+    });
+    
     Sub sub;
     srv.bind("sub", sub);
-    
+    srv.bind("ok", [&sub]() {
+        return sub.ok();
+    });
 //    srv.run();
     srv.async_run(6);
     
