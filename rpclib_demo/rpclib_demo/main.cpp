@@ -33,15 +33,16 @@ static double divide(double a, double b) {
     return a / b;
 }
 
-static struct Sub {
-    int operator()(int a, int b) {
+typedef struct {
+    int operator() (int a, int b) {
         return a-b;
     }
     
     std::string ok() {
         return "1234567890";
     }
-};
+    
+} Sub;
 
 int client_run(int argc, const char * argv[]) {
     rpc::client cli("127.0.0.1", PORT);

@@ -29,6 +29,8 @@
 		D02FB624211AD953007A30D9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D02FB62C211AD9FD007A30D9 /* librdkafka++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "librdkafka++.a"; path = "../../../../../usr/local/lib/librdkafka++.a"; sourceTree = "<group>"; };
 		D02FB62E211AE01A007A30D9 /* librdkafka.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = librdkafka.dylib; path = ../../../../../usr/local/lib/librdkafka.dylib; sourceTree = "<group>"; };
+		D02FB648211AFEF2007A30D9 /* libhiredis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhiredis.a; path = ../../../../../usr/local/lib/libhiredis.a; sourceTree = "<group>"; };
+		D02FB64A211AFEFF007A30D9 /* libuv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libuv.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,8 @@
 		D02FB62B211AD9FC007A30D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D02FB64A211AFEFF007A30D9 /* libuv.a */,
+				D02FB648211AFEF2007A30D9 /* libhiredis.a */,
 				D02FB62E211AE01A007A30D9 /* librdkafka.dylib */,
 				D02FB62C211AD9FD007A30D9 /* librdkafka++.a */,
 			);

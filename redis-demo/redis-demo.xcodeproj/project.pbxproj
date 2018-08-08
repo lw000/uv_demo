@@ -7,16 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D02FB60A2119A7B0007A30D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB6092119A7B0007A30D9 /* main.cpp */; };
-		D02FB6122119A801007A30D9 /* librpc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB6112119A801007A30D9 /* librpc.a */; };
-		D02FB6142119A80D007A30D9 /* libmsgpackc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB6132119A80D007A30D9 /* libmsgpackc.a */; };
-		D02FB651211AFF63007A30D9 /* redis_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB650211AFF63007A30D9 /* redis_server.cpp */; };
-		D02FB653211B00FE007A30D9 /* libhiredis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB652211B00FE007A30D9 /* libhiredis.a */; };
-		D02FB659211B01E4007A30D9 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB658211B01E4007A30D9 /* libuv.a */; };
+		D02FB63D211AF933007A30D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB63C211AF933007A30D9 /* main.cpp */; };
+		D02FB645211AF9B0007A30D9 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB644211AF9B0007A30D9 /* libuv.a */; };
+		D02FB647211AF9BF007A30D9 /* libhiredis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB646211AF9BF007A30D9 /* libhiredis.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D02FB6042119A7B0007A30D9 /* CopyFiles */ = {
+		D02FB637211AF933007A30D9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -28,69 +25,55 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D02FB6062119A7B0007A30D9 /* rpclib_demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rpclib_demo; sourceTree = BUILT_PRODUCTS_DIR; };
-		D02FB6092119A7B0007A30D9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D02FB6112119A801007A30D9 /* librpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librpc.a; path = ../../../../../usr/local/lib/librpc.a; sourceTree = "<group>"; };
-		D02FB6132119A80D007A30D9 /* libmsgpackc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmsgpackc.a; path = ../../../../../usr/local/lib/libmsgpackc.a; sourceTree = "<group>"; };
-		D02FB64F211AFF63007A30D9 /* redis_server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = redis_server.hpp; sourceTree = "<group>"; };
-		D02FB650211AFF63007A30D9 /* redis_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = redis_server.cpp; sourceTree = "<group>"; };
-		D02FB652211B00FE007A30D9 /* libhiredis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhiredis.a; path = ../../../../../usr/local/lib/libhiredis.a; sourceTree = "<group>"; };
-		D02FB654211B0103007A30D9 /* libevhtp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libevhtp.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D02FB656211B0106007A30D9 /* libuv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libuv.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D02FB658211B01E4007A30D9 /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = ../../../../../usr/local/lib/libuv.a; sourceTree = "<group>"; };
+		D02FB639211AF933007A30D9 /* redis-demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "redis-demo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D02FB63C211AF933007A30D9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D02FB644211AF9B0007A30D9 /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = ../../../../../usr/local/lib/libuv.a; sourceTree = "<group>"; };
+		D02FB646211AF9BF007A30D9 /* libhiredis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhiredis.a; path = ../../../../../usr/local/lib/libhiredis.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D02FB6032119A7B0007A30D9 /* Frameworks */ = {
+		D02FB636211AF933007A30D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D02FB659211B01E4007A30D9 /* libuv.a in Frameworks */,
-				D02FB6122119A801007A30D9 /* librpc.a in Frameworks */,
-				D02FB6142119A80D007A30D9 /* libmsgpackc.a in Frameworks */,
-				D02FB653211B00FE007A30D9 /* libhiredis.a in Frameworks */,
+				D02FB645211AF9B0007A30D9 /* libuv.a in Frameworks */,
+				D02FB647211AF9BF007A30D9 /* libhiredis.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D02FB5FD2119A7B0007A30D9 = {
+		D02FB630211AF933007A30D9 = {
 			isa = PBXGroup;
 			children = (
-				D02FB6082119A7B0007A30D9 /* rpclib_demo */,
-				D02FB6072119A7B0007A30D9 /* Products */,
-				D02FB6102119A801007A30D9 /* Frameworks */,
+				D02FB63B211AF933007A30D9 /* redis-demo */,
+				D02FB63A211AF933007A30D9 /* Products */,
+				D02FB643211AF9B0007A30D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		D02FB6072119A7B0007A30D9 /* Products */ = {
+		D02FB63A211AF933007A30D9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D02FB6062119A7B0007A30D9 /* rpclib_demo */,
+				D02FB639211AF933007A30D9 /* redis-demo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D02FB6082119A7B0007A30D9 /* rpclib_demo */ = {
+		D02FB63B211AF933007A30D9 /* redis-demo */ = {
 			isa = PBXGroup;
 			children = (
-				D02FB650211AFF63007A30D9 /* redis_server.cpp */,
-				D02FB64F211AFF63007A30D9 /* redis_server.hpp */,
-				D02FB6092119A7B0007A30D9 /* main.cpp */,
+				D02FB63C211AF933007A30D9 /* main.cpp */,
 			);
-			path = rpclib_demo;
+			path = "redis-demo";
 			sourceTree = "<group>";
 		};
-		D02FB6102119A801007A30D9 /* Frameworks */ = {
+		D02FB643211AF9B0007A30D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D02FB656211B0106007A30D9 /* libuv.a */,
-				D02FB658211B01E4007A30D9 /* libuv.a */,
-				D02FB654211B0103007A30D9 /* libevhtp.a */,
-				D02FB652211B00FE007A30D9 /* libhiredis.a */,
-				D02FB6132119A80D007A30D9 /* libmsgpackc.a */,
-				D02FB6112119A801007A30D9 /* librpc.a */,
+				D02FB646211AF9BF007A30D9 /* libhiredis.a */,
+				D02FB644211AF9B0007A30D9 /* libuv.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,68 +81,67 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D02FB6052119A7B0007A30D9 /* rpclib_demo */ = {
+		D02FB638211AF933007A30D9 /* redis-demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D02FB60D2119A7B0007A30D9 /* Build configuration list for PBXNativeTarget "rpclib_demo" */;
+			buildConfigurationList = D02FB640211AF933007A30D9 /* Build configuration list for PBXNativeTarget "redis-demo" */;
 			buildPhases = (
-				D02FB6022119A7B0007A30D9 /* Sources */,
-				D02FB6032119A7B0007A30D9 /* Frameworks */,
-				D02FB6042119A7B0007A30D9 /* CopyFiles */,
+				D02FB635211AF933007A30D9 /* Sources */,
+				D02FB636211AF933007A30D9 /* Frameworks */,
+				D02FB637211AF933007A30D9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = rpclib_demo;
-			productName = rpclib_demo;
-			productReference = D02FB6062119A7B0007A30D9 /* rpclib_demo */;
+			name = "redis-demo";
+			productName = "redis-demo";
+			productReference = D02FB639211AF933007A30D9 /* redis-demo */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D02FB5FE2119A7B0007A30D9 /* Project object */ = {
+		D02FB631211AF933007A30D9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "李伟";
 				TargetAttributes = {
-					D02FB6052119A7B0007A30D9 = {
+					D02FB638211AF933007A30D9 = {
 						CreatedOnToolsVersion = 9.3;
 					};
 				};
 			};
-			buildConfigurationList = D02FB6012119A7B0007A30D9 /* Build configuration list for PBXProject "rpclib_demo" */;
+			buildConfigurationList = D02FB634211AF933007A30D9 /* Build configuration list for PBXProject "redis-demo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = D02FB5FD2119A7B0007A30D9;
-			productRefGroup = D02FB6072119A7B0007A30D9 /* Products */;
+			mainGroup = D02FB630211AF933007A30D9;
+			productRefGroup = D02FB63A211AF933007A30D9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D02FB6052119A7B0007A30D9 /* rpclib_demo */,
+				D02FB638211AF933007A30D9 /* redis-demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D02FB6022119A7B0007A30D9 /* Sources */ = {
+		D02FB635211AF933007A30D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D02FB651211AFF63007A30D9 /* redis_server.cpp in Sources */,
-				D02FB60A2119A7B0007A30D9 /* main.cpp in Sources */,
+				D02FB63D211AF933007A30D9 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D02FB60B2119A7B0007A30D9 /* Debug */ = {
+		D02FB63E211AF933007A30D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -217,7 +199,7 @@
 			};
 			name = Debug;
 		};
-		D02FB60C2119A7B0007A30D9 /* Release */ = {
+		D02FB63F211AF933007A30D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -268,7 +250,7 @@
 			};
 			name = Release;
 		};
-		D02FB60E2119A7B0007A30D9 /* Debug */ = {
+		D02FB641211AF933007A30D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -280,7 +262,7 @@
 			};
 			name = Debug;
 		};
-		D02FB60F2119A7B0007A30D9 /* Release */ = {
+		D02FB642211AF933007A30D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -295,25 +277,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D02FB6012119A7B0007A30D9 /* Build configuration list for PBXProject "rpclib_demo" */ = {
+		D02FB634211AF933007A30D9 /* Build configuration list for PBXProject "redis-demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D02FB60B2119A7B0007A30D9 /* Debug */,
-				D02FB60C2119A7B0007A30D9 /* Release */,
+				D02FB63E211AF933007A30D9 /* Debug */,
+				D02FB63F211AF933007A30D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D02FB60D2119A7B0007A30D9 /* Build configuration list for PBXNativeTarget "rpclib_demo" */ = {
+		D02FB640211AF933007A30D9 /* Build configuration list for PBXNativeTarget "redis-demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D02FB60E2119A7B0007A30D9 /* Debug */,
-				D02FB60F2119A7B0007A30D9 /* Release */,
+				D02FB641211AF933007A30D9 /* Debug */,
+				D02FB642211AF933007A30D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D02FB5FE2119A7B0007A30D9 /* Project object */;
+	rootObject = D02FB631211AF933007A30D9 /* Project object */;
 }

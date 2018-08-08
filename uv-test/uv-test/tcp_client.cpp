@@ -19,8 +19,14 @@
 
 static uv_loop_t* loop;
 static uv_tcp_t client;
-static NetIOBuffer iobuffer;
 static std::string flag;
+static NetIOBuffer iobuffer;
+
+static void alloc_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf);
+static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
+static void write_cb(uv_write_t* req, int status);
+static void connect_cb(uv_connect_t* req, int status);
+static void parse_cb(MSG* pack, void* userdata);
 
 typedef struct {
     uv_write_t req;
@@ -33,15 +39,7 @@ static void free_write_req(uv_write_t *req) {
     free(wr);
 }
 
-static void alloc_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf);
-static void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
-static void write_cb(uv_write_t* req, int status);
-static void connect_cb(uv_connect_t* req, int status);
-static void parse_cb(MSG* pack, void* userdata);
-
-
 void parse_cb(MSG* msg, void* userdata) {
-    
     int main_cmd = msg->main_cmd;
     int assi_cmd = msg->assi_cmd;
     char* buf = msg->buf;
@@ -118,10 +116,13 @@ int client_run(int argc, char ** args)
     loop = uv_loop_new();
     uv_tcp_init(loop, &client);
 
+    uv_connect_t* connect_req = (uv_connect_t*)::malloc(sizeof(uv_connect_t));
     sockaddr_in addr;
     int r = uv_ip4_addr("127.0.0.1", 7000, &addr);
-    uv_connect_t* connect_req = (uv_connect_t*)::malloc(sizeof(uv_connect_t));
     r = uv_tcp_connect(connect_req, &client, (const sockaddr*)&addr, connect_cb);
+    if (r != 0) {
+    
+    }
     
     r = uv_run(loop, UV_RUN_DEFAULT);
     if (r != 0) {
@@ -131,6 +132,7 @@ int client_run(int argc, char ** args)
     uv_loop_close(loop);
     
     free(connect_req);
+    
     free(loop);
     
     return r;

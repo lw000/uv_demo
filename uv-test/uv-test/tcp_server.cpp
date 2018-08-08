@@ -32,13 +32,11 @@ static void echo_write(uv_write_t *req, int status);
 static void parse_cb(MSG* msg, void* userdata);
 
 void parse_cb(MSG* msg, void* userdata) {
-
     int main_cmd = msg->main_cmd;
     int assi_cmd = msg->assi_cmd;
     char* buf = msg->buf;
     
     if (main_cmd == 100 && assi_cmd == 200) {
-        
         reqest_a_data * request = reinterpret_cast<reqest_a_data*>(buf);
         printf("main_id: %d, ass_id: %d, a: %d, b: %d\n", main_cmd, assi_cmd, request->a, request->b);
         
@@ -76,6 +74,7 @@ void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
         }
         uv_close((uv_handle_t*) client, NULL);
     } else if (nread > 0) {
+        
         /*uv_write_t *req = (uv_write_t *) malloc(sizeof(uv_write_t));
          uv_buf_t wrbuf = uv_buf_init(buf->base, nread);
          uv_write(req, client, &wrbuf, 1, echo_write);*/
@@ -90,8 +89,7 @@ void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
 
 void on_new_connection(uv_stream_t *server, int status) {
     if (status < 0) {
-        fprintf(stderr, "New connection error %s\n", uv_strerror(status));
-        // error!
+        fprintf(stderr, "new connection error %s\r\n", uv_strerror(status));
         return;
     }
     
@@ -106,16 +104,6 @@ void on_new_connection(uv_stream_t *server, int status) {
     printf("on new connection, status:%d\r\n", status);
 }
 
-static int idle_counter = 0;
-static void idle_cb(uv_idle_t* handle) {
-    printf("server idle [%d]\n", ++idle_counter);
-}
-
-static int counter = 0;
-static void timer_cb(uv_timer_t* handle) {
-    printf("timer called [%d]\n", ++counter);
-}
-
 static void signal_handler(uv_signal_t* handle, int signum) {
     printf("pid %d get a signal: %d, process exit\n", getpid(), signum);
     uv_signal_stop(handle);
@@ -126,14 +114,6 @@ static void signal_handler(uv_signal_t* handle, int signum) {
 int server_run(int argc, char** args)
 {
     loop = uv_loop_new();
-    
-    //    uv_idle_t idle;
-    //    uv_idle_init(uvloop, &idle);
-    //    uv_idle_start(&idle, idle_cb);
-    //
-    //    uv_timer_t timer;
-    //    uv_timer_init(uvloop, &timer);
-    //    uv_timer_start(&timer, timer_cb, 10000, 0);
     
     uv_signal_t sign;
     uv_signal_init(loop, &sign);
@@ -147,7 +127,7 @@ int server_run(int argc, char** args)
     uv_tcp_bind(&server, (const struct sockaddr*)&addr, 0);
 
     int r = uv_listen((uv_stream_t*) &server, DEFAULT_BACKLOG, on_new_connection);
-    if (r) {
+    if (r != 0) {
         fprintf(stderr, "Listen error %s\n", uv_strerror(r));
         return 1;
     }
@@ -158,7 +138,7 @@ int server_run(int argc, char** args)
     
     uv_loop_close(loop);
     if (r != 0) {
-        
+        fprintf(stderr, "Listen error %s\n", uv_strerror(r));
     }
     
     free(loop);
