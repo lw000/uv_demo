@@ -7,14 +7,11 @@
 //
 
 #include "redis_server.hpp"
-#include <hiredis/hiredis.h>
-#include <hiredis/async.h>
-#include <hiredis/adapters/libuv.h>
 
 #include <pthread.h>
 
 static void getCallback(redisAsyncContext * c, void *r, void *privdata) {
-    RedisServer* srv = reinterpret_cast<RedisServer*>(c->data);
+    RedisAsyncServer* srv = reinterpret_cast<RedisAsyncServer*>(c->data);
     
     redisReply* reply = (redisReply*)r;
     if (reply == NULL) {
@@ -22,13 +19,14 @@ static void getCallback(redisAsyncContext * c, void *r, void *privdata) {
     }
     printf("argv[%s]:%s\n", (char*)privdata, reply->str);
     
-    srv->onConnect(status);
+
     
     redisAsyncDisconnect(c);
 }
 
 static void connectCallback(const redisAsyncContext* c, int status) {
-    RedisServer* srv = reinterpret_cast<RedisServer*>(c->data);
+    RedisAsyncServer* srv = reinterpret_cast<RedisAsyncServer*>(c->data);
+    srv->onConnect(status);
     
     if (status != REDIS_OK) {
         printf("error:%s\n", c->errstr);
@@ -36,10 +34,12 @@ static void connectCallback(const redisAsyncContext* c, int status) {
     }
     printf("connected...\n");
     
-    srv->onDisconnect(status);
 }
 
 static void disconnectCallback(const redisAsyncContext* c, int status) {
+    RedisAsyncServer* srv = reinterpret_cast<RedisAsyncServer*>(c->data);
+    srv->onDisconnect(status);
+    
     if (status != REDIS_OK) {
         printf("error:%s\n", c->errstr);
         return;
@@ -54,6 +54,8 @@ static void* enter(void* args) {
     if (r != 0) {
         
     }
+    
+    uv_loop_close(loop);
     
     return 0;
 }
@@ -85,18 +87,83 @@ int start_redis_main_server(int argc, const char * argv[]) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 RedisServer::RedisServer() {
-
+    this->c = nullptr;
 }
 
 RedisServer::~RedisServer() {
-    
+    if (c != NULL) {
+        redisFree(c);
+    }
 }
 
-int RedisServer::start() {
-    uv_loop_t* loop = uv_loop_new();
+int RedisServer::start(const char *ip, int port) {
+    
+    c = redisConnect(ip, port);
+    if (c->err) {
+        printf("error: %s\n", c->errstr);
+        return -1;
+    }
+    struct timeval timeout = { 5, 500000 }; // 1.5 seconds
+    c = redisConnectWithTimeout(ip, port, timeout);
+    if (c == NULL || c->err) {
+        if (c) {
+            printf("connection error: %s\n", c->errstr);
+            redisFree(c);
+        } else {
+            printf("connection error: can't allocate redis context\n");
+        }
+        return -1;
+    }
+    
+    return 0;
+}
+
+int RedisServer::setValue(const std::string& key, const std::string& value) {
+    redisReply *reply = (redisReply *)redisCommand(c, "SET %s %s", key.c_str(), value.c_str());
+    int c = -1;
+    if (reply && strcpy(reply->str, "ok") == 0) {
+        c = 0;
+    }
+    freeReplyObject(reply);
+    return c;
+}
+
+std::string RedisServer::getValue(const std::string& key) {
+    redisReply *reply = (redisReply *)redisCommand(c, "GET %s", key.c_str());
+    std::string result;
+    if (reply && strcpy(reply->str, "ok") == 0) {
+        result.append(reply->str);
+    }
+    freeReplyObject(reply);
+    return "";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+RedisAsyncServer::RedisAsyncServer() {
+    this->loop = nullptr;
+    this->c = nullptr;
+}
+
+RedisAsyncServer::~RedisAsyncServer() {
+    if (c != NULL) {
+        redisAsyncDisconnect(c);
+    }
+    
+    if (c != NULL) {
+        redisAsyncFree(c);
+    }
+    
+    if (loop != NULL) {
+        free(loop);
+    }
+}
+
+int RedisAsyncServer::start(const char *ip, int port) {
+    loop = uv_loop_new();
     loop->data = this;
     
-    redisAsyncContext *c = redisAsyncConnect("127.0.0.1", 6379);
+    c = redisAsyncConnect(ip, port);
     c->data = this;
     if (c->err) {
         printf("error: %s\n", c->errstr);
@@ -113,11 +180,21 @@ int RedisServer::start() {
     return 0;
 }
 
-void RedisServer::onConnect(int status) {
+void RedisAsyncServer::setValue(const std::string& key, const std::string& value) {
+    redisAsyncCommand(c, NULL, NULL, "SET %s %s", key.c_str(), value.c_str());
+}
+
+std::string RedisAsyncServer::getValue(const std::string& key, std::function<void(const std::string value)> func) {
+    redisAsyncCommand(c, getCallback, (char*)key.c_str(), "GET %s", key.c_str());
+    
+    return "";
+}
+
+void RedisAsyncServer::onConnect(int status) {
     
 }
 
-void RedisServer::onDisconnect(int status) {
+void RedisAsyncServer::onDisconnect(int status) {
     
 }
 

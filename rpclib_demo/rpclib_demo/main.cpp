@@ -18,6 +18,8 @@
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
 
+#include "redis_server.hpp"
+
 #define PORT 6789
 
 static void bad(int x) {
@@ -72,7 +74,7 @@ int client_run(int argc, const char * argv[]) {
     }
     
     for (int i = 0; i < execount; i++) {
-        std::string c3 = cli.call("getUserInfo").as<std::string>();
+        std::string c3 = cli.call("getUserInfo", "liwei").as<std::string>();
         printf("[%4d] getUserInfo: %s\n", i, c3.c_str());
         std::string c4 = cli.call("ok").as<std::string>();
         printf("[%4d] ok: %s\n", i, c4.c_str());
@@ -86,6 +88,8 @@ int client_run(int argc, const char * argv[]) {
     return 0;
 }
 
+RedisServer redisCache;
+
 int server_run(int argc, const char * argv[]) {
     
     rpc::server srv("0.0.0.0", PORT != 0 ? PORT : rpc::constants::DEFAULT_PORT);
@@ -94,7 +98,13 @@ int server_run(int argc, const char * argv[]) {
     srv.bind("mul", [](int a, int b) { return a * b; });
     srv.bind("bad", &bad);
     srv.bind("divide", &divide);
-    srv.bind("getUserInfo", [] {
+    srv.bind("getUserInfo", [] (const std::string name) {
+        
+        std::string value = redisCache.getValue(name);
+        if (!value.empty()) {
+            return value;
+        }
+        
         rapidjson::Document doc;
         doc.SetObject();
         rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
@@ -104,6 +114,12 @@ int server_run(int argc, const char * argv[]) {
         rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
         doc.Accept(writer);
         std::string jsondst = buffer.GetString();
+        
+        int c = redisCache.setValue(name, jsondst);
+        if (c != 0) {
+            printf("update cache error. [%d]\n", c);
+        }
+        
         return jsondst;
     });
     
@@ -122,6 +138,8 @@ int server_run(int argc, const char * argv[]) {
     });
     
     srv.suppress_exceptions(true);
+    
+    redisCache.start();
     
 //    srv.run();
     srv.async_run(6);
