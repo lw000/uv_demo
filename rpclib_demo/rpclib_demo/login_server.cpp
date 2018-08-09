@@ -26,11 +26,36 @@ public:
     }
     
 public:
-    std::string encode() {
+    std::string encode_string_redis_command() {
         std::ostringstream out;
-        out << " phone " << phone << " name " << name << " psd " << psd << " uid " << uid;
+        out << "phone " << phone << " name " << name << " psd " << psd << " uid " << uid;
         return out.str();
     }
+    
+    std::map<std::string, std::string> encode_map_redis_command() {
+        std::map<std::string, std::string> out;
+        out.insert(std::make_pair("phone", phone.c_str()));
+        out.insert(std::make_pair("name", name.c_str()));
+        out.insert(std::make_pair("psd", psd.c_str()));
+        out.insert(std::make_pair("uid", uid.c_str()));
+        return out;
+    }
+    
+    std::string encode_json() {
+        rapidjson::Document doc;
+        doc.SetObject();
+        rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
+        std::map<std::string, std::string> vk = this->encode_map_redis_command();
+        for(auto m : vk) {
+            doc.AddMember(m.first.c_str(), m.second.c_str(), alloctor);
+        }
+        rapidjson::StringBuffer buffer;
+        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+        doc.Accept(writer);
+        std::string jsondst = buffer.GetString();
+        return jsondst;
+    }
+    
 } UserInfo;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +101,7 @@ std::string LoginServer::uregister(const std::string& phone, const std::string& 
     }
 
     {
-        std::map<std::string,std::string> userinfo = this->redisServer->hashCommand()->hgetall(phone, "users:");
+        std::map<std::string,std::string> userinfo = this->redisServer->hashCommand()->hgetall(phone, "user_infos:");
         if (userinfo.empty()) {
 //            {
 //                long long incr = redisCache.baseCommand()->incr("autoincr");
@@ -84,42 +109,76 @@ std::string LoginServer::uregister(const std::string& phone, const std::string& 
 //                double incr2 = redisCache.baseCommand()->incrfloat("autoincrbyfloat", 0.2f);
 //            }
 
-            long long uid = this->redisServer->baseCommand()->incr("autoincr");
-            char uid_buffer[64] = {0};
-            sprintf(uid_buffer, "%lld", uid);
+            long long uid = this->redisServer->stringCommand()->incr("autoincr");
+            char uid_buf[64] = {0};
+            sprintf(uid_buf, "%lld", uid);
             
             UserInfo uinfo;
             uinfo.phone = phone;
             uinfo.name = name;
             uinfo.psd = psd;
-            uinfo.uid = uid_buffer;
-            std::string cmd = uinfo.encode();
+            uinfo.uid = uid_buf;
             
             long long ok = -1;
-            ok = this->redisServer->hashCommand()->hset(phone, "phone", phone, "users:");
-            ok = this->redisServer->hashCommand()->hset(phone, "name", name, "users:");
-            ok = this->redisServer->hashCommand()->hset(phone, "psd", psd, "users:");
-            ok = this->redisServer->hashCommand()->hset(phone, "uid", uid_buffer, "users:");
+//            ok = this->redisServer->hashCommand()->hset(phone, "phone", phone, "user_infos:");
+//            ok = this->redisServer->hashCommand()->hset(phone, "name", name, "user_infos:");
+//            ok = this->redisServer->hashCommand()->hset(phone, "psd", psd, "user_infos:");
+//            ok = this->redisServer->hashCommand()->hset(phone, "uid", uid_buf, "user_infos:");
+            
+            ok = this->redisServer->hashCommand()->hmset(phone, "field liwei", "user_infos:");
+            
+            if (ok == 1) {
+                ok = this->redisServer->hashCommand()->hset(uid_buf, "phone", phone, "user_uid:");
+                if (ok == 1) {
+//                    rapidjson::Document doc;
+//                    doc.SetObject();
+//                    rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
+//                    doc.AddMember("code", 0, alloctor);
+//                    doc.AddMember("what", "ok", alloctor);
+//                    {
+//                        rapidjson::Value data;
+//                        data.SetObject();
+//                        data.AddMember("uid", uinfo.uid.c_str(), alloctor);
+//                        data.AddMember("session", "", alloctor);
+//                        doc.AddMember("data", data, alloctor);
+//                    }
+//                    rapidjson::StringBuffer buffer;
+//                    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+//                    doc.Accept(writer);
+//                    std::string jsondst = buffer.GetString();
+//                    return jsondst;
+                    return uinfo.uid;
+                }
+                else {
+                    printf("update user_infos cache error.\n");
+                }
+            }
+            else {
+                printf("update user_uid cache error.\n");
+            }
         }
-        
-        rapidjson::Document doc;
-        doc.SetObject();
-        rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-        doc.AddMember("code", 0, alloctor);
-        doc.AddMember("what", "ok", alloctor);
-        {
-            rapidjson::Value data;
-            data.SetObject();
-            data.AddMember("uid", userinfo["uid"].c_str(), alloctor);
-            data.AddMember("session", "", alloctor);
-            doc.AddMember("data", data, alloctor);
+        else {
+//            rapidjson::Document doc;
+//            doc.SetObject();
+//            rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
+//            doc.AddMember("code", 0, alloctor);
+//            doc.AddMember("what", "ok", alloctor);
+//            {
+//                rapidjson::Value data;
+//                data.SetObject();
+//                data.AddMember("uid", userinfo["uid"].c_str(), alloctor);
+//                data.AddMember("session", "", alloctor);
+//                doc.AddMember("data", data, alloctor);
+//            }
+//
+//            rapidjson::StringBuffer buffer;
+//            rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+//            doc.Accept(writer);
+//            std::string jsondst = buffer.GetString();
+//            return jsondst;
+            
+            return userinfo["uid"];
         }
-        
-        rapidjson::StringBuffer buffer;
-        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-        doc.Accept(writer);
-        std::string jsondst = buffer.GetString();
-        return jsondst;
     }
     
     return "";
@@ -134,15 +193,33 @@ std::string LoginServer::ulogin(const std::string& uid, const std::string& psd) 
         return "";
     }
     
-    std::string value = this->redisServer->baseCommand()->get("user:", uid);
+    return "";
+}
+
+std::string LoginServer::ulogout(const std::string& uid) {
+    if (uid.empty()) {
+        return "";
+    }
     
     return "";
 }
 
-int LoginServer::ulogout(const std::string& uid) {
+std::string LoginServer::getUserInfo(const std::string& uid) {
     if (uid.empty()) {
-        return 0;
+        return "";
     }
     
-    return 0;
+    std::map<std::string,std::string> userinfo = this->redisServer->hashCommand()->hgetall(uid, "user_infos:");
+    
+    rapidjson::Document doc;
+    doc.SetObject();
+    rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
+    for (auto u : userinfo) {
+        doc.AddMember(u.first.c_str(), u.second.c_str(), alloctor);
+    }
+    rapidjson::StringBuffer buffer;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    doc.Accept(writer);
+    std::string jsondst = buffer.GetString();
+    return jsondst;
 }

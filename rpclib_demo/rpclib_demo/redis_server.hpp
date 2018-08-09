@@ -20,7 +20,7 @@
 #include <hiredis/adapters/libuv.h>
 
 class Command;
-class BaseCommand;
+class StringCommand;
 class HashCommand;
 class RedisBaseServer;
 class RedisServer;
@@ -40,12 +40,13 @@ protected:
     RedisBaseServer * srv;
 };
 
-class BaseCommand : public Command {
+class StringCommand : public Command {
 public:
-    BaseCommand();
-    virtual ~BaseCommand();
+    StringCommand();
+    virtual ~StringCommand();
     
 public:
+    bool exists(const std::string& key, const std::string& path = "");
     long long set(const std::string& key, const std::string& value, const std::string& path = "");
     std::string get(const std::string& key, const std::string& path = "");
     std::string setget(const std::string& key, const std::string& value, const std::string& path = "");
@@ -63,8 +64,9 @@ public:
     
 public:
     long long hset(const std::string& key, const std::string& field, const std::string& value, const std::string& path = "");
+    long long hmset(const std::string& key, const std::string& fieldvalues, const std::string& path = "");
     long long hmset(const std::string& key, const std::map<std::string, std::string>& fieldvalues, const std::string& path = "");
-    long long hexists(const std::string& key, const std::string& field, const std::string& path = "");
+    bool hexists(const std::string& key, const std::string& field, const std::string& path = "");
     long long hdel(const std::string& key, const std::string& field, const std::string& path = "");
     std::string hget(const std::string& key, const std::string& field, const std::string& path = "");
     std::map<std::string, std::string> hgetall(const std::string& key, const std::string& path = "");
@@ -80,8 +82,9 @@ public:
 };
 
 class RedisBaseServer {
-    friend BaseCommand;
+    friend StringCommand;
     friend HashCommand;
+    
 public:
     RedisBaseServer();
     virtual ~RedisBaseServer();
@@ -107,11 +110,11 @@ public:
     int start(const char *ip = "127.0.0.1", int port = 6379);
 
 public:
-    BaseCommand* baseCommand();
+    StringCommand* stringCommand();
     HashCommand* hashCommand();
     
 private:
-    BaseCommand baseCmd;
+    StringCommand stringCmd;
     HashCommand hashCmd;
     redisContext *c;
 };

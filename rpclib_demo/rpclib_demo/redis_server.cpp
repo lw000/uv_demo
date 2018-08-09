@@ -78,15 +78,40 @@ void Command::setContext(RedisBaseServer * srv, redisContext *c, redisAsyncConte
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-BaseCommand::BaseCommand() {
+StringCommand::StringCommand() {
     
 }
 
-BaseCommand::~BaseCommand() {
+StringCommand::~StringCommand() {
     
 }
 
-long long BaseCommand::set(const std::string& key, const std::string& value, const std::string& path) {
+bool StringCommand::exists(const std::string& key, const std::string& path) {
+    if (key.empty()) {
+        return false;
+    }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "EXISTS %s", std::string(path + key).c_str());
+        this->srv->unlock();
+    }
+    
+    bool r = false;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = (reply->integer == 1);
+        } else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return r;
+}
+
+long long StringCommand::set(const std::string& key, const std::string& value, const std::string& path) {
     if (key.empty()) {
         return -1;
     }
@@ -104,14 +129,14 @@ long long BaseCommand::set(const std::string& key, const std::string& value, con
     
     long long r = -1;
     if (reply && strcmp(reply->str, "OK") == 0) {
-        r = 0;
+        r = reply->integer;
     }
     freeReplyObject(reply);
     
     return r;
 }
 
-std::string BaseCommand::get(const std::string& key, const std::string& path) {
+std::string StringCommand::get(const std::string& key, const std::string& path) {
     if (key.empty()) {
         return "";
     }
@@ -133,7 +158,7 @@ std::string BaseCommand::get(const std::string& key, const std::string& path) {
     return result;
 }
 
-std::string BaseCommand::setget(const std::string& key, const std::string& value, const std::string& path) {
+std::string StringCommand::setget(const std::string& key, const std::string& value, const std::string& path) {
     if (key.empty()) {
         return "";
     }
@@ -150,12 +175,15 @@ std::string BaseCommand::setget(const std::string& key, const std::string& value
         if (reply->str != NULL) {
             result.append(reply->str);
         }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return result;
 }
 
-long long BaseCommand::incr(const std::string key) {
+long long StringCommand::incr(const std::string key) {
     if (key.empty()) {
         return -1;
     }
@@ -168,14 +196,19 @@ long long BaseCommand::incr(const std::string key) {
     }
     
     long long r = 0;
-    if (reply && reply->str == NULL) {
-        r = reply->integer;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = reply->integer;
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return r;
 }
 
-long long BaseCommand::incrby(const std::string key, long long v) {
+long long StringCommand::incrby(const std::string key, long long v) {
     if (key.empty()) {
         return -1;
     }
@@ -186,14 +219,19 @@ long long BaseCommand::incrby(const std::string key, long long v) {
         this->srv->unlock();
     }
     long long r = 0;
-    if (reply && reply->str == NULL) {
-        r = reply->integer;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = reply->integer;
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return r;
 }
 
-double BaseCommand::incrfloat(const std::string key, double v) {
+double StringCommand::incrfloat(const std::string key, double v) {
     if (key.empty()) {
         return -1;
     }
@@ -212,7 +250,7 @@ double BaseCommand::incrfloat(const std::string key, double v) {
     return r;
 }
 
-long long BaseCommand::decr(const std::string key) {
+long long StringCommand::decr(const std::string key) {
     if (key.empty()) {
         return -1;
     }
@@ -224,14 +262,19 @@ long long BaseCommand::decr(const std::string key) {
     }
 
     long long r = 0;
-    if (reply && reply->str == NULL) {
-        r = reply->integer;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = reply->integer;
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return r;
 }
 
-long long BaseCommand::decrby(const std::string key, long long v) {
+long long StringCommand::decrby(const std::string key, long long v) {
     if (key.empty()) {
         return -1;
     }
@@ -243,8 +286,13 @@ long long BaseCommand::decrby(const std::string key, long long v) {
     }
 
     long long r = 0;
-    if (reply && reply->str == NULL) {
-        r = reply->integer;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = reply->integer;
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return r;
@@ -280,6 +328,9 @@ long long HashCommand::hset(const std::string& key, const std::string& field, co
         if (reply->str == NULL) {
             r = reply->integer;
         }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return r;
@@ -294,10 +345,9 @@ long long HashCommand::hmset(const std::string& key, const std::map<std::string,
         return -1;
     }
     
-    
     std::ostringstream out;
     for (auto m : fieldvalues) {
-        out << " " << m.first << " " << m.second << " ";
+        out << m.first << " " << m.second << " ";
     }
     std::string cmds(out.str());
     redisReply *reply = NULL;
@@ -312,19 +362,52 @@ long long HashCommand::hmset(const std::string& key, const std::map<std::string,
         if (reply->str == NULL) {
             r = reply->integer;
         }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return r;
 }
 
-long long HashCommand::hexists(const std::string& key, const std::string& field, const std::string& path) {
+long long HashCommand::hmset(const std::string& key, const std::string& fieldvalues, const std::string& path) {
     if (key.empty()) {
         return -1;
     }
     
-    if (field.empty()) {
+    if (fieldvalues.empty()) {
         return -1;
     }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "HMSET %s %s ", std::string(path + key).c_str(), fieldvalues.c_str());
+        this->srv->unlock();
+    }
+    
+    long long r = -1;
+    if (reply) {
+        if (strcmp(reply->str, "OK") == 0) {
+            r = reply->integer;
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    return r;
+}
+
+bool HashCommand::hexists(const std::string& key, const std::string& field, const std::string& path) {
+    if (key.empty()) {
+        return false;
+    }
+    
+    if (field.empty()) {
+        return false;
+    }
+    
     redisReply *reply = NULL;
     {
         this->srv->lock();
@@ -332,10 +415,13 @@ long long HashCommand::hexists(const std::string& key, const std::string& field,
         this->srv->unlock();
     }
 
-    long long r = -1;
+    bool r = false;
     if (reply) {
         if (reply->str == NULL) {
-            r = reply->integer;
+            r = (reply->integer == 1);
+        }
+        else {
+            printf("%s\n", reply->str);
         }
     }
     freeReplyObject(reply);
@@ -362,6 +448,9 @@ long long HashCommand::hdel(const std::string& key, const std::string& field, co
         if (reply->str == NULL) {
             r = reply->integer;
         }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return r;
@@ -387,6 +476,9 @@ std::string HashCommand::hget(const std::string& key, const std::string& field, 
         if (reply->str != NULL) {
             result.append(reply->str);
         }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return result;
@@ -411,6 +503,9 @@ std::map<std::string, std::string> HashCommand::hgetall(const std::string& key, 
                 elems.insert(std::make_pair(reply->element[i]->str, reply->element[i+1]->str));
             }
         }
+        else {
+            printf("%s\n", reply->str);
+        }
     }
     freeReplyObject(reply);
     return elems;
@@ -432,6 +527,9 @@ long long HashCommand::hlen(const std::string& key, const std::string& path) {
     if (reply) {
         if (reply->str == NULL) {
             result = reply->integer;
+        }
+        else {
+            printf("%s\n", reply->str);
         }
     }
     freeReplyObject(reply);
@@ -456,6 +554,9 @@ std::vector<std::string> HashCommand::hkeys(const std::string& key, const std::s
             for (int i = 0; i < reply->elements; i++) {
                 elems.push_back(reply->element[i]->str);
             }
+        }
+        else {
+            printf("%s\n", reply->str);
         }
     }
     freeReplyObject(reply);
@@ -516,14 +617,14 @@ int RedisServer::start(const char *ip, int port) {
         return -1;
     }
     
-    baseCmd.setContext(this, c, NULL);
+    stringCmd.setContext(this, c, NULL);
     hashCmd.setContext(this, c, NULL);
     
     return 0;
 }
 
-BaseCommand* RedisServer::baseCommand() {
-    return &this->baseCmd;
+StringCommand* RedisServer::stringCommand() {
+    return &this->stringCmd;
 }
 
 HashCommand* RedisServer::hashCommand() {

@@ -34,7 +34,10 @@ public:
 public:
     std::string uregister(const std::string& phone, const std::string& name, const std::string& psd);
     std::string ulogin(const std::string& uid, const std::string& psd);
-    int ulogout(const std::string& uid);
+    std::string ulogout(const std::string& uid);
+    
+public:
+    std::string getUserInfo(const std::string& uid);
 };
 
 #endif /* login_server_hpp */
