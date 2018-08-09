@@ -44,8 +44,8 @@ public:
     int start(const char *ip = "127.0.0.1", int port = 6379);
     
 public:
-    void setValue(const std::string& key, const std::string& value);
-    std::string getValue(const std::string& key, std::function<void(const std::string value)> func);
+    int setValue(const std::string& key, const std::string& value);
+    int getValue(const std::string& key, std::function<void(const std::string value)> func);
     
 public:
     void onConnect(int status);

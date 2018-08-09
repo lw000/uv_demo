@@ -119,9 +119,17 @@ int RedisServer::start(const char *ip, int port) {
 }
 
 int RedisServer::setValue(const std::string& key, const std::string& value) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    if (value.empty()) {
+        return -1;
+    }
+    
     redisReply *reply = (redisReply *)redisCommand(c, "SET %s %s", key.c_str(), value.c_str());
     int c = -1;
-    if (reply && strcpy(reply->str, "ok") == 0) {
+    if (reply && strcmp(reply->str, "ok") == 0) {
         c = 0;
     }
     freeReplyObject(reply);
@@ -129,9 +137,13 @@ int RedisServer::setValue(const std::string& key, const std::string& value) {
 }
 
 std::string RedisServer::getValue(const std::string& key) {
+    if (key.empty()) {
+        return "";
+    }
+    
     redisReply *reply = (redisReply *)redisCommand(c, "GET %s", key.c_str());
     std::string result;
-    if (reply && strcpy(reply->str, "ok") == 0) {
+    if (reply && strcmp(reply->str, "ok") == 0) {
         result.append(reply->str);
     }
     freeReplyObject(reply);
@@ -180,14 +192,32 @@ int RedisAsyncServer::start(const char *ip, int port) {
     return 0;
 }
 
-void RedisAsyncServer::setValue(const std::string& key, const std::string& value) {
+int RedisAsyncServer::setValue(const std::string& key, const std::string& value) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    if (value.empty()) {
+        return -1;
+    }
+    
     redisAsyncCommand(c, NULL, NULL, "SET %s %s", key.c_str(), value.c_str());
+
+    return 0;
 }
 
-std::string RedisAsyncServer::getValue(const std::string& key, std::function<void(const std::string value)> func) {
+int RedisAsyncServer::getValue(const std::string& key, std::function<void(const std::string value)> func) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    if (func == nullptr) {
+        return -1;
+    }
+    
     redisAsyncCommand(c, getCallback, (char*)key.c_str(), "GET %s", key.c_str());
     
-    return "";
+    return 0;
 }
 
 void RedisAsyncServer::onConnect(int status) {
