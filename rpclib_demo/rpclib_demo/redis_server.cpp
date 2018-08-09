@@ -60,30 +60,6 @@ static void* enter(void* args) {
     return 0;
 }
 
-int start_redis_main_server(int argc, const char * argv[]) {
-//    ::signal(SIGPIPE, SIG_IGN);
-
-    uv_loop_t* loop = uv_loop_new();
-
-    redisAsyncContext *c = redisAsyncConnect("127.0.0.1", 6379);
-    if (c->err) {
-        printf("error: %s\n", c->errstr);
-        return 0;
-    }
-    
-    redisLibuvAttach(c, loop);
-    redisAsyncSetConnectCallback(c, connectCallback);
-    redisAsyncSetDisconnectCallback(c, disconnectCallback);
-    
-    redisAsyncCommand(c, NULL, NULL, "SET %s %s", "name", "liwei");
-    redisAsyncCommand(c, getCallback, (char*)"end-1", "GET %s", "name");
-    
-    pthread_t pid;
-    pthread_create(&pid, NULL, enter, loop);
-    
-    return 0;
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 RedisServer::RedisServer() {
@@ -97,13 +73,7 @@ RedisServer::~RedisServer() {
 }
 
 int RedisServer::start(const char *ip, int port) {
-    
-    c = redisConnect(ip, port);
-    if (c->err) {
-        printf("error: %s\n", c->errstr);
-        return -1;
-    }
-    struct timeval timeout = { 5, 500000 }; // 1.5 seconds
+    struct timeval timeout = { 2, 500000 }; // 2.5 seconds
     c = redisConnectWithTimeout(ip, port, timeout);
     if (c == NULL || c->err) {
         if (c) {
@@ -118,7 +88,7 @@ int RedisServer::start(const char *ip, int port) {
     return 0;
 }
 
-int RedisServer::setValue(const std::string& key, const std::string& value) {
+int RedisServer::setValue(const std::string& path, const std::string& key, const std::string& value) {
     if (key.empty()) {
         return -1;
     }
@@ -127,43 +97,45 @@ int RedisServer::setValue(const std::string& key, const std::string& value) {
         return -1;
     }
     
-    redisReply *reply = (redisReply *)redisCommand(c, "SET %s %s", key.c_str(), value.c_str());
-    int c = -1;
-    if (reply && strcmp(reply->str, "ok") == 0) {
-        c = 0;
+    redisReply *reply = (redisReply *)redisCommand(c, "SET %s %s", std::string(path + key).c_str(), value.c_str());
+    int r = -1;
+    if (reply && strcmp(reply->str, "OK") == 0) {
+        r = 0;
     }
     freeReplyObject(reply);
-    return c;
+    return r;
 }
 
-std::string RedisServer::getValue(const std::string& key) {
+std::string RedisServer::getValue(const std::string& path, const std::string& key) {
     if (key.empty()) {
         return "";
     }
     
-    redisReply *reply = (redisReply *)redisCommand(c, "GET %s", key.c_str());
+    redisReply *reply = (redisReply *)redisCommand(c, "GET %s", std::string(path + key).c_str());
     std::string result;
-    if (reply && strcmp(reply->str, "ok") == 0) {
-        result.append(reply->str);
+    if (reply) {
+        if (reply->str != NULL) {
+            result.append(reply->str);
+        }
     }
     freeReplyObject(reply);
-    return "";
+    return result;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 RedisAsyncServer::RedisAsyncServer() {
     this->loop = nullptr;
-    this->c = nullptr;
+    this->ac = nullptr;
 }
 
 RedisAsyncServer::~RedisAsyncServer() {
-    if (c != NULL) {
-        redisAsyncDisconnect(c);
+    if (ac != NULL) {
+        redisAsyncDisconnect(ac);
     }
     
-    if (c != NULL) {
-        redisAsyncFree(c);
+    if (ac != NULL) {
+        redisAsyncFree(ac);
     }
     
     if (loop != NULL) {
@@ -175,16 +147,16 @@ int RedisAsyncServer::start(const char *ip, int port) {
     loop = uv_loop_new();
     loop->data = this;
     
-    c = redisAsyncConnect(ip, port);
-    c->data = this;
-    if (c->err) {
-        printf("error: %s\n", c->errstr);
+    ac = redisAsyncConnect(ip, port);
+    ac->data = this;
+    if (ac->err) {
+        printf("error: %s\n", ac->errstr);
         return -1;
     }
     
-    redisLibuvAttach(c, loop);
-    redisAsyncSetConnectCallback(c, connectCallback);
-    redisAsyncSetDisconnectCallback(c, disconnectCallback);
+    redisLibuvAttach(ac, loop);
+    redisAsyncSetConnectCallback(ac, connectCallback);
+    redisAsyncSetDisconnectCallback(ac, disconnectCallback);
     
     pthread_t pid;
     pthread_create(&pid, NULL, enter, loop);
@@ -201,7 +173,7 @@ int RedisAsyncServer::setValue(const std::string& key, const std::string& value)
         return -1;
     }
     
-    redisAsyncCommand(c, NULL, NULL, "SET %s %s", key.c_str(), value.c_str());
+    redisAsyncCommand(ac, NULL, NULL, "SET %s %s", key.c_str(), value.c_str());
 
     return 0;
 }
@@ -215,7 +187,7 @@ int RedisAsyncServer::getValue(const std::string& key, std::function<void(const 
         return -1;
     }
     
-    redisAsyncCommand(c, getCallback, (char*)key.c_str(), "GET %s", key.c_str());
+    redisAsyncCommand(ac, getCallback, (char*)key.c_str(), "GET %s", key.c_str());
     
     return 0;
 }

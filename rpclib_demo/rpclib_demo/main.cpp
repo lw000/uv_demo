@@ -11,6 +11,7 @@
 #include <rpc/server.h>
 #include <rpc/client.h>
 #include <rpc/this_handler.h>
+#include <rpc/this_session.h>
 #include <rpc/rpc_error.h>
 
 #include <rapidjson/rapidjson.h>
@@ -46,10 +47,24 @@ typedef struct {
     
 } Sub;
 
+class generator_random {
+public:
+    ptrdiff_t operator ()(ptrdiff_t max) {
+        double t;
+        t = static_cast<double>(std::rand()) / static_cast<double>(RAND_MAX);
+        return static_cast<ptrdiff_t>(t * max);
+    }
+};
+
+int my_random(int c) {
+    return std::rand() % c;
+}
+
 int client_run(int argc, const char * argv[]) {
     rpc::client cli("127.0.0.1", PORT);
     
     int execount = 10000;
+    
     clock_t t = clock();
     try {
         {
@@ -72,9 +87,14 @@ int client_run(int argc, const char * argv[]) {
     } catch (rpc::rpc_error &e) {
         printf("%s\n", e.what());
     }
-    
+
+    std::string s("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
     for (int i = 0; i < execount; i++) {
-        std::string c3 = cli.call("getUserInfo", "liwei").as<std::string>();
+        std::string key;
+        std::random_shuffle(s.begin(), s.end(), my_random);
+        key.insert(key.begin(), s.begin(), s.end());
+        
+        std::string c3 = cli.call("getUserInfo", key).as<std::string>();
         printf("[%4d] getUserInfo: %s\n", i, c3.c_str());
         std::string c4 = cli.call("ok").as<std::string>();
         printf("[%4d] ok: %s\n", i, c4.c_str());
@@ -100,27 +120,55 @@ int server_run(int argc, const char * argv[]) {
     srv.bind("divide", &divide);
     srv.bind("getUserInfo", [] (const std::string name) {
         
-        std::string value = redisCache.getValue(name);
+        std::string value = redisCache.getValue("name:", name);
         if (!value.empty()) {
             return value;
         }
+       
+//        rpc::this_session().post_exit();
         
         rapidjson::Document doc;
         doc.SetObject();
         rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-        doc.AddMember("name", "liwei", alloctor);
-        doc.AddMember("address", "shenzhenshinanshanqu", alloctor);
+        doc.AddMember("code", 0, alloctor);
+        doc.AddMember("what", "ok", alloctor);
+        {
+            rapidjson::Value data;
+            data.SetObject();
+            data.AddMember("name", name.c_str(), alloctor);
+            data.AddMember("address", "shenzhenshinanshanqu", alloctor);
+            doc.AddMember("data", data, alloctor);
+        }
+        
         rapidjson::StringBuffer buffer;
         rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
         doc.Accept(writer);
         std::string jsondst = buffer.GetString();
         
-        int c = redisCache.setValue(name, jsondst);
-        if (c != 0) {
-            printf("update cache error. [%d]\n", c);
+        int c = redisCache.setValue("name:", name, jsondst);
+        if (c == 0) {
+            return jsondst;
         }
         
-        return jsondst;
+        printf("update cache error. [%d]\n", c);
+        
+        {
+            rapidjson::Document doc;
+            doc.SetObject();
+            rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
+            doc.AddMember("code", 0, alloctor);
+            doc.AddMember("what", "update cache error.", alloctor);
+            {
+                rapidjson::Value data;
+                data.SetObject();
+                doc.AddMember("data", data, alloctor);
+            }
+            rapidjson::StringBuffer buffer;
+            rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+            doc.Accept(writer);
+            std::string errorjson = buffer.GetString();
+            return errorjson;
+        }
     });
     
     srv.bind("get_time", []{
