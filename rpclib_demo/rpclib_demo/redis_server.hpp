@@ -11,33 +11,93 @@
 
 #include <stdio.h>
 #include <string>
+#include <vector>
+#include <map>
+#include <pthread.h>
 #include <functional>
 #include <hiredis/hiredis.h>
 #include <hiredis/async.h>
 #include <hiredis/adapters/libuv.h>
 
-class BaseCommand {
+class Command;
+class BaseCommand;
+class HashCommand;
+class RedisBaseServer;
+class RedisServer;
+class RedisAsyncServer;
+
+class Command {
 public:
-    BaseCommand(redisContext *c);
-    ~BaseCommand();
+    Command();
+    virtual ~Command();
     
-private:
+public:
+    void setContext(RedisBaseServer * srv, redisContext *c, redisAsyncContext *ac);
+    
+protected:
     redisContext *c;
+    redisAsyncContext *ac;
+    RedisBaseServer * srv;
 };
 
-class HashCommand {
+class BaseCommand : public Command {
 public:
-    HashCommand(redisContext *c);
-    ~HashCommand();
+    BaseCommand();
+    virtual ~BaseCommand();
     
-private:
-    redisContext *c;
+public:
+    long long set(const std::string& key, const std::string& value, const std::string& path = "");
+    std::string get(const std::string& key, const std::string& path = "");
+    std::string setget(const std::string& key, const std::string& value, const std::string& path = "");
+    long long incr(const std::string key);
+    long long incrby(const std::string key, long long v);
+    double incrfloat(const std::string key, double v);
+    long long decr(const std::string key);
+    long long decrby(const std::string key, long long v);
 };
 
-class RedisServer {
+class HashCommand : public Command {
+public:
+    HashCommand();
+    virtual ~HashCommand();
+    
+public:
+    long long hset(const std::string& key, const std::string& field, const std::string& value, const std::string& path = "");
+    long long hmset(const std::string& key, const std::map<std::string, std::string>& fieldvalues, const std::string& path = "");
+    long long hexists(const std::string& key, const std::string& field, const std::string& path = "");
+    long long hdel(const std::string& key, const std::string& field, const std::string& path = "");
+    std::string hget(const std::string& key, const std::string& field, const std::string& path = "");
+    std::map<std::string, std::string> hgetall(const std::string& key, const std::string& path = "");
+    
+    long long hlen(const std::string& key, const std::string& path = "");
+    std::vector<std::string> hkeys(const std::string& key, const std::string& path = "");
+};
+
+class SetCommand : public Command {
+public:
+    SetCommand();
+    virtual ~SetCommand();
+};
+
+class RedisBaseServer {
+    friend BaseCommand;
+    friend HashCommand;
+public:
+    RedisBaseServer();
+    virtual ~RedisBaseServer();
+    
+protected:
+    void lock();
+    void unlock();
+    
+protected:
+    pthread_mutex_t t;
+};
+
+class RedisServer : public RedisBaseServer {
 public:
     RedisServer();
-    ~RedisServer();
+    virtual ~RedisServer();
     
 private:
     RedisServer(const RedisServer &&) = delete;
@@ -47,25 +107,19 @@ public:
     int start(const char *ip = "127.0.0.1", int port = 6379);
 
 public:
-    int setValue(const std::string& path, const std::string& key, const std::string& value);
-    std::string getValue(const std::string& path, const std::string& key);
-    long long incr(const std::string key);
-    long long incrby(const std::string key, long long v);
-    double incrfloat(const std::string key, double v);
-    long long decr(const std::string key);
-    long long decrby(const std::string key, long long v);
-    
-public:
-    
+    BaseCommand* baseCommand();
+    HashCommand* hashCommand();
     
 private:
+    BaseCommand baseCmd;
+    HashCommand hashCmd;
     redisContext *c;
 };
 
 class RedisAsyncServer {
 public:
     RedisAsyncServer();
-    ~RedisAsyncServer();
+    virtual ~RedisAsyncServer();
     
 private:
     RedisAsyncServer(const RedisAsyncServer &&) = delete;

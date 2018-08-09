@@ -21,6 +21,7 @@
 
 #include "redis_server.hpp"
 #include "login_server.hpp"
+#include "data.hpp"
 
 #define PORT 6789
 
@@ -67,50 +68,87 @@ int client_run(int argc, const char * argv[]) {
     int execount = 10000;
     
     clock_t t = clock();
-    try {
-        {
-            auto result = cli.async_call("add", 2, 3);
-            int c = result.get().as<int>();
-            printf("add: %d\n", c);
-        }
-        
-        {
-            auto result = cli.async_call("mul", 2, 3);
-            int c = result.get().as<int>();
-            printf("mul: %d\n", c);
-        }
-        
-        {
-            auto result = cli.async_call("sub", 2, 3);
-            int c = result.get().as<int>();
-            printf("sub: %d\n", c);
-        }
-        
-    } catch (rpc::rpc_error &e) {
-        printf("%s\n", e.what());
-    }
+//    try {
+//        {
+//            auto result = cli.async_call("add", 2, 3);
+//            int c = result.get().as<int>();
+//            printf("add: %d\n", c);
+//        }
+//
+//        {
+//            auto result = cli.async_call("mul", 2, 3);
+//            int c = result.get().as<int>();
+//            printf("mul: %d\n", c);
+//        }
+//
+//        {
+//            auto result = cli.async_call("sub", 2, 3);
+//            int c = result.get().as<int>();
+//            printf("sub: %d\n", c);
+//        }
+//
+//    } catch (rpc::rpc_error &e) {
+//        printf("%s\n", e.what());
+//    }
 
-    std::string s("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
-    for (int i = 0; i < execount; i++) {
-        std::string key;
-        std::random_shuffle(s.begin(), s.end(), my_random);
-        key.insert(key.begin(), s.begin(), s.end());
-        
-        std::string c3 = cli.call("getUserInfo", key).as<std::string>();
-        printf("[%4d] getUserInfo: %s\n", i, c3.c_str());
-        std::string c4 = cli.call("ok").as<std::string>();
-        printf("[%4d] ok: %s\n", i, c4.c_str());
-        
-        std::string c5 = cli.call("get_time").as<std::string>();
-        printf("[%4d] get_time: %s\n", i, c5.c_str());
-        
-        {
-            std::string uid = cli.call("loginserver/register", "liwei", "123456").as<std::string>();
-            uid = cli.call("loginserver/login", uid, "123456").as<std::string>();
-            int c = cli.call("loginserver/logout", uid).as<int>();
+    cli.async_call("test");
+    
+    {
+        try {
+            
+            {
+                std::string data = cli.call("loginserver/register", "13632767233", "liwei", "123456").as<std::string>();
+                rpc_login_result_reponse reponse;
+                if (reponse.decode(data)) {
+                    
+                }
+                
+                data = cli.call("loginserver/login", reponse.uid, "123456").as<std::string>();
+                int c = cli.call("loginserver/logout", reponse.uid).as<int>();
+            }
+            
+            {
+                std::string data = cli.call("loginserver/register", "13632767288", "liwei", "123456").as<std::string>();
+                rpc_login_result_reponse reponse;
+                if (reponse.decode(data)) {
+                    
+                }
+                
+                data = cli.call("loginserver/login", reponse.uid, "123456").as<std::string>();
+                int c = cli.call("loginserver/logout", reponse.uid).as<int>();
+            }
+            
+            {
+                std::string data = cli.call("loginserver/register", "13632558737", "heshanshan", "123456").as<std::string>();
+                rpc_login_result_reponse reponse;
+                if (reponse.decode(data)) {
+                    
+                }
+                
+                data = cli.call("loginserver/login", reponse.uid, "123456").as<std::string>();
+                int c = cli.call("loginserver/logout", reponse.uid).as<int>();
+            }
+            
+        } catch (rpc::rpc_error &e) {
+            printf("%s\n", e.what());
         }
-        
     }
+    
+//    std::string s("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+//    for (int i = 0; i < execount; i++) {
+//        std::string key;
+//        std::random_shuffle(s.begin(), s.end(), my_random);
+//        key.insert(key.begin(), s.begin(), s.end());
+//
+//        std::string c3 = cli.call("getUserInfo", key).as<std::string>();
+//        printf("[%4d] getUserInfo: %s\n", i, c3.c_str());
+//        std::string c4 = cli.call("ok").as<std::string>();
+//        printf("[%4d] ok: %s\n", i, c4.c_str());
+//
+//        std::string c5 = cli.call("get_time").as<std::string>();
+//        printf("[%4d] get_time: %s\n", i, c5.c_str());
+//    }
+    
     clock_t t1 = clock();
     printf("exec:[%d], times:[%f]\n", execount, ((double)t1-t)/CLOCKS_PER_SEC);
     
@@ -145,7 +183,7 @@ int server_run(int argc, const char * argv[]) {
     srv.bind("getUserInfo", [] (const std::string name) {
         
         // search cache info
-        std::string value = redisCache.getValue("name:", name);
+        std::string value = redisCache.baseCommand()->get(name, "name:");
         if (!value.empty()) {
             return value;
         }
@@ -170,7 +208,7 @@ int server_run(int argc, const char * argv[]) {
         doc.Accept(writer);
         std::string jsondst = buffer.GetString();
         
-        int c = redisCache.setValue("name:", name, jsondst);
+        long long c = redisCache.baseCommand()->set(name, jsondst, "name:");
         if (c == 0) {
             
             /*
@@ -201,12 +239,46 @@ int server_run(int argc, const char * argv[]) {
         }
     });
     
+    srv.bind("test", []{
+//        {
+//            long long incr = redisCache.baseCommand()->incr("autoincr");
+//            long long incr1 = redisCache.baseCommand()->incrby("autoincr_by", 10000);
+//            double incr2 = redisCache.baseCommand()->incrfloat("autoincrbyfloat", 0.2f);
+//        }
+        
+        {
+            long long s00 = redisCache.hashCommand()->hset("myhash", "field0", "liwei0", "hash:");
+            long long s01 = redisCache.hashCommand()->hset("myhash", "field1", "liwei1", "hash:");
+            long long s02 = redisCache.hashCommand()->hset("myhash", "field2", "liwei2", "hash:");
+            long long s03 = redisCache.hashCommand()->hset("myhash", "field3", "liwei3", "hash:");
+            
+        }
+        
+        {
+            std::map<std::string, std::string> cmds;
+            cmds.insert(std::make_pair("field0", "liwei00"));
+            cmds.insert(std::make_pair("field1", "liwei01"));
+            cmds.insert(std::make_pair("field2", "liwei02"));
+            cmds.insert(std::make_pair("field3", "liwei03"));
+            long long s04 = redisCache.hashCommand()->hmset("myhash1", cmds, "hash:");
+            std::string s1 = redisCache.hashCommand()->hget("myhash1", "field0", "hash:");
+        }
+        
+        {
+            std::string s1 = redisCache.hashCommand()->hget("myhash1", "field0", "hash:");
+            long long slen = redisCache.hashCommand()->hlen("myhash1", "hash:");
+            std::map<std::string,std::string> s5 = redisCache.hashCommand()->hgetall("myhash1", "hash:");
+            std::vector<std::string> skeys = redisCache.hashCommand()->hkeys("myhash1", "hash:");
+            long long sexists = redisCache.hashCommand()->hexists("myhash1", "field1", "hash:");
+        }
+    });
+    
     int n = redisCache.start();
     if (n == 0) {
         LoginServer loginServer(&srv, &redisCache);
         
         //    srv.run();
-        srv.async_run(6);
+        srv.async_run(4);
         
         while (1) {
             sleep(1);

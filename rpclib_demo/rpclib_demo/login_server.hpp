@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <string>
+#include <sstream>
 #include <rpc/server.h>
 
 class RedisServer;
@@ -31,7 +32,7 @@ public:
     virtual ~LoginServer();
     
 public:
-    std::string uregister(const std::string& name, const std::string& psd);
+    std::string uregister(const std::string& phone, const std::string& name, const std::string& psd);
     std::string ulogin(const std::string& uid, const std::string& psd);
     int ulogout(const std::string& uid);
 };
