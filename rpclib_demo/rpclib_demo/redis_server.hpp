@@ -16,6 +16,24 @@
 #include <hiredis/async.h>
 #include <hiredis/adapters/libuv.h>
 
+class BaseCommand {
+public:
+    BaseCommand(redisContext *c);
+    ~BaseCommand();
+    
+private:
+    redisContext *c;
+};
+
+class HashCommand {
+public:
+    HashCommand(redisContext *c);
+    ~HashCommand();
+    
+private:
+    redisContext *c;
+};
+
 class RedisServer {
 public:
     RedisServer();
@@ -31,7 +49,15 @@ public:
 public:
     int setValue(const std::string& path, const std::string& key, const std::string& value);
     std::string getValue(const std::string& path, const std::string& key);
-
+    long long incr(const std::string key);
+    long long incrby(const std::string key, long long v);
+    double incrfloat(const std::string key, double v);
+    long long decr(const std::string key);
+    long long decrby(const std::string key, long long v);
+    
+public:
+    
+    
 private:
     redisContext *c;
 };

@@ -62,6 +62,25 @@ static void* enter(void* args) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+BaseCommand::BaseCommand(redisContext *c) {
+    this->c = c;
+}
+
+BaseCommand::~BaseCommand() {
+    
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+HashCommand::HashCommand(redisContext *c) {
+    this->c = c;
+}
+
+HashCommand::~HashCommand() {
+    
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 RedisServer::RedisServer() {
     this->c = nullptr;
 }
@@ -120,6 +139,76 @@ std::string RedisServer::getValue(const std::string& path, const std::string& ke
     }
     freeReplyObject(reply);
     return result;
+}
+
+long long RedisServer::incr(const std::string key) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    redisReply *reply = (redisReply *)redisCommand(c, "INCR %s", key.c_str());
+    long long r = 0;
+    if (reply && reply->str == NULL) {
+        r = reply->integer;
+    }
+    freeReplyObject(reply);
+    return r;
+}
+
+long long RedisServer::incrby(const std::string key, long long v) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    redisReply *reply = (redisReply *)redisCommand(c, "INCRBY %s %lld", key.c_str(), v);
+    long long r = 0;
+    if (reply && reply->str == NULL) {
+        r = reply->integer;
+    }
+    freeReplyObject(reply);
+    return r;
+}
+
+double RedisServer::incrfloat(const std::string key, double v) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    redisReply *reply = (redisReply *)redisCommand(c, "INCRBYFLOAT %s %f", key.c_str(), v);
+    double r = 0.0;
+    if (reply && reply->str != NULL) {
+        r = atof(reply->str);
+    }
+    freeReplyObject(reply);
+    return r;
+}
+
+long long RedisServer::decr(const std::string key) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    redisReply *reply = (redisReply *)redisCommand(c, "DECR %s", key.c_str());
+    long long r = 0;
+    if (reply && reply->str == NULL) {
+        r = reply->integer;
+    }
+    freeReplyObject(reply);
+    return r;
+}
+
+long long RedisServer::decrby(const std::string key, long long v) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    redisReply *reply = (redisReply *)redisCommand(c, "DECRBY %s %lld", key.c_str(), v);
+    long long r = 0;
+    if (reply && reply->str == NULL) {
+        r = reply->integer;
+    }
+    freeReplyObject(reply);
+    return r;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -20,6 +20,7 @@
 #include <rapidjson/stringbuffer.h>
 
 #include "redis_server.hpp"
+#include "login_server.hpp"
 
 #define PORT 6789
 
@@ -84,6 +85,7 @@ int client_run(int argc, const char * argv[]) {
             int c = result.get().as<int>();
             printf("sub: %d\n", c);
         }
+        
     } catch (rpc::rpc_error &e) {
         printf("%s\n", e.what());
     }
@@ -101,6 +103,13 @@ int client_run(int argc, const char * argv[]) {
         
         std::string c5 = cli.call("get_time").as<std::string>();
         printf("[%4d] get_time: %s\n", i, c5.c_str());
+        
+        {
+            std::string uid = cli.call("loginserver/register", "liwei", "123456").as<std::string>();
+            uid = cli.call("loginserver/login", uid, "123456").as<std::string>();
+            int c = cli.call("loginserver/logout", uid).as<int>();
+        }
+        
     }
     clock_t t1 = clock();
     printf("exec:[%d], times:[%f]\n", execount, ((double)t1-t)/CLOCKS_PER_SEC);
@@ -113,13 +122,29 @@ RedisServer redisCache;
 int server_run(int argc, const char * argv[]) {
     
     rpc::server srv("0.0.0.0", PORT != 0 ? PORT : rpc::constants::DEFAULT_PORT);
+    srv.suppress_exceptions(true);
     
     srv.bind("add", [](int a, int b) { return a + b; });
     srv.bind("mul", [](int a, int b) { return a * b; });
     srv.bind("bad", &bad);
     srv.bind("divide", &divide);
+    srv.bind("get_time", []{
+        time_t rawtime;
+        struct tm *timeinfo;
+        time(&rawtime);
+        timeinfo = localtime(&rawtime);
+        return asctime(timeinfo);
+    });
+    
+    Sub sub;
+    srv.bind("sub", sub);
+    srv.bind("ok", [&sub]() {
+        return sub.ok();
+    });
+    
     srv.bind("getUserInfo", [] (const std::string name) {
         
+        // search cache info
         std::string value = redisCache.getValue("name:", name);
         if (!value.empty()) {
             return value;
@@ -147,6 +172,11 @@ int server_run(int argc, const char * argv[]) {
         
         int c = redisCache.setValue("name:", name, jsondst);
         if (c == 0) {
+            
+            /*
+             update mysql db
+            */
+            
             return jsondst;
         }
         
@@ -171,29 +201,16 @@ int server_run(int argc, const char * argv[]) {
         }
     });
     
-    srv.bind("get_time", []{
-        time_t rawtime;
-        struct tm *timeinfo;
-        time(&rawtime);
-        timeinfo = localtime(&rawtime);
-        return asctime(timeinfo);
-    });
-    
-    Sub sub;
-    srv.bind("sub", sub);
-    srv.bind("ok", [&sub]() {
-        return sub.ok();
-    });
-    
-    srv.suppress_exceptions(true);
-    
-    redisCache.start();
-    
-//    srv.run();
-    srv.async_run(6);
-    
-    while (1) {
-        sleep(1);
+    int n = redisCache.start();
+    if (n == 0) {
+        LoginServer loginServer(&srv, &redisCache);
+        
+        //    srv.run();
+        srv.async_run(6);
+        
+        while (1) {
+            sleep(1);
+        }
     }
     
     return 0;

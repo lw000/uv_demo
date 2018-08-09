@@ -13,6 +13,7 @@
 		D02FB651211AFF63007A30D9 /* redis_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB650211AFF63007A30D9 /* redis_server.cpp */; };
 		D02FB653211B00FE007A30D9 /* libhiredis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB652211B00FE007A30D9 /* libhiredis.a */; };
 		D02FB659211B01E4007A30D9 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB658211B01E4007A30D9 /* libuv.a */; };
+		D02FB65C211BE179007A30D9 /* login_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB65A211BE179007A30D9 /* login_server.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,8 @@
 		D02FB654211B0103007A30D9 /* libevhtp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libevhtp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02FB656211B0106007A30D9 /* libuv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libuv.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02FB658211B01E4007A30D9 /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = ../../../../../usr/local/lib/libuv.a; sourceTree = "<group>"; };
+		D02FB65A211BE179007A30D9 /* login_server.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = login_server.cpp; sourceTree = "<group>"; };
+		D02FB65B211BE179007A30D9 /* login_server.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = login_server.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				D02FB650211AFF63007A30D9 /* redis_server.cpp */,
 				D02FB64F211AFF63007A30D9 /* redis_server.hpp */,
 				D02FB6092119A7B0007A30D9 /* main.cpp */,
+				D02FB65A211BE179007A30D9 /* login_server.cpp */,
+				D02FB65B211BE179007A30D9 /* login_server.hpp */,
 			);
 			path = rpclib_demo;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02FB65C211BE179007A30D9 /* login_server.cpp in Sources */,
 				D02FB651211AFF63007A30D9 /* redis_server.cpp in Sources */,
 				D02FB60A2119A7B0007A30D9 /* main.cpp in Sources */,
 			);
