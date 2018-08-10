@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uv-test/uv-test/timer_server.cpp"
-            timestampString = "555504175.000174"
+            timestampString = "555554891.661674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fork-demo/fork-demo/main.cpp"
-            timestampString = "555504175.0004261"
+            timestampString = "555554891.661984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "redis-demo/redis-demo/main.cpp"
-            timestampString = "555504175.0006109"
+            timestampString = "555554891.662186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -218,45 +218,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "redis-demo/redis-demo/main.cpp"
-            timestampString = "555504175.0007811"
+            timestampString = "555554891.6624"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
             landmarkName = "connectCallback(const redisAsyncContext* c, int status)"
             landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "rpclib_demo/rpclib_demo/login_server.cpp"
-            timestampString = "555504175.000832"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "LoginServer::uregister(const std::string&amp; phone, const std::string&amp; name, const std::string&amp; psd)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "rpclib_demo/rpclib_demo/redis_server.cpp"
-            timestampString = "555504175.780237"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
-            landmarkName = "HashCommand::hmset(const std::string&amp; key, const std::string&amp; fieldvalues, const std::string&amp; path)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

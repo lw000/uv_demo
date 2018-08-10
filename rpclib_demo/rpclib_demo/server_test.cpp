@@ -22,7 +22,7 @@
 
 #include "redis_server.hpp"
 #include "login_server.hpp"
-#include "data.hpp"
+#include "rpc_core_protocol.hpp"
 
 #include "client_test.hpp"
 
@@ -41,6 +41,10 @@ static double divide(double a, double b) {
     return a / b;
 }
 
+static int my_random(int c) {
+    return std::rand() % c;
+}
+
 typedef struct {
     int operator() (int a, int b) {
         return a-b;
@@ -49,7 +53,6 @@ typedef struct {
     std::string ok() {
         return "1234567890";
     }
-    
 } Sub;
 
 class generator_random {
@@ -60,10 +63,6 @@ public:
         return static_cast<ptrdiff_t>(t * max);
     }
 };
-
-int my_random(int c) {
-    return std::rand() % c;
-}
 
 RedisServer redisCache;
 
@@ -90,7 +89,6 @@ int server_run(int argc, const char * argv[]) {
     });
     
     srv.bind("getUserInfo", [] (const std::string name) {
-        
         // search cache info
         std::string value = redisCache.stringCommand()->get(name, "name:");
         if (!value.empty()) {
@@ -129,7 +127,6 @@ int server_run(int argc, const char * argv[]) {
         
         printf("update cache error. [%lld]\n", c);
         
-        
         {
             rapidjson::Document doc;
             doc.SetObject();
@@ -166,7 +163,6 @@ int server_run(int argc, const char * argv[]) {
             long long s01 = redisCache.hashCommand()->hset("myhash", "field1", "liwei1", "hash:");
             long long s02 = redisCache.hashCommand()->hset("myhash", "field2", "liwei2", "hash:");
             long long s03 = redisCache.hashCommand()->hset("myhash", "field3", "liwei3", "hash:");
-            
         }
         
 //        {

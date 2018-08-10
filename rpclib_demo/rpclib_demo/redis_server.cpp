@@ -158,7 +158,7 @@ std::string StringCommand::get(const std::string& key, const std::string& path) 
     return result;
 }
 
-std::string StringCommand::setget(const std::string& key, const std::string& value, const std::string& path) {
+std::string StringCommand::getset(const std::string& key, const std::string& value, const std::string& path) {
     if (key.empty()) {
         return "";
     }
@@ -569,6 +569,15 @@ SetCommand::SetCommand() {
 }
 
 SetCommand::~SetCommand() {
+    
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+ListCommand::ListCommand() {
+    
+}
+
+ListCommand::~ListCommand() {
     
 }
 

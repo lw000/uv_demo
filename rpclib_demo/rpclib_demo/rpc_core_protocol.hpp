@@ -14,12 +14,12 @@
 #include <vector>
 #include <sstream>
 
-typedef struct _rpc_reponse {
+typedef struct _rpc_base_reponse {
     int code;
     std::string what;
-} rpc_reponse;
+} rpc_base_reponse;
 
-typedef struct _rpc_login_result_reponse : public _rpc_reponse {
+typedef struct _rpc_login_result_reponse : public _rpc_base_reponse {
     std::string uid;
     std::string session;
     

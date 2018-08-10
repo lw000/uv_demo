@@ -22,6 +22,7 @@
 class Command;
 class StringCommand;
 class HashCommand;
+class ListCommand;
 class RedisBaseServer;
 class RedisServer;
 class RedisAsyncServer;
@@ -49,7 +50,7 @@ public:
     bool exists(const std::string& key, const std::string& path = "");
     long long set(const std::string& key, const std::string& value, const std::string& path = "");
     std::string get(const std::string& key, const std::string& path = "");
-    std::string setget(const std::string& key, const std::string& value, const std::string& path = "");
+    std::string getset(const std::string& key, const std::string& value, const std::string& path = "");
     long long incr(const std::string key);
     long long incrby(const std::string key, long long v);
     double incrfloat(const std::string key, double v);
@@ -81,8 +82,15 @@ public:
     virtual ~SetCommand();
 };
 
+class ListCommand : public Command {
+public:
+    ListCommand();
+    virtual ~ListCommand();
+};
+
 class RedisBaseServer {
     friend StringCommand;
+    friend ListCommand;
     friend HashCommand;
     
 public:
@@ -116,6 +124,8 @@ public:
 private:
     StringCommand stringCmd;
     HashCommand hashCmd;
+    
+private:
     redisContext *c;
 };
 

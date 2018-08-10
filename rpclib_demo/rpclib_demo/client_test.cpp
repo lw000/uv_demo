@@ -16,7 +16,7 @@
 #include <rpc/this_session.h>
 #include <rpc/rpc_error.h>
 
-#include "data.hpp"
+#include "rpc_core_protocol.hpp"
 
 #define PORT 6789
 

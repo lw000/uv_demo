@@ -8,55 +8,12 @@
 
 #include "login_server.hpp"
 #include "redis_server.hpp"
+#include "memory_redis_mapping_datastruct.hpp"
 
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
-
-typedef struct _UserInfo {
-    std::string phone;
-    std::string name;
-    std::string psd;
-    std::string uid;
-    
-public:
-    _UserInfo() {
-        
-    }
-    
-public:
-    std::string encode_string_redis_command() {
-        std::ostringstream out;
-        out << "phone " << phone << " name " << name << " psd " << psd << " uid " << uid;
-        return out.str();
-    }
-    
-    std::map<std::string, std::string> encode_map_redis_command() {
-        std::map<std::string, std::string> out;
-        out.insert(std::make_pair("phone", phone.c_str()));
-        out.insert(std::make_pair("name", name.c_str()));
-        out.insert(std::make_pair("psd", psd.c_str()));
-        out.insert(std::make_pair("uid", uid.c_str()));
-        return out;
-    }
-    
-    std::string encode_json() {
-        rapidjson::Document doc;
-        doc.SetObject();
-        rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-        std::map<std::string, std::string> vk = this->encode_map_redis_command();
-        for(auto m : vk) {
-            doc.AddMember(m.first.c_str(), m.second.c_str(), alloctor);
-        }
-        rapidjson::StringBuffer buffer;
-        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-        doc.Accept(writer);
-        std::string jsondst = buffer.GetString();
-        return jsondst;
-    }
-    
-} UserInfo;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 BaseServer::BaseServer() {
@@ -120,12 +77,12 @@ std::string LoginServer::uregister(const std::string& phone, const std::string& 
             uinfo.uid = uid_buf;
             
             long long ok = -1;
-//            ok = this->redisServer->hashCommand()->hset(phone, "phone", phone, "user_infos:");
-//            ok = this->redisServer->hashCommand()->hset(phone, "name", name, "user_infos:");
-//            ok = this->redisServer->hashCommand()->hset(phone, "psd", psd, "user_infos:");
-//            ok = this->redisServer->hashCommand()->hset(phone, "uid", uid_buf, "user_infos:");
+            ok = this->redisServer->hashCommand()->hset(phone, "phone", phone, "user_infos:");
+            ok = this->redisServer->hashCommand()->hset(phone, "name", name, "user_infos:");
+            ok = this->redisServer->hashCommand()->hset(phone, "psd", psd, "user_infos:");
+            ok = this->redisServer->hashCommand()->hset(phone, "uid", uid_buf, "user_infos:");
             
-            ok = this->redisServer->hashCommand()->hmset(phone, "field liwei", "user_infos:");
+//            ok = this->redisServer->hashCommand()->hmset(phone, "field liwei", "user_infos:");
             
             if (ok == 1) {
                 ok = this->redisServer->hashCommand()->hset(uid_buf, "phone", phone, "user_uid:");
