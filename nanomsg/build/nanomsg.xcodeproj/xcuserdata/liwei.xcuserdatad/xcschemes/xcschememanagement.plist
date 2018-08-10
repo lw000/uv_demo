@@ -7,7 +7,7 @@
 		<key>ALL_BUILD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>10</integer>
 		</dict>
 		<key>RUN_TESTS.xcscheme</key>
 		<dict>
@@ -17,7 +17,7 @@
 		<key>ZERO_CHECK.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>13</integer>
 		</dict>
 		<key>async_shutdown.xcscheme</key>
 		<dict>
@@ -77,7 +77,7 @@
 		<key>dist.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>12</integer>
 		</dict>
 		<key>domain.xcscheme</key>
 		<dict>
@@ -117,7 +117,7 @@
 		<key>install.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>16</integer>
 		</dict>
 		<key>iovec.xcscheme</key>
 		<dict>
@@ -162,17 +162,17 @@
 		<key>nanocat.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>17</integer>
 		</dict>
 		<key>nanomsg.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>14</integer>
 		</dict>
 		<key>package.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>15</integer>
 		</dict>
 		<key>pair.xcscheme</key>
 		<dict>

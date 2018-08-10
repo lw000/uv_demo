@@ -70,8 +70,8 @@ public:
     long long set(const std::string& key, const std::string& value, const std::string& path = "");
     std::string get(const std::string& key, const std::string& path = "");
     
-    long long mset(const std::map<std::string, std::string>& keyvalues, const std::string& path = "");
-    std::vector<std::string> mget(const std::vector<std::string>& vkeys, const std::string& path = "");
+    long long mset(const std::map<std::string, std::string>& mvks, const std::string& path = "");
+    std::vector<std::string> mget(const std::vector<std::string>& vks, const std::string& path = "");
     
     long long setnx(const std::string& key, const std::string& value, const std::string& path = "");
     long long setex(const std::string& key, const std::string& value, int seconds, const std::string& path = "");
@@ -110,6 +110,10 @@ class SetCommand : public Command {
 public:
     SetCommand();
     virtual ~SetCommand();
+    
+public:
+    long long sadd(const std::string& key, const std::vector<std::string>& values, const std::string& path = "");
+    std::vector<std::string> smembers(const std::string& key, const std::string& path = "");
 };
 
 class ListCommand : public Command {
@@ -123,6 +127,7 @@ class RedisBaseServer {
     friend StringCommand;
     friend ListCommand;
     friend HashCommand;
+    friend SetCommand;
     
 public:
     RedisBaseServer();
@@ -131,7 +136,7 @@ public:
 private:
     RedisBaseServer(const RedisBaseServer &&) = delete;
     RedisBaseServer& operator =(const RedisBaseServer&) = delete;
-    
+
 protected:
     void lock();
     void unlock();
@@ -147,17 +152,26 @@ public:
 
 public:
     int start(const char *ip = "127.0.0.1", int port = 6379, int db = 0);
+    bool auth(const std::string& psd);
     long long select(int db);
+    
+    long long setConfig(const std::string& key, const std::string& value);
+    std::map<std::string, std::string> getConfig(const std::string& key = "*");
+    
+public:
+    long long ping();
     
 public:
     BaseCommand* baseCommand();
     StringCommand* stringCommand();
     HashCommand* hashCommand();
+    SetCommand* setCommand();
     
 private:
     BaseCommand baseCmd;
     StringCommand stringCmd;
     HashCommand hashCmd;
+    SetCommand setCmd;
     
 private:
     redisContext *c;

@@ -479,21 +479,17 @@ std::string StringCommand::getset(const std::string& key, const std::string& val
     return result;
 }
 
-long long StringCommand::mset(const std::map<std::string, std::string>& keyvalues, const std::string& path) {
-    if (keyvalues.empty()) {
+long long StringCommand::mset(const std::map<std::string, std::string>& mvks, const std::string& path) {
+    if (mvks.empty()) {
         return -1;
     }
     
-//    if (fieldvalues.size() % 2 != 0) {
-//        printf("fieldvalues error!\n");
-//        return -1;
-//    }
-    
     std::ostringstream out;
-    for (auto m : keyvalues) {
-        out << std::string(path + m.first) << " " << m.second << " ";
+    for (auto m : mvks) {
+        out << std::string(path + m.first) << '\r' << '\n' << m.second << '\r' << '\n';
     }
     std::string str(out.str());
+    
     redisReply *reply = NULL;
     {
         this->srv->lock();
@@ -514,16 +510,17 @@ long long StringCommand::mset(const std::map<std::string, std::string>& keyvalue
     return r;
 }
 
-long long StringCommand::msetnx(const std::map<std::string, std::string>& keyvalues, const std::string& path) {
-    if (keyvalues.empty()) {
+long long StringCommand::msetnx(const std::map<std::string, std::string>& vks, const std::string& path) {
+    if (vks.empty()) {
         return -1;
     }
     
     std::ostringstream out;
-    for (auto m : keyvalues) {
+    for (auto m : vks) {
         out << std::string(path + m.first) << " " << m.second << " ";
     }
     std::string str(out.str());
+    
     redisReply *reply = NULL;
     {
         this->srv->lock();
@@ -748,7 +745,7 @@ long long HashCommand::hmset(const std::string& key, const std::string& fieldval
     redisReply *reply = NULL;
     {
         this->srv->lock();
-        reply = (redisReply *)redisCommand(c, "HMSET %s %s ", std::string(path + key).c_str(), fieldvalues.c_str());
+        reply = (redisReply *)redisCommand(c, "HMSET %s %s", std::string(path + key).c_str(), fieldvalues.c_str());
         this->srv->unlock();
     }
     
@@ -938,6 +935,70 @@ SetCommand::~SetCommand() {
     
 }
 
+long long SetCommand::sadd(const std::string& key, const std::vector<std::string>& values, const std::string& path) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    if (values.empty()) {
+        return -1;
+    }
+    
+    std::ostringstream out;
+    for (auto m : values) {
+        out << m.c_str() << " ";
+    }
+    std::string str(out.str());
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "SADD %s %s", std::string(path + key).c_str(), str.c_str());
+        this->srv->unlock();
+    }
+    
+    long long result = -1;
+    
+    if (reply) {
+        if (reply->str == NULL) {
+            result = reply->integer;
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return result;
+}
+
+std::vector<std::string> SetCommand::smembers(const std::string& key, const std::string& path) {
+    if (key.empty()) {
+        return std::vector<std::string>();
+    }
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "SMEMBERS %s", std::string(path + key).c_str());
+        this->srv->unlock();
+    }
+    
+    std::vector<std::string> elems;
+    
+    if (reply) {
+        if (reply->str == NULL) {
+            for (int i = 0; i < reply->elements; i++) {
+                elems.push_back(reply->element[i]->str);
+            }
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    return elems;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ListCommand::ListCommand() {
     
@@ -1000,6 +1061,7 @@ int RedisServer::start(const char *ip, int port, int db) {
         baseCmd.setContext(this, this->c);
         stringCmd.setContext(this, this->c);
         hashCmd.setContext(this, this->c);
+        setCmd.setContext(this, this->c);
     }
     else {
         if (this->c != NULL) {
@@ -1011,6 +1073,31 @@ int RedisServer::start(const char *ip, int port, int db) {
     }
     
     return 0;
+}
+
+bool RedisServer::auth(const std::string& psd) {
+    if (psd.empty()) {
+        return false;
+    }
+    
+    redisReply *reply;
+    {
+        this->lock();
+        reply = static_cast<redisReply *>(redisCommand(c, "AUTH %s", psd.c_str()));
+        this->unlock();
+    }
+    
+    bool ret = false;
+    if (reply) {
+        if (strcasecmp(reply->str, "OK") != 0) {
+            ret = true;
+        } else {
+            
+        }
+    }
+    freeReplyObject(reply);
+    
+    return ret;
 }
 
 long long RedisServer::select(int db) {
@@ -1039,6 +1126,83 @@ long long RedisServer::select(int db) {
     return r;
 }
 
+long long RedisServer::setConfig(const std::string& key, const std::string& value) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    if (value.empty()) {
+        return -1;
+    }
+    
+    redisReply* reply = NULL;
+    {
+        this->lock();
+        reply = (redisReply *)redisCommand(this->c, "CONFIG SET %s %s", key.c_str(), value.c_str());
+        this->unlock();
+    }
+    
+    long long result = 0;
+    if (reply) {
+        if (reply->str == NULL) {
+            result = reply->integer;
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return result;
+}
+
+std::map<std::string, std::string> RedisServer::getConfig(const std::string& key) {
+    
+    redisReply* reply;
+    {
+        this->lock();
+        reply = (redisReply *)redisCommand(this->c, "CONFIG GET %s", key.c_str());
+        this->unlock();
+    }
+    
+    std::map<std::string, std::string> result;
+    if (reply) {
+        if (reply->str == NULL) {
+            for (int i=0; i < reply->elements; i = i+2) {
+                result.insert(std::make_pair(reply->element[i]->str, reply->element[i+1]->str));
+            }
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return result;
+}
+
+long long RedisServer::ping() {
+    redisReply* reply;
+    {
+        this->lock();
+        reply = (redisReply *)redisCommand(this->c, "PING");
+        this->unlock();
+    }
+    
+    long long result = 0;
+    if (reply) {
+        if (strcmp(reply->str, "PONG") == 0) {
+            result = 1;
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return result;
+}
+
 BaseCommand* RedisServer::baseCommand() {
     return &this->baseCmd;;
 }
@@ -1049,6 +1213,10 @@ StringCommand* RedisServer::stringCommand() {
 
 HashCommand* RedisServer::hashCommand() {
     return &this->hashCmd;
+}
+
+SetCommand* RedisServer::setCommand() {
+    return &this->setCmd;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
