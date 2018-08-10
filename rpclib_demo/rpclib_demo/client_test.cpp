@@ -77,43 +77,51 @@ int client_run(int argc, const char * argv[]) {
 //        }
 //    }
     
-        std::string s("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
-        for (int i = 0; i < execount; i++) {
-            try {
-                {
-                    auto result = cli.async_call("add", 2, 3);
-                    int c = result.get().as<int>();
-                    printf("add: %d\n", c);
-                }
-            
-                {
-                    auto result = cli.async_call("mul", 2, 3);
-                    int c = result.get().as<int>();
-                    printf("mul: %d\n", c);
-                }
-            
-                {
-                    auto result = cli.async_call("sub", 2, 3);
-                    int c = result.get().as<int>();
-                    printf("sub: %d\n", c);
-                }
-                {
-                    std::string c5 = cli.call("get_time").as<std::string>();
-                    printf("[%4d] get_time: %s\n", i, c5.c_str());
-                }
-            } catch (rpc::rpc_error &e) {
-                printf("%s\n", e.what());
+    
+    
+    std::string s("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    for (int i = 0; i < execount; i++) {
+        try {
+            {
+                auto result = cli.async_call("add", 2, 3);
+                int c = result.get().as<int>();
+                printf("add: %d\n", c);
             }
-            
+        
+            {
+                auto result = cli.async_call("mul", 2, 3);
+                int c = result.get().as<int>();
+                printf("mul: %d\n", c);
+            }
+        
+            {
+                auto result = cli.async_call("sub", 2, 3);
+                int c = result.get().as<int>();
+                printf("sub: %d\n", c);
+            }
+            {
+                std::string c5 = cli.call("get_time").as<std::string>();
+                printf("[%4d] get_time: %s\n", i, c5.c_str());
+            }
+        } catch (rpc::rpc_error &e) {
+            printf("%s\n", e.what());
+        }
+        
+        {
             std::string key;
             std::random_shuffle(s.begin(), s.end(), my_random);
             key.insert(key.begin(), s.begin(), s.end());
-    
+            
             std::string c3 = cli.call("getUserInfo", key).as<std::string>();
             printf("[%4d] getUserInfo: %s\n", i, c3.c_str());
             std::string c4 = cli.call("ok").as<std::string>();
             printf("[%4d] ok: %s\n", i, c4.c_str());
         }
+        
+        {
+            cli.call("test");
+        }
+    }
     
     clock_t t1 = clock();
     printf("exec:[%d], times:[%f]\n", execount, ((double)t1-t)/CLOCKS_PER_SEC);

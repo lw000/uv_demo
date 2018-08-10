@@ -137,18 +137,6 @@ int server_run(int argc, const char * argv[]) {
     
     srv.bind("test", [] {
         {
-            std::map<std::string, std::string> maps = redisCache.getConfig();
-            for (auto m : maps) {
-                printf("%s: %s\n", m.first.c_str(), m.second.c_str());
-            }
-            
-            std::map<std::string, std::string> maps1 = redisCache.getConfig("proto-max-bulk-len");
-            for (auto m : maps1) {
-                printf("%s: %s\n", m.first.c_str(), m.second.c_str());
-            }
-        }
-        
-        {
             long long exists = redisCache.baseCommand()->exists("autoincr");
             printf("%lld", exists);
             long long s = redisCache.stringCommand()->setex("setex_test", "111111111", 120);
@@ -211,7 +199,19 @@ int server_run(int argc, const char * argv[]) {
     if (n == 0) {
         redisCache.ping();
         
-//        LoginServer loginServer(&srv, &redisCache);
+        {
+            std::map<std::string, std::string> maps = redisCache.getConfig();
+            for (auto m : maps) {
+                printf("%s: %s\n", m.first.c_str(), m.second.c_str());
+            }
+            
+            std::map<std::string, std::string> maps1 = redisCache.getConfig("proto-max-bulk-len");
+            for (auto m : maps1) {
+                printf("%s: %s\n", m.first.c_str(), m.second.c_str());
+            }
+        }
+        
+        LoginServer loginServer(&srv, &redisCache);
         
 //        srv.run();
         srv.async_run(4);

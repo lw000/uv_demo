@@ -486,7 +486,7 @@ long long StringCommand::mset(const std::map<std::string, std::string>& mvks, co
     
     std::ostringstream out;
     for (auto m : mvks) {
-        out << std::string(path + m.first) << '\r' << '\n' << m.second << '\r' << '\n';
+        out << " " << std::string(path + m.first) << " " << m.second << " ";
     }
     std::string str(out.str());
     

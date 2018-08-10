@@ -17,16 +17,10 @@
       location = "group:fork-demo/fork-demo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:mill/mill.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:wsclient/wsclient.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:wsserver/wsserver.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:tinyhttpd-0.1.0/tinyhttpd-0.1.0.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:uv-test/uv-test.xcodeproj">
