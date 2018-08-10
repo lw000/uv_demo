@@ -10,6 +10,7 @@
 #include <sstream>
 #include <pthread.h>
 
+
 static void getCallback(redisAsyncContext * c, void *r, void *privdata) {
     RedisAsyncServer* srv = reinterpret_cast<RedisAsyncServer*>(c->data);
     
@@ -1029,14 +1030,40 @@ void RedisBaseServer::unlock() {
 
 RedisServer::RedisServer() {
     this->c = nullptr;
+    this->baseCmd = new BaseCommand();
+    this->stringCmd = new StringCommand();
+    this->hashCmd = new HashCommand();
+    this->setCmd = new SetCommand();
+    
     pthread_mutex_init(&this->t, NULL);
 }
 
 RedisServer::~RedisServer() {
+    if (this->baseCmd != NULL) {
+        delete this->baseCmd;
+        this->baseCmd = NULL;
+    }
+    
+    if (this->stringCmd != NULL) {
+        delete this->stringCmd;
+        this->stringCmd = NULL;
+    }
+    
+    if (this->hashCmd != NULL) {
+        delete this->hashCmd;
+        this->hashCmd = NULL;
+    }
+    
+    if (this->setCmd != NULL) {
+        delete this->setCmd;
+        this->setCmd = NULL;
+    }
+    
     if (this->c != NULL) {
         redisFree(this->c);
         this->c = NULL;
     }
+    
     pthread_mutex_destroy(&this->t);
 }
 
@@ -1058,10 +1085,10 @@ int RedisServer::start(const char *ip, int port, int db) {
     
     long long r = this->select(db);
     if (r == 1) {
-        baseCmd.setContext(this, this->c);
-        stringCmd.setContext(this, this->c);
-        hashCmd.setContext(this, this->c);
-        setCmd.setContext(this, this->c);
+        this->baseCmd->setContext(this, this->c);
+        this->stringCmd->setContext(this, this->c);
+        this->hashCmd->setContext(this, this->c);
+        this->setCmd->setContext(this, this->c);
     }
     else {
         if (this->c != NULL) {
@@ -1204,19 +1231,28 @@ long long RedisServer::ping() {
 }
 
 BaseCommand* RedisServer::baseCommand() {
-    return &this->baseCmd;;
+    return this->baseCmd;;
 }
 
 StringCommand* RedisServer::stringCommand() {
-    return &this->stringCmd;
+    return this->stringCmd;
 }
 
 HashCommand* RedisServer::hashCommand() {
-    return &this->hashCmd;
+    return this->hashCmd;
 }
 
 SetCommand* RedisServer::setCommand() {
-    return &this->setCmd;
+    return this->setCmd;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+RedisServerPool::RedisServerPool() {
+    
+}
+
+RedisServerPool::~RedisServerPool() {
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

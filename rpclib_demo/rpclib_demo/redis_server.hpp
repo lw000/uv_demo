@@ -24,9 +24,11 @@ class BaseCommand;
 class StringCommand;
 class HashCommand;
 class ListCommand;
+class SetCommand;
 class RedisBaseServer;
 class RedisServer;
 class RedisAsyncServer;
+
 
 class Command {
 public:
@@ -122,6 +124,7 @@ public:
     virtual ~ListCommand();
 };
 
+
 class RedisBaseServer {
     friend BaseCommand;
     friend StringCommand;
@@ -136,7 +139,7 @@ public:
 private:
     RedisBaseServer(const RedisBaseServer &&) = delete;
     RedisBaseServer& operator =(const RedisBaseServer&) = delete;
-
+    
 protected:
     void lock();
     void unlock();
@@ -168,13 +171,22 @@ public:
     SetCommand* setCommand();
     
 private:
-    BaseCommand baseCmd;
-    StringCommand stringCmd;
-    HashCommand hashCmd;
-    SetCommand setCmd;
+    BaseCommand* baseCmd;
+    StringCommand* stringCmd;
+    HashCommand* hashCmd;
+    SetCommand* setCmd;
     
 private:
     redisContext *c;
+};
+
+class RedisServerPool {
+public:
+    RedisServerPool();
+    ~RedisServerPool();
+
+public:
+    
 };
 
 class RedisAsyncServer {
