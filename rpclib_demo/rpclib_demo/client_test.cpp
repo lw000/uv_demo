@@ -36,50 +36,17 @@ public:
 int client_run(int argc, const char * argv[]) {
     rpc::client cli("127.0.0.1", PORT);
     
-    int execount = 10000;
+    int execount = 1000;
     
     clock_t t = clock();
-
-//    {
-//        try {
-//            for (int i = 0; i < execount; i++) {
-//                {
-//                    std::string uid = cli.call("loginserver/register", "13632767233", "liwei", "123456").as<std::string>();
-//                    printf("loginserver/register: %s\n", uid.c_str());
-////                    rpc_login_result_reponse reponse;
-////                    if (reponse.decode(data)) {
-////                    }
-//
-//                    std::string s = cli.call("loginserver/login", uid, "123456").as<std::string>();
-//                    std::string s1 = cli.call("loginserver/logout", uid).as<std::string>();
-//                }
-//
-//                {
-//                    std::string uid = cli.call("loginserver/register", "13632767288", "liwei", "123456").as<std::string>();
-//                    printf("loginserver/register: %s\n", uid.c_str());
-//                    std::string s = cli.call("loginserver/login", uid, "123456").as<std::string>();
-//                    std::string s1 = cli.call("loginserver/logout", uid).as<std::string>();
-//                }
-//
-//                {
-//                    std::string uid = cli.call("loginserver/register", "13632558737", "heshanshan", "123456").as<std::string>();
-//                    printf("loginserver/register: %s\n", uid.c_str());
-//                    std::string s = cli.call("loginserver/login", uid, "123456").as<std::string>();
-//                    std::string s1 = cli.call("loginserver/logout", uid).as<std::string>();
-//                }
-//
-//                {
-//                    cli.async_call("test");
-//                }
-//            }
-//        } catch (rpc::rpc_error &e) {
-//            printf("%s\n", e.what());
-//        }
-//    }
-    
-    
     
     std::string s("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    {
+        std::string key;
+        std::random_shuffle(s.begin(), s.end(), my_random);
+        key.insert(key.begin(), s.begin(), s.end());
+    }
+    
     for (int i = 0; i < execount; i++) {
         try {
             {
@@ -106,16 +73,39 @@ int client_run(int argc, const char * argv[]) {
         } catch (rpc::rpc_error &e) {
             printf("%s\n", e.what());
         }
-        
+    
         {
-            std::string key;
-            std::random_shuffle(s.begin(), s.end(), my_random);
-            key.insert(key.begin(), s.begin(), s.end());
+            {
+                std::string uid = cli.call("loginserver/register", "13632767233", "liwei", "123456").as<std::string>();
+                printf("loginserver/register: %s\n", uid.c_str());
+                
+//                rpc_login_result_reponse reponse;
+//                if (reponse.decode(data)) {
+//                }
+                
+                std::string s = cli.call("loginserver/login", uid, "123456").as<std::string>();
+                s = cli.call("loginserver/logout", uid).as<std::string>();
+                s = cli.call("loginserver/getUserInfo", uid).as<std::string>();
+                printf("loginserver/getUserInfo: %s\n", s.c_str());
+            }
             
-            std::string c3 = cli.call("getUserInfo", key).as<std::string>();
-            printf("[%4d] getUserInfo: %s\n", i, c3.c_str());
-            std::string c4 = cli.call("ok").as<std::string>();
-            printf("[%4d] ok: %s\n", i, c4.c_str());
+            {
+                std::string uid = cli.call("loginserver/register", "13632767288", "liwei", "123456").as<std::string>();
+                printf("loginserver/register: %s\n", uid.c_str());
+                std::string s = cli.call("loginserver/login", uid, "123456").as<std::string>();
+                s = cli.call("loginserver/logout", uid).as<std::string>();
+                s = cli.call("loginserver/getUserInfo", uid).as<std::string>();
+                printf("loginserver/getUserInfo: %s\n", s.c_str());
+            }
+            
+            {
+                std::string uid = cli.call("loginserver/register", "13632558737", "heshanshan", "123456").as<std::string>();
+                printf("loginserver/register: %s\n", uid.c_str());
+                std::string s = cli.call("loginserver/login", uid, "123456").as<std::string>();
+                s = cli.call("loginserver/logout", uid).as<std::string>();
+                s = cli.call("loginserver/getUserInfo", uid).as<std::string>();
+                printf("loginserver/getUserInfo: %s\n", s.c_str());
+            }
         }
         
         {

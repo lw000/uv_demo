@@ -43,64 +43,6 @@ static double divide(double a, double b) {
     return a / b;
 }
 
-static std::string getUserInfo(const std::string& name) {
-    // search cache info
-    std::string value = redisCache.stringCommand()->get(name, "name:");
-    if (!value.empty()) {
-        return value;
-    }
-    
-    //        rpc::this_session().post_exit();
-    
-    rapidjson::Document doc;
-    doc.SetObject();
-    rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-    doc.AddMember("code", 0, alloctor);
-    doc.AddMember("what", "ok", alloctor);
-    {
-        rapidjson::Value data;
-        data.SetObject();
-        data.AddMember("name", name.c_str(), alloctor);
-        data.AddMember("address", "shenzhenshinanshanqu", alloctor);
-        doc.AddMember("data", data, alloctor);
-    }
-    
-    rapidjson::StringBuffer buffer;
-    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-    doc.Accept(writer);
-    std::string jsondst = buffer.GetString();
-    
-    long long c = redisCache.stringCommand()->set(name, jsondst, "name:");
-    if (c == 0) {
-        
-        /*
-         update mysql db
-         */
-        
-        return jsondst;
-    }
-    
-    printf("update cache error. [%lld]\n", c);
-    
-    {
-        rapidjson::Document doc;
-        doc.SetObject();
-        rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-        doc.AddMember("code", 0, alloctor);
-        doc.AddMember("what", "update cache error.", alloctor);
-        {
-            rapidjson::Value data;
-            data.SetObject();
-            doc.AddMember("data", data, alloctor);
-        }
-        rapidjson::StringBuffer buffer;
-        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-        doc.Accept(writer);
-        std::string errorjson = buffer.GetString();
-        return errorjson;
-    }
-}
-
 typedef struct {
     int operator() (int a, int b) {
         return a-b;
@@ -132,8 +74,6 @@ int server_run(int argc, const char * argv[]) {
     srv.bind("ok", [&sub]() {
         return sub.ok();
     });
-    
-    srv.bind("getUserInfo", &getUserInfo);
     
     srv.bind("test", [] {
         {

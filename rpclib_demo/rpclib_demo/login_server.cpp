@@ -41,6 +41,10 @@ LoginServer::LoginServer(rpc::server* srv, RedisServer* redisServer) {
     srv->bind("loginserver/logout", [this](const std::string &uid){
         return this->ulogout(uid);
     });
+    
+    srv->bind("loginserver/getUserInfo", [this](const std::string &uid){
+        return this->getUserInfo(uid);
+    });
 }
 
 LoginServer::~LoginServer() {
@@ -168,14 +172,21 @@ std::string LoginServer::getUserInfo(const std::string& uid) {
         return "";
     }
     
-    std::map<std::string,std::string> userinfo = this->redisServer->hashCommand()->hgetall(uid, "user_infos:");
+    std::string phone = this->redisServer->hashCommand()->hget(uid, "phone", "user_uid:");
+    std::map<std::string,std::string> userinfo = this->redisServer->hashCommand()->hgetall(phone, "user_infos:");
     
     rapidjson::Document doc;
     doc.SetObject();
     rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-    for (auto u : userinfo) {
-        doc.AddMember(u.first.c_str(), u.second.c_str(), alloctor);
+    doc.AddMember("code", 0, alloctor);
+    doc.AddMember("what", "ok", alloctor);
+    rapidjson::Value data;
+    data.SetObject();
+    for (auto& u : userinfo) {
+        data.AddMember(u.first.c_str(), u.second.c_str(), alloctor);
     }
+    doc.AddMember("data", data, alloctor);
+    
     rapidjson::StringBuffer buffer;
     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
     doc.Accept(writer);
