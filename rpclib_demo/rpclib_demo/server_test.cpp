@@ -28,6 +28,8 @@
 
 #define PORT 6789
 
+RedisServer redisCache;
+
 static void bad(int x) {
     if (x == 5) {
         throw std::runtime_error("x == 5. I really don't like 5.");
@@ -39,6 +41,64 @@ static double divide(double a, double b) {
         rpc::this_handler().respond_error("Division by zero!");
     }
     return a / b;
+}
+
+static std::string getUserInfo(const std::string& name) {
+    // search cache info
+    std::string value = redisCache.stringCommand()->get(name, "name:");
+    if (!value.empty()) {
+        return value;
+    }
+    
+    //        rpc::this_session().post_exit();
+    
+    rapidjson::Document doc;
+    doc.SetObject();
+    rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
+    doc.AddMember("code", 0, alloctor);
+    doc.AddMember("what", "ok", alloctor);
+    {
+        rapidjson::Value data;
+        data.SetObject();
+        data.AddMember("name", name.c_str(), alloctor);
+        data.AddMember("address", "shenzhenshinanshanqu", alloctor);
+        doc.AddMember("data", data, alloctor);
+    }
+    
+    rapidjson::StringBuffer buffer;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    doc.Accept(writer);
+    std::string jsondst = buffer.GetString();
+    
+    long long c = redisCache.stringCommand()->set(name, jsondst, "name:");
+    if (c == 0) {
+        
+        /*
+         update mysql db
+         */
+        
+        return jsondst;
+    }
+    
+    printf("update cache error. [%lld]\n", c);
+    
+    {
+        rapidjson::Document doc;
+        doc.SetObject();
+        rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
+        doc.AddMember("code", 0, alloctor);
+        doc.AddMember("what", "update cache error.", alloctor);
+        {
+            rapidjson::Value data;
+            data.SetObject();
+            doc.AddMember("data", data, alloctor);
+        }
+        rapidjson::StringBuffer buffer;
+        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+        doc.Accept(writer);
+        std::string errorjson = buffer.GetString();
+        return errorjson;
+    }
 }
 
 static int my_random(int c) {
@@ -64,8 +124,6 @@ public:
     }
 };
 
-RedisServer redisCache;
-
 int server_run(int argc, const char * argv[]) {
     rpc::server srv("0.0.0.0", PORT != 0 ? PORT : rpc::constants::DEFAULT_PORT);
     srv.suppress_exceptions(true);
@@ -88,104 +146,48 @@ int server_run(int argc, const char * argv[]) {
         return sub.ok();
     });
     
-    srv.bind("getUserInfo", [] (const std::string name) {
-        // search cache info
-        std::string value = redisCache.stringCommand()->get(name, "name:");
-        if (!value.empty()) {
-            return value;
-        }
-        
-        //        rpc::this_session().post_exit();
-        
-        rapidjson::Document doc;
-        doc.SetObject();
-        rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-        doc.AddMember("code", 0, alloctor);
-        doc.AddMember("what", "ok", alloctor);
-        {
-            rapidjson::Value data;
-            data.SetObject();
-            data.AddMember("name", name.c_str(), alloctor);
-            data.AddMember("address", "shenzhenshinanshanqu", alloctor);
-            doc.AddMember("data", data, alloctor);
-        }
-        
-        rapidjson::StringBuffer buffer;
-        rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-        doc.Accept(writer);
-        std::string jsondst = buffer.GetString();
-        
-        long long c = redisCache.stringCommand()->set(name, jsondst, "name:");
-        if (c == 0) {
-            
-            /*
-             update mysql db
-             */
-            
-            return jsondst;
-        }
-        
-        printf("update cache error. [%lld]\n", c);
-        
-        {
-            rapidjson::Document doc;
-            doc.SetObject();
-            rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-            doc.AddMember("code", 0, alloctor);
-            doc.AddMember("what", "update cache error.", alloctor);
-            {
-                rapidjson::Value data;
-                data.SetObject();
-                doc.AddMember("data", data, alloctor);
-            }
-            rapidjson::StringBuffer buffer;
-            rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-            doc.Accept(writer);
-            std::string errorjson = buffer.GetString();
-            return errorjson;
-        }
-    });
+    srv.bind("getUserInfo", &getUserInfo);
     
     srv.bind("test", []{
-        //        {
-        //            long long incr = redisCache.baseCommand()->incr("autoincr");
-        //            long long incr1 = redisCache.baseCommand()->incrby("autoincr_by", 10000);
-        //            double incr2 = redisCache.baseCommand()->incrfloat("autoincrbyfloat", 0.2f);
-        //        }
-        
         {
+            long long incr0 = redisCache.stringCommand()->incr("autoincr");
+            long long incr1 = redisCache.stringCommand()->incrby("autoincr_by", 10000);
+            double    incr2 = redisCache.stringCommand()->incrfloat("autoincrbyfloat", 0.2f);
             long long exists = redisCache.stringCommand()->exists("autoincr");
             printf("%lld", exists);
-        }
-        
-        {
-            long long s00 = redisCache.hashCommand()->hset("myhash", "field0", "liwei0", "hash:");
-            long long s01 = redisCache.hashCommand()->hset("myhash", "field1", "liwei1", "hash:");
-            long long s02 = redisCache.hashCommand()->hset("myhash", "field2", "liwei2", "hash:");
-            long long s03 = redisCache.hashCommand()->hset("myhash", "field3", "liwei3", "hash:");
-        }
-        
-//        {
-//            std::map<std::string, std::string> cmds;
-//            cmds.insert(std::make_pair("field0", "liwei00"));
-//            cmds.insert(std::make_pair("field1", "liwei01"));
-//            cmds.insert(std::make_pair("field2", "liwei02"));
-//            cmds.insert(std::make_pair("field3", "liwei03"));
-//            long long s04 = redisCache.hashCommand()->hmset("myhash1", cmds, "hash:");
-//            std::string s05 = redisCache.hashCommand()->hget("myhash1", "field0", "hash:");
-//        }
-        
-        {
-            std::string s06 = redisCache.hashCommand()->hget("myhash1", "field0", "hash:");
-            long long s07 = redisCache.hashCommand()->hlen("myhash1", "hash:");
-            std::map<std::string,std::string> s08 = redisCache.hashCommand()->hgetall("myhash1", "hash:");
             
-            std::vector<std::string> skeys = redisCache.hashCommand()->hkeys("myhash1", "hash:");
-            bool sexists = redisCache.hashCommand()->hexists("myhash1", "field1", "hash:");
+            std::map<std::string, std::string> keyvalues;
+            keyvalues.insert(std::make_pair("field0", "liwei00"));
+            keyvalues.insert(std::make_pair("field1", "liwei01"));
+            keyvalues.insert(std::make_pair("field2", "liwei02"));
+            keyvalues.insert(std::make_pair("field3", "liwei03"));
+            long long s0 = redisCache.stringCommand()->mset(keyvalues);
         }
+        
+        {
+            long long s0 = redisCache.hashCommand()->hset("hash2", "field0", "liwei0", "hash:");
+            long long s1 = redisCache.hashCommand()->hset("hash2", "field1", "liwei1", "hash:");
+            long long s2 = redisCache.hashCommand()->hset("hash2", "field2", "liwei2", "hash:");
+            long long s3 = redisCache.hashCommand()->hset("hash2", "field3", "liwei3", "hash:");
+            long long s4 = redisCache.baseCommand()->pexpire("hash2", 2000);
+            
+            std::map<std::string, std::string> cmds;
+            cmds.insert(std::make_pair("field0", "liwei00"));
+            cmds.insert(std::make_pair("field1", "liwei01"));
+            cmds.insert(std::make_pair("field2", "liwei02"));
+            cmds.insert(std::make_pair("field3", "liwei03"));
+            long long s5 = redisCache.hashCommand()->hmset("hash2", cmds, "hash:");
+            std::string s6 = redisCache.hashCommand()->hget("hash2", "field0", "hash:");
+            std::string s7 = redisCache.hashCommand()->hget("hash2", "field0", "hash:");
+            long long s8 = redisCache.hashCommand()->hlen("hash2", "hash:");
+            std::map<std::string,std::string> s9 = redisCache.hashCommand()->hgetall("hash2", "hash:");
+            std::vector<std::string> s10 = redisCache.hashCommand()->hkeys("hash2", "hash:");
+            bool s11 = redisCache.hashCommand()->hexists("hash2", "field1", "hash:");
+        }
+
     });
     
-    int n = redisCache.start();
+    int n = redisCache.start("127.0.0.1", 6379, 1);
     if (n == 0) {
         LoginServer loginServer(&srv, &redisCache);
         

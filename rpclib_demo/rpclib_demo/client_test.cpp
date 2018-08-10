@@ -23,7 +23,7 @@
 int client_run(int argc, const char * argv[]) {
     rpc::client cli("127.0.0.1", PORT);
     
-    int execount = 10000;
+    int execount = 1;
     
     clock_t t = clock();
     //    try {

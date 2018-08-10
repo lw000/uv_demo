@@ -20,6 +20,7 @@
 #include <hiredis/adapters/libuv.h>
 
 class Command;
+class BaseCommand;
 class StringCommand;
 class HashCommand;
 class ListCommand;
@@ -33,12 +34,21 @@ public:
     virtual ~Command();
     
 public:
-    void setContext(RedisBaseServer * srv, redisContext *c, redisAsyncContext *ac);
+    void setContext(RedisBaseServer * srv, redisContext *c, redisAsyncContext *ac = NULL);
     
 protected:
     redisContext *c;
     redisAsyncContext *ac;
     RedisBaseServer * srv;
+};
+
+class BaseCommand : public Command {
+public:
+    BaseCommand();
+    virtual ~BaseCommand();
+    
+public:
+    long long pexpire(const std::string& key, int milliseconds, const std::string& path = "");
 };
 
 class StringCommand : public Command {
@@ -48,9 +58,15 @@ public:
     
 public:
     bool exists(const std::string& key, const std::string& path = "");
+
     long long set(const std::string& key, const std::string& value, const std::string& path = "");
+    long long mset(const std::map<std::string, std::string>& keyvalues, const std::string& path = "");
+
     std::string get(const std::string& key, const std::string& path = "");
+    std::vector<std::string> mget(const std::vector<std::string>& vkeys, const std::string& path = "");
+
     std::string getset(const std::string& key, const std::string& value, const std::string& path = "");
+    
     long long incr(const std::string key);
     long long incrby(const std::string key, long long v);
     double incrfloat(const std::string key, double v);
@@ -89,6 +105,7 @@ public:
 };
 
 class RedisBaseServer {
+    friend BaseCommand;
     friend StringCommand;
     friend ListCommand;
     friend HashCommand;
@@ -115,13 +132,16 @@ private:
     RedisServer& operator =(const RedisServer&) = delete;
 
 public:
-    int start(const char *ip = "127.0.0.1", int port = 6379);
-
+    int start(const char *ip = "127.0.0.1", int port = 6379, int db = 0);
+    long long select(int db);
+    
 public:
+    BaseCommand* baseCommand();
     StringCommand* stringCommand();
     HashCommand* hashCommand();
     
 private:
+    BaseCommand baseCmd;
     StringCommand stringCmd;
     HashCommand hashCmd;
     
