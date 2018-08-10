@@ -48,7 +48,17 @@ public:
     virtual ~BaseCommand();
     
 public:
+    long long del(const std::string& key, const std::string& path = "");
+    bool exists(const std::string& key, const std::string& path = "");
+    
+public:
+    long long expire(const std::string& key, int seconds, const std::string& path = "");
     long long pexpire(const std::string& key, int milliseconds, const std::string& path = "");
+    long long expireat(const std::string& key, int timestamp, const std::string& path = "");
+    
+public:
+    long long ttl(const std::string& key, const std::string& path = "");
+    long long pttl(const std::string& key, const std::string& path = "");
 };
 
 class StringCommand : public Command {
@@ -57,14 +67,18 @@ public:
     virtual ~StringCommand();
     
 public:
-    bool exists(const std::string& key, const std::string& path = "");
-
     long long set(const std::string& key, const std::string& value, const std::string& path = "");
-    long long mset(const std::map<std::string, std::string>& keyvalues, const std::string& path = "");
-
     std::string get(const std::string& key, const std::string& path = "");
+    
+    long long mset(const std::map<std::string, std::string>& keyvalues, const std::string& path = "");
     std::vector<std::string> mget(const std::vector<std::string>& vkeys, const std::string& path = "");
-
+    
+    long long setnx(const std::string& key, const std::string& value, const std::string& path = "");
+    long long setex(const std::string& key, const std::string& value, int seconds, const std::string& path = "");
+    long long psetex(const std::string& key, const std::string& value, int milliseconds, const std::string& path = "");
+    
+    long long msetnx(const std::map<std::string, std::string>& keyvalues, const std::string& path = "");
+    
     std::string getset(const std::string& key, const std::string& value, const std::string& path = "");
     
     long long incr(const std::string key);
@@ -114,6 +128,10 @@ public:
     RedisBaseServer();
     virtual ~RedisBaseServer();
     
+private:
+    RedisBaseServer(const RedisBaseServer &&) = delete;
+    RedisBaseServer& operator =(const RedisBaseServer&) = delete;
+    
 protected:
     void lock();
     void unlock();
@@ -126,10 +144,6 @@ class RedisServer : public RedisBaseServer {
 public:
     RedisServer();
     virtual ~RedisServer();
-    
-private:
-    RedisServer(const RedisServer &&) = delete;
-    RedisServer& operator =(const RedisServer&) = delete;
 
 public:
     int start(const char *ip = "127.0.0.1", int port = 6379, int db = 0);
@@ -154,16 +168,12 @@ public:
     RedisAsyncServer();
     virtual ~RedisAsyncServer();
     
-private:
-    RedisAsyncServer(const RedisAsyncServer &&) = delete;
-    RedisAsyncServer& operator =(const RedisAsyncServer&) = delete;
-    
 public:
     int start(const char *ip = "127.0.0.1", int port = 6379);
     
 public:
-    int setValue(const std::string& key, const std::string& value);
-    int getValue(const std::string& key, std::function<void(const std::string value)> func);
+    int set(const std::string& key, const std::string& value, std::function<void(const std::string value)> func);
+    int get(const std::string& key, std::function<void(const std::string value)> func);
     
 public:
     void onConnect(int status);

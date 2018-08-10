@@ -150,33 +150,44 @@ int server_run(int argc, const char * argv[]) {
     
     srv.bind("test", []{
         {
-            long long incr0 = redisCache.stringCommand()->incr("autoincr");
-            long long incr1 = redisCache.stringCommand()->incrby("autoincr_by", 10000);
-            double    incr2 = redisCache.stringCommand()->incrfloat("autoincrbyfloat", 0.2f);
-            long long exists = redisCache.stringCommand()->exists("autoincr");
+            long long exists = redisCache.baseCommand()->exists("autoincr");
             printf("%lld", exists);
             
+            long long s = redisCache.stringCommand()->setex("aaaaa", "111111111", 120);
+            printf("setex: %lld\n", s);
+            s = redisCache.baseCommand()->ttl("aaaaa");
+            printf("ttl: %lld\n", s);
+            s = redisCache.baseCommand()->pttl("aaaaa");
+            printf("pttl: %lld\n", s);
+        }
+        
+        {
+//            long long incr0 = redisCache.stringCommand()->incr("autoincr");
+//            long long incr1 = redisCache.stringCommand()->incrby("autoincr_by", 10000);
+//            double    incr2 = redisCache.stringCommand()->incrfloat("autoincrbyfloat", 0.2f);
+            
             std::map<std::string, std::string> keyvalues;
-            keyvalues.insert(std::make_pair("field0", "liwei00"));
-            keyvalues.insert(std::make_pair("field1", "liwei01"));
-            keyvalues.insert(std::make_pair("field2", "liwei02"));
-            keyvalues.insert(std::make_pair("field3", "liwei03"));
+            keyvalues.insert(std::make_pair("field0", "\"liwei00\""));
+            keyvalues.insert(std::make_pair("field1", "\"liwei01\""));
+            keyvalues.insert(std::make_pair("field2", "\"liwei02\""));
+            keyvalues.insert(std::make_pair("field3", "\"liwei03\""));
             long long s0 = redisCache.stringCommand()->mset(keyvalues);
+            s0 = redisCache.stringCommand()->msetnx(keyvalues);
         }
         
         {
             long long s0 = redisCache.hashCommand()->hset("hash2", "field0", "liwei0", "hash:");
-            long long s1 = redisCache.hashCommand()->hset("hash2", "field1", "liwei1", "hash:");
-            long long s2 = redisCache.hashCommand()->hset("hash2", "field2", "liwei2", "hash:");
-            long long s3 = redisCache.hashCommand()->hset("hash2", "field3", "liwei3", "hash:");
-            long long s4 = redisCache.baseCommand()->pexpire("hash2", 2000);
+            s0 = redisCache.hashCommand()->hset("hash2", "field1", "liwei1", "hash:");
+            s0 = redisCache.hashCommand()->hset("hash2", "field2", "liwei2", "hash:");
+            s0 = redisCache.hashCommand()->hset("hash2", "field3", "liwei3", "hash:");
+            s0 = redisCache.baseCommand()->pexpire("hash2", 2000);
             
             std::map<std::string, std::string> cmds;
             cmds.insert(std::make_pair("field0", "liwei00"));
             cmds.insert(std::make_pair("field1", "liwei01"));
             cmds.insert(std::make_pair("field2", "liwei02"));
             cmds.insert(std::make_pair("field3", "liwei03"));
-            long long s5 = redisCache.hashCommand()->hmset("hash2", cmds, "hash:");
+            s0 = redisCache.hashCommand()->hmset("hash2", cmds, "hash:");
             std::string s6 = redisCache.hashCommand()->hget("hash2", "field0", "hash:");
             std::string s7 = redisCache.hashCommand()->hget("hash2", "field0", "hash:");
             long long s8 = redisCache.hashCommand()->hlen("hash2", "hash:");
@@ -192,7 +203,7 @@ int server_run(int argc, const char * argv[]) {
         LoginServer loginServer(&srv, &redisCache);
         
         //    srv.run();
-        srv.async_run();
+        srv.async_run(4);
         
         while (1) {
             sleep(1);

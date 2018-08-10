@@ -27,6 +27,9 @@ BaseServer::~BaseServer() {
 LoginServer::LoginServer(rpc::server* srv, RedisServer* redisServer) {
     this->redisServer = redisServer;
     
+    long long c = this->redisServer->stringCommand()->setnx("autoincr", "1000000");
+    printf("init autoincr. [%d]\n", c);
+    
     srv->bind("loginserver/register", [this](const std::string& phone, const std::string &name, const std::string &psd){
         return this->uregister(phone, name, psd);
     });
@@ -61,11 +64,10 @@ std::string LoginServer::uregister(const std::string& phone, const std::string& 
         std::map<std::string,std::string> userinfo = this->redisServer->hashCommand()->hgetall(phone, "user_infos:");
         if (userinfo.empty()) {
 //            {
-//                long long incr = redisCache.baseCommand()->incr("autoincr");
-//                long long incr1 = redisCache.baseCommand()->incrby("autoincr_by", 10);
-//                double incr2 = redisCache.baseCommand()->incrfloat("autoincrbyfloat", 0.2f);
+//                long long incr = this->redisServer->stringCommand()->incr("autoincr");
+//                long long incr1 = this->redisServer->stringCommand()->incrby("autoincr_by", 10);
+//                double incr2 = this->redisServer->stringCommand()->incrfloat("autoincrbyfloat", 0.2f);
 //            }
-
             long long uid = this->redisServer->stringCommand()->incr("autoincr");
             char uid_buf[64] = {0};
             sprintf(uid_buf, "%lld", uid);

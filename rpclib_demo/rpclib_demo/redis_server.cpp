@@ -85,6 +85,84 @@ BaseCommand::~BaseCommand() {
     
 }
 
+long long BaseCommand::del(const std::string& key, const std::string& path) {
+    if (key.empty()) {
+        return false;
+    }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "DEL %s", std::string(path + key).c_str());
+        this->srv->unlock();
+    }
+    
+    long long r = false;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = (reply->integer == 1);
+        } else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return r;
+}
+
+bool BaseCommand::exists(const std::string& key, const std::string& path) {
+    if (key.empty()) {
+        return false;
+    }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "EXISTS %s", std::string(path + key).c_str());
+        this->srv->unlock();
+    }
+    
+    bool r = false;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = (reply->integer == 1);
+        } else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return r;
+}
+
+long long BaseCommand::expire(const std::string& key, int seconds, const std::string& path) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    if (seconds < 0) {
+        seconds = 0;
+    }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "EXPIRE %s %d", std::string(path + key).c_str(), seconds);
+        this->srv->unlock();
+    }
+    
+    long long r = -1;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = reply->integer;
+        } else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return r;
+}
 
 long long BaseCommand::pexpire(const std::string& key, int milliseconds, const std::string& path) {
     if (key.empty()) {
@@ -92,13 +170,92 @@ long long BaseCommand::pexpire(const std::string& key, int milliseconds, const s
     }
     
     if (milliseconds < 0) {
-        return -1;
+        milliseconds = 0;
     }
     
     redisReply *reply = NULL;
     {
         this->srv->lock();
         reply = (redisReply *)redisCommand(c, "PEXPIRE %s %d", std::string(path + key).c_str(), milliseconds);
+        this->srv->unlock();
+    }
+    
+    long long r = -1;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = reply->integer;
+        } else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return r;
+}
+
+long long BaseCommand::expireat(const std::string& key, int timestamp, const std::string& path) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    if (timestamp < 0) {
+        timestamp = 0;
+    }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "EXPIREAT %s %d", std::string(path + key).c_str(), timestamp);
+        this->srv->unlock();
+    }
+    
+    long long r = -1;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = reply->integer;
+        } else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return r;
+}
+
+long long BaseCommand::ttl(const std::string& key, const std::string& path) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "TTL %s", std::string(path + key).c_str());
+        this->srv->unlock();
+    }
+    
+    long long r = -1;
+    if (reply) {
+        if (reply->str == NULL) {
+            r = reply->integer;
+        } else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    
+    return r;
+}
+
+long long BaseCommand::pttl(const std::string& key, const std::string& path) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "PTTL %s", std::string(path + key).c_str());
         this->srv->unlock();
     }
     
@@ -124,26 +281,97 @@ StringCommand::~StringCommand() {
     
 }
 
-bool StringCommand::exists(const std::string& key, const std::string& path) {
+long long StringCommand::setnx(const std::string& key, const std::string& value, const std::string& path) {
     if (key.empty()) {
-        return false;
+        return -1;
+    }
+    
+    if (value.empty()) {
+        return -1;
     }
     
     redisReply *reply = NULL;
     {
         this->srv->lock();
-        reply = (redisReply *)redisCommand(c, "EXISTS %s", std::string(path + key).c_str());
+        reply = (redisReply *)redisCommand(c, "SETNX %s %s", std::string(path + key).c_str(), value.c_str());
         this->srv->unlock();
     }
     
-    bool r = false;
+    long long r = -1;
     if (reply) {
         if (reply->str == NULL) {
-            r = (reply->integer == 1);
-        } else {
-            printf("%s\n", reply->str);
+            r = reply->integer;
         }
     }
+    
+    freeReplyObject(reply);
+    
+    return r;
+}
+
+long long StringCommand::setex(const std::string& key, const std::string& value, int seconds, const std::string& path) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    if (value.empty()) {
+        return -1;
+    }
+    
+    if (seconds < 0) {
+        seconds = 0;
+    }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "SETEX %s %d %s", std::string(path + key).c_str(), seconds, value.c_str());
+        this->srv->unlock();
+    }
+    
+    long long r = 0;
+    if (reply) {
+        if (strcmp(reply->str, "OK") == 0) {
+            r = 1;
+        } else {
+            
+        }
+    }
+    
+    freeReplyObject(reply);
+    
+    return r;
+}
+
+long long StringCommand::psetex(const std::string& key, const std::string& value, int milliseconds, const std::string& path) {
+    if (key.empty()) {
+        return -1;
+    }
+    
+    if (value.empty()) {
+        return -1;
+    }
+    
+    if (milliseconds < 0) {
+        milliseconds = 0;
+    }
+    
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "PSETEX %s %d %s", std::string(path + key).c_str(), milliseconds, value.c_str());
+        this->srv->unlock();
+    }
+    
+    long long r = 0;
+    if (reply) {
+        if (strcmp(reply->str, "OK") == 0) {
+            r = 1;
+        } else {
+            
+        }
+    }
+    
     freeReplyObject(reply);
     
     return r;
@@ -270,6 +498,36 @@ long long StringCommand::mset(const std::map<std::string, std::string>& keyvalue
     {
         this->srv->lock();
         reply = (redisReply *)redisCommand(c, "MSET %s", str.c_str());
+        this->srv->unlock();
+    }
+    
+    long long r = 0;
+    if (reply) {
+        if (strcmp(reply->str, "OK") == 0) {
+            r = 1;
+        }
+        else {
+            printf("%s\n", reply->str);
+        }
+    }
+    freeReplyObject(reply);
+    return r;
+}
+
+long long StringCommand::msetnx(const std::map<std::string, std::string>& keyvalues, const std::string& path) {
+    if (keyvalues.empty()) {
+        return -1;
+    }
+    
+    std::ostringstream out;
+    for (auto m : keyvalues) {
+        out << std::string(path + m.first) << " " << m.second << " ";
+    }
+    std::string str(out.str());
+    redisReply *reply = NULL;
+    {
+        this->srv->lock();
+        reply = (redisReply *)redisCommand(c, "MSETNX %s", str.c_str());
         this->srv->unlock();
     }
     
@@ -691,19 +949,19 @@ ListCommand::~ListCommand() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 RedisBaseServer::RedisBaseServer() {
-    pthread_mutex_init(&t, NULL);
+    pthread_mutex_init(&this->t, NULL);
 }
 
 RedisBaseServer::~RedisBaseServer() {
-    pthread_mutex_destroy(&t);
+    pthread_mutex_destroy(&this->t);
 }
 
 void RedisBaseServer::lock() {
-    pthread_mutex_lock(&t);
+    pthread_mutex_lock(&this->t);
 }
 
 void RedisBaseServer::unlock() {
-    pthread_mutex_unlock(&t);
+    pthread_mutex_unlock(&this->t);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -835,7 +1093,7 @@ int RedisAsyncServer::start(const char *ip, int port) {
     return 0;
 }
 
-int RedisAsyncServer::setValue(const std::string& key, const std::string& value) {
+int RedisAsyncServer::set(const std::string& key, const std::string& value, std::function<void(const std::string value)> func) {
     if (key.empty()) {
         return -1;
     }
@@ -849,7 +1107,7 @@ int RedisAsyncServer::setValue(const std::string& key, const std::string& value)
     return 0;
 }
 
-int RedisAsyncServer::getValue(const std::string& key, std::function<void(const std::string value)> func) {
+int RedisAsyncServer::get(const std::string& key, std::function<void(const std::string value)> func) {
     if (key.empty()) {
         return -1;
     }
