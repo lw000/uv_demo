@@ -40,7 +40,12 @@ std::string _UserInfo::encode_json() {
     rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
     std::map<std::string, std::string> vk = this->encode_map_redis_command();
     for(auto m : vk) {
-        doc.AddMember(m.first.c_str(), m.second.c_str(), alloctor);
+        rapidjson::Value k;
+        k.SetString(m.first.c_str(), m.first.size());
+        rapidjson::Value v;
+        v.SetString(m.second.c_str(), m.second.size());
+        
+        doc.AddMember(k, v, alloctor);
     }
     rapidjson::StringBuffer buffer;
     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
