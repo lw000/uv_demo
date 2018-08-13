@@ -24,49 +24,51 @@ typedef struct _rpc_base_reponse {
 } rpc_base_reponse;
 
 #define PROPERTY(type, name)                    \
-void set##name(const type& #name) {             \
-    this->#name = #name;                        \
+private:                                        \
+type __##name;                                  \
+public:                                         \
+void set_##name(const type& name) {             \
+    this->__##name = name;                      \
 }                                               \
-std::string get##name() {                       \
-    return this->#name;                         \
+type get_##name() {                             \
+return this->__##name;                          \
 }                                               \
 
-
-typedef struct _rpc_register_result_request : public _rpc_base_request {
-    std::string phone;
-    std::string name;
-    std::string psd;
+typedef struct _rpc_register_request : public _rpc_base_request {
+    
+    PROPERTY(std::string, phone)
+    PROPERTY(std::string, name)
+    PROPERTY(std::string, psd)
     
 public:
     std::string encode();
-    
-} rpc_register_result_request;
+} rpc_register_request;
 
-typedef struct _rpc_register_result_reponse : public _rpc_base_reponse {
+typedef struct _rpc_register_reponse : public _rpc_base_reponse {
     std::string uid;
     
 public:
     int decode(const std::string& data);
     
-} rpc_register_result_reponse;
+} rpc_register_reponse;
 
 
-typedef struct _rpc_login_result_request : public _rpc_base_request {
+typedef struct _rpc_login_request : public _rpc_base_request {
     std::string uid;
     std::string psd;
     
 public:
     std::string encode();
     
-} rpc_login_result_request;
+} rpc_login_request;
 
-typedef struct _rpc_login_result_reponse : public _rpc_base_reponse {
+typedef struct _rpc_login_reponse : public _rpc_base_reponse {
     std::string uid;
     std::string session;
     
 public:
     int decode(const std::string& data);
     
-} rpc_login_result_reponse;
+} rpc_login_reponse;
 
 #endif /* data_hpp */

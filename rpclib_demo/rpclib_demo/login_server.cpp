@@ -38,6 +38,10 @@ LoginServer::LoginServer(rpc::server* srv, RedisServer* redisServer) {
         return this->uregister1(args);
     });
     
+//    srv->bind("loginserver/register2", [this](const rpc_register_result_request& args){
+//        return this->uregister2(args);
+//    });
+    
     srv->bind("loginserver/login", [this](const std::string &uid, const std::string &psd){
         return this->ulogin(uid, psd);
     });
@@ -59,11 +63,18 @@ std::string LoginServer::uregister1(const std::map<std::string, std::string>& ar
     if (args.empty()) {
         return "";
     }
+    
     for (auto& v : args) {
         printf("%s: %s\n", v.first.c_str(), v.second.c_str());
     }
+    
     return "";
 }
+
+//std::string LoginServer::uregister2(const rpc_register_result_request& args) {
+//
+//    return "";
+//}
 
 std::string LoginServer::uregister(const std::string& phone, const std::string& name, const std::string& psd) {
     if (phone.empty()) {
@@ -115,7 +126,9 @@ std::string LoginServer::uregister(const std::string& phone, const std::string& 
 //                    {
 //                        rapidjson::Value data;
 //                        data.SetObject();
-//                        data.AddMember("uid", uinfo.uid.c_str(), alloctor);
+//                        rapidjson::Value uid;
+//                        uid.SetString("uid", strlen("uid"));
+//                        data.AddMember(uid, rapidjson::Value(uinfo.uid.c_str(), uinfo.uid.size()), alloctor);
 //                        data.AddMember("session", "", alloctor);
 //                        doc.AddMember("data", data, alloctor);
 //                    }

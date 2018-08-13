@@ -13,15 +13,12 @@
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
 
-std::string _rpc_register_result_request::encode() {
-    
+std::string _rpc_register_request::encode() {
+
     return "";
 }
 
-int _rpc_register_result_reponse::decode(const std::string& data) {
-    //    std::ostringstream out;
-    //    return out.str();
-    
+int _rpc_register_reponse::decode(const std::string& data) {
     rapidjson::Document doc;
     doc.Parse<0>(data.c_str());
     if (doc.HasParseError()) {
@@ -35,11 +32,11 @@ int _rpc_register_result_reponse::decode(const std::string& data) {
     return 0;
 }
 
-std::string _rpc_login_result_request::encode() {
+std::string _rpc_login_request::encode() {
     return "";
 }
 
-int _rpc_login_result_reponse::decode(const std::string& data) {
+int _rpc_login_reponse::decode(const std::string& data) {
     rapidjson::Document doc;
     doc.Parse<0>(data.c_str());
     if (doc.HasParseError()) {

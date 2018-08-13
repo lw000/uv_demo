@@ -10,6 +10,9 @@
 
 #include <iostream>
 #include <unistd.h>
+#include <vector>
+#include <list>
+#include <map>
 #include <rpc/server.h>
 #include <rpc/this_handler.h>
 #include <rpc/this_session.h>
@@ -67,6 +70,29 @@ int server_run(int argc, const char * argv[]) {
             sum += v;
         }
         return sum;
+    });
+    
+    srv.bind("sum1", [](const std::list<int>& val) {
+        if (val.empty()) {
+            return -1;
+        }
+        int sum = 0;
+        for (auto &v : val) {
+            sum += v;
+        }
+        return sum;
+    });
+    
+    srv.bind("get_vector", [](){
+        std::vector<std::string> vs;
+        vs.push_back("111");
+        vs.push_back("222");
+        vs.push_back("333");
+        vs.push_back("444");
+        vs.push_back("555");
+        vs.push_back("666");
+        vs.push_back("777");
+        return vs;
     });
     
     srv.bind("mul", [](int a, int b) { return a * b; });
