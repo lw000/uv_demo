@@ -10,7 +10,6 @@
 #include <unistd.h>
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
     pid_t fpid;
     int count = 0;
     fpid = fork();

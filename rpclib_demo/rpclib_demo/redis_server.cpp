@@ -19,9 +19,6 @@ static void getCallback(redisAsyncContext * c, void *r, void *privdata) {
         return;
     }
     printf("argv[%s]:%s\n", (char*)privdata, reply->str);
-    
-
-    
     redisAsyncDisconnect(c);
 }
 

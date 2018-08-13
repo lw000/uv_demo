@@ -38,7 +38,7 @@ int client_run(int argc, const char * argv[]) {
     
     int execount = 1000;
     
-    clock_t t = clock();
+//    clock_t t = clock();
     
     std::string s("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
     {
@@ -47,7 +47,8 @@ int client_run(int argc, const char * argv[]) {
         key.insert(key.begin(), s.begin(), s.end());
     }
     
-    for (int i = 0; i < execount; i++) {
+    //for (int i = 0; i < execount; i++) {
+    for(;;) {
         try {
             {
                 auto result = cli.async_call("add", 2, 3);
@@ -66,10 +67,12 @@ int client_run(int argc, const char * argv[]) {
                 int c = result.get().as<int>();
                 printf("sub: %d\n", c);
             }
+            
             {
                 std::string c5 = cli.call("get_time").as<std::string>();
-                printf("[%4d] get_time: %s\n", i, c5.c_str());
+                printf("get_time: %s\n", c5.c_str());
             }
+            
         } catch (rpc::rpc_error &e) {
             printf("%s\n", e.what());
         }
@@ -113,8 +116,8 @@ int client_run(int argc, const char * argv[]) {
         }
     }
     
-    clock_t t1 = clock();
-    printf("exec:[%d], times:[%f]\n", execount, ((double)t1-t)/CLOCKS_PER_SEC);
-    
+//    clock_t t1 = clock();
+//    printf("exec:[%d], times:[%f]\n", execount, ((double)t1-t)/CLOCKS_PER_SEC);
+
     return 0;
 }
