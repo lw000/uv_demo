@@ -1,0 +1,12 @@
+2018-08-13 16:44:52.788 [241779] LOG_ALARM -----------------  log4z thread started!   ---------------------------- log4z.cpp:1922
+2018-08-13 16:44:52.788 [241779] LOG_ALARM logger id=0 key=Main name=Main path=./log/ level=1 display=true log4z.cpp:1932
+2018-08-13 16:45:01.938 [241753] LOG_ERROR json is not object array. server.cpp:42
+2018-08-13 16:45:04.720 [241944] LOG_DEBUG thread_init_cb server.cpp:66
+2018-08-13 16:45:04.726 [241945] LOG_DEBUG thread_init_cb server.cpp:66
+2018-08-13 16:45:04.732 [241946] LOG_DEBUG thread_init_cb server.cpp:66
+2018-08-13 16:45:04.737 [241947] LOG_DEBUG thread_init_cb server.cpp:66
+2018-08-13 16:45:04.743 [241948] LOG_DEBUG thread_init_cb server.cpp:66
+2018-08-13 16:45:04.749 [241949] LOG_DEBUG thread_init_cb server.cpp:66
+2018-08-13 16:45:04.755 [241950] LOG_DEBUG thread_init_cb server.cpp:66
+2018-08-13 16:45:04.761 [241951] LOG_DEBUG thread_init_cb server.cpp:66
+2018-08-13 16:45:14.886 [241753] LOG_DEBUG running [port : 7878] server.cpp:157
