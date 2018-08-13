@@ -14,9 +14,6 @@
       location = "group:rpclib_demo/rpclib_demo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:fork-demo/fork-demo.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:wsclient/wsclient.xcodeproj">
    </FileRef>
    <FileRef
@@ -33,8 +30,5 @@
    </FileRef>
    <FileRef
       location = "group:nanomsg-test/nanomsg-test.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:libevhtp/build-xcode/libevhtp.xcodeproj">
    </FileRef>
 </Workspace>
