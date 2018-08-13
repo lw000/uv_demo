@@ -58,6 +58,17 @@ int server_run(int argc, const char * argv[]) {
     srv.suppress_exceptions(true);
     
     srv.bind("add", [](int a, int b) { return a + b; });
+    srv.bind("sum", [](const std::vector<int>& val) {
+        if (val.empty()) {
+            return -1;
+        }
+        int sum = 0;
+        for (auto &v : val) {
+            sum += v;
+        }
+        return sum;
+    });
+    
     srv.bind("mul", [](int a, int b) { return a * b; });
     srv.bind("bad", &bad);
     srv.bind("divide", &divide);

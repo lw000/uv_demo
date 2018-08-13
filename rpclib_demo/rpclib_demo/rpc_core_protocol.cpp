@@ -13,12 +13,33 @@
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
 
+std::string _rpc_register_result_request::encode() {
+    
+    return "";
+}
+
+int _rpc_register_result_reponse::decode(const std::string& data) {
+    //    std::ostringstream out;
+    //    return out.str();
+    
+    rapidjson::Document doc;
+    doc.Parse<0>(data.c_str());
+    if (doc.HasParseError()) {
+        return -1;
+    }
+    
+    this->code = doc["code"].GetInt();
+    this->what = doc["what"].GetString();
+    this->uid = doc["data"]["uid"].GetString();
+    
+    return 0;
+}
+
+std::string _rpc_login_result_request::encode() {
+    return "";
+}
+
 int _rpc_login_result_reponse::decode(const std::string& data) {
-//    std::ostringstream out;
-//    return out.str();
-    
-    std::string uid;
-    
     rapidjson::Document doc;
     doc.Parse<0>(data.c_str());
     if (doc.HasParseError()) {

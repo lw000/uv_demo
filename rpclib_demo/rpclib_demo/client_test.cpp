@@ -36,7 +36,7 @@ public:
 int client_run(int argc, const char * argv[]) {
     rpc::client cli("127.0.0.1", PORT);
     
-    int execount = 1000;
+    int execount = 1;
     
 //    clock_t t = clock();
     
@@ -47,9 +47,25 @@ int client_run(int argc, const char * argv[]) {
         key.insert(key.begin(), s.begin(), s.end());
     }
     
-    //for (int i = 0; i < execount; i++) {
-    for(;;) {
+    for (int i = 0; i < execount; i++) {
+//    for(;;) {
         try {
+            {
+                std::vector<int> v;
+                v.push_back(1);
+                v.push_back(2);
+                v.push_back(3);
+                v.push_back(4);
+                v.push_back(5);
+                v.push_back(6);
+                v.push_back(7);
+                v.push_back(8);
+                v.push_back(9);
+                auto result = cli.async_call("sum", v);
+                int c = result.get().as<int>();
+                printf("sum: %d\n", c);
+            }
+            
             {
                 auto result = cli.async_call("add", 2, 3);
                 int c = result.get().as<int>();
@@ -73,12 +89,20 @@ int client_run(int argc, const char * argv[]) {
                 printf("get_time: %s\n", c5.c_str());
             }
             
-        } catch (rpc::rpc_error &e) {
-            printf("%s\n", e.what());
-        }
-    
-        {
             {
+                std::map<std::string, std::string> args;
+                args.insert(std::make_pair("phone", "13632767233"));
+                args.insert(std::make_pair("name", "liwei"));
+                args.insert(std::make_pair("psd", "123456"));
+                std::string uid = cli.call("loginserver/register1", args).as<std::string>();
+                printf("loginserver/register1: %s\n", uid.c_str());
+            }
+            
+            {
+                std::map<std::string, std::string> args;
+                args.insert(std::make_pair("phone", "13632767233"));
+                args.insert(std::make_pair("name", "liwei"));
+                args.insert(std::make_pair("psd", "123456"));
                 std::string uid = cli.call("loginserver/register", "13632767233", "liwei", "123456").as<std::string>();
                 printf("loginserver/register: %s\n", uid.c_str());
                 
@@ -102,17 +126,11 @@ int client_run(int argc, const char * argv[]) {
             }
             
             {
-                std::string uid = cli.call("loginserver/register", "13632558737", "heshanshan", "123456").as<std::string>();
-                printf("loginserver/register: %s\n", uid.c_str());
-                std::string s = cli.call("loginserver/login", uid, "123456").as<std::string>();
-                s = cli.call("loginserver/logout", uid).as<std::string>();
-                s = cli.call("loginserver/getUserInfo", uid).as<std::string>();
-                printf("loginserver/getUserInfo: %s\n", s.c_str());
+                cli.call("test");
             }
-        }
-        
-        {
-            cli.call("test");
+            
+        } catch (rpc::rpc_error &e) {
+            printf("%s\n", e.what());
         }
     }
     

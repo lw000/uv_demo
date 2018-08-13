@@ -13,6 +13,13 @@
 #include <string>
 #include <map>
 
+//struct __CacheData {
+//public:
+//    __CacheData(){};
+//    virtual ~__CacheData() {};
+//
+//} CacheData;
+
 typedef struct _UserInfo {
     std::string phone;
     std::string name;
@@ -21,6 +28,7 @@ typedef struct _UserInfo {
     
 public:
     _UserInfo();
+    ~_UserInfo();
     
 public:
     std::string encode_string_redis_command();

@@ -28,10 +28,14 @@ LoginServer::LoginServer(rpc::server* srv, RedisServer* redisServer) {
     this->redisServer = redisServer;
     
     long long c = this->redisServer->stringCommand()->setnx("autoincr", "1000000");
-    printf("init autoincr. [%d]\n", c);
+    printf("init autoincr. [%lld]\n", c);
     
     srv->bind("loginserver/register", [this](const std::string& phone, const std::string &name, const std::string &psd){
         return this->uregister(phone, name, psd);
+    });
+    
+    srv->bind("loginserver/register1", [this](const std::map<std::string, std::string>& args){
+        return this->uregister1(args);
     });
     
     srv->bind("loginserver/login", [this](const std::string &uid, const std::string &psd){
@@ -49,6 +53,16 @@ LoginServer::LoginServer(rpc::server* srv, RedisServer* redisServer) {
 
 LoginServer::~LoginServer() {
     
+}
+
+std::string LoginServer::uregister1(const std::map<std::string, std::string>& args) {
+    if (args.empty()) {
+        return "";
+    }
+    for (auto& v : args) {
+        printf("%s: %s\n", v.first.c_str(), v.second.c_str());
+    }
+    return "";
 }
 
 std::string LoginServer::uregister(const std::string& phone, const std::string& name, const std::string& psd) {
@@ -82,7 +96,7 @@ std::string LoginServer::uregister(const std::string& phone, const std::string& 
             uinfo.psd = psd;
             uinfo.uid = uid_buf;
             
-            long long ok = -1;
+            long long ok = 0;
             ok = this->redisServer->hashCommand()->hset(phone, "phone", phone, "user_infos:");
             ok = this->redisServer->hashCommand()->hset(phone, "name", name, "user_infos:");
             ok = this->redisServer->hashCommand()->hset(phone, "psd", psd, "user_infos:");

@@ -19,6 +19,11 @@ _UserInfo::_UserInfo() {
     
 }
 
+
+_UserInfo::~_UserInfo() {
+    
+}
+
 std::string _UserInfo::encode_string_redis_command() {
     std::ostringstream out;
     out << "phone " << phone << " name " << name << " psd " << psd << " uid " << uid;
