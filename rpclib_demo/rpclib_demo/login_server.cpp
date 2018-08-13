@@ -183,7 +183,11 @@ std::string LoginServer::getUserInfo(const std::string& uid) {
     rapidjson::Value data;
     data.SetObject();
     for (auto& u : userinfo) {
-        data.AddMember(u.first.c_str(), u.second.c_str(), alloctor);
+        rapidjson::Value k;
+        k.SetString(u.first.c_str(), u.first.size(), alloctor);
+        rapidjson::Value v;
+        v.SetString(u.second.c_str(), u.second.size(), alloctor);
+        data.AddMember(v, k, alloctor);
     }
     doc.AddMember("data", data, alloctor);
     

@@ -135,7 +135,7 @@ int server_run(int argc, const char * argv[]) {
 
     });
     
-    int n = redisCache.start("127.0.0.1", 6379, 1);
+    int n = redisCache.start("127.0.0.1", 6379, 2);
     if (n == 0) {
         redisCache.ping();
         
