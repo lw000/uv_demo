@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01D35D521211EB700788028 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01D35D421211EB700788028 /* libuv.a */; };
 		D02FB47F2112B618007A30D9 /* TCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB47B2112B617007A30D9 /* TCPServer.cpp */; };
 		D02FB4802112B618007A30D9 /* TCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB47D2112B618007A30D9 /* TCPClient.cpp */; };
 		D02FB4832112C3AB007A30D9 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB4822112C3AB007A30D9 /* Utils.cpp */; };
@@ -28,7 +29,6 @@
 		D0D63AFC2110723A00E65F68 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63AFB2110723A00E65F68 /* main.cpp */; };
 		D0D63B0D21107B3800E65F68 /* tcp_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B0B21107B3800E65F68 /* tcp_client.cpp */; };
 		D0D63B1021107B4D00E65F68 /* tcp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B0E21107B4D00E65F68 /* tcp_server.cpp */; };
-		D0D63B5A21115D0D00E65F68 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D63B5921115D0D00E65F68 /* libuv.a */; };
 		D0D63B642111830C00E65F68 /* net_cache_queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B5C2111828A00E65F68 /* net_cache_queue.cpp */; };
 		D0D63B652111830C00E65F68 /* net_iobuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B5E2111828A00E65F68 /* net_iobuffer.cpp */; };
 		D0D63B662111830C00E65F68 /* net_packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0D63B602111828A00E65F68 /* net_packet.cpp */; };
@@ -50,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D01D35D421211EB700788028 /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = ../../../../../usr/local/lib/libuv.a; sourceTree = "<group>"; };
 		D02FB4792111C0DD007A30D9 /* data_struct.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = data_struct.hpp; sourceTree = "<group>"; };
 		D02FB47B2112B617007A30D9 /* TCPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPServer.cpp; sourceTree = "<group>"; };
 		D02FB47C2112B618007A30D9 /* TCPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPClient.h; sourceTree = "<group>"; };
@@ -138,7 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0D63B5A21115D0D00E65F68 /* libuv.a in Frameworks */,
+				D01D35D521211EB700788028 /* libuv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +225,7 @@
 		D0D63B082110728300E65F68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D01D35D421211EB700788028 /* libuv.a */,
 				D02FB5DF2119A176007A30D9 /* libwebsockets.a */,
 				D0D63B5921115D0D00E65F68 /* libuv.a */,
 				D0D63B5721115A7E00E65F68 /* libuv.a */,
@@ -476,8 +478,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = ../build/debug;
 				DEVELOPMENT_TEAM = 9HZXUTMSZT;
-				HEADER_SEARCH_PATHS = ../libuv/include;
-				LIBRARY_SEARCH_PATHS = ../build/debug;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -488,8 +490,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = ../build/release;
 				DEVELOPMENT_TEAM = 9HZXUTMSZT;
-				HEADER_SEARCH_PATHS = ../libuv/include;
-				LIBRARY_SEARCH_PATHS = ../build/debug;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

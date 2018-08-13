@@ -19,6 +19,7 @@
 
 static uv_loop_t* loop;
 static uv_tcp_t client;
+static uv_timer_t msg_timer;
 static std::string flag;
 static NetIOBuffer iobuffer;
 
@@ -56,12 +57,12 @@ void alloc_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf) {
 void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf) {
     if (nread < 0) {
         if (nread != UV_EOF) {
-            fprintf(stderr, "read error %s\n", uv_err_name(nread));
+            fprintf(stderr, "read error %s\n", uv_err_name((int)nread));
         }
         uv_close((uv_handle_t*)&client, NULL);
     }
     else {
-        iobuffer.parse(buf->base, nread, parse_cb, NULL);
+        iobuffer.parse(buf->base, (int)nread, parse_cb, NULL);
     }
     
     if (buf->base) {
@@ -72,6 +73,18 @@ void read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf) {
 void write_cb(uv_write_t* req, int status) {
     free(req);
     
+}
+
+void timer_cb(uv_timer_t* handle) {
+    reqest_a_data data;
+    data.a = 10;
+    data.b = 20;
+    iobuffer.send(100, 200, (void*)&data, sizeof(data), [](NetPacket * pkt) -> int {
+        uv_write_t *req = (uv_write_t*)malloc(sizeof(uv_write_t));
+        uv_buf_t newbuf = uv_buf_init(pkt->Buffer(), pkt->BufferSize());
+        int r = uv_write(req, (uv_stream_t*)&client, &newbuf, 1, write_cb);
+        return r;
+    });
 }
 
 void entry(void *arg) {
@@ -96,8 +109,12 @@ void connect_cb(uv_connect_t* req, int status) {
     {
         int ret = uv_read_start(req->handle, alloc_cb, read_cb);
         printf("[%d]", ret);
-        uv_thread_t tid;
-        uv_thread_create(&tid, entry, NULL);
+
+//        uv_thread_t tid;
+//        uv_thread_create(&tid, entry, NULL);
+        
+        uv_timer_init(loop, &msg_timer);
+        uv_timer_start(&msg_timer, timer_cb, 10, 10);
     }
     else
     {
