@@ -22,6 +22,7 @@ struct myclass {
     
     int num;
     std::string str;
+    std::vector<std::string> vs;
     
     MSGPACK_DEFINE(num, str);
     
@@ -62,6 +63,12 @@ int main(int argc, const char * argv[]) {
     
     {
         myclass m1;
+        m1.num = 10000;
+        m1.str = "22222222";
+        m1.vs.push_back("111111111");
+        m1.vs.push_back("111111111");
+        m1.vs.push_back("111111111");
+        m1.vs.push_back("111111111");
         
         msgpack::sbuffer sbuf;
         msgpack::pack(sbuf, m1);
@@ -69,15 +76,18 @@ int main(int argc, const char * argv[]) {
         msgpack::zone z;
         msgpack::object obj;
         
-        msgpack::unpack_return ret =
-        msgpack::unpack(sbuf.data(), sbuf.size(), NULL, &z, &obj);
+        msgpack::unpack_return ret = msgpack::unpack(sbuf.data(), sbuf.size(), NULL, &z, &obj);
+        
         if (ret == msgpack::UNPACK_SUCCESS) {
+            myclass m2;
+            obj.convert(&m2);
             printf("ok\n");
         }
         
         if (m1 == obj.as<myclass>()) {
             printf("ok\n");
         }
+        
     }
     
     return 0;
