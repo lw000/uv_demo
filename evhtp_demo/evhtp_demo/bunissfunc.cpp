@@ -6,22 +6,24 @@
  */
 
 #include "bunissfunc.h"
-
-#include "data.h"
-
+#include <stdlib.h>
 #include <string>
 #include <unordered_map>
 #include <mutex>
 #include <algorithm>
-
-#include <log4z/log4z.h>
-using namespace zsummer::log4z;
 
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
 #include <rapidjson/reader.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
+
+#include "data.h"
+
+#include <log4z/log4z.h>
+using namespace zsummer::log4z;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 long long guid = 10000;
 std::mutex user_table_lock;
@@ -50,6 +52,37 @@ static int dump_kvs(evhtp_kv_t * kvobj, void * arg) {
 	return 0;
 }
 
+static int reply_json(evhtp_request_t * req, int code, const std::string& what, const std::map<std::string, std::string>& dataMap) {
+    rapidjson::Document doc;
+    doc.SetObject();
+    rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
+    doc.AddMember("code", code, allocator);
+    doc.AddMember("what", rapidjson::Value(what.c_str(), (unsigned)what.size()), allocator);
+    rapidjson::Value data;
+    data.SetObject();
+    {
+        for (auto &m : dataMap) {
+            rapidjson::Value k;
+            k.SetString(m.first.c_str(), (unsigned)m.first.size());
+            rapidjson::Value v;
+            v.SetString(m.second.c_str(), (unsigned)m.second.size());
+            data.AddMember(k, v, allocator);
+        }
+        doc.AddMember("data", data, allocator);
+    }
+    rapidjson::StringBuffer buffer;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    doc.Accept(writer);
+    std::string result = buffer.GetString();
+    
+    evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
+    evhtp_send_reply(req, EVHTP_RES_OK);
+    
+    LOGD(result);
+    
+    return 0;
+}
+
 int registerAllfunction(evhtp_request_t * req, void * args) {
 
 	return 0;
@@ -57,9 +90,11 @@ int registerAllfunction(evhtp_request_t * req, void * args) {
 
 void http_registercb(evhtp_request_t * req, void * args) {
 	if (evhtp_request_get_method(req) != htp_method_POST) {
-		evbuffer_add_printf(req->buffer_out,
-                            "{\"error\":\"not support, please use post method\"}");
-		evhtp_send_reply(req, EVHTP_RES_OK);
+//        evbuffer_add_printf(req->buffer_out,
+//                            "{\"error\":\"not support, please use post method\"}");
+//        evhtp_send_reply(req, EVHTP_RES_OK);
+        
+        reply_json(req, 0, "", {{"error", "not support, please use post method"}});
 		return;
 	}
 
@@ -81,27 +116,7 @@ void http_registercb(evhtp_request_t * req, void * args) {
 	// 查找用户是否已经注册
 	bool exist = usermgr.existWithName(username);
 	if (exist) {
-		rapidjson::Document doc;
-		doc.SetObject();
-		rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-		doc.AddMember("code", 0, allocator);
-		doc.AddMember("msg", "user exist", allocator);
-		{
-			rapidjson::Value data;
-			data.SetObject();
-			data.AddMember("uid", "-1", allocator);
-			doc.AddMember("data", data, allocator);
-		}
-		rapidjson::StringBuffer buffer;
-		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-		doc.Accept(writer);
-		std::string result = buffer.GetString();
-        
-		evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
-		evhtp_send_reply(req, EVHTP_RES_OK);
-        
-		LOGD(result);
-
+        reply_json(req, 0, "user exist", {{"uid", "user exist"}});
 		return;
 	}
 
@@ -120,39 +135,13 @@ void http_registercb(evhtp_request_t * req, void * args) {
 		usermgr.add(user);
 	}
 
-	// 写缓存
-	{
-        
-	}
-
 	// 返回结果
-	rapidjson::Document doc;
-	doc.SetObject();
-	rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-	doc.AddMember("code", 0, allocator);
-	doc.AddMember("msg", "user exist", allocator);
-	{
-		rapidjson::Value data;
-		data.SetObject();
-		data.AddMember("uid", "-1", allocator);
-		doc.AddMember("data", data, allocator);
-	}
-	rapidjson::StringBuffer buffer;
-	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-	doc.Accept(writer);
-	std::string result = buffer.GetString();
-    
-	evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
-	evhtp_send_reply(req, EVHTP_RES_OK);
-
-	LOGD(result);
+    reply_json(req, 0, "success", {{"uid", "1000000"}});
 }
 
 void http_logincb(evhtp_request_t * req, void * args) {
 	if (evhtp_request_get_method(req) != htp_method_POST) {
-		evbuffer_add_printf(req->buffer_out,
-				"not support, please use post method");
-		evhtp_send_reply(req, EVHTP_RES_OK);
+        reply_json(req, 0, "", {{"error", "not support, please use post method"}});
 		return;
 	}
 
@@ -168,104 +157,21 @@ void http_logincb(evhtp_request_t * req, void * args) {
 
 	auto v = g_users.find(userid);
 	if (v == g_users.end()) {
-		rapidjson::Document doc;
-		doc.SetObject();
-		rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-		doc.AddMember("code", -1, allocator);
-		doc.AddMember("msg", "user does not exist", allocator);
-		{
-			rapidjson::Value data;
-			data.SetObject();
-			data.AddMember("session", "", allocator);
-			doc.AddMember("data", data, allocator);
-		}
-		rapidjson::StringBuffer buffer;
-		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-		doc.Accept(writer);
-
-		std::string result = buffer.GetString();
-		LOGD(result);
-
-		evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
-		evhtp_send_reply(req, EVHTP_RES_OK);
-
+        reply_json(req, -1, "user does not exist", {{"session", ""}});
 		return;
 	}
 
 	if (v->second.name.compare(username) != 0) {
-		rapidjson::Document doc;
-		doc.SetObject();
-		rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-		doc.AddMember("code", -1, allocator);
-		doc.AddMember("msg", "username is error", allocator);
-		{
-			rapidjson::Value data;
-			data.SetObject();
-			data.AddMember("session", "", allocator);
-			doc.AddMember("data", data, allocator);
-		}
-		rapidjson::StringBuffer buffer;
-		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-		doc.Accept(writer);
-
-		std::string result = buffer.GetString();
-
-		LOGD(result);
-
-		evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
-		evhtp_send_reply(req, EVHTP_RES_OK);
-
+        reply_json(req, -1, "username is error", {{"session", ""}});
 		return;
 	}
 
 	if (v->second.psd.compare(password) != 0) {
-		rapidjson::Document doc;
-		doc.SetObject();
-		rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-		doc.AddMember("code", -1, allocator);
-		doc.AddMember("msg", "psd is error", allocator);
-		{
-			rapidjson::Value data;
-			data.SetObject();
-			data.AddMember("session", "", allocator);
-			doc.AddMember("data", data, allocator);
-		}
-		rapidjson::StringBuffer buffer;
-		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-		doc.Accept(writer);
-
-		std::string result = buffer.GetString();
-
-		LOGD(result);
-
-		evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
-		evhtp_send_reply(req, EVHTP_RES_OK);
-
+        reply_json(req, -1, "psd is error", {{"session", ""}});
 		return;
 	}
 
-	rapidjson::Document doc;
-	doc.SetObject();
-	rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-	doc.AddMember("code", 0, allocator);
-	doc.AddMember("msg", "login success", allocator);
-	{
-		rapidjson::Value data;
-		data.SetObject();
-		data.AddMember("session", "1111111111", allocator);
-		doc.AddMember("data", data, allocator);
-	}
-	rapidjson::StringBuffer buffer;
-	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-	doc.Accept(writer);
-
-	std::string result = buffer.GetString();
-
-	LOGD(result);
-
-	evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
-	evhtp_send_reply(req, EVHTP_RES_OK);
-
+    reply_json(req, 0, "login success", {{"session", "1111111111"}});
 	return;
 }
 
@@ -300,29 +206,9 @@ void http_factcb(evhtp_request_t * req, void * args) {
 
 	const char* v = evhtp_kv_find(query, "v");
 
-	int iv = atoi(v);
-
-	int result = Buniss::fact(iv);
-
-	rapidjson::Document doc;
-	doc.SetObject();
-	rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-	doc.AddMember("code", 0, allocator);
-	doc.AddMember("msg", "success", allocator);
-	{
-		rapidjson::Value data;
-		data.SetObject();
-		data.AddMember("result", result, allocator);
-		doc.AddMember("data", data, allocator);
-	}
-	rapidjson::StringBuffer buffer;
-	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-	doc.Accept(writer);
-	std::string msg = buffer.GetString();
-	evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
-	evhtp_send_reply(req, EVHTP_RES_OK);
-
-	LOGD(msg);
+    int iv = atoi(v);
+    int result = Buniss::fact(iv);
+    reply_json(req, 0, "success", {{"result", std::to_string(result)}});
 }
 
 void http_addcb(evhtp_request_t * req, void * args) {
@@ -343,23 +229,8 @@ void http_addcb(evhtp_request_t * req, void * args) {
 	const char* a = evhtp_kv_find(query, "a");
 	const char* b = evhtp_kv_find(query, "b");
 	if (a == NULL || b == NULL) {
-		rapidjson::Document doc;
-		doc.SetObject();
-		rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-		doc.AddMember("code", -1, allocator);
-		doc.AddMember("msg", "parameter deletion", allocator);
-		{
-			rapidjson::Value data;
-			data.SetObject();
-			doc.AddMember("data", data, allocator);
-		}
-		rapidjson::StringBuffer buffer;
-		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-		doc.Accept(writer);
-		std::string msg = buffer.GetString();
-		evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
-		evhtp_send_reply(req, EVHTP_RES_OK);
-		LOGD(msg);
+        
+        reply_json(req, -1, "parameter deletion", {});
 		return;
 	}
 
@@ -367,44 +238,7 @@ void http_addcb(evhtp_request_t * req, void * args) {
 	int ib = atoi(b);
 	int result = Buniss::add(ia, ib);
 
-	rapidjson::Document doc;
-	doc.SetObject();
-	rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-	doc.AddMember("code", 0, allocator);
-	doc.AddMember("msg", "success", allocator);
-	{
-		rapidjson::Value data;
-		data.SetObject();
-//		{
-//			rapidjson::Value args;
-//			args.SetArray();
-//			{
-//				rapidjson::Value vk;
-//				vk.SetObject();
-//				vk.AddMember("a", ia, allocator);
-//				args.PushBack(vk, allocator);
-//			}
-//			{
-//				rapidjson::Value vk;
-//				vk.SetObject();
-//				vk.AddMember("b", ib, allocator);
-//				args.PushBack(vk, allocator);
-//			}
-////			args.PushBack(ia, allocator);
-////			args.PushBack(ib, allocator);
-//			data.AddMember("args", args, allocator);
-//		}
-		data.AddMember("result", result, allocator);
-		doc.AddMember("data", data, allocator);
-	}
-	rapidjson::StringBuffer buffer;
-	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-	doc.Accept(writer);
-	std::string msg = buffer.GetString();
-	evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
-	evhtp_send_reply(req, EVHTP_RES_OK);
-
-	LOGD(msg);
+    reply_json(req, 0, "success", {{"result", std::to_string(result)}});
 }
 
 void http_subcb(evhtp_request_t * req, void * args) {
@@ -420,66 +254,12 @@ void http_subcb(evhtp_request_t * req, void * args) {
 	const char* a = evhtp_kv_find(query, "a");
 	const char* b = evhtp_kv_find(query, "b");
 	if (a == NULL || b == NULL) {
-		rapidjson::Document doc;
-		doc.SetObject();
-		rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-		doc.AddMember("code", -1, allocator);
-		doc.AddMember("msg", "parameter deletion", allocator);
-		{
-			rapidjson::Value data;
-			data.SetObject();
-			doc.AddMember("data", data, allocator);
-		}
-		rapidjson::StringBuffer buffer;
-		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-		doc.Accept(writer);
-		std::string msg = buffer.GetString();
-		evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
-		evhtp_send_reply(req, EVHTP_RES_OK);
+        reply_json(req, -1, "parameter deletion", {});
 		return;
 	}
 
 	int ia = atoi(a);
 	int ib = atoi(b);
-
-	int ic = Buniss::sub(ia, ib);
-
-	rapidjson::Document doc;
-	doc.SetObject();
-	rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
-	doc.AddMember("code", 0, allocator);
-	doc.AddMember("msg", "success", allocator);
-	{
-		rapidjson::Value data;
-		data.SetObject();
-//		{
-//			rapidjson::Value args;
-//			args.SetArray();
-//			{
-//				rapidjson::Value vk;
-//				vk.SetObject();
-//				vk.AddMember("a", ia, allocator);
-//				args.PushBack(vk, allocator);
-//			}
-//			{
-//				rapidjson::Value vk;
-//				vk.SetObject();
-//				vk.AddMember("b", ib, allocator);
-//				args.PushBack(vk, allocator);
-//			}
-////			args.PushBack(ia, allocator);
-////			args.PushBack(ib, allocator);
-//			data.AddMember("args", args, allocator);
-//		}
-		data.AddMember("result", ic, allocator);
-		doc.AddMember("data", data, allocator);
-	}
-	rapidjson::StringBuffer buffer;
-	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-	doc.Accept(writer);
-	std::string msg = buffer.GetString();
-	evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
-	evhtp_send_reply(req, EVHTP_RES_OK);
-
-	LOGD(msg);
+	int result = Buniss::sub(ia, ib);
+    reply_json(req, 0, "success", {{"result", std::to_string(result)}});
 }

@@ -131,6 +131,10 @@ int main_server(int port) {
 		htpcb = evhtp_set_cb(htp_v4, "/add", http_addcb, NULL);
 		htpcb = evhtp_set_cb(htp_v6, "/add", http_addcb, NULL);
 		assert(htpcb != NULL);
+        
+        htpcb = evhtp_set_cb(htp_v4, "/sub", http_subcb, NULL);
+        htpcb = evhtp_set_cb(htp_v6, "/sub", http_subcb, NULL);
+        assert(htpcb != NULL);
 
 		htpcb = evhtp_set_cb(htp_v4, "/fact", http_factcb, NULL);
 		htpcb = evhtp_set_cb(htp_v6, "/fact", http_factcb, NULL);
