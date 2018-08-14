@@ -34,7 +34,7 @@ struct myclass {
 
 std::ostream& operator<<(std::ostream& o, const myclass& m)
 {
-    return o << "myclass("<<m.num<<",\""<<m.str<<"\")";
+    return o << "myclass(" << m.num << ",\"" << m.str << "\")";
 }
 
 int main(int argc, const char * argv[]) {
@@ -70,6 +70,8 @@ int main(int argc, const char * argv[]) {
         m1.vs.push_back("111111111");
         m1.vs.push_back("111111111");
         
+        std::cout << "m1: " << m1 << std::endl;
+        
         msgpack::sbuffer sbuf;
         msgpack::pack(sbuf, m1);
         
@@ -81,13 +83,12 @@ int main(int argc, const char * argv[]) {
         if (ret == msgpack::UNPACK_SUCCESS) {
             myclass m2;
             obj.convert(&m2);
-            printf("ok\n");
+            std::cout << "m2: " << m1 << " ok " << std::endl;
         }
         
         if (m1 == obj.as<myclass>()) {
-            printf("ok\n");
+            std::cout << " ok " << std::endl;
         }
-        
     }
     
     return 0;
