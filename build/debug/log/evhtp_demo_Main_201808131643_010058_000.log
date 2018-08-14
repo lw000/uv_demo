@@ -1,2 +1,0 @@
-2018-08-13 16:43:04.134 [240536] LOG_ALARM -----------------  log4z thread started!   ---------------------------- log4z.cpp:1922
-2018-08-13 16:43:04.135 [240536] LOG_ALARM logger id=0 key=Main name=Main path=./log/ level=1 display=true log4z.cpp:1932
