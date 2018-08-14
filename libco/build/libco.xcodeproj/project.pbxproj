@@ -1,0 +1,3088 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		3F11D5FBC69F48C0A3C7686E /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FA8825E25CE446698ECEEB9E /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				9F243A3E8A2541FEADD8F9BA /* CMake Rules */,
+			);
+			dependencies = (
+				A7B968BD36584D6088A49EF3 /* PBXTargetDependency */,
+				716AC75F81F941BC8471C228 /* PBXTargetDependency */,
+				3896708022114DFF815629C2 /* PBXTargetDependency */,
+				4F5A50C429B1457B9B502AFC /* PBXTargetDependency */,
+				5E8378A82E2F457A8F0A8B59 /* PBXTargetDependency */,
+				1EB9B18EB5824724A38797B0 /* PBXTargetDependency */,
+				7B59D671076A406BB1BE85C6 /* PBXTargetDependency */,
+				1057F96C2DA14160A22094B7 /* PBXTargetDependency */,
+				09483AA1A8F6481CAA49ADD8 /* PBXTargetDependency */,
+				1ED6F8E600AD49E1AAC05AEF /* PBXTargetDependency */,
+				8E092ABFE0E24328BCE7D5AC /* PBXTargetDependency */,
+				27973229ED1C461896A9C764 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		9390C73F89954E94A7DA20E1 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 8B4BE03BFE20485CAE08EC34 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				798A70F6CEE64BD9946B32A7 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		003E5700CF484A1FA994D981 /* co_routine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C67B5C1BC6854F5CBC024AE4 /* co_routine.cpp */; };
+		1971270EFBAE4009BFCBD602 /* example_setenv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABEB4D51D98B46E0B559FF86 /* example_setenv.cpp */; };
+		21282C5A63664F31941C5E06 /* coctx_swap.S in Sources */ = {isa = PBXBuildFile; fileRef = 1840DD07B0914F94B2DF8BDD /* coctx_swap.S */; };
+		3193719549174D2ABFE09448 /* co_hook_sys_call.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8A4D69B73C49DBBC1186AC /* co_hook_sys_call.cpp */; };
+		3AD6F80076CA4962B934E175 /* example_copystack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F65BC2F746048BB81A28818 /* example_copystack.cpp */; };
+		4E75CC6C60854B47A09D272D /* co_routine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C516270A79494EAF8B3835C9 /* co_routine.cpp */; };
+		4F59A9297B91456F85E52BB1 /* example_cond.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5692BAA61D25451883E01798 /* example_cond.cpp */; };
+		5547C210E16F43E39DFB5A72 /* example_echocli.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BA53176929E4393B1A65112 /* example_echocli.cpp */; };
+		5AEA48E8E7214031B3470F94 /* co_epoll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97D362A44DE548978ADDB94D /* co_epoll.cpp */; };
+		6634E75A1D6F43E79A2459C2 /* coctx_swap.S in Sources */ = {isa = PBXBuildFile; fileRef = E477B1BCCA834FEFA7685952 /* coctx_swap.S */; };
+		7C64002F15714E899661831D /* coctx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 105D01E448E641BB9F72DE33 /* coctx.cpp */; };
+		892F4E16C49D45549E53F3F1 /* example_closure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3332D5A017C44B31994002F4 /* example_closure.cpp */; };
+		C031829ECFC74ABE8807B9A1 /* co_hook_sys_call.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D2DBE1E5645443192F2D517 /* co_hook_sys_call.cpp */; };
+		D01D362B2122A30100788028 /* libcolib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4814B64BCFF54CD5AD495E68 /* libcolib.a */; };
+		D9F832AD29EC40D4B0B65F30 /* example_poll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F3BCE74143949CE9F7C421D /* example_poll.cpp */; };
+		DF0EB1682B6E40FA9B1868B5 /* co_epoll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04AF794C453A4E8F99003CFA /* co_epoll.cpp */; };
+		E5681B279142486DAE619248 /* example_echosvr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923B94928A84E749165C8D3 /* example_echosvr.cpp */; };
+		EE99E17D8F6F4A1EA8BF5F34 /* example_specific.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91EEDE5132AF4EF581953F37 /* example_specific.cpp */; };
+		EF125BB6850F44C795DC90AB /* coctx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6EFC0C7F73043DF9741B68B /* coctx.cpp */; };
+		FEB7E94380AF4F529CE4F85E /* example_thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F293D7839B5B488A9CFA6DE7 /* example_thread.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		014B6CAFE8DF438D92CD0DD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3ADA522942C49F3BC2C4D57;
+			remoteInfo = example_cond;
+		};
+		0920FDF0CB1C49FDB33F59D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		0AD641D424784D428F0F6E65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29EDD49D59C3400A844F567A;
+			remoteInfo = example_copystack;
+		};
+		0E40E4FCA7344894BF0AC89B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		15B27223D31A4C09B4ABFF4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		19AF713C00E145408E2F2039 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		1ECE7540AB344E9FBA07B926 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		33BC27DDF1B040DEA894F526 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		3A048237E40A46799FD949DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		42969481539840D5A1872509 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68CB56B870884317837F4343;
+			remoteInfo = example_poll;
+		};
+		50C9C8A056524B3682F44C30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		60F180900E214EA19224CBB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8512FC3DC2C4EA79DBDDD04;
+			remoteInfo = example_echosvr;
+		};
+		6EF04BF655064F5081F479F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		7678EA895610467CA63F7E91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0737C2121DB54CD3B87F5903;
+			remoteInfo = example_thread;
+		};
+		83DB1126A6D74EC3857D202F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E787E6B2A264B6E9E3442A1;
+			remoteInfo = example_setenv;
+		};
+		8A7F50A8BD2D423C9FB1A70E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		94B09B043870403A8CEE4651 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		A0C143C837D4402383896CD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		A136D8BECFF442B1935FEC16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F19A96A256347B88F461069;
+			remoteInfo = example_specific;
+		};
+		AB669F157BF7410BA782C174 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		B5ADBED6C6A14F48B8D2CAA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		B8687565D9FB4668B03DEB14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		C8EC87D06D2E47D7B679597C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		CA879DC795D048578575035A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		D23D456A5FE04B03B4764188 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		D3C3B51BE2A14D62B55A4279 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A43095804CA34D68A82C6E0C;
+			remoteInfo = example_closure;
+		};
+		D8D7D67DD5B74EA0A8DF3A6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A65F845D85394DF7B029ED9F;
+			remoteInfo = colib_shared;
+		};
+		DEFB0A81B63448D181C3480B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		ED01579131F1420B86DBE182 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 603F59138BEE415FA063D251;
+			remoteInfo = example_echocli;
+		};
+		ED08CBB40E75417B9DF3C75F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37DD53C0D334F309CAA8942;
+			remoteInfo = colib_static;
+		};
+		F3D1FAB80B554AD9B9BA53B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+		F9228CB3D9694567B9312AA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD52427EBC4341FA9E9AB465 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9390C73F89954E94A7DA20E1;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0120D525A90F4FCB957F0ABC /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		04AF794C453A4E8F99003CFA /* co_epoll.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = co_epoll.cpp; sourceTree = SOURCE_ROOT; };
+		0A31CC23A3C349B787B7F87D /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		0D2DBE1E5645443192F2D517 /* co_hook_sys_call.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = co_hook_sys_call.cpp; sourceTree = SOURCE_ROOT; };
+		105D01E448E641BB9F72DE33 /* coctx.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = coctx.cpp; sourceTree = SOURCE_ROOT; };
+		1840DD07B0914F94B2DF8BDD /* coctx_swap.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm; fileEncoding = 4; path = coctx_swap.S; sourceTree = SOURCE_ROOT; };
+		1F9653CCBF4E4CDBB2A71577 /* libcolib.0.5.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libcolib.0.5.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		29FE22CBAA1445598AAB0111 /* example_thread */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = example_thread; sourceTree = BUILT_PRODUCTS_DIR; };
+		3332D5A017C44B31994002F4 /* example_closure.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = example_closure.cpp; sourceTree = SOURCE_ROOT; };
+		3F3BCE74143949CE9F7C421D /* example_poll.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = example_poll.cpp; sourceTree = SOURCE_ROOT; };
+		43B95D93E50C4EDBB70E3A01 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		4814B64BCFF54CD5AD495E68 /* libcolib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcolib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D52B9AF127C4DA4AC2D3A20 /* example_poll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = example_poll; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EF35FF8BF5A488787276FA0 /* example_cond */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = example_cond; sourceTree = BUILT_PRODUCTS_DIR; };
+		54A98FF95D264BE79194F761 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		5692BAA61D25451883E01798 /* example_cond.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = example_cond.cpp; sourceTree = SOURCE_ROOT; };
+		5923B94928A84E749165C8D3 /* example_echosvr.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = example_echosvr.cpp; sourceTree = SOURCE_ROOT; };
+		5BA53176929E4393B1A65112 /* example_echocli.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = example_echocli.cpp; sourceTree = SOURCE_ROOT; };
+		5CE39830BC124C61AB0CA9FC /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		6F65BC2F746048BB81A28818 /* example_copystack.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = example_copystack.cpp; sourceTree = SOURCE_ROOT; };
+		835C84CDAB5545DDA3656C5E /* example_echosvr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = example_echosvr; sourceTree = BUILT_PRODUCTS_DIR; };
+		85DAD6E4C6EF4D0287F524A4 /* example_specific */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = example_specific; sourceTree = BUILT_PRODUCTS_DIR; };
+		89A039BBE16640E29ACD4C09 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		91EEDE5132AF4EF581953F37 /* example_specific.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = example_specific.cpp; sourceTree = SOURCE_ROOT; };
+		97D362A44DE548978ADDB94D /* co_epoll.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = co_epoll.cpp; sourceTree = SOURCE_ROOT; };
+		9B9F501EBAE648D6B49112A9 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		9BCE863AE39B4FF7A198B486 /* example_closure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = example_closure; sourceTree = BUILT_PRODUCTS_DIR; };
+		A372DC16F6874E9E8AF45C1C /* example_setenv */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = example_setenv; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6EFC0C7F73043DF9741B68B /* coctx.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = coctx.cpp; sourceTree = SOURCE_ROOT; };
+		A75347E456CC4560B98BBFE8 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		A77366572A4E4CB7A82156E5 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		ABEB4D51D98B46E0B559FF86 /* example_setenv.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = example_setenv.cpp; sourceTree = SOURCE_ROOT; };
+		B29EAB0C51B944E0BCF89C2D /* example_echocli */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = example_echocli; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF8A4D69B73C49DBBC1186AC /* co_hook_sys_call.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = co_hook_sys_call.cpp; sourceTree = SOURCE_ROOT; };
+		C516270A79494EAF8B3835C9 /* co_routine.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = co_routine.cpp; sourceTree = SOURCE_ROOT; };
+		C67B5C1BC6854F5CBC024AE4 /* co_routine.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = co_routine.cpp; sourceTree = SOURCE_ROOT; };
+		DD92E1B66A1348C6858D9F51 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		E2E7BF136E5243EB9682B2E5 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		E477B1BCCA834FEFA7685952 /* coctx_swap.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm; fileEncoding = 4; path = coctx_swap.S; sourceTree = SOURCE_ROOT; };
+		F293D7839B5B488A9CFA6DE7 /* example_thread.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = example_thread.cpp; sourceTree = SOURCE_ROOT; };
+		F6284882E27A45EB8A90AA66 /* example_copystack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = example_copystack; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6D0AD363B744E8A8A183B0 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D01D36292122A2FC00788028 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D01D362B2122A30100788028 /* libcolib.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06E9CB7C76F24E9C98CCAF4B /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				5692BAA61D25451883E01798 /* example_cond.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		41846234762C451BAD265574 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				5923B94928A84E749165C8D3 /* example_echosvr.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		444B6A1BB81F4A71A85E0178 /* example_thread */ = {
+			isa = PBXGroup;
+			children = (
+				8FE94B4B584C47A0BA122D21 /* Source Files */,
+				54A98FF95D264BE79194F761 /* CMakeLists.txt */,
+			);
+			name = example_thread;
+			sourceTree = "<group>";
+		};
+		4B8A7A5F05EC4A789933D59C /* example_closure */ = {
+			isa = PBXGroup;
+			children = (
+				7D94606C3B8F4468B51B838D /* Source Files */,
+				A77366572A4E4CB7A82156E5 /* CMakeLists.txt */,
+			);
+			name = example_closure;
+			sourceTree = "<group>";
+		};
+		512927564CC246F59DBB5C70 /* colib_static */ = {
+			isa = PBXGroup;
+			children = (
+				D5FC5205B8724FB3B69903C3 /* Source Files */,
+				A75347E456CC4560B98BBFE8 /* CMakeLists.txt */,
+				E477B1BCCA834FEFA7685952 /* coctx_swap.S */,
+			);
+			name = colib_static;
+			sourceTree = "<group>";
+		};
+		5958E0DD972B4FCD82EFA1FB /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				97D362A44DE548978ADDB94D /* co_epoll.cpp */,
+				BF8A4D69B73C49DBBC1186AC /* co_hook_sys_call.cpp */,
+				C67B5C1BC6854F5CBC024AE4 /* co_routine.cpp */,
+				A6EFC0C7F73043DF9741B68B /* coctx.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		5B0912C4B03948F0BFF3B872 /* example_specific */ = {
+			isa = PBXGroup;
+			children = (
+				B8920344F9784C3DA8FCABD4 /* Source Files */,
+				5CE39830BC124C61AB0CA9FC /* CMakeLists.txt */,
+			);
+			name = example_specific;
+			sourceTree = "<group>";
+		};
+		7D94606C3B8F4468B51B838D /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				3332D5A017C44B31994002F4 /* example_closure.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		849D2D06DCE84B37A49C552F /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		88FC10D088474F4DA6544896 /* example_echosvr */ = {
+			isa = PBXGroup;
+			children = (
+				41846234762C451BAD265574 /* Source Files */,
+				E2E7BF136E5243EB9682B2E5 /* CMakeLists.txt */,
+			);
+			name = example_echosvr;
+			sourceTree = "<group>";
+		};
+		8FE94B4B584C47A0BA122D21 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				F293D7839B5B488A9CFA6DE7 /* example_thread.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		97F2A50E847F4C32B2C5EC3C /* example_cond */ = {
+			isa = PBXGroup;
+			children = (
+				06E9CB7C76F24E9C98CCAF4B /* Source Files */,
+				9B9F501EBAE648D6B49112A9 /* CMakeLists.txt */,
+			);
+			name = example_cond;
+			sourceTree = "<group>";
+		};
+		9C74B5EF3B5F4C42ADB9DA83 /* example_copystack */ = {
+			isa = PBXGroup;
+			children = (
+				BAE3B7C8390745919B219ED2 /* Source Files */,
+				DD92E1B66A1348C6858D9F51 /* CMakeLists.txt */,
+			);
+			name = example_copystack;
+			sourceTree = "<group>";
+		};
+		9CBD86AF34984F0597F10631 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABEB4D51D98B46E0B559FF86 /* example_setenv.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		AE6CC87F366941269EF9EB47 /* example_setenv */ = {
+			isa = PBXGroup;
+			children = (
+				9CBD86AF34984F0597F10631 /* Source Files */,
+				0120D525A90F4FCB957F0ABC /* CMakeLists.txt */,
+			);
+			name = example_setenv;
+			sourceTree = "<group>";
+		};
+		AEADF63886C542E7BE12EE78 /* colib_shared */ = {
+			isa = PBXGroup;
+			children = (
+				5958E0DD972B4FCD82EFA1FB /* Source Files */,
+				0A31CC23A3C349B787B7F87D /* CMakeLists.txt */,
+				1840DD07B0914F94B2DF8BDD /* coctx_swap.S */,
+			);
+			name = colib_shared;
+			sourceTree = "<group>";
+		};
+		B21E10E45BF74E5BB217FBDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F9653CCBF4E4CDBB2A71577 /* libcolib.0.5.dylib */,
+				4814B64BCFF54CD5AD495E68 /* libcolib.a */,
+				9BCE863AE39B4FF7A198B486 /* example_closure */,
+				4EF35FF8BF5A488787276FA0 /* example_cond */,
+				F6284882E27A45EB8A90AA66 /* example_copystack */,
+				B29EAB0C51B944E0BCF89C2D /* example_echocli */,
+				835C84CDAB5545DDA3656C5E /* example_echosvr */,
+				4D52B9AF127C4DA4AC2D3A20 /* example_poll */,
+				A372DC16F6874E9E8AF45C1C /* example_setenv */,
+				85DAD6E4C6EF4D0287F524A4 /* example_specific */,
+				29FE22CBAA1445598AAB0111 /* example_thread */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B8920344F9784C3DA8FCABD4 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				91EEDE5132AF4EF581953F37 /* example_specific.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		B8C83ABA905B413DA7ADF1FE /* example_echocli */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC4667840F462D9B8AF85D /* Source Files */,
+				FC6D0AD363B744E8A8A183B0 /* CMakeLists.txt */,
+			);
+			name = example_echocli;
+			sourceTree = "<group>";
+		};
+		BAE3B7C8390745919B219ED2 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F65BC2F746048BB81A28818 /* example_copystack.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		D01D362A2122A30100788028 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D1819D49CFFD4CD88FD5A2E6 = {
+			isa = PBXGroup;
+			children = (
+				444B6A1BB81F4A71A85E0178 /* example_thread */,
+				5B0912C4B03948F0BFF3B872 /* example_specific */,
+				AE6CC87F366941269EF9EB47 /* example_setenv */,
+				FD72E672B1014410A9E8EB2D /* example_poll */,
+				88FC10D088474F4DA6544896 /* example_echosvr */,
+				B8C83ABA905B413DA7ADF1FE /* example_echocli */,
+				9C74B5EF3B5F4C42ADB9DA83 /* example_copystack */,
+				97F2A50E847F4C32B2C5EC3C /* example_cond */,
+				512927564CC246F59DBB5C70 /* colib_static */,
+				4B8A7A5F05EC4A789933D59C /* example_closure */,
+				AEADF63886C542E7BE12EE78 /* colib_shared */,
+				E192C4C8FCED4A4FB1CE2B3F /* ALL_BUILD */,
+				B21E10E45BF74E5BB217FBDD /* Products */,
+				D01D362A2122A30100788028 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D370F82DD32A4354BF267B7E /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F3BCE74143949CE9F7C421D /* example_poll.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		D5FC5205B8724FB3B69903C3 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				04AF794C453A4E8F99003CFA /* co_epoll.cpp */,
+				0D2DBE1E5645443192F2D517 /* co_hook_sys_call.cpp */,
+				C516270A79494EAF8B3835C9 /* co_routine.cpp */,
+				105D01E448E641BB9F72DE33 /* coctx.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		E192C4C8FCED4A4FB1CE2B3F /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				849D2D06DCE84B37A49C552F /* CMake Rules */,
+				43B95D93E50C4EDBB70E3A01 /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		EBFC4667840F462D9B8AF85D /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				5BA53176929E4393B1A65112 /* example_echocli.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		FD72E672B1014410A9E8EB2D /* example_poll */ = {
+			isa = PBXGroup;
+			children = (
+				D370F82DD32A4354BF267B7E /* Source Files */,
+				89A039BBE16640E29ACD4C09 /* CMakeLists.txt */,
+			);
+			name = example_poll;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0737C2121DB54CD3B87F5903 /* example_thread */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 405E79910BB04C38B45F21BD /* Build configuration list for PBXNativeTarget "example_thread" */;
+			buildPhases = (
+				6BB52E5D02C7449B8BD4C47D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9564391CABAC47BD966A9078 /* PBXTargetDependency */,
+				7D9EBFA0660F46279EC91C86 /* PBXTargetDependency */,
+			);
+			name = example_thread;
+			productName = example_thread;
+			productReference = 29FE22CBAA1445598AAB0111 /* example_thread */;
+			productType = "com.apple.product-type.tool";
+		};
+		29EDD49D59C3400A844F567A /* example_copystack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FEA9945B6B2401F971185E2 /* Build configuration list for PBXNativeTarget "example_copystack" */;
+			buildPhases = (
+				10B31899D52941B58D39321D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2F0ED05E6224B3D897F157E /* PBXTargetDependency */,
+				753663779A3A4031A4A68481 /* PBXTargetDependency */,
+			);
+			name = example_copystack;
+			productName = example_copystack;
+			productReference = F6284882E27A45EB8A90AA66 /* example_copystack */;
+			productType = "com.apple.product-type.tool";
+		};
+		4E787E6B2A264B6E9E3442A1 /* example_setenv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC2BE9A0EDA04E3694193A00 /* Build configuration list for PBXNativeTarget "example_setenv" */;
+			buildPhases = (
+				62234706A27046E2886FC63F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40B9C47DE66846C89071F247 /* PBXTargetDependency */,
+				BBC843D8AAC74B9484D56AD5 /* PBXTargetDependency */,
+			);
+			name = example_setenv;
+			productName = example_setenv;
+			productReference = A372DC16F6874E9E8AF45C1C /* example_setenv */;
+			productType = "com.apple.product-type.tool";
+		};
+		603F59138BEE415FA063D251 /* example_echocli */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B96996C82B445FB9ACEB047 /* Build configuration list for PBXNativeTarget "example_echocli" */;
+			buildPhases = (
+				5D08F0C36265486FA734189E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86BDFFCAA1E74F12B997C611 /* PBXTargetDependency */,
+				694BE9069888419682E28098 /* PBXTargetDependency */,
+			);
+			name = example_echocli;
+			productName = example_echocli;
+			productReference = B29EAB0C51B944E0BCF89C2D /* example_echocli */;
+			productType = "com.apple.product-type.tool";
+		};
+		68CB56B870884317837F4343 /* example_poll */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 120AE97E009B4D5EABC59407 /* Build configuration list for PBXNativeTarget "example_poll" */;
+			buildPhases = (
+				691BDF9F081041E6A912FC4C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B0D0CDA9F9A043ADAF8CF84F /* PBXTargetDependency */,
+				34C7B9A4D4FA4DD5B88F3BAC /* PBXTargetDependency */,
+			);
+			name = example_poll;
+			productName = example_poll;
+			productReference = 4D52B9AF127C4DA4AC2D3A20 /* example_poll */;
+			productType = "com.apple.product-type.tool";
+		};
+		6F19A96A256347B88F461069 /* example_specific */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0E4E7CEE4AA435C8A847D09 /* Build configuration list for PBXNativeTarget "example_specific" */;
+			buildPhases = (
+				8BF0C80AF027459BBF4AAD10 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD038DC6516441628DFBB416 /* PBXTargetDependency */,
+				D9A866DFB8AF43D8927C1F84 /* PBXTargetDependency */,
+			);
+			name = example_specific;
+			productName = example_specific;
+			productReference = 85DAD6E4C6EF4D0287F524A4 /* example_specific */;
+			productType = "com.apple.product-type.tool";
+		};
+		A43095804CA34D68A82C6E0C /* example_closure */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E80FEFC562F542E9A5F19A76 /* Build configuration list for PBXNativeTarget "example_closure" */;
+			buildPhases = (
+				31C0DF93747F4487AB5E38D4 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E761B02D66C402493C9655C /* PBXTargetDependency */,
+				7607441AE2D243B3AB475C03 /* PBXTargetDependency */,
+			);
+			name = example_closure;
+			productName = example_closure;
+			productReference = 9BCE863AE39B4FF7A198B486 /* example_closure */;
+			productType = "com.apple.product-type.tool";
+		};
+		A65F845D85394DF7B029ED9F /* colib_shared */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAF84E1EAE9849ADB727AE65 /* Build configuration list for PBXNativeTarget "colib_shared" */;
+			buildPhases = (
+				C380C01C894E4FFDBB189A10 /* Sources */,
+				5E1624DC5F5349FEBCA88E04 /* CMake PostBuild Rules */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A8D3B1C430D426294997297 /* PBXTargetDependency */,
+			);
+			name = colib_shared;
+			productName = colib_shared;
+			productReference = 1F9653CCBF4E4CDBB2A71577 /* libcolib.0.5.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		A8512FC3DC2C4EA79DBDDD04 /* example_echosvr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85AC02CA73AB4F4DA293F5B2 /* Build configuration list for PBXNativeTarget "example_echosvr" */;
+			buildPhases = (
+				1617EF6BC216467299D072CA /* Sources */,
+				D01D36292122A2FC00788028 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A05D17FCCA44635BE4ADD79 /* PBXTargetDependency */,
+				F26BE8C773C34E1FB278569F /* PBXTargetDependency */,
+			);
+			name = example_echosvr;
+			productName = example_echosvr;
+			productReference = 835C84CDAB5545DDA3656C5E /* example_echosvr */;
+			productType = "com.apple.product-type.tool";
+		};
+		E3ADA522942C49F3BC2C4D57 /* example_cond */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7744B8C6B3534AEB847411AA /* Build configuration list for PBXNativeTarget "example_cond" */;
+			buildPhases = (
+				99A923F62ACB4C00BAA5BBE2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B35C20FD2164D7AB06C0720 /* PBXTargetDependency */,
+				99AFEB00CE65499B9FF21EA1 /* PBXTargetDependency */,
+			);
+			name = example_cond;
+			productName = example_cond;
+			productReference = 4EF35FF8BF5A488787276FA0 /* example_cond */;
+			productType = "com.apple.product-type.tool";
+		};
+		F37DD53C0D334F309CAA8942 /* colib_static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E120D7EEB004533801B692F /* Build configuration list for PBXNativeTarget "colib_static" */;
+			buildPhases = (
+				4C27F8BFFCBD4E339087F041 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE303C5B0A7646FCBC043E84 /* PBXTargetDependency */,
+			);
+			name = colib_static;
+			productName = colib_static;
+			productReference = 4814B64BCFF54CD5AD495E68 /* libcolib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD52427EBC4341FA9E9AB465 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = DB4778A71D9240F1813666E6 /* Build configuration list for PBXProject "libco" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D1819D49CFFD4CD88FD5A2E6;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				3F11D5FBC69F48C0A3C7686E /* ALL_BUILD */,
+				9390C73F89954E94A7DA20E1 /* ZERO_CHECK */,
+				A65F845D85394DF7B029ED9F /* colib_shared */,
+				F37DD53C0D334F309CAA8942 /* colib_static */,
+				A43095804CA34D68A82C6E0C /* example_closure */,
+				E3ADA522942C49F3BC2C4D57 /* example_cond */,
+				29EDD49D59C3400A844F567A /* example_copystack */,
+				603F59138BEE415FA063D251 /* example_echocli */,
+				A8512FC3DC2C4EA79DBDDD04 /* example_echosvr */,
+				68CB56B870884317837F4343 /* example_poll */,
+				4E787E6B2A264B6E9E3442A1 /* example_setenv */,
+				6F19A96A256347B88F461069 /* example_specific */,
+				0737C2121DB54CD3B87F5903 /* example_thread */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E1624DC5F5349FEBCA88E04 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/libco/build -f /Users/liwei/github/uv_demo/libco/build/CMakeScripts/colib_shared_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		798A70F6CEE64BD9946B32A7 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/libco/build -f /Users/liwei/github/uv_demo/libco/build/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		9F243A3E8A2541FEADD8F9BA /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/liwei/github/uv_demo/libco/build -f /Users/liwei/github/uv_demo/libco/build/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10B31899D52941B58D39321D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AD6F80076CA4962B934E175 /* example_copystack.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1617EF6BC216467299D072CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5681B279142486DAE619248 /* example_echosvr.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31C0DF93747F4487AB5E38D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				892F4E16C49D45549E53F3F1 /* example_closure.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C27F8BFFCBD4E339087F041 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF0EB1682B6E40FA9B1868B5 /* co_epoll.cpp in Sources */,
+				C031829ECFC74ABE8807B9A1 /* co_hook_sys_call.cpp in Sources */,
+				4E75CC6C60854B47A09D272D /* co_routine.cpp in Sources */,
+				7C64002F15714E899661831D /* coctx.cpp in Sources */,
+				6634E75A1D6F43E79A2459C2 /* coctx_swap.S in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D08F0C36265486FA734189E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5547C210E16F43E39DFB5A72 /* example_echocli.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62234706A27046E2886FC63F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1971270EFBAE4009BFCBD602 /* example_setenv.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		691BDF9F081041E6A912FC4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9F832AD29EC40D4B0B65F30 /* example_poll.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BB52E5D02C7449B8BD4C47D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEB7E94380AF4F529CE4F85E /* example_thread.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BF0C80AF027459BBF4AAD10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE99E17D8F6F4A1EA8BF5F34 /* example_specific.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99A923F62ACB4C00BAA5BBE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F59A9297B91456F85E52BB1 /* example_cond.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C380C01C894E4FFDBB189A10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AEA48E8E7214031B3470F94 /* co_epoll.cpp in Sources */,
+				3193719549174D2ABFE09448 /* co_hook_sys_call.cpp in Sources */,
+				003E5700CF484A1FA994D981 /* co_routine.cpp in Sources */,
+				EF125BB6850F44C795DC90AB /* coctx.cpp in Sources */,
+				21282C5A63664F31941C5E06 /* coctx_swap.S in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		09483AA1A8F6481CAA49ADD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A65F845D85394DF7B029ED9F /* colib_shared */;
+			targetProxy = D8D7D67DD5B74EA0A8DF3A6C /* PBXContainerItemProxy */;
+		};
+		0E761B02D66C402493C9655C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = 1ECE7540AB344E9FBA07B926 /* PBXContainerItemProxy */;
+		};
+		1057F96C2DA14160A22094B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A43095804CA34D68A82C6E0C /* example_closure */;
+			targetProxy = D3C3B51BE2A14D62B55A4279 /* PBXContainerItemProxy */;
+		};
+		1EB9B18EB5824724A38797B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0737C2121DB54CD3B87F5903 /* example_thread */;
+			targetProxy = 7678EA895610467CA63F7E91 /* PBXContainerItemProxy */;
+		};
+		1ED6F8E600AD49E1AAC05AEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = A0C143C837D4402383896CD6 /* PBXContainerItemProxy */;
+		};
+		27973229ED1C461896A9C764 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 603F59138BEE415FA063D251 /* example_echocli */;
+			targetProxy = ED01579131F1420B86DBE182 /* PBXContainerItemProxy */;
+		};
+		2A8D3B1C430D426294997297 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = 0E40E4FCA7344894BF0AC89B /* PBXContainerItemProxy */;
+		};
+		34C7B9A4D4FA4DD5B88F3BAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = 3A048237E40A46799FD949DF /* PBXContainerItemProxy */;
+		};
+		3896708022114DFF815629C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8512FC3DC2C4EA79DBDDD04 /* example_echosvr */;
+			targetProxy = 60F180900E214EA19224CBB2 /* PBXContainerItemProxy */;
+		};
+		3A05D17FCCA44635BE4ADD79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = B5ADBED6C6A14F48B8D2CAA4 /* PBXContainerItemProxy */;
+		};
+		40B9C47DE66846C89071F247 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = 19AF713C00E145408E2F2039 /* PBXContainerItemProxy */;
+		};
+		4F5A50C429B1457B9B502AFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 29EDD49D59C3400A844F567A /* example_copystack */;
+			targetProxy = 0AD641D424784D428F0F6E65 /* PBXContainerItemProxy */;
+		};
+		5B35C20FD2164D7AB06C0720 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = 6EF04BF655064F5081F479F8 /* PBXContainerItemProxy */;
+		};
+		5E8378A82E2F457A8F0A8B59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3ADA522942C49F3BC2C4D57 /* example_cond */;
+			targetProxy = 014B6CAFE8DF438D92CD0DD8 /* PBXContainerItemProxy */;
+		};
+		694BE9069888419682E28098 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = 0920FDF0CB1C49FDB33F59D0 /* PBXContainerItemProxy */;
+		};
+		716AC75F81F941BC8471C228 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68CB56B870884317837F4343 /* example_poll */;
+			targetProxy = 42969481539840D5A1872509 /* PBXContainerItemProxy */;
+		};
+		753663779A3A4031A4A68481 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = B8687565D9FB4668B03DEB14 /* PBXContainerItemProxy */;
+		};
+		7607441AE2D243B3AB475C03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = F3D1FAB80B554AD9B9BA53B2 /* PBXContainerItemProxy */;
+		};
+		7B59D671076A406BB1BE85C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = 50C9C8A056524B3682F44C30 /* PBXContainerItemProxy */;
+		};
+		7D9EBFA0660F46279EC91C86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = D23D456A5FE04B03B4764188 /* PBXContainerItemProxy */;
+		};
+		86BDFFCAA1E74F12B997C611 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = 8A7F50A8BD2D423C9FB1A70E /* PBXContainerItemProxy */;
+		};
+		8E092ABFE0E24328BCE7D5AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6F19A96A256347B88F461069 /* example_specific */;
+			targetProxy = A136D8BECFF442B1935FEC16 /* PBXContainerItemProxy */;
+		};
+		9564391CABAC47BD966A9078 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = C8EC87D06D2E47D7B679597C /* PBXContainerItemProxy */;
+		};
+		99AFEB00CE65499B9FF21EA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = AB669F157BF7410BA782C174 /* PBXContainerItemProxy */;
+		};
+		A2F0ED05E6224B3D897F157E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = ED08CBB40E75417B9DF3C75F /* PBXContainerItemProxy */;
+		};
+		A7B968BD36584D6088A49EF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E787E6B2A264B6E9E3442A1 /* example_setenv */;
+			targetProxy = 83DB1126A6D74EC3857D202F /* PBXContainerItemProxy */;
+		};
+		B0D0CDA9F9A043ADAF8CF84F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = 15B27223D31A4C09B4ABFF4F /* PBXContainerItemProxy */;
+		};
+		BBC843D8AAC74B9484D56AD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = 33BC27DDF1B040DEA894F526 /* PBXContainerItemProxy */;
+		};
+		BE303C5B0A7646FCBC043E84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = F9228CB3D9694567B9312AA7 /* PBXContainerItemProxy */;
+		};
+		CD038DC6516441628DFBB416 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37DD53C0D334F309CAA8942 /* colib_static */;
+			targetProxy = DEFB0A81B63448D181C3480B /* PBXContainerItemProxy */;
+		};
+		D9A866DFB8AF43D8927C1F84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = CA879DC795D048578575035A /* PBXContainerItemProxy */;
+		};
+		F26BE8C773C34E1FB278569F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9390C73F89954E94A7DA20E1 /* ZERO_CHECK */;
+			targetProxy = 94B09B043870403A8CEE4651 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		073DB5CE9E8D4BA6B737CE46 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/MinSizeRel/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_specific;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		08D050190F6240B8BB89A45E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Debug/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_setenv;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		0F698C29E1024A08BA07BF33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SYMROOT = ../../build;
+			};
+			name = Release;
+		};
+		12BD21DD2FD248968C25B03D /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/MinSizeRel/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_copystack;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		1AAB612E53E9429B81B4CDC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Debug/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_poll;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		1C9422D1F44544A291097F9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = colib;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		1E83009A0CBA4195938CAD90 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/MinSizeRel/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_poll;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		2578D9ED02EC409689EA9B6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
+				DYLIB_CURRENT_VERSION = 0.5.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					colib_shared_EXPORTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = /Users/liwei/github/uv_demo/libco/build/Debug;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = "   -fPIC  ";
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-Wl,-headerpad_max_install_names",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = colib.0.5;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		28C93BDBFE10412891289F19 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/MinSizeRel/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_echocli;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		3347B10477C748CABF645311 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SYMROOT = ../../build;
+			};
+			name = Debug;
+		};
+		37829B74FEDA47D9A3651F45 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		3A9354519E0B4FCD879752E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Release/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_thread;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		3D275ED9C6C34BA28F7A50FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		408E06EE3341484EBBAB6B05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		4227CC660AC44102A296B737 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Release/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_specific;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		46D12A091DF745D4B12C74A8 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
+				DYLIB_CURRENT_VERSION = 0.5.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					colib_shared_EXPORTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = /Users/liwei/github/uv_demo/libco/build/RelWithDebInfo;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-fPIC",
+				);
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-Wl,-headerpad_max_install_names",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = colib.0.5;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		49BAC81D44A54E21A37A20A8 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/RelWithDebInfo/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_thread;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		4A37977D88C84E5487602D3D /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SYMROOT = ../../build;
+			};
+			name = RelWithDebInfo;
+		};
+		4CADB57D12F946DDBC3C023E /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/RelWithDebInfo/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_echocli;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		567B5079D73E427499083582 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = colib;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		5C8113B2ED9E4307B67D9166 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		60F6D2220E7B422FA7648FA2 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/RelWithDebInfo/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_closure;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		61157B8321234D3AAEDB4EB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
+				DYLIB_CURRENT_VERSION = 0.5.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					colib_shared_EXPORTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = /Users/liwei/github/uv_demo/libco/build/Release;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-fPIC",
+				);
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-Wl,-headerpad_max_install_names",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = colib.0.5;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		62507B3269C545379EE48769 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/MinSizeRel/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_thread;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		65BD82740E7E4C828D8809E6 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/RelWithDebInfo/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_poll;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		660326AFC8C2459D9524147D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Debug/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_closure;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		67EF7C3E294F4E4BA4DA0F97 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/RelWithDebInfo/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_specific;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		6AD205F3662042818505921D /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/MinSizeRel/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_closure;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		6B75EA22C96040BD82340B41 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/MinSizeRel/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_setenv;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		6BDCEDE4009F4796B2736486 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		6BE9F2D111774B6E89A82E52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Debug/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_thread;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		71B3C5CFB546429291603D8C /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/RelWithDebInfo/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_copystack;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		71F08312003548C7AAC0C619 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Release/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_echocli;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		74BB07EB8CAE478383DE40F6 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SYMROOT = ../../build;
+			};
+			name = MinSizeRel;
+		};
+		79DF3B256C354F9892679942 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Debug/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_echosvr;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		7D01A384AC9D434B9C47C6A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Release/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_setenv;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		7D8140C2CBA540719D104883 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		85DA876A96324E82B7FC708F /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/MinSizeRel/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_echosvr;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		9106F7BE162841E196177D9E /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/MinSizeRel/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_cond;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		91995C5AB2094AD1BF3A76C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Debug/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_copystack;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		9E5B691D6C0F43F889744698 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Debug/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_specific;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		9F0B931FFAEE4E1286E1C415 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		A07969A750E54D28821F696A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Debug/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_cond;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		ABFEB99A5ECC49DBB7F391D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Release/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_cond;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		B2F4DB495C7841838302E21D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Release/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_poll;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		B6CCF07D39D4487A8D0EE40C /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/RelWithDebInfo/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_setenv;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		BF482F2221864960B8E7A91E /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/RelWithDebInfo/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_cond;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		DDF90F4ECA244B9FB4E0F691 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/RelWithDebInfo/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_echosvr;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		DE3C0E6C88554E889C791947 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		E302F766279C4962B895F791 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Release/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_closure;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		E408FFC108AC47C68BB29395 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
+				DYLIB_CURRENT_VERSION = 0.5.0;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					colib_shared_EXPORTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = /Users/liwei/github/uv_demo/libco/build/MinSizeRel;
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-fPIC",
+				);
+				OTHER_LDFLAGS = (
+					"-dynamiclib",
+					"-Wl,-headerpad_max_install_names",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = colib.0.5;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		E681F09D8F9843FC929E8831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = colib;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		E9A918909ED642B4A0A22EB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Release/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_echosvr;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		EF7E5A9BD4864ACD87825266 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = colib;
+				SDKROOT = macosx;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		F7292BF3CAAC40B0B24F39AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Release/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_copystack;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		FE56FEBEF02D4138957C862C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/liwei/github/uv_demo/libco/build/Debug/libcolib.a,
+					"-lpthread",
+					"-ldl",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = example_echocli;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/liwei/github/uv_demo/libco/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		120AE97E009B4D5EABC59407 /* Build configuration list for PBXNativeTarget "example_poll" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AAB612E53E9429B81B4CDC0 /* Debug */,
+				B2F4DB495C7841838302E21D /* Release */,
+				1E83009A0CBA4195938CAD90 /* MinSizeRel */,
+				65BD82740E7E4C828D8809E6 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3FEA9945B6B2401F971185E2 /* Build configuration list for PBXNativeTarget "example_copystack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91995C5AB2094AD1BF3A76C3 /* Debug */,
+				F7292BF3CAAC40B0B24F39AA /* Release */,
+				12BD21DD2FD248968C25B03D /* MinSizeRel */,
+				71B3C5CFB546429291603D8C /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		405E79910BB04C38B45F21BD /* Build configuration list for PBXNativeTarget "example_thread" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BE9F2D111774B6E89A82E52 /* Debug */,
+				3A9354519E0B4FCD879752E4 /* Release */,
+				62507B3269C545379EE48769 /* MinSizeRel */,
+				49BAC81D44A54E21A37A20A8 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4B96996C82B445FB9ACEB047 /* Build configuration list for PBXNativeTarget "example_echocli" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE56FEBEF02D4138957C862C /* Debug */,
+				71F08312003548C7AAC0C619 /* Release */,
+				28C93BDBFE10412891289F19 /* MinSizeRel */,
+				4CADB57D12F946DDBC3C023E /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6E120D7EEB004533801B692F /* Build configuration list for PBXNativeTarget "colib_static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E681F09D8F9843FC929E8831 /* Debug */,
+				1C9422D1F44544A291097F9E /* Release */,
+				567B5079D73E427499083582 /* MinSizeRel */,
+				EF7E5A9BD4864ACD87825266 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7744B8C6B3534AEB847411AA /* Build configuration list for PBXNativeTarget "example_cond" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A07969A750E54D28821F696A /* Debug */,
+				ABFEB99A5ECC49DBB7F391D7 /* Release */,
+				9106F7BE162841E196177D9E /* MinSizeRel */,
+				BF482F2221864960B8E7A91E /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		85AC02CA73AB4F4DA293F5B2 /* Build configuration list for PBXNativeTarget "example_echosvr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79DF3B256C354F9892679942 /* Debug */,
+				E9A918909ED642B4A0A22EB1 /* Release */,
+				85DA876A96324E82B7FC708F /* MinSizeRel */,
+				DDF90F4ECA244B9FB4E0F691 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8B4BE03BFE20485CAE08EC34 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				408E06EE3341484EBBAB6B05 /* Debug */,
+				6BDCEDE4009F4796B2736486 /* Release */,
+				9F0B931FFAEE4E1286E1C415 /* MinSizeRel */,
+				5C8113B2ED9E4307B67D9166 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A0E4E7CEE4AA435C8A847D09 /* Build configuration list for PBXNativeTarget "example_specific" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E5B691D6C0F43F889744698 /* Debug */,
+				4227CC660AC44102A296B737 /* Release */,
+				073DB5CE9E8D4BA6B737CE46 /* MinSizeRel */,
+				67EF7C3E294F4E4BA4DA0F97 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DAF84E1EAE9849ADB727AE65 /* Build configuration list for PBXNativeTarget "colib_shared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2578D9ED02EC409689EA9B6F /* Debug */,
+				61157B8321234D3AAEDB4EB8 /* Release */,
+				E408FFC108AC47C68BB29395 /* MinSizeRel */,
+				46D12A091DF745D4B12C74A8 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DB4778A71D9240F1813666E6 /* Build configuration list for PBXProject "libco" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3347B10477C748CABF645311 /* Debug */,
+				0F698C29E1024A08BA07BF33 /* Release */,
+				74BB07EB8CAE478383DE40F6 /* MinSizeRel */,
+				4A37977D88C84E5487602D3D /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E80FEFC562F542E9A5F19A76 /* Build configuration list for PBXNativeTarget "example_closure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				660326AFC8C2459D9524147D /* Debug */,
+				E302F766279C4962B895F791 /* Release */,
+				6AD205F3662042818505921D /* MinSizeRel */,
+				60F6D2220E7B422FA7648FA2 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FA8825E25CE446698ECEEB9E /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D275ED9C6C34BA28F7A50FA /* Debug */,
+				DE3C0E6C88554E889C791947 /* Release */,
+				7D8140C2CBA540719D104883 /* MinSizeRel */,
+				37829B74FEDA47D9A3651F45 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FC2BE9A0EDA04E3694193A00 /* Build configuration list for PBXNativeTarget "example_setenv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08D050190F6240B8BB89A45E /* Debug */,
+				7D01A384AC9D434B9C47C6A7 /* Release */,
+				6B75EA22C96040BD82340B41 /* MinSizeRel */,
+				B6CCF07D39D4487A8D0EE40C /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD52427EBC4341FA9E9AB465 /* Project object */;
+}

@@ -34,4 +34,7 @@
    <FileRef
       location = "group:rpclib_demo/../evhtp_demo/evhtp_demo.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:evhtp_demo/../libco/build/libco.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -33,6 +33,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D01D36272122A21000788028 /* libcolib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcolib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D01D362D2122A47B00788028 /* co_closure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = co_closure.h; sourceTree = "<group>"; };
+		D01D362E2122A47B00788028 /* co_epoll.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = co_epoll.cpp; sourceTree = "<group>"; };
+		D01D362F2122A47B00788028 /* co_epoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = co_epoll.h; sourceTree = "<group>"; };
+		D01D36302122A47B00788028 /* co_hook_sys_call.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = co_hook_sys_call.cpp; sourceTree = "<group>"; };
+		D01D36312122A47B00788028 /* co_routine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = co_routine.cpp; sourceTree = "<group>"; };
+		D01D36322122A47B00788028 /* co_routine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = co_routine.h; sourceTree = "<group>"; };
+		D01D36332122A47B00788028 /* co_routine_inner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = co_routine_inner.h; sourceTree = "<group>"; };
+		D01D36342122A47B00788028 /* co_routine_specific.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = co_routine_specific.h; sourceTree = "<group>"; };
+		D01D36352122A47B00788028 /* coctx.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = coctx.cpp; sourceTree = "<group>"; };
+		D01D36362122A47B00788028 /* coctx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = coctx.h; sourceTree = "<group>"; };
 		D02FB6062119A7B0007A30D9 /* rpclib_demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rpclib_demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02FB6092119A7B0007A30D9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D02FB6112119A801007A30D9 /* librpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librpc.a; path = ../../../../../usr/local/lib/librpc.a; sourceTree = "<group>"; };
@@ -70,9 +81,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D01D362C2122A47B00788028 /* libco */ = {
+			isa = PBXGroup;
+			children = (
+				D01D362D2122A47B00788028 /* co_closure.h */,
+				D01D362E2122A47B00788028 /* co_epoll.cpp */,
+				D01D362F2122A47B00788028 /* co_epoll.h */,
+				D01D36302122A47B00788028 /* co_hook_sys_call.cpp */,
+				D01D36312122A47B00788028 /* co_routine.cpp */,
+				D01D36322122A47B00788028 /* co_routine.h */,
+				D01D36332122A47B00788028 /* co_routine_inner.h */,
+				D01D36342122A47B00788028 /* co_routine_specific.h */,
+				D01D36352122A47B00788028 /* coctx.cpp */,
+				D01D36362122A47B00788028 /* coctx.h */,
+			);
+			path = libco;
+			sourceTree = "<group>";
+		};
 		D02FB5FD2119A7B0007A30D9 = {
 			isa = PBXGroup;
 			children = (
+				D01D362C2122A47B00788028 /* libco */,
 				D02FB6082119A7B0007A30D9 /* rpclib_demo */,
 				D02FB6072119A7B0007A30D9 /* Products */,
 				D02FB6102119A801007A30D9 /* Frameworks */,
@@ -110,6 +139,7 @@
 		D02FB6102119A801007A30D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D01D36272122A21000788028 /* libcolib.a */,
 				D02FB656211B0106007A30D9 /* libuv.a */,
 				D02FB658211B01E4007A30D9 /* libuv.a */,
 				D02FB654211B0103007A30D9 /* libevhtp.a */,
@@ -304,7 +334,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = ../build/debug;
 				DEVELOPMENT_TEAM = 9HZXUTMSZT;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					./libco,
+				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -316,7 +349,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = ../build/release;
 				DEVELOPMENT_TEAM = 9HZXUTMSZT;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					./libco,
+				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -27,7 +27,7 @@ int __rpc_register_reponse::decode(const std::string& data) {
     
     this->code = doc["code"].GetInt();
     this->what = doc["what"].GetString();
-    this->uid = doc["data"]["uid"].GetString();
+    this->set_uid(doc["data"]["uid"].GetString());
     
     return 0;
 }
@@ -45,8 +45,8 @@ int __rpc_login_reponse::decode(const std::string& data) {
     
     this->code = doc["code"].GetInt();
     this->what = doc["what"].GetString();
-    this->uid = doc["data"]["uid"].GetString();
-    this->session = doc["data"]["session"].GetString();
+    this->set_uid(doc["data"]["uid"].GetString());
+    this->set_session(doc["data"]["session"].GetString());
     
     return 0;
 }
