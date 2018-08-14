@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:libco/libco.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:libco_demo/libco_demo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:redis-demo/redis-demo.xcodeproj">
    </FileRef>
    <FileRef
@@ -33,8 +39,5 @@
    </FileRef>
    <FileRef
       location = "group:rpclib_demo/../evhtp_demo/evhtp_demo.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:evhtp_demo/../libco/build/libco.xcodeproj">
    </FileRef>
 </Workspace>
