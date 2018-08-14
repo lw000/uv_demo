@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01D36822122DF7400788028 /* http_common_relpy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D01D36802122DF7400788028 /* http_common_relpy.cpp */; };
 		D02FB60A2119A7B0007A30D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D02FB6092119A7B0007A30D9 /* main.cpp */; };
 		D02FB6122119A801007A30D9 /* librpc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB6112119A801007A30D9 /* librpc.a */; };
 		D02FB6142119A80D007A30D9 /* libmsgpackc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FB6132119A80D007A30D9 /* libmsgpackc.a */; };
@@ -44,6 +45,8 @@
 		D01D36342122A47B00788028 /* co_routine_specific.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = co_routine_specific.h; sourceTree = "<group>"; };
 		D01D36352122A47B00788028 /* coctx.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = coctx.cpp; sourceTree = "<group>"; };
 		D01D36362122A47B00788028 /* coctx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = coctx.h; sourceTree = "<group>"; };
+		D01D36802122DF7400788028 /* http_common_relpy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = http_common_relpy.cpp; sourceTree = "<group>"; };
+		D01D36812122DF7400788028 /* http_common_relpy.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = http_common_relpy.hpp; sourceTree = "<group>"; };
 		D02FB6062119A7B0007A30D9 /* rpclib_demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rpclib_demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02FB6092119A7B0007A30D9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D02FB6112119A801007A30D9 /* librpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librpc.a; path = ../../../../../usr/local/lib/librpc.a; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				D02FB664211C3944007A30D9 /* server_test.hpp */,
 				D02FB666211D19FF007A30D9 /* memory_redis_mapping_datastruct.cpp */,
 				D02FB667211D19FF007A30D9 /* memory_redis_mapping_datastruct.hpp */,
+				D01D36802122DF7400788028 /* http_common_relpy.cpp */,
+				D01D36812122DF7400788028 /* http_common_relpy.hpp */,
 			);
 			path = rpclib_demo;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D02FB665211C3944007A30D9 /* server_test.cpp in Sources */,
+				D01D36822122DF7400788028 /* http_common_relpy.cpp in Sources */,
 				D02FB65C211BE179007A30D9 /* login_server.cpp in Sources */,
 				D02FB662211C3938007A30D9 /* client_test.cpp in Sources */,
 				D02FB651211AFF63007A30D9 /* redis_server.cpp in Sources */,
