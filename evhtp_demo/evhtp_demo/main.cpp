@@ -16,8 +16,7 @@ using namespace zsummer::log4z;
 #include <rapidjson/filereadstream.h>
 
 int main(int argc, char ** argv) {
-
-	ILog4zManager::getInstance()->start();
+//    ILog4zManager::getInstance()->start();
 
 	if (argc < 2) {
 		LOGE("(-c config.cfg)");

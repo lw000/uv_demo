@@ -8,7 +8,7 @@
 
 struct User {
 	std::string uid;
-	std::string uname;
+	std::string name;
 	std::string psd;
 	std::string token;
 	int status;		//0 离线 1 在线
@@ -40,13 +40,13 @@ public:
 	int modify(const User& user);
 	int remove(const User& user);
 	int removeWithUid(const std::string& uid);
-	int removeWithUname(const std::string& uname);
+	int removeWithName(const std::string& name);
 	User find(const User& user);
 	User findWithUid(const std::string& uid);
-	User findWithUname(const std::string& uname);
+	User findWithName(const std::string& name);
 
 	bool exist(const std::string& uid);
-	bool existWithUname(const std::string& uname);
+	bool existWithName(const std::string& name);
 };
 
 extern UserMgr usermgr;

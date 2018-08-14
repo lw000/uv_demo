@@ -22,7 +22,6 @@ using namespace zsummer::log4z;
 #include <rapidjson/reader.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
-//#include <rapidjson/filestream.h>
 
 long long guid = 10000;
 std::mutex user_table_lock;
@@ -56,10 +55,10 @@ int registerAllfunction(evhtp_request_t * req, void * args) {
 	return 0;
 }
 
-void registercb(evhtp_request_t * req, void * args) {
+void http_registercb(evhtp_request_t * req, void * args) {
 	if (evhtp_request_get_method(req) != htp_method_POST) {
 		evbuffer_add_printf(req->buffer_out,
-				"not support, please use post method");
+                            "{\"error\":\"not support, please use post method\"}");
 		evhtp_send_reply(req, EVHTP_RES_OK);
 		return;
 	}
@@ -80,7 +79,7 @@ void registercb(evhtp_request_t * req, void * args) {
 	std::string pasword = evhtp_kv_find(query, "password");
 
 	// 查找用户是否已经注册
-	bool exist = usermgr.existWithUname(username);
+	bool exist = usermgr.existWithName(username);
 	if (exist) {
 		rapidjson::Document doc;
 		doc.SetObject();
@@ -97,8 +96,10 @@ void registercb(evhtp_request_t * req, void * args) {
 		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 		doc.Accept(writer);
 		std::string result = buffer.GetString();
-		evbuffer_add_printf(req->buffer_out, result.c_str());
+        
+		evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
 		evhtp_send_reply(req, EVHTP_RES_OK);
+        
 		LOGD(result);
 
 		return;
@@ -114,19 +115,14 @@ void registercb(evhtp_request_t * req, void * args) {
 		sprintf(uid_buff, "%lld", uid);
 
 		user.uid = uid_buff;
-		user.uname = username;
+		user.name = username;
 		user.psd = pasword;
 		usermgr.add(user);
 	}
 
 	// 写缓存
 	{
-		std::string key;
-		key.append("user:");
-		key.append(uid_buff);
-		key.append(":");
-		key.append(username);
-//		syncRedis.writeString(key, user.Serializable());
+        
 	}
 
 	// 返回结果
@@ -145,13 +141,14 @@ void registercb(evhtp_request_t * req, void * args) {
 	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 	doc.Accept(writer);
 	std::string result = buffer.GetString();
-	evbuffer_add_printf(req->buffer_out, result.c_str());
+    
+	evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
 	evhtp_send_reply(req, EVHTP_RES_OK);
 
 	LOGD(result);
 }
 
-void logincb(evhtp_request_t * req, void * args) {
+void http_logincb(evhtp_request_t * req, void * args) {
 	if (evhtp_request_get_method(req) != htp_method_POST) {
 		evbuffer_add_printf(req->buffer_out,
 				"not support, please use post method");
@@ -189,13 +186,13 @@ void logincb(evhtp_request_t * req, void * args) {
 		std::string result = buffer.GetString();
 		LOGD(result);
 
-		evbuffer_add_printf(req->buffer_out, result.c_str());
+		evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
 		evhtp_send_reply(req, EVHTP_RES_OK);
 
 		return;
 	}
 
-	if (v->second.uname.compare(username) != 0) {
+	if (v->second.name.compare(username) != 0) {
 		rapidjson::Document doc;
 		doc.SetObject();
 		rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
@@ -215,7 +212,7 @@ void logincb(evhtp_request_t * req, void * args) {
 
 		LOGD(result);
 
-		evbuffer_add_printf(req->buffer_out, result.c_str());
+		evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
 		evhtp_send_reply(req, EVHTP_RES_OK);
 
 		return;
@@ -241,7 +238,7 @@ void logincb(evhtp_request_t * req, void * args) {
 
 		LOGD(result);
 
-		evbuffer_add_printf(req->buffer_out, result.c_str());
+		evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
 		evhtp_send_reply(req, EVHTP_RES_OK);
 
 		return;
@@ -266,13 +263,13 @@ void logincb(evhtp_request_t * req, void * args) {
 
 	LOGD(result);
 
-	evbuffer_add_printf(req->buffer_out, result.c_str());
+	evbuffer_add_printf(req->buffer_out, "%s", result.c_str());
 	evhtp_send_reply(req, EVHTP_RES_OK);
 
 	return;
 }
 
-void testcb(evhtp_request_t * req, void * args) {
+void http_testcb(evhtp_request_t * req, void * args) {
 //	const char* data = "{\"d\":\"ok\"}";
 //	evbuffer_add_reference(req->buffer_out, data, strlen(data), NULL, NULL);
 //	evhtp_send_reply(req, EVHTP_RES_OK);
@@ -288,13 +285,13 @@ void testcb(evhtp_request_t * req, void * args) {
 	evbuffer_free(b);
 }
 
-void vh_testcb(evhtp_request_t * req, void * args) {
+void http_vh_testcb(evhtp_request_t * req, void * args) {
 	const char* data = "{\"d\":\"ok\"}";
 	evbuffer_add_reference(req->buffer_out, data, strlen(data), NULL, NULL);
 	evhtp_send_reply(req, EVHTP_RES_OK);
 }
 
-void factcb(evhtp_request_t * req, void * args) {
+void http_factcb(evhtp_request_t * req, void * args) {
 	evhtp_query_t * query;
 	char* raw_query = (char*) req->uri->query_raw;
 	query = evhtp_parse_query(raw_query, strlen(raw_query));
@@ -322,13 +319,13 @@ void factcb(evhtp_request_t * req, void * args) {
 	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 	doc.Accept(writer);
 	std::string msg = buffer.GetString();
-	evbuffer_add_printf(req->buffer_out, msg.c_str());
+	evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
 	evhtp_send_reply(req, EVHTP_RES_OK);
 
 	LOGD(msg);
 }
 
-void addcb(evhtp_request_t * req, void * args) {
+void http_addcb(evhtp_request_t * req, void * args) {
 	evhtp_query_t * query;
 //	char* raw_query = (char*) req->uri->query_raw;
 //	query = evhtp_parse_query(raw_query, strlen(raw_query));
@@ -360,7 +357,7 @@ void addcb(evhtp_request_t * req, void * args) {
 		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 		doc.Accept(writer);
 		std::string msg = buffer.GetString();
-		evbuffer_add_printf(req->buffer_out, msg.c_str());
+		evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
 		evhtp_send_reply(req, EVHTP_RES_OK);
 		LOGD(msg);
 		return;
@@ -404,13 +401,13 @@ void addcb(evhtp_request_t * req, void * args) {
 	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 	doc.Accept(writer);
 	std::string msg = buffer.GetString();
-	evbuffer_add_printf(req->buffer_out, msg.c_str());
+	evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
 	evhtp_send_reply(req, EVHTP_RES_OK);
 
 	LOGD(msg);
 }
 
-void subcb(evhtp_request_t * req, void * args) {
+void http_subcb(evhtp_request_t * req, void * args) {
 	evhtp_query_t * query;
 	char* raw_query = (char*) req->uri->query_raw;
 	query = evhtp_parse_query(raw_query, strlen(raw_query));
@@ -437,7 +434,7 @@ void subcb(evhtp_request_t * req, void * args) {
 		rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 		doc.Accept(writer);
 		std::string msg = buffer.GetString();
-		evbuffer_add_printf(req->buffer_out, msg.c_str());
+		evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
 		evhtp_send_reply(req, EVHTP_RES_OK);
 		return;
 	}
@@ -481,7 +478,7 @@ void subcb(evhtp_request_t * req, void * args) {
 	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 	doc.Accept(writer);
 	std::string msg = buffer.GetString();
-	evbuffer_add_printf(req->buffer_out, msg.c_str());
+	evbuffer_add_printf(req->buffer_out, "%s", msg.c_str());
 	evhtp_send_reply(req, EVHTP_RES_OK);
 
 	LOGD(msg);

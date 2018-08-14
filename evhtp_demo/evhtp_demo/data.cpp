@@ -2,11 +2,11 @@
 
 #include <algorithm>
 
-#include "rapidjson/rapidjson.h"
-#include "rapidjson/document.h"
-#include "rapidjson/reader.h"
-#include "rapidjson/stringbuffer.h"
-#include "rapidjson/writer.h"
+#include <rapidjson/rapidjson.h>
+#include <rapidjson/document.h>
+#include <rapidjson/reader.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/writer.h>
 
 UserMgr usermgr;
 
@@ -19,7 +19,7 @@ User::User() {
 void User::restore() {
 	status = -1;
 	uid.clear();
-	uname.clear();
+	name.clear();
 	psd.clear();
 	token.clear();
 }
@@ -29,7 +29,7 @@ std::string User::Serializable() {
 	d.SetObject();
 	rapidjson::Document::AllocatorType& allocator = d.GetAllocator();
 //    d.AddMember(rapidjson::Value("uid", strlen("uid"), allocator), rapidjson::Value(uid.c_str(), uid.size(), allocator)), allocator);
-//    d.AddMember("uname", uname.c_str(), allocator);
+//    d.AddMember("name", name.c_str(), allocator);
 //    d.AddMember("psd", psd.c_str(), allocator);
 //    d.AddMember("token", token.c_str(), allocator);
 //    d.AddMember("status", status, allocator);
@@ -52,7 +52,7 @@ UserMgr::UserMgr() {
 bool User::operator ==(const User& user) {
 	if (this->psd.compare(user.psd) != 0) return false;
 	if (this->uid.compare(user.uid) != 0) return false;
-	if (this->uname.compare(user.uname) != 0) return false;
+	if (this->name.compare(user.name) != 0) return false;
 	if (this->token.compare(user.token) != 0) return false;
 	if (this->status != user.status) return false;
 
@@ -60,9 +60,7 @@ bool User::operator ==(const User& user) {
 }
 
 int UserMgr::add(const User& user) {
-
-	users.push_back(user);
-
+    users.push_back(user);
 	return 0;
 }
 
@@ -86,11 +84,14 @@ int UserMgr::removeWithUid(const std::string& uid) {
 					}
 					return false;
 				});
+        if (v != users.end()) {
+            
+        }
 	}
 	return 0;
 }
 
-int UserMgr::removeWithUname(const std::string& uname) {
+int UserMgr::removeWithName(const std::string& uname) {
 
 	{
 		std::lock_guard<std::mutex> lock(m);
@@ -101,6 +102,9 @@ int UserMgr::removeWithUname(const std::string& uname) {
 					}
 					return false;
 				});
+        if (v != users.end()) {
+            
+        }
 	}
 
 	return 0;
@@ -136,11 +140,11 @@ User UserMgr::findWithUid(const std::string& uid) {
 	return (*v);
 }
 
-User UserMgr::findWithUname(const std::string& uname) {
+User UserMgr::findWithName(const std::string& name) {
 	std::lock_guard<std::mutex> lock(m);
 	auto v = std::find_if(users.begin(), users.end(),
-			[uname](const User& user) -> bool {
-				if (uname.compare(user.uname) == 0) {
+			[name](const User& user) -> bool {
+				if (name.compare(user.name) == 0) {
 					return true;
 				}
 				return false;
@@ -167,10 +171,10 @@ bool UserMgr::exist(const std::string& uid) {
 	return true;
 }
 
-bool UserMgr::existWithUname(const std::string& uname) {
+bool UserMgr::existWithName(const std::string& name) {
 	auto v = std::find_if(users.begin(), users.end(),
-			[uname](const User& user) -> bool {
-				if (uname.compare(user.uname) == 0) {
+			[name](const User& user) -> bool {
+				if (name.compare(user.name) == 0) {
 					return true;
 				}
 				return false;
