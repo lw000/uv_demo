@@ -15,5 +15,5 @@
 #include <map>
 
 std::string reply_json(int code, const std::string& what, const std::map<std::string, std::string>& dataMap);
-    
+
 #endif /* http_common_relpy_hpp */

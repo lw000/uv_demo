@@ -34,7 +34,7 @@ LoginServer::LoginServer(rpc::server* srv, RedisServer* redisServer) {
         return this->uregister1(args);
     });
     
-//    srv->bind("loginserver/register2", [this](const rpc_register_result_request& args){
+//    srv->bind("loginserver/register2", [this](const rpc_register_request& args){
 //        return this->uregister2(args);
 //    });
     
@@ -67,7 +67,7 @@ std::string LoginServer::uregister1(const std::map<std::string, std::string>& ar
     return "";
 }
 
-//std::string LoginServer::uregister2(const rpc_register_result_request& args) {
+//std::string LoginServer::uregister2(const rpc_register_request& args) {
 //
 //    return "";
 //}

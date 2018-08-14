@@ -35,7 +35,7 @@ public:
 public:
     std::string uregister(const std::string& phone, const std::string& name, const std::string& psd);
     std::string uregister1(const std::map<std::string, std::string>& args);
-//    std::string uregister2(const rpc_register_result_request& args);
+//    std::string uregister2(const rpc_register_request& args);
     
     std::string ulogin(const std::string& uid, const std::string& psd);
     std::string ulogout(const std::string& uid);

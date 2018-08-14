@@ -12,27 +12,73 @@
 #include <iostream>
 #include <map>
 
+struct myclass {
+    myclass() : num(0), str("default") { }
+    
+    myclass(int num, const std::string& str) :
+    num(0), str("default") { }
+    
+    ~myclass() { }
+    
+    int num;
+    std::string str;
+    
+    MSGPACK_DEFINE(num, str);
+    
+    bool operator==(const myclass& o) const
+    {
+        return num == o.num && str == o.str;
+    }
+};
+
+std::ostream& operator<<(std::ostream& o, const myclass& m)
+{
+    return o << "myclass("<<m.num<<",\""<<m.str<<"\")";
+}
+
 int main(int argc, const char * argv[]) {
 
-    std::vector<std::string> vec;
-    vec.push_back("hello");
-    vec.push_back("MessagePack");
+    {
+        std::vector<std::string> vec;
+        vec.push_back("hello");
+        vec.push_back("MessagePack");
+        
+        std::vector<std::string> vec1;
+        vec1.push_back("hello1");
+        vec1.push_back("MessagePack1");
+        
+        msgpack::sbuffer sbuf;
+        msgpack::pack(sbuf, vec);
+        
+        msgpack::unpacked msg;
+        msgpack::unpack(&msg, sbuf.data(), sbuf.size());
+        
+        msgpack::object obj = msg.get();
+        //    std::cout << obj << std::endl;
+        
+        std::vector<std::string> rvec;
+        obj.convert(&rvec);
+    }
     
-    std::vector<std::string> vec1;
-    vec1.push_back("hello1");
-    vec1.push_back("MessagePack1");
-    
-    msgpack::sbuffer sbuf;
-    msgpack::pack(sbuf, vec);
-    
-    msgpack::unpacked msg;
-    msgpack::unpack(&msg, sbuf.data(), sbuf.size());
-    
-    msgpack::object obj = msg.get();
-//    std::cout << obj << std::endl;
-    
-    std::vector<std::string> rvec;
-    obj.convert(&rvec);
+    {
+        myclass m1;
+        
+        msgpack::sbuffer sbuf;
+        msgpack::pack(sbuf, m1);
+        
+        msgpack::zone z;
+        msgpack::object obj;
+        
+        msgpack::unpack_return ret =
+        msgpack::unpack(sbuf.data(), sbuf.size(), NULL, &z, &obj);
+        if (ret == msgpack::UNPACK_SUCCESS) {
+            printf("ok\n");
+        }
+        
+        if (m1 == obj.as<myclass>()) {
+            printf("ok\n");
+        }
+    }
     
     return 0;
 }

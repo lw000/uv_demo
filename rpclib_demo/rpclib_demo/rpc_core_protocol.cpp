@@ -18,6 +18,11 @@ std::string __rpc_register_request::encode() {
     return "";
 }
 
+std::ostream& operator<<(std::ostream& o, const __rpc_register_request& m)
+{
+    return o << "__rpc_register_request(" << m.name << ",\"" << m.phone << ",\"" << m.psd << "\")";
+}
+
 int __rpc_register_reponse::decode(const std::string& data) {
     rapidjson::Document doc;
     doc.Parse<0>(data.c_str());
@@ -27,10 +32,17 @@ int __rpc_register_reponse::decode(const std::string& data) {
     
     this->code = doc["code"].GetInt();
     this->what = doc["what"].GetString();
-    this->set_uid(doc["data"]["uid"].GetString());
+    this->uid = doc["data"]["uid"].GetString();
     
     return 0;
 }
+
+std::ostream& operator<<(std::ostream& o, const __rpc_register_reponse& m)
+{
+    return o << "__rpc_register_reponse(" << m.uid << "\")";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 std::string __rpc_login_request::encode() {
     return "";
@@ -50,3 +62,4 @@ int __rpc_login_reponse::decode(const std::string& data) {
     
     return 0;
 }
+

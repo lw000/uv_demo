@@ -35,17 +35,27 @@ return this->__##name;                          \
 }                                               \
 
 typedef struct __rpc_register_request : public __rpc_base_request {
+    std::string phone;
+    std::string name;
+    std::string psd;
     
-    PROPERTY(std::string, phone)
-    PROPERTY(std::string, name)
-    PROPERTY(std::string, psd)
+    bool operator ==(const __rpc_register_request& o) const
+    {
+        return phone.compare(o.phone) == 0 && name.compare(o.name) == 0 && psd.compare(o.psd) == 0;
+    }
     
 public:
     std::string encode();
+    
 } rpc_register_request;
 
 typedef struct __rpc_register_reponse : public __rpc_base_reponse {
-    PROPERTY(std::string, uid)
+    std::string uid;
+    
+    bool operator==(const __rpc_register_reponse& o) const
+    {
+        return uid.compare(o.uid) == 0;
+    }
     
 public:
     int decode(const std::string& data);

@@ -117,9 +117,9 @@ int client_run(int argc, const char * argv[]) {
             
 //            {
 //                rpc_register_request request;
-//                request.set_phone("13632767233");
-//                request.set_name("liwei");
-//                request.set_psd("123456789");
+//                request.phone = "13632767233";
+//                request.name = "liwei";
+//                request.psd = "123456789";
 //                std::string uid = cli.call("loginserver/register2", request).as<std::string>();
 //                printf("loginserver/register2: %s\n", uid.c_str());
 //            }
