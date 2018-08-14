@@ -6,7 +6,17 @@
 #include <unordered_map>
 #include <mutex>
 
-struct User {
+struct DataObject {
+public:
+    DataObject();
+    virtual ~DataObject();
+    
+public:
+    virtual std::string Serializable();
+    virtual void UnSerializable(const std::string& json);
+};
+
+struct User : public DataObject {
 	std::string uid;
 	std::string name;
 	std::string psd;
@@ -18,8 +28,8 @@ public:
 	void restore();
 
 public:
-	std::string Serializable();
-	void UnSerializable(const std::string& json);
+	virtual std::string Serializable() override;
+	virtual void UnSerializable(const std::string& json) override;
 
 public:
 	bool operator ==(const User& user);

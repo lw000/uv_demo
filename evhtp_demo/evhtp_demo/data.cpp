@@ -12,6 +12,24 @@ UserMgr usermgr;
 
 std::unordered_map<std::string, User> g_users;
 
+DataObject::DataObject() {
+    
+}
+
+DataObject::~DataObject() {
+    
+}
+
+std::string DataObject::Serializable() {
+    return "";
+}
+
+void DataObject::UnSerializable(const std::string& json) {
+    
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 User::User() {
 	status = -1;
 }
