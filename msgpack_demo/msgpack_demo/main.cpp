@@ -83,7 +83,7 @@ int main(int argc, const char * argv[]) {
         if (ret == msgpack::UNPACK_SUCCESS) {
             myclass m2;
             obj.convert(&m2);
-            std::cout << "m2: " << m1 << " ok " << std::endl;
+            std::cout << "m2: " << m1 << std::endl;
         }
         
         if (m1 == obj.as<myclass>()) {
