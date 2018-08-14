@@ -14,11 +14,11 @@
 #include <vector>
 #include <sstream>
 
-typedef struct _rpc_base_request {
+typedef struct __rpc_base_request {
     
 } rpc_base_request;
 
-typedef struct _rpc_base_reponse {
+typedef struct __rpc_base_reponse {
     int code;
     std::string what;
 } rpc_base_reponse;
@@ -34,7 +34,7 @@ type get_##name() {                             \
 return this->__##name;                          \
 }                                               \
 
-typedef struct _rpc_register_request : public _rpc_base_request {
+typedef struct __rpc_register_request : public __rpc_base_request {
     
     PROPERTY(std::string, phone)
     PROPERTY(std::string, name)
@@ -44,28 +44,26 @@ public:
     std::string encode();
 } rpc_register_request;
 
-typedef struct _rpc_register_reponse : public _rpc_base_reponse {
-    std::string uid;
+typedef struct __rpc_register_reponse : public __rpc_base_reponse {
+    PROPERTY(std::string, uid)
     
 public:
     int decode(const std::string& data);
     
 } rpc_register_reponse;
 
-
-typedef struct _rpc_login_request : public _rpc_base_request {
-    std::string uid;
-    std::string psd;
+typedef struct __rpc_login_request : public __rpc_base_request {
+    PROPERTY(std::string, uid)
+    PROPERTY(std::string, psd)
     
 public:
     std::string encode();
     
 } rpc_login_request;
 
-typedef struct _rpc_login_reponse : public _rpc_base_reponse {
-    std::string uid;
-    std::string session;
-    
+typedef struct __rpc_login_reponse : public __rpc_base_reponse {
+    PROPERTY(std::string, uid)
+    PROPERTY(std::string, session)
 public:
     int decode(const std::string& data);
     

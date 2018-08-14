@@ -69,16 +69,16 @@ int client_run(int argc, const char * argv[]) {
             
             {
                 clock_t t = clock();
-                std::list<int> v;
-                v.push_back(10);
-                v.push_back(20);
-                v.push_back(30);
-                v.push_back(40);
-                v.push_back(50);
-                v.push_back(60);
-                v.push_back(70);
-                v.push_back(80);
-                v.push_back(90);
+                std::vector<int> v;
+                v.push_back(1);
+                v.push_back(2);
+                v.push_back(3);
+                v.push_back(4);
+                v.push_back(5);
+                v.push_back(6);
+                v.push_back(7);
+                v.push_back(8);
+                v.push_back(9);
                 auto result = cli.async_call("sum1", v);
                 int c = result.get().as<int>();
                 clock_t t1 = clock();
