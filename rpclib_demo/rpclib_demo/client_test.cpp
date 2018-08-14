@@ -137,7 +137,6 @@ int client_run(int argc, const char * argv[]) {
             }
             
             {
-                
                 std::map<std::string, std::string> args;
                 args.insert(std::make_pair("phone", "13632767233"));
                 args.insert(std::make_pair("name", "liwei"));
@@ -151,15 +150,15 @@ int client_run(int argc, const char * argv[]) {
                 clock_t t2 = clock();
                 std::string s = cli.call("loginserver/login", uid, "123456").as<std::string>();
                 clock_t t3 = clock();
-                printf("loginserver/login[%f]: %s\n", ((double)t3-t2)/CLOCKS_PER_SEC, uid.c_str());
+                printf("loginserver/login[%f]: %s\n", ((double)t3-t2)/CLOCKS_PER_SEC, s.c_str());
                 
                 s = cli.call("loginserver/logout", uid).as<std::string>();
                 clock_t t4 = clock();
-                printf("loginserver/logout[%f]: %s\n", ((double)t4-t3)/CLOCKS_PER_SEC, uid.c_str());
+                printf("loginserver/logout[%f]: %s\n", ((double)t4-t3)/CLOCKS_PER_SEC, s.c_str());
                 
                 s = cli.call("loginserver/getUserInfo", uid).as<std::string>();
                 clock_t t5 = clock();
-                printf("loginserver/getUserInfo[%f]: %s\n", ((double)t5-t4)/CLOCKS_PER_SEC, uid.c_str());
+                printf("loginserver/getUserInfo[%f]: %s\n", ((double)t5-t4)/CLOCKS_PER_SEC, s.c_str());
             }
             
             {

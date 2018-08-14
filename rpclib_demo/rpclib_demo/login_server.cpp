@@ -15,6 +15,32 @@
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
 
+static std::string reply_json(int code, const std::string& what, const std::map<std::string, std::string>& dataMap) {
+    rapidjson::Document doc;
+    doc.SetObject();
+    rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
+    doc.AddMember("code", code, allocator);
+    doc.AddMember("what", rapidjson::Value(what.c_str(), (unsigned)what.size()), allocator);
+    rapidjson::Value data;
+    data.SetObject();
+    {
+        for (auto &m : dataMap) {
+            rapidjson::Value k;
+            k.SetString(m.first.c_str(), (unsigned)m.first.size());
+            rapidjson::Value v;
+            v.SetString(m.second.c_str(), (unsigned)m.second.size());
+            data.AddMember(k, v, allocator);
+        }
+        doc.AddMember("data", data, allocator);
+    }
+    rapidjson::StringBuffer buffer;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    doc.Accept(writer);
+    std::string result = buffer.GetString();
+    return result;
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 BaseServer::BaseServer() {
     
@@ -118,25 +144,7 @@ std::string LoginServer::uregister(const std::string& phone, const std::string& 
             if (ok == 1) {
                 ok = this->redisServer->hashCommand()->hset(uid_buf, "phone", phone, "user_uid:");
                 if (ok == 1) {
-//                    rapidjson::Document doc;
-//                    doc.SetObject();
-//                    rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-//                    doc.AddMember("code", 0, alloctor);
-//                    doc.AddMember("what", "ok", alloctor);
-//                    {
-//                        rapidjson::Value data;
-//                        data.SetObject();
-//                        rapidjson::Value uid;
-//                        uid.SetString("uid", strlen("uid"));
-//                        data.AddMember(uid, rapidjson::Value(uinfo.uid.c_str(), uinfo.uid.size()), alloctor);
-//                        data.AddMember("session", "", alloctor);
-//                        doc.AddMember("data", data, alloctor);
-//                    }
-//                    rapidjson::StringBuffer buffer;
-//                    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-//                    doc.Accept(writer);
-//                    std::string jsondst = buffer.GetString();
-//                    return jsondst;
+//                    return reply_json(0, "ok", {{"uid", "10000"}, {"session", "1111111111111111111111111"}});
                     return uinfo.uid;
                 }
                 else {
@@ -148,25 +156,7 @@ std::string LoginServer::uregister(const std::string& phone, const std::string& 
             }
         }
         else {
-//            rapidjson::Document doc;
-//            doc.SetObject();
-//            rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-//            doc.AddMember("code", 0, alloctor);
-//            doc.AddMember("what", "ok", alloctor);
-//            {
-//                rapidjson::Value data;
-//                data.SetObject();
-//                data.AddMember("uid", userinfo["uid"].c_str(), alloctor);
-//                data.AddMember("session", "", alloctor);
-//                doc.AddMember("data", data, alloctor);
-//            }
-//
-//            rapidjson::StringBuffer buffer;
-//            rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-//            doc.Accept(writer);
-//            std::string jsondst = buffer.GetString();
-//            return jsondst;
-            
+//            return reply_json(0, "ok", {{"uid", "10000"}, {"session", "1111111111111111111111111"}});
             return userinfo["uid"];
         }
     }
@@ -202,25 +192,5 @@ std::string LoginServer::getUserInfo(const std::string& uid) {
     std::string phone = this->redisServer->hashCommand()->hget(uid, "phone", "user_uid:");
     std::map<std::string,std::string> userinfo = this->redisServer->hashCommand()->hgetall(phone, "user_infos:");
     
-    rapidjson::Document doc;
-    doc.SetObject();
-    rapidjson::Document::AllocatorType& alloctor = doc.GetAllocator();
-    doc.AddMember("code", 0, alloctor);
-    doc.AddMember("what", "ok", alloctor);
-    rapidjson::Value data;
-    data.SetObject();
-    for (auto& u : userinfo) {
-        rapidjson::Value k;
-        k.SetString(u.first.c_str(), u.first.size(), alloctor);
-        rapidjson::Value v;
-        v.SetString(u.second.c_str(), u.second.size(), alloctor);
-        data.AddMember(v, k, alloctor);
-    }
-    doc.AddMember("data", data, alloctor);
-    
-    rapidjson::StringBuffer buffer;
-    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-    doc.Accept(writer);
-    std::string jsondst = buffer.GetString();
-    return jsondst;
+    return reply_json(0, "ok", userinfo);
 }

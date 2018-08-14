@@ -6,7 +6,6 @@
 //  Copyright © 2018年 李伟. All rights reserved.
 //
 
-#include <iostream>
 #include "redis_server.hpp"
 #include "login_server.hpp"
 
@@ -29,13 +28,15 @@ int32_t JumpConsistentHash(uint64_t key, int32_t num_buckets)
         key = key * 2862933555777941757ULL + 1;
         j = (b + 1) * (double(1LL << 31) / double((key >> 33) + 1));
     }
-    
-    return b;
+    return (int32_t)b;
 }
 
 int main(int argc, const char * argv[]) {
     
 //    ::signal(SIGINT|SIGTERM, sign_handler);
+    
+    int32_t t = JumpConsistentHash(10000, 100);
+    printf("%d\n", t);
     
     if (strcmp(argv[1], "-s") == 0) {
         server_run(argc, argv);
@@ -44,4 +45,6 @@ int main(int argc, const char * argv[]) {
     } else {
         
     }
+    
+    return 0;
 }
