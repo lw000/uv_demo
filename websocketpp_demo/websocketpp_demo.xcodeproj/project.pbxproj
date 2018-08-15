@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D01D36C22123EB5A00788028 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D01D36C12123EB5A00788028 /* main.cpp */; };
+		D01D37462123ED5B00788028 /* echo_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D01D37432123ED5B00788028 /* echo_server.cpp */; };
+		D01D37472123ED5B00788028 /* echo_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D01D37442123ED5B00788028 /* echo_client.cpp */; };
+		D01D374A2123EE2E00788028 /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01D37492123EE2E00788028 /* libboost_system.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -119,6 +122,11 @@
 		D01D37402123EB9A00788028 /* utf8_validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utf8_validator.hpp; sourceTree = "<group>"; };
 		D01D37412123EB9A00788028 /* utilities.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utilities.hpp; sourceTree = "<group>"; };
 		D01D37422123EB9A00788028 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
+		D01D37432123ED5B00788028 /* echo_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = echo_server.cpp; sourceTree = "<group>"; };
+		D01D37442123ED5B00788028 /* echo_client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = echo_client.cpp; sourceTree = "<group>"; };
+		D01D37452123ED5B00788028 /* echo_handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = echo_handler.hpp; sourceTree = "<group>"; };
+		D01D37492123EE2E00788028 /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../usr/local/lib/libboost_system.a; sourceTree = "<group>"; };
+		D01D374B2123EE6600788028 /* echo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = echo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01D374A2123EE2E00788028 /* libboost_system.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +147,7 @@
 				D01D36CE2123EB9A00788028 /* websocketpp */,
 				D01D36C02123EB5A00788028 /* websocketpp_demo */,
 				D01D36BF2123EB5A00788028 /* Products */,
+				D01D37482123EE2E00788028 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +162,11 @@
 		D01D36C02123EB5A00788028 /* websocketpp_demo */ = {
 			isa = PBXGroup;
 			children = (
+				D01D37442123ED5B00788028 /* echo_client.cpp */,
+				D01D37452123ED5B00788028 /* echo_handler.hpp */,
+				D01D37432123ED5B00788028 /* echo_server.cpp */,
 				D01D36C12123EB5A00788028 /* main.cpp */,
+				D01D374B2123EE6600788028 /* echo.h */,
 			);
 			path = websocketpp_demo;
 			sourceTree = "<group>";
@@ -434,6 +448,14 @@
 			path = stub;
 			sourceTree = "<group>";
 		};
+		D01D37482123EE2E00788028 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D01D37492123EE2E00788028 /* libboost_system.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -490,7 +512,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01D37472123ED5B00788028 /* echo_client.cpp in Sources */,
 				D01D36C22123EB5A00788028 /* main.cpp in Sources */,
+				D01D37462123ED5B00788028 /* echo_server.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +634,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = ../build/debug;
 				DEVELOPMENT_TEAM = 9HZXUTMSZT;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -619,7 +646,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = ../build/release;
 				DEVELOPMENT_TEAM = 9HZXUTMSZT;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
