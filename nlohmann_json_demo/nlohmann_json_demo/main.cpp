@@ -73,5 +73,13 @@ int main(int argc, const char * argv[]) {
             std::cout << element << '\n';
         }
     }
+    
+    {
+        std::vector<std::uint8_t> v = {'t', 'r', 'u', 'e'};
+        nlohmann::json j = nlohmann::json::parse(v);
+        std::string  s = j.dump();
+        std::cout << s << std::endl;
+    }
+    
     return 0;
 }

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:chan_demo/chan_demo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:nlohmann_json_demo/nlohmann_json_demo.xcodeproj">
    </FileRef>
    <FileRef
