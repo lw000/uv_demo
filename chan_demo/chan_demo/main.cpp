@@ -59,12 +59,14 @@ int main(int argc, const char * argv[]) {
     }
 
     // Receive blocks until sender is ready.
-    while (1) {
-        void* msg;
-        chan_recv(chan, &msg);
+    
+    void* msg;
+    while (chan_recv(chan, &msg) == 0) {
         if (strcmp((char*)msg, "quit") == 0) {
             break;
-        } else if (strcmp((char*)msg, "ping") == 0) {
+        }
+        
+        if (strcmp((char*)msg, "ping") == 0) {
             printf("ping: %s\n", msg);
         } else if (strcmp((char*)msg, "ping1") == 0) {
             printf("ping1: %s\n", msg);
@@ -73,7 +75,8 @@ int main(int argc, const char * argv[]) {
             printf("%s\n", msg);
         }
     }
-
+    printf("received all jobs\n");
+    
     // Clean up channel.
     chan_dispose(chan);
     
