@@ -13,6 +13,8 @@
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
 
+#include <nlohmann/json.hpp>
+
 std::string reply_json(int code, const std::string& what, const std::map<std::string, std::string>& dataMap) {
     rapidjson::Document doc;
     doc.SetObject();

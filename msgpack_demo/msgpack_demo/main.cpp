@@ -77,7 +77,6 @@ int main(int argc, const char * argv[]) {
         
         msgpack::zone z;
         msgpack::object obj;
-        
         msgpack::unpack_return ret = msgpack::unpack(sbuf.data(), sbuf.size(), NULL, &z, &obj);
         
         if (ret == msgpack::UNPACK_SUCCESS) {
