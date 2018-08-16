@@ -3,17 +3,12 @@
 #include <unistd.h>
 #include <string>
 
+#include "server_config.hpp"
+
 #include "example.h"
 
 #include <log4z/log4z.h>
 using namespace zsummer::log4z;
-
-#include <rapidjson/rapidjson.h>
-#include <rapidjson/document.h>
-#include <rapidjson/reader.h>
-#include <rapidjson/stringbuffer.h>
-#include <rapidjson/writer.h>
-#include <rapidjson/filereadstream.h>
 
 int main(int argc, char ** argv) {
 //    ILog4zManager::getInstance()->start();
@@ -46,28 +41,19 @@ int main(int argc, char ** argv) {
 	}
 
 	do {
-		FILE *f = NULL;
-		f = fopen(conf.c_str(), "r");
-		fseek(f, 0, SEEK_SET);
-        char buff[2048];
-        rapidjson::Document root;
-        rapidjson::FileReadStream is(f, buff, sizeof(buff));
-        root.ParseStream<0>(is);
-        if (root.HasParseError()) {
-            LOGE("fail parse json.");
-            fclose(f);
+        std::map<std::string, std::string> config = load_config(conf);
+        if (config.empty()) {
             break;
         }
-		fclose(f);
-
-		std::string s = root["platform"].GetString();
-		std::string host = root["host"].GetString();
-		int port = root["port"].GetInt();
+        
+        std::string s = config["platform"];
+        std::string host = config["host"];
+        std::string port = config["port"];
 
 		if (s.compare("s") == 0) {
-			main_server(port);
+			main_server(atoi(port.c_str()));
 		} else if (s.compare("c") == 0) {
-			main_client(host.c_str(), port);
+            main_client(host.c_str(), atoi(port.c_str()));
 		} else {
 			printf("error. \n");
 		}

@@ -10,5 +10,9 @@
 #define server_config_hpp
 
 #include <stdio.h>
+#include <string>
+#include <map>
+
+std::map<std::string, std::string> load_config(const std::string& filename);
 
 #endif /* server_config_hpp */

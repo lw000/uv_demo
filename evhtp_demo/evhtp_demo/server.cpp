@@ -6,14 +6,14 @@
 #include <string>
 #include <fstream>
 
-#include <evhtp/evhtp.h>
-
 #include <rapidjson/rapidjson.h>
 #include <rapidjson/document.h>
 #include <rapidjson/reader.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 #include <rapidjson/filereadstream.h>
+
+#include <evhtp/evhtp.h>
 
 #include <log4z/log4z.h>
 
@@ -144,7 +144,10 @@ int main_server(int port) {
 	do {
             {
                 int r = evhtp_bind_socket(htp_v6, "ipv6:::/128", port, 1024);
-                if (r != 0) {
+                if (r == 0) {
+                    htp_log_debug("bind ipv6 [%d] success", port);
+                }
+                else {
                     LOGD("bind ipv6 fail");
                     break;
                 }
@@ -152,13 +155,16 @@ int main_server(int port) {
 
             {
                 int r = evhtp_bind_socket(htp_v4, "ipv4:0.0.0.0", port, 1024);
-                if (r != 0) {
+                if (r == 0) {
+                    htp_log_debug("bind ipv4 [%d] success", port);
+                } else {
                     LOGD("bind ipv4 fail");
                     break;
                 }
             }
 
-            LOGD("running [port : " << port << "]");
+            LOGD("running port: [" << port << "]");
+            htp_log_debug("running port: [%d]", port);
 
             int r = event_base_dispatch(evbase);
             if (r != 0) {

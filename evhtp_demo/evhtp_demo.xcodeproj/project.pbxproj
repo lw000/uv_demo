@@ -15,6 +15,7 @@
 		D01D35FC2121779A00788028 /* liblog4z.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01D35FB2121779A00788028 /* liblog4z.a */; };
 		D01D35FE212177A100788028 /* libevhtp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01D35FD212177A100788028 /* libevhtp.a */; };
 		D01D360021217B7200788028 /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01D35FF21217B7200788028 /* libevent.a */; };
+		D01D378321254F4400788028 /* server_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D01D378121254F4400788028 /* server_config.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,8 @@
 		D01D35FB2121779A00788028 /* liblog4z.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblog4z.a; path = ../../../../../usr/local/lib/liblog4z.a; sourceTree = "<group>"; };
 		D01D35FD212177A100788028 /* libevhtp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libevhtp.a; path = ../../../../../usr/local/lib/libevhtp.a; sourceTree = "<group>"; };
 		D01D35FF21217B7200788028 /* libevent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libevent.a; path = ../../../../../usr/local/lib/libevent.a; sourceTree = "<group>"; };
+		D01D378121254F4400788028 /* server_config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = server_config.cpp; sourceTree = "<group>"; };
+		D01D378221254F4400788028 /* server_config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = server_config.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				D01D35F4212176DF00788028 /* example.h */,
 				D01D35F5212176DF00788028 /* server.cpp */,
 				D01D35E2212176A500788028 /* main.cpp */,
+				D01D378121254F4400788028 /* server_config.cpp */,
+				D01D378221254F4400788028 /* server_config.hpp */,
 			);
 			path = evhtp_demo;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			files = (
 				D01D35E3212176A500788028 /* main.cpp in Sources */,
 				D01D35F6212176DF00788028 /* bunissfunc.cpp in Sources */,
+				D01D378321254F4400788028 /* server_config.cpp in Sources */,
 				D01D35F8212176DF00788028 /* client.cpp in Sources */,
 				D01D35F9212176DF00788028 /* server.cpp in Sources */,
 				D01D35F7212176DF00788028 /* data.cpp in Sources */,
