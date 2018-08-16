@@ -30,7 +30,7 @@ LoginServer::LoginServer(rpc::server* srv, RedisServer* redisServer) {
         return this->uregister(phone, name, psd);
     });
     
-    srv->bind("loginserver/register1", [this](const std::map<std::string, std::string>& args){
+    srv->bind("loginserver/register1", [this](std::map<std::string, std::string>& args){
         return this->uregister1(args);
     });
     
@@ -55,10 +55,14 @@ LoginServer::~LoginServer() {
     
 }
 
-std::string LoginServer::uregister1(const std::map<std::string, std::string>& args) {
+std::string LoginServer::uregister1(std::map<std::string, std::string>& args) {
     if (args.empty()) {
         return "";
     }
+    
+    std::string phone = args["phone"];
+    std::string name = args["name"];
+    std::string psd = args["psd"];
     
     for (auto& v : args) {
         printf("%s: %s\n", v.first.c_str(), v.second.c_str());

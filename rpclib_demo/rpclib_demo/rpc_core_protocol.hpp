@@ -10,6 +10,7 @@
 #define data_hpp
 
 #include <stdio.h>
+#include <memory.h>
 #include <string>
 #include <vector>
 #include <sstream>

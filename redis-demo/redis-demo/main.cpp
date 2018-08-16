@@ -39,6 +39,7 @@ static void disconnectCallback(const redisAsyncContext* c, int status) {
 
 int main(int argc, const char * argv[]) {
     ::signal(SIGPIPE, SIG_IGN);
+    
     uv_loop_t* loop = uv_loop_new();
     
     redisAsyncContext *c = redisAsyncConnect("127.0.0.1", 6379);

@@ -130,7 +130,7 @@ int client_run(int argc, const char * argv[]) {
                 args.insert(std::make_pair("phone", "13632767233"));
                 args.insert(std::make_pair("name", "liwei"));
                 args.insert(std::make_pair("psd", "123456"));
-                
+                std::string v = args["phone"];
                 std::string uid = cli.call("loginserver/register1", args).as<std::string>();
                 clock_t t1 = clock();
                 printf("loginserver/register1[%f]: %s\n", ((double)t1-t)/CLOCKS_PER_SEC, uid.c_str());

@@ -47,7 +47,7 @@ int echo_server_main(int argc, const char* argv[]) {
         echo_server.init_asio();
 
         // Register our message handler
-        echo_server.set_message_handler(bind(&on_message,&echo_server,::_1,::_2));
+        echo_server.set_message_handler(bind(&on_message, &echo_server,::_1,::_2));
 
         // Listen on port 9002
         echo_server.listen(9002);

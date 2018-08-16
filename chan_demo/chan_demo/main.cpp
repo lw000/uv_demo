@@ -6,22 +6,44 @@
 //  Copyright © 2018年 李伟. All rights reserved.
 //
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <memory>
 #include <pthread.h>
+#include <iostream>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
     #include "./chan/chan.h"
-    
 #ifdef __cplusplus
 }
 #endif
 
 chan_t* chan;
+
+class AAA : public std::enable_shared_from_this<AAA> {
+public:
+    std::shared_ptr<AAA> getptr() {
+        return shared_from_this();
+    }
+    
+    ~AAA() {
+        std::cout << "AAA call" << std::endl;
+    }
+};
+
+class BBB {
+public:
+    ~BBB() {
+        std::cout << "BBB call" << std::endl;
+    }
+    
+    void pf() {
+        std::cout << "pf call" << std::endl;
+    }
+};
 
 void* ping(void*)
 {
@@ -45,6 +67,21 @@ void* ping1(void*)
 }
 
 int main(int argc, const char * argv[]) {
+    
+    {
+        std::shared_ptr<AAA> a(new AAA());
+        std::shared_ptr<AAA> b = a->getptr();
+        std::cout << "a use_count: " << a.use_count() << std::endl;
+        std::cout << "b use_count: " << b.use_count() << std::endl;
+    }
+    
+    {
+        std::shared_ptr<BBB> b(new BBB());
+        b->pf();
+    }
+    
+    return 0;
+    
     // Initialize unbuffered channel.
     chan = chan_init(1024);
     

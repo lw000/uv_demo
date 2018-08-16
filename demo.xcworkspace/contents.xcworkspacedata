@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:epoll_demo/epoll_demo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:libevent_demo/libevent_demo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:chan_demo/chan_demo.xcodeproj">
    </FileRef>
    <FileRef
