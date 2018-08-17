@@ -70,11 +70,25 @@ bool load_config() {
 }
 
 void __thread_init_cb(evhtp_t * htp, evthr_t * thr, void * arg) {
-	LOGD("thread_init_cb");
+    char* s = (char*)(arg);
+    if (strcmp(s, "ipv4") == 0) {
+        LOGD("thread_init_cb ipv4");
+    }
+    
+    if (strcmp(s, "ipv6") == 0) {
+        LOGD("thread_init_cb ipv6");
+    }
 }
 
 void __thread_init_exit(evhtp_t * htp, evthr_t * thr, void * arg) {
-	LOGD("thread_init_exit");
+    char* s = (char*)(arg);
+    if (strcmp(s, "ipv4") == 0) {
+        LOGD("thread_init_exit ipv4");
+    }
+    
+    if (strcmp(s, "ipv6") == 0) {
+        LOGD("thread_init_exit ipv6");
+    }
 }
 
 void __genreq_cb(evhtp_request_t * req, void * arg) {
@@ -89,7 +103,7 @@ int main_server(int port) {
 		return -1;
 	}
 
-	srand((unsigned) time(NULL));
+	srand((unsigned)time(NULL));
 
 	evbase_t * evbase = NULL;
 	evhtp_t * htp_v4 = NULL;
@@ -100,7 +114,8 @@ int main_server(int port) {
 	htp_v4 = evhtp_new(evbase, NULL);
 	htp_v6 = evhtp_new(evbase, NULL);
 
-	evhtp_use_threads_wexit(htp_v4, __thread_init_cb, __thread_init_exit, 8, NULL);
+	evhtp_use_threads_wexit(htp_v4, __thread_init_cb, __thread_init_exit, 2, (void*)"ipv4");
+    evhtp_use_threads_wexit(htp_v6, __thread_init_cb, __thread_init_exit, 2, (void*)"ipv6");
 
 //	evhtp_t * v1 = evhtp_new(evbase, NULL);
 //	const char* vhost = "host1.com";
@@ -115,7 +130,6 @@ int main_server(int port) {
 
 	{
 		evhtp_callback_t * htpcb = NULL;
-
 		htpcb = evhtp_set_cb(htp_v4, "/register", http_registercb, NULL);
 		htpcb = evhtp_set_cb(htp_v6, "/register", http_registercb, NULL);
 		assert(htpcb != NULL);
@@ -142,35 +156,32 @@ int main_server(int port) {
 	}
 
 	do {
-            {
-                int r = evhtp_bind_socket(htp_v6, "ipv6:::/128", port, 1024);
-                if (r == 0) {
-                    htp_log_debug("bind ipv6 [%d] success", port);
-                }
-                else {
-                    LOGD("bind ipv6 fail");
-                    break;
-                }
-            }
+        int r = 0;
+        r = evhtp_bind_socket(htp_v6, "ipv6:::/128", port, 1024);
+        if (r == 0) {
+            LOGD("bind ipv6 " << "[" << port << "]" << "success");
+        }
+        else {
+            LOGD("bind ipv6 fail");
+            break;
+        }
 
-            {
-                int r = evhtp_bind_socket(htp_v4, "ipv4:0.0.0.0", port, 1024);
-                if (r == 0) {
-                    htp_log_debug("bind ipv4 [%d] success", port);
-                } else {
-                    LOGD("bind ipv4 fail");
-                    break;
-                }
-            }
+        r = evhtp_bind_socket(htp_v4, "ipv4:0.0.0.0", port, 1024);
+        if (r == 0) {
+            LOGD("bind ipv4 " << "[" << port << "]" << "success");
+        } else {
+            LOGD("bind ipv4 fail");
+            break;
+        }
 
-            LOGD("running port: [" << port << "]");
-            htp_log_debug("running port: [%d]", port);
+        LOGD("running port: [" << port << "]");
 
-            int r = event_base_dispatch(evbase);
-            if (r != 0) {
-                LOGD("event_base_dispatch fail [" << r << "]");
-                break;
-            }
+        r = event_base_dispatch(evbase);
+        if (r != 0) {
+            LOGD("event_base_dispatch fail [" << r << "]");
+            break;
+        }
+        
 	} while (0);
 
 	evhtp_unbind_socket(htp_v4);
