@@ -55,4 +55,7 @@
    <FileRef
       location = "group:chan_demo/../websocketpp_demo/websocketpp_demo.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:libco/../httpd_demo/httpd_demo.xcodeproj">
+   </FileRef>
 </Workspace>

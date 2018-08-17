@@ -93,9 +93,10 @@ void http_registercb(evhtp_request_t * req, void * args) {
 //        evbuffer_add_printf(req->buffer_out,
 //                            "{\"error\":\"not support, please use post method\"}");
 //        evhtp_send_reply(req, EVHTP_RES_OK);
-        
-        reply_json(req, 0, "", {{"error", "not support, please use post method"}});
-		return;
+
+        reply_json(req, 0, "error", {{"error", "not support, please use post method"}});
+		
+        return;
 	}
 
 	char* raw_query = (char*) req->uri->query_raw;
